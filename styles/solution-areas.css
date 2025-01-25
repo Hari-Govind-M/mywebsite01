@@ -1,7 +1,8 @@
-/* Solution Areas Section */
+/* Core Solution Areas Section */
 .core-solution-cards {
-    background-color: #330052;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #6a0dad, #2f1854);
+    color: #ffffff;
 }
 
 .card {
@@ -13,6 +14,6 @@
 
 .card:hover {
     transform: scale(1.05);
-    background-color: #6a0dad;
+    background-color: #8b1bad;
     color: #ffffff;
 }
