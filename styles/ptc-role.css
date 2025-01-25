@@ -16,13 +16,13 @@
     display: flex;
     justify-content: space-around; /* Evenly space cards */
     gap: 20px; /* Space between cards */
-    overflow: hidden; /* Remove scrollbar */
     flex-wrap: nowrap; /* Prevent wrapping */
+    align-items: stretch; /* Ensure cards stretch to the same height */
 }
 
 /* Individual Cards */
 .role {
-    flex: 0 0 22%; /* Ensure all cards fit in one row */
+    flex: 0 0 22%; /* Ensure cards fit in one row */
     background-color: #240046;
     padding: 20px;
     border-radius: 10px;
@@ -32,8 +32,9 @@
     color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Ensure content is spaced evenly */
     align-items: center;
+    height: 100%; /* Match height of tallest card */
 }
 
 .role:hover {
@@ -52,6 +53,11 @@
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
+    flex-grow: 1; /* Fill remaining space evenly */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center;
+    text-align: center;
 }
 
 /* Responsive Design */
