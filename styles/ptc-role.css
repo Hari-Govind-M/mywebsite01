@@ -5,19 +5,66 @@
     color: #ffffff;
 }
 
+/* Existing Card Grid (Optional if not needed for rotation) */
 .roles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: none; /* Disable this since we're applying a circular layout */
 }
 
+/* Circular Rotating Container */
+.rotating-container {
+    position: relative;
+    width: 400px; /* Size of the circle */
+    height: 400px;
+    margin: 0 auto; /* Center the container */
+    border-radius: 50%; /* Circular shape */
+    animation: rotateClockwise 20s linear infinite; /* Continuous clockwise rotation */
+}
+
+/* Cards Positioned in a Circle */
 .role {
+    position: absolute;
+    width: 150px; /* Card width */
+    height: 150px;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
 }
 
+/* Individual Card Positions */
+.role:nth-child(1) {
+    top: 0%;
+    left: 50%;
+}
+
+.role:nth-child(2) {
+    top: 50%;
+    left: 100%;
+}
+
+.role:nth-child(3) {
+    top: 100%;
+    left: 50%;
+}
+
+.role:nth-child(4) {
+    top: 50%;
+    left: 0%;
+}
+
+/* Rotation Keyframes */
+@keyframes rotateClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Styling for Card Titles */
 .role h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
