@@ -1,0 +1,58 @@
+/* Engagement Model Section */
+.engagement-model {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #330052, #6a0dad);
+    color: #ffffff;
+    text-align: left;
+}
+
+.engagement-model h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.engagement-model p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #dddddd;
+}
+
+.engagement-model .phase {
+    margin-bottom: 40px;
+}
+
+.engagement-model .phase h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.engagement-model .phase ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.engagement-model .phase ul li {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.engagement-model .phase ul li::before {
+    content: "•";
+    color: #6a0dad;
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
+    margin-right: 5px;
+}
+
+.engagement-model .phase p {
+    font-size: 1rem;
+    color: #dddddd;
+    line-height: 1.8;
+}
