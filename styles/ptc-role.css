@@ -4,7 +4,7 @@
     background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
     text-align: center;
-    overflow: hidden; /* Prevent cards from overflowing the section */
+    overflow: hidden; /* Prevent cards from overflowing */
 }
 
 .ptc-role h2 {
@@ -16,18 +16,18 @@
 .scrolling-container {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between cards */
-    animation: scrollCards 20s linear infinite; /* Continuous left-to-right scrolling */
+    gap: 50px; /* Increase spacing between cards */
+    animation: scrollCards 20s linear infinite; /* Continuous scrolling animation */
 }
 
 /* Cards */
 .role {
-    flex: 0 0 200px; /* Fixed card width */
-    height: 150px; /* Fixed card height */
+    flex: 0 0 250px; /* Adjust card width */
+    height: 200px; /* Adjust card height */
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
@@ -44,22 +44,23 @@
 
 /* Individual Card Content */
 .role h3 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .role p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #ddd;
     text-align: center;
+    padding: 0 10px;
 }
 
 /* Animation for Scrolling */
 @keyframes scrollCards {
     from {
-        transform: translateX(-100%); /* Start off-screen */
+        transform: translateX(-100%); /* Start off-screen to the left */
     }
     to {
-        transform: translateX(100%); /* End off-screen */
+        transform: translateX(100%); /* End off-screen to the right */
     }
 }
