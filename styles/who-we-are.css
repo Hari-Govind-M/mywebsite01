@@ -14,7 +14,7 @@
     align-items: stretch;
     justify-content: space-between;
     gap: 20px;
-    min-height: 450px; /* Ensure section height */
+    min-height: 450px;
 }
 
 /* Left Content */
@@ -24,8 +24,8 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    padding-left: 20px; /* Bring content closer to the left */
+    justify-content: center;
+    padding-left: 20px; /* Align closer to the left edge */
 }
 
 .who-we-are .left h1 {
@@ -34,24 +34,27 @@
     font-weight: bold;
     color: #ffffff;
     text-align: left;
+    white-space: nowrap; /* Ensure it stays on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .who-we-are .left h2 {
-    font-size: 1.2rem; /* Adjust subtitle size */
-    margin-bottom: 0;
+    font-size: 1.5rem;
+    margin-top: 10px;
     color: #ffffff;
     text-align: left;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 55%; /* Right content width */
+    flex: 0 0 55%;
     z-index: 1;
     padding: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Align content vertically */
+    justify-content: center;
 }
 
 .who-we-are .right p {
@@ -71,7 +74,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%; /* Adjust width to ensure diagonal covers the left side */
+    width: 40%; /* Diagonal for left-side alignment */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
@@ -84,7 +87,7 @@
     .who-we-are .container {
         flex-direction: column;
         text-align: center;
-        min-height: 500px; /* Adjust height for small screens */
+        min-height: 500px;
     }
 
     .who-we-are .left,
@@ -93,8 +96,13 @@
         max-width: 100%;
     }
 
+    .who-we-are .left h1 {
+        font-size: 2rem;
+        white-space: normal; /* Allow breaking for small screens */
+    }
+
     .who-we-are::before {
         width: 100%; /* Adjust diagonal for small screens */
-        transform: skewX(0deg); /* Remove skew */
+        transform: skewX(0deg);
     }
 }
