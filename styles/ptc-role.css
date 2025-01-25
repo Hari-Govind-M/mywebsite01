@@ -4,6 +4,7 @@
     background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
     text-align: center;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .ptc-role h2 {
@@ -16,8 +17,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two cards per row */
     gap: 30px; /* Space between cards */
-    justify-content: center;
+    justify-content: center; /* Center content within the container */
     align-items: stretch;
+    max-width: 1200px; /* Constrain container width */
+    margin: 0 auto; /* Center container horizontally */
 }
 
 /* Individual Cards */
@@ -60,6 +63,6 @@
 @media (max-width: 768px) {
     .scrolling-container {
         grid-template-columns: 1fr; /* One card per row for smaller screens */
-        gap: 20px;
+        gap: 20px; /* Reduce gap for smaller screens */
     }
 }
