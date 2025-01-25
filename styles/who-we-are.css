@@ -17,15 +17,15 @@
     min-height: 400px; /* Ensure the section is tall enough */
 }
 
-/* Left Content (Diagonal Background) */
+/* Left Content */
 .who-we-are .left {
-    flex: 0 0 40%; /* Reduce width to balance the layout */
+    flex: 0 0 40%; /* Left side takes 40% of the space */
     z-index: 1;
     text-align: left;
 }
 
 .who-we-are .left h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 10px;
     font-weight: bold;
     color: #ffffff;
@@ -37,9 +37,9 @@
     color: #ffffff;
 }
 
-/* Right Content (Text Details) */
+/* Right Content */
 .who-we-are .right {
-    flex: 1;
+    flex: 0 0 55%; /* Right side takes 55% of the space */
     z-index: 1;
     padding: 20px;
     text-align: left;
@@ -62,7 +62,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 35%; /* Reduce diagonal width for balance */
+    width: 35%; /* Diagonal for the left side */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
