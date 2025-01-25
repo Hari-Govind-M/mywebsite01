@@ -32,10 +32,10 @@
     align-items: flex-start;
     text-align: left;
 
-    /* Initial Animation State */
-    opacity: 0; /* Hidden initially */
+    /* Default State */
+    opacity: 1; /* Cards visible by default */
     transform: translateX(0); /* Default position */
-    transition: transform 1s ease, opacity 1s ease; /* Smooth animation */
+    transition: none; /* No animation effects */
 }
 
 /* Hover Effect */
