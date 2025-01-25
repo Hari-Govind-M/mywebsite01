@@ -26,7 +26,7 @@
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 2x2 grid */
-    gap: 30px; /* Space between cards */
+    gap: 40px; /* Space between cards */
     justify-content: center;
     align-items: stretch;
 }
@@ -42,6 +42,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
+    min-height: 300px; /* Consistent card height */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -83,4 +84,12 @@
     font-size: 1rem;
     color: #dddddd;
     line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+        gap: 20px;
+    }
 }
