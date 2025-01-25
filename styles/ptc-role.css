@@ -17,12 +17,12 @@
     justify-content: space-around; /* Evenly space cards */
     gap: 20px; /* Space between cards */
     flex-wrap: nowrap; /* Prevent wrapping */
-    align-items: stretch; /* Ensure cards stretch to the same height */
+    align-items: stretch; /* Ensure cards stretch to equal height */
 }
 
 /* Individual Cards */
 .role {
-    flex: 0 0 22%; /* Ensure cards fit in one row */
+    flex: 0 0 22%; /* Ensure all cards fit in one row */
     background-color: #240046;
     padding: 20px;
     border-radius: 10px;
@@ -32,9 +32,9 @@
     color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensure content is spaced evenly */
+    justify-content: space-between; /* Space out content inside the card */
     align-items: center;
-    height: 100%; /* Match height of tallest card */
+    min-height: 250px; /* Elongate the card */
 }
 
 .role:hover {
@@ -53,23 +53,20 @@
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
-    flex-grow: 1; /* Fill remaining space evenly */
-    display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center;
-    text-align: center;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .role {
         flex: 0 0 25%; /* Adjust for medium screens */
+        min-height: 220px; /* Adjust height slightly */
     }
 }
 
 @media (max-width: 768px) {
     .role {
         flex: 0 0 45%; /* Two cards per row for smaller screens */
+        min-height: 200px; /* Further adjustment */
     }
 
     .scrolling-container {
@@ -80,5 +77,6 @@
 @media (max-width: 480px) {
     .role {
         flex: 0 0 100%; /* One card per row for very small screens */
+        min-height: 180px; /* Ensure good height on small screens */
     }
 }
