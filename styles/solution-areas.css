@@ -71,7 +71,7 @@
 
 /* Heartbeat Animation */
 .heartbeat {
-    animation: heartbeat 1.5s infinite; /* Continuous pulsing effect */
+    animation: heartbeat 5s infinite; /* Continuous pulsing effect */
 }
 
 /* Keyframes for Heartbeat Animation */
