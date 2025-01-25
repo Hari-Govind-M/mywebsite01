@@ -1,7 +1,7 @@
 /* Submit TPnD Section */
 .submit-tpnd {
     padding: 40px 20px;
-    background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark theme background */
+    background: linear-gradient(135deg, #2f1854, #4a227a); /* Subtle gradient */
     color: #ffffff;
     text-align: center;
 }
@@ -9,6 +9,7 @@
 .submit-tpnd h2 {
     font-size: 2rem;
     margin-bottom: 30px;
+    color: #ffffff;
 }
 
 /* Step Cards */
@@ -16,12 +17,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Spacing between steps */
+    gap: 20px; /* Space between steps */
     margin-top: 20px;
 }
 
 .step-card {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #3b0d60; /* Matches section gradient */
     padding: 15px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -36,9 +37,8 @@
 }
 
 .step-card:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    background-color: #6a0dad;
-    color: #ffffff;
+    transform: scale(1.1); /* Slight zoom */
+    background-color: #6a0dad; /* Purple highlight */
 }
 
 /* Arrow Between Steps */
@@ -52,11 +52,12 @@
 .submit-tpnd .important {
     margin-top: 30px;
     padding: 20px;
-    background-color: rgba(255, 0, 0, 0.2); /* Light red background for emphasis */
-    border-left: 5px solid #ff0000; /* Highlighted border */
+    background-color: rgba(106, 13, 173, 0.2); /* Subtle purple highlight */
+    border-left: 5px solid #6a0dad; /* Purple border */
     font-size: 1rem;
     text-align: left;
-    animation: fadeIn 1s ease; /* Fade-in effect */
+    color: #ffffff;
+    animation: fadeIn 1s ease; /* Subtle fade-in */
 }
 
 /* Fade-In Keyframes */
