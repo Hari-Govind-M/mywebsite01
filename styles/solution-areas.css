@@ -15,7 +15,7 @@
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout */
-    gap: 30px; /* Spacing between cards */
+    gap: 30px; /* Space between cards */
     justify-content: center;
     align-items: stretch;
 }
@@ -32,10 +32,10 @@
     align-items: flex-start;
     text-align: left;
 
-    /* Animation Initial State */
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    /* Initial Animation State */
+    opacity: 0; /* Hidden initially */
+    transform: translateX(0); /* Default position */
+    transition: transform 1s ease, opacity 1s ease;
 }
 
 /* Hover Effect */
@@ -45,9 +45,6 @@
     color: #ffffff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
-
-
-
 
 /* Card Title */
 .card h3 {
@@ -61,25 +58,4 @@
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
-}
-/* Initial State for Wave Animation */
-.card {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Heartbeat Animation */
-.heartbeat {
-    animation: heartbeat 5s infinite; /* Continuous pulsing effect */
-}
-
-/* Keyframes for Heartbeat Animation */
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1); /* Original size */
-    }
-    50% {
-        transform: scale(1.1); /* Slightly larger */
-    }
 }
