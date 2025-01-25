@@ -14,11 +14,12 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    min-height: 400px; /* Ensure the section is tall enough */
 }
 
-/* Left Content (Title and Subtitle) */
+/* Left Content (Diagonal Background) */
 .who-we-are .left {
-    flex: 1;
+    flex: 0 0 40%; /* Reduce width to balance the layout */
     z-index: 1;
     text-align: left;
 }
@@ -38,8 +39,10 @@
 
 /* Right Content (Text Details) */
 .who-we-are .right {
-    flex: 1.5;
+    flex: 1;
     z-index: 1;
+    padding: 20px;
+    text-align: left;
 }
 
 .who-we-are .right p {
@@ -59,7 +62,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%; /* Reduce width to balance the layout */
+    width: 35%; /* Reduce diagonal width for balance */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
