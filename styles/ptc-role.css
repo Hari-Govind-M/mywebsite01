@@ -1,7 +1,7 @@
 /* PTC Role Section */
 .ptc-role {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #6a0dad, #2f1854);
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
     text-align: center;
 }
@@ -15,7 +15,7 @@
 .scrolling-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout */
-    gap: 30px; /* Spacing between cards */
+    gap: 30px; /* Space between cards */
     justify-content: center;
     align-items: stretch;
 }
@@ -31,11 +31,9 @@
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-
-    /* Animation Initial State */
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 1; /* Ensure cards are visible */
+    transform: translateY(0); /* Ensure no transform offsets */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth hover effects */
 }
 
 /* Hover Effect */
@@ -49,7 +47,7 @@
 /* Card Title */
 .role h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Minimal space between title and content */
     color: #ffffff;
 }
 
@@ -58,27 +56,28 @@
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
+    margin: 0; /* Remove extra margins */
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .role {
-        flex: 0 0 45%; /* Two cards per row */
-        min-height: 200px; /* Adjust height */
+        flex: 0 0 45%; /* Two cards per row for medium screens */
+        min-height: 220px; /* Adjust height slightly */
     }
 
     .scrolling-container {
-        gap: 20px; /* Reduce gap for medium screens */
+        gap: 20px; /* Reduce gap for smaller screens */
     }
 }
 
 @media (max-width: 768px) {
     .role {
-        flex: 0 0 100%; /* One card per row */
-        min-height: 180px;
+        flex: 0 0 100%; /* One card per row for smaller screens */
+        min-height: 200px; /* Further adjustment */
     }
 
     .scrolling-container {
-        gap: 15px; /* Further reduce gap */
+        gap: 15px; /* Reduce gap further */
     }
 }
