@@ -1,0 +1,14 @@
+/* Submit TPnD Request Section */
+.submit-tpnd {
+    background-color: #330052;
+    padding: 40px 20px;
+    color: #ffffff;
+}
+
+.submit-tpnd ol {
+    margin: 20px 0;
+}
+
+.submit-tpnd ol li {
+    margin-bottom: 10px;
+}
