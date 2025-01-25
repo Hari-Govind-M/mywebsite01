@@ -1,0 +1,27 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(180deg, #1a0033, #3b0d60);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+p {
+    color: #ddd;
+    line-height: 1.6;
+    font-size: 1rem;
+}
