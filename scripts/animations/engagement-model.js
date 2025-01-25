@@ -1,29 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const phases = document.querySelectorAll('.phase');
+    const cards = document.querySelectorAll('.card');
+    const engagementModelSection = document.querySelector('.engagement-model');
 
     // Function to check if element is in viewport
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
-        return rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+        return rect.top < window.innerHeight && rect.bottom > 0;
     }
 
-    // Animate phases when they enter the viewport
-    function animatePhases() {
-        phases.forEach(phase => {
-            if (isInViewport(phase)) {
-                phase.style.opacity = '1';
-                phase.style.transform = 'translateY(0)';
-            }
-        });
-    }
+    // Function to animate cards
+    function animateCards() {
+        if (isInViewport(engagementModelSection)) {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible'); // Add animation class
+                }, index * 200); // Delay each card by 200ms
+            });
 
-    // Initial state
-    phases.forEach(phase => {
-        phase.style.opacity = '0';
-        phase.style.transform = 'translateY(20px)';
-        phase.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
+            // Remove scroll listener after animation is triggered
+            window.removeEventListener('scroll', animateCards);
+        }
+    }
 
     // Trigger animation on scroll
-    window.addEventListener('scroll', animatePhases);
+    window.addEventListener('scroll', animateCards);
 });
