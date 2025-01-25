@@ -14,14 +14,15 @@
 /* Card Container */
 .scrolling-container {
     display: flex;
-    justify-content: space-between; /* Space out cards */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    gap: 40px; /* Increased spacing between cards */
+    justify-content: space-around; /* Even spacing across the row */
+    gap: 20px; /* Space between cards */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
 }
 
 /* Individual Cards */
 .role {
-    flex: 0 1 calc(25% - 40px); /* Adjust size dynamically to fill available space */
+    flex: 0 0 22%; /* Ensure all cards fit in one row */
     background-color: #240046;
     padding: 20px;
     border-radius: 10px;
@@ -54,14 +55,24 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .role {
+        flex: 0 0 25%; /* Adjust for medium screens */
+    }
+}
+
 @media (max-width: 768px) {
     .role {
-        flex: 0 1 calc(50% - 40px); /* Two cards per row for smaller screens */
+        flex: 0 0 45%; /* Two cards per row for smaller screens */
+    }
+
+    .scrolling-container {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .role {
-        flex: 0 1 100%; /* One card per row for very small screens */
+        flex: 0 0 100%; /* One card per row for very small screens */
     }
 }
