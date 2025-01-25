@@ -14,8 +14,8 @@
 /* Card Grid Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 3x2 layout */
-    gap: 20px; /* Spacing between cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout */
+    gap: 30px; /* Increase spacing between cards */
     justify-content: center;
     align-items: stretch;
 }
@@ -23,23 +23,24 @@
 /* Individual Cards */
 .card {
     background-color: #240046;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 25px; /* Add more padding inside the cards */
+    border-radius: 12px; /* Slightly rounder corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More prominent shadow */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: translateY(-10px); /* Card lifts up on hover */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     background-color: #6a0dad;
     color: #ffffff;
 }
+
 
 /* Card Title */
 .card h3 {
