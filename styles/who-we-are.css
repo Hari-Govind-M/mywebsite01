@@ -59,9 +59,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 55%;
+    width: 40%; /* Reduce width to balance the layout */
     height: 100%;
-    background: linear-gradient(135deg, #6a0dad, #8a2be2);
+    background: #6a0dad;
     transform: skewX(-10deg);
     transform-origin: top left;
     z-index: 0;
@@ -81,7 +81,7 @@
     }
 
     .who-we-are::before {
-        width: 100%;
+        width: 100%; /* Adjust diagonal for smaller screens */
         transform: skewX(0deg); /* Remove skew for small screens */
     }
 }
