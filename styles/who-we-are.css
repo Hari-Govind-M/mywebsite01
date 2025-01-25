@@ -11,7 +11,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    align-items: stretch; /* Align left and right content properly */
+    align-items: stretch;
     justify-content: space-between;
     gap: 20px;
     min-height: 450px; /* Ensure section height */
@@ -19,31 +19,33 @@
 
 /* Left Content */
 .who-we-are .left {
-    flex: 0 0 40%; /* Occupies 40% of space */
+    flex: 0 0 40%; /* Left content width */
     z-index: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center-align content */
-    padding-left: 40px; /* Add padding for proper alignment */
+    justify-content: center; /* Center vertically */
+    padding-left: 20px; /* Bring content closer to the left */
 }
 
 .who-we-are .left h1 {
-    font-size: 2.8rem; /* Adjust title size */
-    margin-bottom: 20px; /* Increase gap between title and subtitle */
+    font-size: 2.5rem; /* Adjust title size */
+    margin-bottom: 10px; /* Reduce gap between title and subtitle */
     font-weight: bold;
     color: #ffffff;
+    text-align: left;
 }
 
 .who-we-are .left h2 {
-    font-size: 1.5rem; /* Subtitle size */
+    font-size: 1.2rem; /* Adjust subtitle size */
     margin-bottom: 0;
     color: #ffffff;
+    text-align: left;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 55%; /* Right side occupies 55% */
+    flex: 0 0 55%; /* Right content width */
     z-index: 1;
     padding: 20px;
     text-align: left;
@@ -69,7 +71,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 45%; /* Adjust diagonal to align left content properly */
+    width: 40%; /* Adjust width to ensure diagonal covers the left side */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
