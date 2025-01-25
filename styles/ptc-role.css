@@ -1,7 +1,7 @@
 /* PTC Role Section */
 .ptc-role {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #240046, #8a2be2);
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #6a0dad, #2f1854);
     color: #ffffff;
     text-align: center;
 }
@@ -13,73 +13,72 @@
 
 /* Card Container */
 .scrolling-container {
-    display: flex;
-    justify-content: space-around; /* Evenly space cards */
-    gap: 20px; /* Space between cards */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    align-items: stretch; /* Ensure cards stretch to equal height */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive layout */
+    gap: 30px; /* Spacing between cards */
+    justify-content: center;
+    align-items: stretch;
 }
 
 /* Individual Cards */
 .role {
-    flex: 0 0 22%; /* Ensure all cards fit in one row */
     background-color: #240046;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space out content inside the card */
-    align-items: center;
-    min-height: 250px;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+
+    /* Animation Initial State */
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* Hover Effect */
 .role:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
     background-color: #6a0dad;
+    color: #ffffff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Card Content */
+/* Card Title */
 .role h3 {
-    font-size: 1.2rem;
-    margin: 0; /* Remove any additional spacing above or below */
-    padding: 0; /* Ensure no padding */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
 }
 
+/* Card Content */
 .role p {
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
-    margin: 5px 0 0; /* Minimal spacing between heading and paragraph */
-    padding: 0; /* Ensure no padding */
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .role {
-        flex: 0 0 25%; /* Adjust for medium screens */
-        min-height: 220px; /* Adjust height slightly */
+        flex: 0 0 45%; /* Two cards per row */
+        min-height: 200px; /* Adjust height */
+    }
+
+    .scrolling-container {
+        gap: 20px; /* Reduce gap for medium screens */
     }
 }
 
 @media (max-width: 768px) {
     .role {
-        flex: 0 0 45%; /* Two cards per row for smaller screens */
-        min-height: 200px; /* Further adjustment */
+        flex: 0 0 100%; /* One card per row */
+        min-height: 180px;
     }
 
     .scrolling-container {
-        flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .role {
-        flex: 0 0 100%; /* One card per row for very small screens */
-        min-height: 180px; /* Ensure good height on small screens */
+        gap: 15px; /* Further reduce gap */
     }
 }
