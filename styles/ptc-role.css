@@ -1,0 +1,28 @@
+/* PTC Role Section */
+.ptc-role {
+    background-color: #240046;
+    padding: 40px 20px;
+    color: #ffffff;
+}
+
+.roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.role {
+    background-color: #330052;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.role h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.role p {
+    color: #ddd;
+}
