@@ -4,6 +4,7 @@ body {
     font-family: 'Inter', sans-serif;
     color: #ffffff;
     background: linear-gradient(180deg, #1a0033, #3b0d60);
+    line-height: 1.6;
 }
 
 h1, h2, h3 {
@@ -33,6 +34,7 @@ h1, h2, h3 {
 .hero-section p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    color: #ddd;
 }
 
 /* Mission Section */
@@ -56,6 +58,17 @@ h1, h2, h3 {
 .mission ul li {
     margin-bottom: 15px;
     font-size: 1.2rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.mission ul li::before {
+    content: "\2022";
+    color: #6a0dad;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 /* PTC Role Section */
@@ -94,10 +107,106 @@ h1, h2, h3 {
     color: #ddd;
 }
 
+/* Core Solution Areas */
+.core-solution-areas {
+    background-color: #330052;
+    padding: 40px 20px;
+    color: #ffffff;
+}
+
+.core-solution-areas h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.core-solution-areas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.core-solution-areas ul li {
+    margin-bottom: 15px;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.core-solution-areas ul li::before {
+    content: "\2022";
+    color: #6a0dad;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Eligibility & Benefits */
+.eligibility-benefits {
+    background-color: #240046;
+    padding: 40px 20px;
+}
+
+.eligibility-benefits h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.eligibility-benefits table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.eligibility-benefits table th,
+.eligibility-benefits table td {
+    border: 1px solid #6a0dad;
+    padding: 10px;
+    text-align: left;
+    color: #ddd;
+}
+
+.eligibility-benefits table th {
+    background-color: #330052;
+    font-weight: 600;
+}
+
+.eligibility-benefits table tbody tr:nth-child(even) {
+    background-color: #330052;
+}
+
+/* FAQ & Conclusion */
+.faq-conclusion {
+    background-color: #330052;
+    padding: 40px 20px;
+    color: #ffffff;
+}
+
+.faq-conclusion h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.faq-conclusion ul {
+    list-style: none;
+    padding: 0;
+}
+
+.faq-conclusion ul li {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
 /* Footer */
 footer {
     background-color: #240046;
     text-align: center;
     padding: 20px 0;
     color: #ccc;
+}
+
+.footer-container {
+    color: #ddd;
 }
