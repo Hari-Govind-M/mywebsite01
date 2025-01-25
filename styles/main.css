@@ -6,7 +6,7 @@ body {
     background: linear-gradient(180deg, #1a0033, #3b0d60);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
     margin: 0;
 }
 
@@ -21,7 +21,7 @@ h1, h2, h3, h4 {
     text-align: center;
     padding: 60px 20px;
     background-color: #240046;
-    position: relative;
+    color: #ffffff;
 }
 
 .hero-section h1 {
@@ -32,147 +32,72 @@ h1, h2, h3, h4 {
 
 .hero-section p {
     font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #ccc;
-}
-
-.hero-section .email-capture {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.hero-section input[type="email"] {
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    width: 250px;
-}
-
-.hero-section button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #6a0dad;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.hero-section .hero-image img {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 40px;
-}
-
-/* Trusted By Section */
-.trusted-by {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.trusted-by h2 {
-    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.trusted-by .logos img {
-    max-width: 120px;
-    margin: 10px;
-    filter: grayscale(100%);
-    transition: filter 0.3s;
-}
-
-.trusted-by .logos img:hover {
-    filter: grayscale(0);
-}
-
-/* Features Section */
-.features {
+/* Mission Section */
+.mission {
+    background-color: #330052;
     padding: 40px 20px;
+    color: #ffffff;
+}
+
+.mission h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mission ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mission ul li {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* PTC Role Section */
+.ptc-role {
+    padding: 40px 20px;
+    background-color: #240046;
+    color: #ffffff;
+}
+
+.ptc-role h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.roles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+}
+
+.role {
     background-color: #330052;
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.features .feature {
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-}
-
-.features img {
-    max-width: 100px;
-    margin-bottom: 20px;
-}
-
-.features h3 {
+.role h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
-.features p {
-    color: #ddd;
-    margin-bottom: 20px;
-}
-
-.features .learn-more {
-    text-decoration: none;
-    color: #6a0dad;
-    font-weight: 600;
-}
-
-/* Testimonials Section */
-.testimonials {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #3b0d60;
-}
-
-.testimonials h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.testimonials .testimonial {
-    max-width: 500px;
-    margin: 0 auto 20px;
-    padding: 20px;
-    background-color: #240046;
-    border-radius: 10px;
-    color: #fff;
-}
-
-.testimonials .testimonial h4 {
-    margin-top: 15px;
+.role p {
     font-size: 1rem;
-    color: #ccc;
+    color: #ddd;
 }
 
 /* Footer */
 footer {
     background-color: #240046;
-    padding: 20px 0;
-}
-
-.footer-container {
     text-align: center;
+    padding: 20px 0;
     color: #ccc;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-weight: 600;
 }
