@@ -4,7 +4,6 @@
     background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
     text-align: center;
-    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .ptc-role h2 {
@@ -17,7 +16,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two cards per row */
     gap: 30px; /* Space between cards */
-    justify-content: center; /* Center content within the container */
+    justify-content: center; /* Center content */
     align-items: stretch;
     max-width: 1200px; /* Constrain container width */
     margin: 0 auto; /* Center container horizontally */
@@ -34,9 +33,14 @@
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Initial Animation State */
+    opacity: 0; /* Hidden initially */
+    transform: translateX(0); /* Default position */
+    transition: transform 1s ease, opacity 1s ease; /* Smooth animation */
 }
 
+/* Hover Effect */
 .role:hover {
     transform: scale(1.05); /* Slight zoom on hover */
     background-color: #6a0dad;
@@ -47,7 +51,7 @@
 /* Card Title */
 .role h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Minimal space between title and content */
     color: #ffffff;
 }
 
@@ -56,7 +60,7 @@
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
-    margin: 0;
+    margin: 0; /* Remove extra margins */
 }
 
 /* Responsive Design */
