@@ -1,0 +1,94 @@
+/* Technical Presales and Deployment Section */
+.tpnd-intro {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1a0033, #3b0d60); /* Matching gradient */
+    color: #ffffff;
+    text-align: center;
+}
+
+.tpnd-intro .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Intro Content Styles */
+.intro-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.intro-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.learn-more-btn {
+    background-color: #6a0dad;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #8a2be2;
+}
+
+/* Slider Styles */
+.slider-container {
+    margin-top: 40px;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.slide {
+    flex: 0 0 100%;
+    font-size: 1.5rem;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slider-navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.slider-navigation .prev-btn,
+.slider-navigation .next-btn {
+    background-color: #6a0dad;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-navigation .prev-btn:hover,
+.slider-navigation .next-btn:hover {
+    background-color: #8a2be2;
+}
