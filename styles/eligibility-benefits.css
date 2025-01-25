@@ -1,7 +1,8 @@
 /* Eligibility & Benefits Section */
 .eligibility-benefits {
-    background-color: #240046;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #240046, #3b0d60);
+    color: #ffffff;
 }
 
 .eligibility-benefits table {
@@ -10,7 +11,7 @@
     margin-top: 20px;
 }
 
-.eligibility-benefits table th, 
+.eligibility-benefits table th,
 .eligibility-benefits table td {
     border: 1px solid #6a0dad;
     padding: 10px;
