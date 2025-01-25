@@ -1,0 +1,23 @@
+/* Who We Are and What We Do Section */
+.mission {
+    background-color: #330052;
+    padding: 40px 20px;
+}
+
+.mission ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mission ul li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.mission ul li::before {
+    content: '\\2022';
+    color: #6a0dad;
+    position: absolute;
+    left: 0;
+}
