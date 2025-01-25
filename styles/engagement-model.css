@@ -25,8 +25,8 @@
 /* Card Grid Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 2x2 grid */
-    gap: 40px; /* Space between cards */
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    gap: 30px; /* Space between cards */
     justify-content: center;
     align-items: stretch;
 }
@@ -42,7 +42,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    min-height: 300px; /* Consistent card height */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
