@@ -1,60 +1,73 @@
 /* PTC Role Section */
 .ptc-role {
-    padding: 40px 20px;
+    padding: 60px 20px;
     background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
+    text-align: center;
 }
 
-/* Existing Card Grid (Optional if not needed for rotation) */
-.roles {
-    display: none; /* Disable this since we're applying a circular layout */
+.ptc-role h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
 }
 
 /* Circular Rotating Container */
 .rotating-container {
     position: relative;
-    width: 400px; /* Size of the circle */
+    width: 400px; /* Adjust the size of the circle */
     height: 400px;
     margin: 0 auto; /* Center the container */
-    border-radius: 50%; /* Circular shape */
-    animation: rotateClockwise 20s linear infinite; /* Continuous clockwise rotation */
+    border-radius: 50%; /* Make it circular */
+    animation: rotateClockwise 20s linear infinite; /* Smooth rotation animation */
 }
 
 /* Cards Positioned in a Circle */
 .role {
     position: absolute;
-    width: 150px; /* Card width */
-    height: 150px;
+    width: 120px; /* Adjust card size */
+    height: 120px;
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
     color: #ffffff;
     transform: translate(-50%, -50%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-/* Individual Card Positions */
+/* Positions for Each Card */
 .role:nth-child(1) {
     top: 0%;
     left: 50%;
 }
 
 .role:nth-child(2) {
-    top: 50%;
-    left: 100%;
+    top: 25%;
+    left: 85%;
 }
 
 .role:nth-child(3) {
+    top: 75%;
+    left: 85%;
+}
+
+.role:nth-child(4) {
     top: 100%;
     left: 50%;
 }
 
-.role:nth-child(4) {
-    top: 50%;
-    left: 0%;
+.role:nth-child(5) {
+    top: 75%;
+    left: 15%;
 }
 
-/* Rotation Keyframes */
+.role:nth-child(6) {
+    top: 25%;
+    left: 15%;
+}
+
+/* Animation for Rotation */
 @keyframes rotateClockwise {
     from {
         transform: rotate(0deg);
@@ -62,14 +75,4 @@
     to {
         transform: rotate(360deg);
     }
-}
-
-/* Styling for Card Titles */
-.role h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.role p {
-    color: #ddd;
 }
