@@ -8,23 +8,30 @@
 
 .eligibility-benefits h2 {
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.eligibility-benefits h3 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.eligibility-benefits p {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 /* Table Styling */
 .eligibility-benefits table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 auto;
+    margin: 20px auto;
     color: #ddd;
-    opacity: 0; /* Start hidden for animation */
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth fade-in */
-}
-
-.eligibility-benefits table.visible {
-    opacity: 1;
-    transform: translateY(0); /* Settle into place */
 }
 
 .eligibility-benefits th,
@@ -36,15 +43,15 @@
 
 .eligibility-benefits th {
     background-color: #330052;
-    color: #ffffff;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .eligibility-benefits tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle alternating color */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .eligibility-benefits tbody tr:hover {
-    background-color: rgba(106, 13, 173, 0.3); /* Highlight row on hover */
+    background-color: rgba(106, 13, 173, 0.3);
     transition: background-color 0.3s ease;
 }
