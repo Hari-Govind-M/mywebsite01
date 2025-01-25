@@ -1,7 +1,7 @@
 /* Submit TPnD Request Section */
 .submit-tpnd {
-    background-color: #330052;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #330052, #540080);
     color: #ffffff;
 }
 
