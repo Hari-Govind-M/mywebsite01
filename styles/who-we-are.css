@@ -14,41 +14,47 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    min-height: 400px; /* Ensure the section is tall enough */
+    min-height: 450px; /* Ensure section height */
 }
 
 /* Left Content */
 .who-we-are .left {
-    flex: 0 0 40%; /* Left side takes 40% of the space */
+    flex: 0 0 40%;
     z-index: 1;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
 }
 
 .who-we-are .left h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.8rem; /* Adjust title size */
+    margin-bottom: 20px; /* Increase gap */
     font-weight: bold;
     color: #ffffff;
 }
 
 .who-we-are .left h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 1.5rem; /* Subtitle size */
+    margin-bottom: 0; /* Remove excess gap */
     color: #ffffff;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 55%; /* Right side takes 55% of the space */
+    flex: 0 0 55%;
     z-index: 1;
     padding: 20px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align with left */
 }
 
 .who-we-are .right p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 1rem; /* Right-side text size */
+    line-height: 1.8;
+    margin-bottom: 15px;
     color: #dddddd;
 }
 
@@ -62,7 +68,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 35%; /* Diagonal for the left side */
+    width: 35%; /* Ensure background covers enough space */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
@@ -75,16 +81,18 @@
     .who-we-are .container {
         flex-direction: column;
         text-align: center;
+        min-height: 500px; /* Adjust height for small screens */
     }
 
     .who-we-are .left,
     .who-we-are .right {
         flex: 1;
         max-width: 100%;
+        padding: 20px;
     }
 
     .who-we-are::before {
-        width: 100%; /* Adjust diagonal for smaller screens */
-        transform: skewX(0deg); /* Remove skew for small screens */
+        width: 100%; /* Adjust background for small screens */
+        transform: skewX(0deg); /* Remove skew */
     }
 }
