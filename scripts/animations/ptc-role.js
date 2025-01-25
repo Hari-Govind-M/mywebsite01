@@ -9,19 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     scrollingContainer.style.width = `${totalWidth}px`;
 
-    // Start the scrolling animation
-    let currentPosition = -totalWidth; // Start fully off-screen to the left
-    function scrollCards() {
-        currentPosition += 1; // Move right
-        scrollingContainer.style.transform = `translateX(${currentPosition}px)`;
-
-        // Reset when fully off-screen to the right
-        if (currentPosition > window.innerWidth) {
-            currentPosition = -totalWidth;
-        }
-
-        requestAnimationFrame(scrollCards); // Animate continuously
-    }
-
-    scrollCards(); // Start animation
+    // Keep the cards static
+    scrollingContainer.style.transform = 'translateX(0)';
 });
