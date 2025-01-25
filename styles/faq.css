@@ -1,0 +1,9 @@
+/* FAQ Section */
+.faq {
+    background-color: #240046;
+    padding: 40px 20px;
+}
+
+.faq p {
+    color: #ddd;
+}
