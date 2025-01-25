@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: space-between; /* Space out content inside the card */
     align-items: center;
-    min-height: 250px; /* Elongate the card */
+    min-height: 250px;
 }
 
 .role:hover {
@@ -46,14 +46,16 @@
 /* Card Content */
 .role h3 {
     font-size: 1.2rem;
-    margin-bottom: 2px; /* Minimal spacing between heading and paragraph */
+    margin: 0; /* Remove any additional spacing above or below */
+    padding: 0; /* Ensure no padding */
 }
 
 .role p {
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
-    margin: 0; /* Remove any additional margin */
+    margin: 5px 0 0; /* Minimal spacing between heading and paragraph */
+    padding: 0; /* Ensure no padding */
 }
 
 /* Responsive Design */
