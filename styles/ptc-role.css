@@ -46,13 +46,14 @@
 /* Card Content */
 .role h3 {
     font-size: 1.2rem;
-    margin-bottom: 5px; /* Reduced spacing between heading and paragraph */
+    margin-bottom: 5px; /* Ensure only 1 line of space */
 }
 
 .role p {
     font-size: 1rem;
     color: #ddd;
     line-height: 1.6;
+    margin: 0; /* Remove any additional margin */
 }
 
 /* Responsive Design */
