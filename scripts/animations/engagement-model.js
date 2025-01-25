@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Trigger animation on scroll
-    window.addEventListener('scroll', animateCards);
+    // Debounced scroll listener
+    let debounceTimer;
+    window.addEventListener('scroll', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(animateCards, 100);
+    });
 });
