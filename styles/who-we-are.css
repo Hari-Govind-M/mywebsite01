@@ -1,7 +1,7 @@
 /* Who We Are Section */
 .who-we-are {
     position: relative;
-    padding: 60px 0; /* Remove padding on the sides */
+    padding: 60px 0;
     background: linear-gradient(135deg, #330052, #a01acb);
     color: #ffffff;
     overflow: hidden;
@@ -13,45 +13,46 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: 20px;
-    min-height: 450px; /* Ensure section height */
+    gap: 40px;
+    min-height: 450px;
 }
 
 /* Left Content */
 .who-we-are .left {
-    flex: 0 0 40%; /* Left content width */
+    flex: 0 0 38%; /* Slightly reduced width to balance the layout */
     z-index: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    padding-left: 0; /* Remove padding for left alignment */
+    justify-content: center; /* Vertically align */
+    padding-left: 20px; /* Align closer to the diagonal */
 }
 
 .who-we-are .left h1 {
-    font-size: 2.5rem; /* Adjust title size */
+    font-size: 2.8rem; /* Adjust title size */
     margin-bottom: 10px; /* Reduce gap between title and subtitle */
     font-weight: bold;
     color: #ffffff;
-    text-align: left;
+    white-space: nowrap; /* Ensure it stays on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .who-we-are .left h2 {
     font-size: 1.5rem;
     margin-top: 10px;
     color: #ffffff;
-    text-align: left;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 55%; /* Right content width */
+    flex: 0 0 55%; /* Adjusted width for better spacing */
     z-index: 1;
-    padding: 20px;
+    padding: 20px 40px; /* Shift right content further to the right */
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Align content vertically */
+    justify-content: center;
 }
 
 .who-we-are .right p {
@@ -71,7 +72,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%; /* Adjust diagonal width */
+    width: 42%; /* Adjust diagonal width to prevent crossing */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
@@ -95,6 +96,7 @@
 
     .who-we-are .left h1 {
         font-size: 2rem;
+        white-space: normal; /* Allow breaking for small screens */
     }
 
     .who-we-are::before {
