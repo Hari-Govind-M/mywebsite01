@@ -35,7 +35,7 @@
     /* Initial Animation State */
     opacity: 0; /* Hidden initially */
     transform: translateX(0); /* Default position */
-    transition: transform 1s ease, opacity 1s ease;
+    transition: transform 1s ease, opacity 1s ease; /* Smooth animation */
 }
 
 /* Hover Effect */
