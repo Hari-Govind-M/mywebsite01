@@ -14,10 +14,10 @@
 /* Card Container */
 .scrolling-container {
     display: flex;
-    justify-content: space-around; /* Even spacing across the row */
+    justify-content: space-around; /* Evenly space cards */
     gap: 20px; /* Space between cards */
+    overflow: hidden; /* Remove scrollbar */
     flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
 }
 
 /* Individual Cards */
