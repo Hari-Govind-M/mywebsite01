@@ -4,7 +4,6 @@
     background: linear-gradient(135deg, #240046, #8a2be2);
     color: #ffffff;
     text-align: center;
-    overflow: hidden; /* Prevent cards from overflowing */
 }
 
 .ptc-role h2 {
@@ -12,55 +11,57 @@
     margin-bottom: 30px;
 }
 
-/* Scrolling Cards Container */
+/* Card Container */
 .scrolling-container {
     display: flex;
-    align-items: center;
-    gap: 50px; /* Increase spacing between cards */
-    animation: scrollCards 20s linear infinite; /* Continuous scrolling animation */
+    justify-content: space-between; /* Space out cards */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 40px; /* Increased spacing between cards */
 }
 
-/* Cards */
+/* Individual Cards */
 .role {
-    flex: 0 0 250px; /* Adjust card width */
-    height: 200px; /* Adjust card height */
-    background-color: rgba(0, 0, 0, 0.3);
+    flex: 0 1 calc(25% - 40px); /* Adjust size dynamically to fill available space */
+    background-color: #240046;
+    padding: 20px;
     border-radius: 10px;
     text-align: center;
-    padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
-    transition: transform 0.3s ease;
 }
 
 .role:hover {
     transform: scale(1.1); /* Slight zoom effect on hover */
     background-color: #6a0dad;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Individual Card Content */
+/* Card Content */
 .role h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .role p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #ddd;
-    text-align: center;
-    padding: 0 10px;
+    line-height: 1.6;
 }
 
-/* Animation for Scrolling */
-@keyframes scrollCards {
-    from {
-        transform: translateX(-100%); /* Start off-screen to the left */
+/* Responsive Design */
+@media (max-width: 768px) {
+    .role {
+        flex: 0 1 calc(50% - 40px); /* Two cards per row for smaller screens */
     }
-    to {
-        transform: translateX(100%); /* End off-screen to the right */
+}
+
+@media (max-width: 480px) {
+    .role {
+        flex: 0 1 100%; /* One card per row for very small screens */
     }
 }
