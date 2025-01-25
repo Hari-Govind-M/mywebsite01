@@ -1,7 +1,7 @@
 /* Who We Are Section */
 .who-we-are {
     position: relative;
-    padding: 60px 0;
+    padding: 60px 0; /* Remove padding on sides */
     background: linear-gradient(135deg, #330052, #a01acb);
     color: #ffffff;
     overflow: hidden;
@@ -19,43 +19,43 @@
 
 /* Left Content */
 .who-we-are .left {
-    flex: 0 0 35%; /* Adjust width for balance */
+    flex: 0 0 38%; /* Adjust width for balance */
     z-index: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align to top */
-    padding-left: 20px; /* Bring content closer to the edge */
+    justify-content: center; /* Align vertically */
+    padding-left: 10px; /* Move closer to the edge */
 }
 
 .who-we-are .left h1 {
-    font-size: 2.5rem; /* Title size */
-    margin-bottom: 20px; /* Spacing below title */
+    font-size: 2.8rem; /* Adjust title size */
+    margin-bottom: 10px; /* Reduce gap between title and subtitle */
     font-weight: bold;
     color: #ffffff;
-    text-align: left;
+    white-space: nowrap; /* Ensure title stays on one line */
 }
 
 .who-we-are .left h2 {
-    font-size: 1.5rem; /* Subtitle size */
+    font-size: 1.5rem; /* Adjust subtitle size */
     margin-top: 10px; /* Add spacing above subtitle */
     color: #ffffff;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 60%; /* Right content width */
+    flex: 0 0 58%; /* Adjust width for more space */
     z-index: 1;
-    padding: 20px 50px; /* Shift right content further for balance */
+    padding: 20px 60px; /* Push right content further to the right */
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically align content */
+    justify-content: center; /* Vertically align */
 }
 
 .who-we-are .right p {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.8;
     margin-bottom: 20px;
     color: #dddddd;
 }
@@ -69,8 +69,8 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 25%; /* Adjust diagonal to start further right */
-    width: 50%; /* Ensure diagonal doesn’t cross into the right content */
+    left: 22%; /* Shift diagonal further to the right */
+    width: 48%; /* Reduce width slightly for balance */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
@@ -83,7 +83,7 @@
     .who-we-are .container {
         flex-direction: column;
         text-align: center;
-        min-height: 500px; /* Adjust height for small screens */
+        min-height: 500px;
     }
 
     .who-we-are .left,
@@ -98,8 +98,8 @@
     }
 
     .who-we-are::before {
-        left: 0;
-        width: 100%; /* Full diagonal for small screens */
+        left: 0; /* Reset for smaller screens */
+        width: 100%;
         transform: skewX(0deg); /* Remove skew */
     }
 }
