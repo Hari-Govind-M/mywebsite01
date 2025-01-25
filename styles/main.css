@@ -210,3 +210,81 @@ footer {
 .footer-container {
     color: #ddd;
 }
+/* Carousel Section */
+.core-solution-carousel {
+  padding: 40px 20px;
+  background-color: #330052;
+  color: #ffffff;
+  text-align: center;
+}
+
+.core-solution-carousel h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  padding: 20px;
+  text-align: left;
+  background-color: #240046;
+  border-radius: 10px;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.slide p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(106, 13, 173, 0.8);
+}
