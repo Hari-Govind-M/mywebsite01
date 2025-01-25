@@ -46,7 +46,7 @@
 /* Card Content */
 .role h3 {
     font-size: 1.2rem;
-    margin-bottom: 5px; /* Ensure only 1 line of space */
+    margin-bottom: 2px; /* Minimal spacing between heading and paragraph */
 }
 
 .role p {
