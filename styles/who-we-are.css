@@ -1,7 +1,8 @@
 /* Who We Are and What We Do Section */
 .mission {
-    background-color: #330052;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #330052, #a01acb);
+    color: #ffffff;
 }
 
 .mission ul {
