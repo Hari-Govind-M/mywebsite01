@@ -14,19 +14,19 @@
 /* Rotating Container */
 .rotating-container {
     position: relative;
-    width: 400px; /* Circle width */
-    height: 400px; /* Circle height */
+    width: 500px; /* Size of the circle */
+    height: 500px; /* Size of the circle */
     margin: 0 auto;
     border-radius: 50%; /* Make the container circular */
+    animation: rotateClockwise 15s linear infinite; /* Smooth clockwise rotation */
 }
 
 /* Circular Cards */
 .role {
     position: absolute;
-    width: 100px; /* Circular card width */
-    height: 100px; /* Circular card height */
+    width: 120px; /* Card width */
+    height: 120px; /* Card height */
     background-color: rgba(0, 0, 0, 0.3);
-    color: #ffffff;
     border-radius: 50%; /* Make the cards circular */
     text-align: center;
     padding: 10px;
@@ -35,18 +35,51 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform-origin: 50% 200px; /* Position cards along the circle radius */
+    transform-origin: 50% 250px; /* Adjust the radius of the circle */
     transition: transform 0.3s ease;
 }
 
-/* Individual Card Content Styling */
+/* Individual Card Content */
 .role h3 {
     font-size: 0.9rem;
     margin-bottom: 5px;
+    color: #ffffff;
 }
 
 .role p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #ddd;
     text-align: center;
+    padding: 0 5px;
 }
+
+/* Circular Placement */
+.role:nth-child(1) {
+    transform: rotate(0deg);
+}
+.role:nth-child(2) {
+    transform: rotate(60deg);
+}
+.role:nth-child(3) {
+    transform: rotate(120deg);
+}
+.role:nth-child(4) {
+    transform: rotate(180deg);
+}
+.role:nth-child(5) {
+    transform: rotate(240deg);
+}
+.role:nth-child(6) {
+    transform: rotate(300deg);
+}
+
+/* Rotation Animation */
+@keyframes rotateClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
