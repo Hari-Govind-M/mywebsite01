@@ -1,7 +1,8 @@
 /* FAQ Section */
 .faq {
-    background-color: #240046;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #240046, #1e002f);
+    color: #ffffff;
 }
 
 .faq p {
