@@ -11,7 +11,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: stretch; /* Align left and right content properly */
     justify-content: space-between;
     gap: 20px;
     min-height: 450px; /* Ensure section height */
@@ -19,42 +19,43 @@
 
 /* Left Content */
 .who-we-are .left {
-    flex: 0 0 40%;
+    flex: 0 0 40%; /* Occupies 40% of space */
     z-index: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
+    justify-content: center; /* Vertically center-align content */
+    padding-left: 40px; /* Add padding for proper alignment */
 }
 
 .who-we-are .left h1 {
     font-size: 2.8rem; /* Adjust title size */
-    margin-bottom: 20px; /* Increase gap */
+    margin-bottom: 20px; /* Increase gap between title and subtitle */
     font-weight: bold;
     color: #ffffff;
 }
 
 .who-we-are .left h2 {
     font-size: 1.5rem; /* Subtitle size */
-    margin-bottom: 0; /* Remove excess gap */
+    margin-bottom: 0;
     color: #ffffff;
 }
 
 /* Right Content */
 .who-we-are .right {
-    flex: 0 0 55%;
+    flex: 0 0 55%; /* Right side occupies 55% */
     z-index: 1;
     padding: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Align with left */
+    justify-content: center; /* Align content vertically */
 }
 
 .who-we-are .right p {
-    font-size: 1rem; /* Right-side text size */
-    line-height: 1.8;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
     color: #dddddd;
 }
 
@@ -68,7 +69,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 35%; /* Ensure background covers enough space */
+    width: 45%; /* Adjust diagonal to align left content properly */
     height: 100%;
     background: #6a0dad;
     transform: skewX(-10deg);
@@ -88,11 +89,10 @@
     .who-we-are .right {
         flex: 1;
         max-width: 100%;
-        padding: 20px;
     }
 
     .who-we-are::before {
-        width: 100%; /* Adjust background for small screens */
+        width: 100%; /* Adjust diagonal for small screens */
         transform: skewX(0deg); /* Remove skew */
     }
 }
