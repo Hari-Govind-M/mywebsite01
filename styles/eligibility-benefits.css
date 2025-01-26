@@ -1,136 +1,172 @@
-/* ================================
-   Eligibility & Benefits Section
-   ================================ */
+/* 
+  ==================================================
+  Eligibility & Benefits Section
+  ==================================================
+  This entire block controls the "Eligibility & Benefits" area, 
+  including a desktop-friendly table layout and a mobile card layout.
+*/
+
+/* 
+  ============================================
+  Section Container
+  ============================================
+  - A gradient background, centered text, white headings, 
+    and standard paragraph styling.
+*/
 .eligibility-benefits {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #240046, #3b0d60);
-    color: #ffffff;
-    text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #240046, #3b0d60);
+  color: #ffffff;
+  text-align: center;
 }
 
 .eligibility-benefits h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .eligibility-benefits h3 {
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: #ffffff;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .eligibility-benefits p {
-    font-size: 1rem;
-    color: #ddd;
-    line-height: 1.6;
-    margin-bottom: 20px;
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-/* ================================
-   Desktop Table Layout
-   ================================ */
-/* Container holding the table (shown on larger screens) */
+/* 
+  ============================================
+  Desktop Table Layout
+  ============================================
+  - The standard table view for desktops/larger screens.
+  - We'll hide or switch this out on smaller screens 
+    via media queries.
+*/
+
+/* Container for the table, initially hidden (opacity:0) 
+   to allow a fade-in effect on scroll or script triggers */
 .eligibility-table {
-    width: 100%;
-    /* Start invisible for fade-in */
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    margin: 0 auto; /* Center the container */
+  width: 100%;
+  opacity: 0; /* Start invisible for fade-in */
+  transition: opacity 0.6s ease;
+  margin: 0 auto; /* Centers the table container if narrower than 100% */
 }
 
-/* Table element styling */
+/* Table styling */
 .eligibility-table table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    color: #ddd;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  color: #ddd;
 }
 
-/* Headings & cells */
+/* Table headings and cells */
 .eligibility-table th,
 .eligibility-table td {
-    border: 1px solid #6a0dad;
-    padding: 15px;
-    text-align: left;
+  border: 1px solid #6a0dad;
+  padding: 15px;
+  text-align: left;
 }
 
 .eligibility-table th {
-    background-color: #330052;
-    font-weight: bold;
-    color: #ffffff;
+  background-color: #330052;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 /* Even row striping */
 .eligibility-table tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Hover highlight */
+/* Hover highlight for rows */
 .eligibility-table tbody tr:hover {
-    background-color: rgba(106, 13, 173, 0.3);
-    transition: background-color 0.3s ease;
+  background-color: rgba(106, 13, 173, 0.3);
+  transition: background-color 0.3s ease;
 }
 
-/* ================================
-   Mobile Card Layout
-   ================================ */
-/* Container holding the cards (shown on smaller screens) */
+/* 
+  ============================================
+  Mobile Card Layout
+  ============================================
+  - A more readable approach on smaller screens, 
+    replacing the table with individual "cards."
+*/
+
+/* By default, these cards are hidden (display: none) on desktop. 
+   We'll show them under a certain breakpoint. */
 .eligibility-cards {
-    display: none; /* Hidden on desktop by default */
-    opacity: 0;    /* Start invisible for fade-in */
-    transition: opacity 0.6s ease;
-    max-width: 600px;
-    margin: 0 auto; /* Center the container */
+  display: none; /* Hidden on desktop by default */
+  opacity: 0;    /* Start invisible for fade-in (if triggered by script) */
+  transition: opacity 0.6s ease;
+  max-width: 600px;
+  margin: 0 auto; /* Center the container if narrower than full width */
 }
 
-/* Individual card styling */
+/* Each card is a small "panel" with a subtle background */
 .eligibility-card {
-    background-color: rgba(255, 255, 255, 0.07);
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.07);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Card headings & text */
 .eligibility-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .eligibility-card p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #ddd;
-    line-height: 1.6;
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
 }
 
-/* Optional highlight class for special text (e.g., "Unlimited") */
+/* 
+  Optional highlight for special text 
+  (e.g., "Unlimited" or key bullet points)
+*/
 .highlight {
-    color: lime;
-    font-weight: bold;
+  color: lime;
+  font-weight: bold;
 }
 
-/* ================================
-   Fade-In Visibility Toggle
-   ================================ */
+/* 
+  ============================================
+  Fade-In Visibility Toggle
+  ============================================
+  - We can apply a .visible class via JavaScript 
+    to fade in either the table or cards.
+*/
 .eligibility-table.visible,
 .eligibility-cards.visible {
-    opacity: 1;
+  opacity: 1;
 }
 
-/* ================================
-   Responsive Settings
-   ================================ */
+/* 
+  ============================================
+  Responsive Settings
+  ============================================
+  - At max-width: 768px, we switch to the card layout, 
+    hiding the table for better mobile usability.
+*/
 @media (max-width: 768px) {
-    /* Hide table on smaller screens, show card layout instead */
-    .eligibility-table {
-        display: none;
-    }
-    .eligibility-cards {
-        display: block;
-    }
+  /* Hide table on smaller screens, show the card layout */
+  .eligibility-table {
+    display: none; /* Table disappears below 768px */
+  }
+  .eligibility-cards {
+    display: block; /* Cards become visible below 768px */
+  }
 }
