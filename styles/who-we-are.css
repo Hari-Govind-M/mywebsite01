@@ -1,105 +1,144 @@
-/* Who We Are Section */
+/*
+  ============================================
+  Who We Are Section
+  ============================================
+  - This section describes "Who We Are and What We Do,"
+    featuring a diagonal background overlay and 
+    left/right content columns.
+*/
 .who-we-are {
-    position: relative;
-    padding: 60px 0; /* Remove padding on sides */
-    background: linear-gradient(135deg, #330052, #a01acb);
-    color: #ffffff;
-    overflow: hidden;
+  position: relative;
+  padding: 60px 0; /* Top & bottom spacing, no side padding */
+  background: linear-gradient(135deg, #330052, #a01acb);
+  color: #ffffff;
+  overflow: hidden; /* Ensures diagonal overlay doesn't exceed bounds */
 }
 
+/*
+  Container for the main content 
+  - Used to align left and right panels side by side.
+*/
 .who-we-are .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    gap: 40px;
-    min-height: 450px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 450px; /* Ensures a certain vertical height for the layout */
 }
 
-/* Left Content */
+/*
+  ============================================
+  Left Column (Title + Subtitle)
+  ============================================
+  - Usually holds major headings: "Who We Are and What We Do"
+*/
 .who-we-are .left {
-    flex: 0 0 38%; /* Adjust width for balance */
-    z-index: 1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Align vertically */
-    padding-left: 10px; /* Move closer to the edge */
+  flex: 0 0 38%;     /* Takes about 38% of the container width */
+  z-index: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  padding-left: 10px;      /* Slight offset to the left edge */
 }
 
 .who-we-are .left h1 {
-    font-size: 2.8rem; /* Adjust title size */
-    margin-bottom: 10px; /* Reduce gap between title and subtitle */
-    font-weight: bold;
-    color: #ffffff;
-    white-space: nowrap; /* Ensure title stays on one line */
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap; /* Prevents wrapping of the main title line */
 }
 
 .who-we-are .left h2 {
-    font-size: 1.5rem; /* Adjust subtitle size */
-    margin-top: 10px; /* Add spacing above subtitle */
-    color: #ffffff;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #ffffff;
 }
 
-/* Right Content */
+/*
+  ============================================
+  Right Column (Paragraphs / Details)
+  ============================================
+  - Contains the text describing mission statements or other details.
+*/
 .who-we-are .right {
-    flex: 0 0 58%; /* Adjust width for more space */
-    z-index: 1;
-    padding: 20px 60px; /* Push right content further to the right */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically align */
+  flex: 0 0 58%; /* Slightly larger space than the left column */
+  z-index: 1;
+  padding: 20px 60px; /* More padding for a push to the right */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
 }
 
 .who-we-are .right p {
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    color: #dddddd;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #dddddd;
 }
 
+/* 
+  If text needs emphasis, "strong" is white 
+  to stand out against the #ddd normal text.
+*/
 .who-we-are .right p strong {
-    color: #ffffff;
+  color: #ffffff;
 }
 
-/* Diagonal Background */
+/*
+  ============================================
+  Diagonal Background Overlay
+  ============================================
+  - A skewed rectangle that overlays part of the background 
+    for a unique diagonal effect, 
+    positioned more to the right by default.
+*/
 .who-we-are::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 22%; /* Shift diagonal further to the right */
-    width: 48%; /* Reduce width slightly for balance */
-    height: 100%;
-    background: #6a0dad;
-    transform: skewX(-10deg);
-    transform-origin: top left;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22%;   /* Shift the diagonal further right for visual balance */
+  width: 48%;  /* Occupies a bit less than half the container width */
+  height: 100%;
+  background: #6a0dad;
+  transform: skewX(-10deg);
+  transform-origin: top left;
+  z-index: 0;  /* Behind the textual content (z-index:1) */
 }
 
-/* Responsive Design */
+/*
+  ============================================
+  Responsive Design
+  ============================================
+  - On smaller screens (<768px), columns stack vertically,
+    and the diagonal overlay is removed or reset for simpler layout.
+*/
 @media (max-width: 768px) {
-    .who-we-are .container {
-        flex-direction: column;
-        text-align: center;
-        min-height: 500px;
-    }
+  .who-we-are .container {
+    flex-direction: column;
+    text-align: center;
+    min-height: 500px; /* Increase min-height to accommodate stacked layout */
+  }
 
-    .who-we-are .left,
-    .who-we-are .right {
-        flex: 1;
-        max-width: 100%;
-        padding: 20px;
-    }
+  .who-we-are .left,
+  .who-we-are .right {
+    flex: 1;
+    max-width: 100%;
+    padding: 20px;
+  }
 
-    .who-we-are .left h1 {
-        font-size: 2rem;
-    }
+  .who-we-are .left h1 {
+    font-size: 2rem;
+  }
 
-    .who-we-are::before {
-        left: 0; /* Reset for smaller screens */
-        width: 100%;
-        transform: skewX(0deg); /* Remove skew */
-    }
+  /* Reset diagonal overlay for mobile */
+  .who-we-are::before {
+    left: 0;
+    width: 100%;
+    transform: skewX(0deg); /* Remove the skew */
+  }
 }
