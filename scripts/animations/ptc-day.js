@@ -1,38 +1,50 @@
-
 document.addEventListener('DOMContentLoaded', () => {
+  // Select all .ptc-card elements (e.g., in my-ptc-day.html)
   const cards = document.querySelectorAll('.ptc-card');
-  const HEARTBEAT_SPEED = 0.0005; // Adjust for slower/faster pulse
-  const MAX_SCALE = 1.03;        // Upper limit of scale
-  const MIN_SCALE = 1.0;         // Lower limit of scale
 
+  // Speed at which the scale changes each frame
+  const HEARTBEAT_SPEED = 0.0005; 
+  // Upper and lower scale bounds for the pulse
+  const MAX_SCALE = 1.03; 
+  const MIN_SCALE = 1.0;
+
+  /*
+   * For each card, we run an infinite heartbeat loop
+   * using requestAnimationFrame. Each card pulses 
+   * independently, gently scaling in/out between MIN_SCALE and MAX_SCALE.
+   */
   cards.forEach(card => {
-    // Each card has its own heartbeat cycle
     let scale = 1.0;
-    let direction = 1; // 1 means scaling up, -1 means scaling down
+    let direction = 1; // 1 => scale up, -1 => scale down
 
+    /**
+     * heartbeat()
+     * Continuously animates the card's scale property,
+     * oscillating between MIN_SCALE and MAX_SCALE.
+     */
     function heartbeat() {
-      // Move scale up/down
+      // Move scale up/down by HEARTBEAT_SPEED
       scale += direction * HEARTBEAT_SPEED;
 
-      // If we exceed max, switch direction down
+      // If we exceed the max scale, reverse direction
       if (scale >= MAX_SCALE) {
         scale = MAX_SCALE;
         direction = -1;
       }
-      // If we dip below min, switch direction up
+      // If we dip below min scale, reverse direction
       if (scale <= MIN_SCALE) {
         scale = MIN_SCALE;
         direction = 1;
       }
 
-      // Apply the transform
+      // Apply the new scale transform to the card
       card.style.transform = `scale(${scale})`;
-      
-      // Next frame
+
+      // Request the next frame in the animation
       requestAnimationFrame(heartbeat);
     }
 
-    // Start the loop
+    // Begin the pulse loop
     requestAnimationFrame(heartbeat);
   });
 });
