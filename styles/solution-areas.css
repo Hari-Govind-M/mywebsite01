@@ -1,6 +1,6 @@
 /* Core Solution Areas Section */
 .core-solution-cards {
-  padding: 20px;
+  padding: 10px; /* Reduced overall section padding */
   background: linear-gradient(135deg, #6a0dad, #2f1854);
   color: #ffffff;
   text-align: center;
@@ -8,78 +8,76 @@
 }
 
 .core-solution-cards h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
 .core-solution-cards p {
-  max-width: 700px;
-  margin: 0 auto 20px auto;
-  font-size: 1.1rem;
+  max-width: 650px; /* Slightly narrower text container */
+  margin: 0 auto 15px auto;
+  font-size: 1rem;
   color: #ddd;
-  line-height: 1.5;
+  line-height: 1.4; /* Tighter line spacing */
 }
 
-/* EXACT 2-ROW, 3-COLUMN LAYOUT for 6 cards */
+/* Force 2 rows x 3 columns */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-template-rows: repeat(2, auto);   /* 2 rows */
-  gap: 20px; /* space between cards */
+  grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+  grid-template-rows: repeat(2, auto);   /* Exactly 2 rows */
+  gap: 15px; /* Reduced space between cards */
   justify-content: center;
-  align-items: start; /* or stretch, if you want equal heights */
+  align-items: start;
 }
 
 /* Individual Card */
 .card {
   background-color: #240046;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 15px;          /* Less padding inside each card */
+  border-radius: 10px;    /* Slightly smaller corners */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: left;
   color: #ddd;
 
   /* For fade/slide-in animations */
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px); /* Less initial offset for scroll reveal */
   transition:
-    opacity 0.6s ease,
-    transform 0.6s ease,
-    background 1s ease,
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    background 0.8s ease,
     box-shadow 0.3s ease;
-  position: relative; /* For any neon border or absolute children */
-  transform-style: preserve-3d; /* If you have 3D tilt on hover */
+  position: relative;
+  transform-style: preserve-3d; /* For 3D tilt on hover */
 }
 
+/* Visible state after scroll reveal */
 .card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Card Title & Content */
+/* Card Title & Text */
 .card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.2rem; /* Reduced font size */
+  margin-bottom: 8px;
   color: #ffffff;
 }
 
 .card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 10px;
+  font-size: 0.9rem;  /* Smaller text */
+  line-height: 1.4;   /* Tighter spacing */
+  margin-bottom: 6px; /* Less margin between paragraphs */
 }
 
-/* Combined Hover Effects:
-   1) Scale + 3D tilt
-   2) Neon glow
-   3) Gradient shift */
+/* Hover Effects (Neon tilt + gradient shift) */
 .card:hover {
-  transform: scale(1.03) rotateX(6deg) rotateY(-6deg);
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
+  transform: scale(1.02) rotateX(4deg) rotateY(-4deg); /* Slightly reduced tilt/scale */
+  box-shadow: 0 0 12px rgba(106, 13, 173, 0.4);
   background: linear-gradient(-45deg, #6a0dad, #ff00c1);
 }
 
-/* Optional Neon Border */
+/* Optional Neon Border on Hover */
 .card::before {
   content: "";
   position: absolute;
@@ -88,18 +86,11 @@
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   border: 2px solid transparent;
-  border-radius: 12px;
+  border-radius: 10px;
   pointer-events: none;
   transition: border-color 0.3s;
 }
+
 .card:hover::before {
   border-color: #6a0dad;
 }
-
-/* -----------
-   NOTE:
-   We have NO media queries here. 
-   This means on smaller screens, 
-   the grid remains 3 columns wide 
-   and 2 rows tall (2×3).
-   ----------- */
