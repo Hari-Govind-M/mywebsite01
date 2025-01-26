@@ -2,532 +2,385 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Azure Infrastructure – TPnD Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TPnD Services</title>
 
-  <!-- 
-    If you ever want to hide the default cursor:
-      body {
-        cursor: none; 
-      }
-    Just place that in a <style> block or 
-    in cursor-trail.css. By default, 
-    the system cursor is visible plus a spark trail.
-  -->
-
-  <!-- ================================
-       CSS Links for Each Section
-  ================================ -->
-  <!-- This file handles general body styles, container, text, etc. -->
+  <!-- Link your main site CSS if needed (e.g., index.css) -->
   <link rel="stylesheet" href="styles/index.css">
-
-  <!-- "Why TPnD Matters" hero section with glitch heading and fade-in transitions -->
-  <link rel="stylesheet" href="styles/why-tpnd-matters.css">
-
-  <!-- "Who We Are" diagonal overlay, left/right columns, etc. -->
-  <link rel="stylesheet" href="styles/who-we-are.css">
-
-  <!-- "PTC Role" with scrolling container and role cards that slide in on scroll -->
-  <link rel="stylesheet" href="styles/ptc-role.css">
-
-  <!-- "Solution Areas" (2x3 or 3x2 layout with tilt/hover effects) -->
-  <link rel="stylesheet" href="styles/solution-areas.css">
-
-  <!-- "Eligibility & Benefits" table/card layout for desktop/mobile -->
-  <link rel="stylesheet" href="styles/eligibility-benefits.css">
-
-  <!-- "Submit TPnD" step-card layout, plus heartbeat & fade animations -->
-  <link rel="stylesheet" href="styles/submit-tpnd.css">
-
-  <!-- Basic FAQ styling if used in the final section or separate blocks -->
-  <link rel="stylesheet" href="styles/faq.css">
-
-  <!-- "TPnD Intro" mega hero with neon background & glitch text, top-right button, etc. -->
-  <link rel="stylesheet" href="styles/tpnd-intro.css">
-
-  <!-- "Engagement Model" (Plan-Build-Sell-Grow) with fade/slide-in card logic -->
-  <link rel="stylesheet" href="styles/engagement-model.css">
-
-  <!-- Conclusion Section (diagonal gradient, next steps list, fade/slide logic) -->
-  <link rel="stylesheet" href="styles/conclusion-section.css">
-
-  <!-- Spark cursor trail (optional, adjustable in cursor-trail.js & .css) -->
-  <link rel="stylesheet" href="styles/cursor-trail.css">
+  <!-- Page-specific styling (azure-infrastructure.css) for neon backgrounds, glitch headings, cards, etc. -->
+  <link rel="stylesheet" href="styles/azure-infrastructure.css">
 </head>
-
 <body>
+
   <!-- 
-    =======================================
-    TPnD Intro (Mega Hero) Section
-    =======================================
-    - A large hero area with neon gradient background,
-      floating particles, glitch heading, plus a CTA & top-right button.
+    ===============================================
+    HERO SECTION
+    Big glitch heading, neon gradient background,
+    "Home" button top-right.
+    ===============================================
   -->
-  <section class="tpnd-intro mega-hero">
-    <!-- Animated gradient overlay (see tpnd-intro.css) -->
-    <div class="animated-bg"></div>
+  <section class="azure-infra-hero">
+    <!-- Optional animated gradient overlay (hero-bg) -->
+    <div class="hero-bg"></div>
 
-    <!-- Particle container for floating dots (populated by JS) -->
-    <div class="particle-container"></div>
+    <!-- Home button -> leads back to index.html -->
+    <a href="index.html" class="home-btn">Home</a>
 
-    <!-- Top-right button linking to "Day in the Life of a PTC" page -->
-    <a href="my-ptc-day.html" class="ptc-day-btn">How My Day as a PTC Looks</a>
-
-    <!-- Main hero text container -->
     <div class="container hero-content">
-      <!-- Glitch heading (data-text for layering) -->
-      <h1 class="glitch" data-text="Technical Presales and Deployment">
-        Technical Presales and Deployment
+      <!-- Glitch heading for a bold, futuristic effect -->
+      <h1 class="glitch" data-text="Elevate Your Cloud Practice with Azure Infrastructure">
+        Elevate Your Cloud Practice with Azure Infrastructure
       </h1>
-      <p>Your One-Stop Partner for Success in an AI-driven, cloud-first world.</p>
-
-      <!-- "Learn More" CTA linking to Microsoft’s technical presales page -->
-      <a 
-        class="learn-more-btn mega-cta-btn" 
-        href="https://partner.microsoft.com/en-gb/training/technical-presales-deployment-services" 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        Learn More
-      </a>
+      <p class="subtitle">Your Path to Scalable, Secure, and Intelligent Solutions</p>
     </div>
   </section>
 
-
   <!-- 
-    =======================================
-    Why TPnD Matters (Hero-Style Section)
-    =======================================
-    - Another hero area or sub-hero with glitch heading 
-      and fade-in effect triggered by JS on page load.
+    ===============================================
+    INTRO & WHY FOCUS ON AZURE INFRASTRUCTURE
+    ===============================================
   -->
-  <section class="hero-section">
+  <section class="why-azure-infra">
     <div class="container">
-      <!-- Glitch heading with data-text mirror -->
-      <h1 class="glitch" data-text="Why TPnD Matters">Why TPnD Matters</h1>
+      <!-- Full text introduction (preserved verbatim) -->
       <p>
-        In today’s AI-driven, cloud-first world, simply having access to Microsoft products
-        and platforms isn’t enough to stay competitive. You need strategic guidance,
-        hands-on expertise, and a dedicated advisor to help you navigate complexities in 
-        presales, solution design, and rapid deployment. That’s where Technical Presales 
-        and Deployment (TPnD) comes in.
+        Azure Infrastructure stands at the core of digital transformation, enabling organizations to migrate existing applications, accelerate new development, and innovate with advanced technologies like AI. From compute and storage to networking and governance, Azure Infrastructure services offer the flexibility, security, and performance you need to run your workloads in the cloud or hybrid environments.
       </p>
       <p>
-        TPnD is a global Microsoft organization that empowers Microsoft Partners with the
-        resources, knowledge, and tools to plan, build, sell, and grow high-value solutions.
-        Whether you’re brand new to Azure, Microsoft 365, or Dynamics 365, or you’re looking 
-        to integrate advanced AI or IoT workloads, our Partner Technical Consultants (PTCs) 
-        are ready to support your journey from end to end.
+        When combined with the Technical Presales and Deployment (TPD) team’s guidance, you gain a strategic edge: expert insights, tailored best practices, and hands‐on support to plan, build, sell, and grow your Azure Infrastructure solutions. Whether you’re moving SAP to the cloud, setting up high‐performance computing (HPC), or simply looking to modernize your datacenter operations, TPD can help you unlock the full potential of Azure Infrastructure.
       </p>
+
+      <!-- "Why Focus on Azure Infrastructure?" heading + bullet points -->
+      <h2>Why Focus on Azure Infrastructure?</h2>
+      <ul class="styled-list">
+        <li>
+          <strong>1. End‐to‐End Cloud & Hybrid Flexibility</strong><br/>
+          Azure’s extensive suite of Infrastructure‐as‐a‐Service (IaaS), Platform‐as‐a‐Service (PaaS), 
+          and hybrid tools (like Azure Arc and Azure Stack) ensures you can run virtually any workload—on‐premises, 
+          in the cloud, or at the edge.
+        </li>
+        <li>
+          <strong>2. Unparalleled Security & Compliance</strong><br/>
+          From Network Security Groups to Azure Firewall, Azure Policy, and built‐in encryption features, 
+          Azure Infrastructure is designed with security at its core—essential for meeting regulatory requirements 
+          and safeguarding data.
+        </li>
+        <li>
+          <strong>3. Performance at Scale</strong><br/>
+          Azure’s global footprint and specialized VM families (N‐Series, H‐Series) enable 
+          high‐performance computing scenarios that were once cost‐prohibitive or too complex 
+          to manage on‐premises.
+        </li>
+        <li>
+          <strong>4. Cost Optimization & Governance</strong><br/>
+          Tools like Azure Cost Management, Azure Advisor, and Azure Resource Manager help you 
+          right‐size resources and maintain financial visibility—all crucial for a successful cloud practice.
+        </li>
+        <li>
+          <strong>5. Rapid Innovation with AI & Analytics</strong><br/>
+          By leveraging the connectivity and integrated services within Azure, you can easily attach 
+          advanced AI or data analytics solutions to your infrastructure, delivering insights and 
+          unlocking new business models.
+        </li>
+      </ul>
     </div>
   </section>
 
-
   <!-- 
-    =======================================
-    Who We Are and What We Do
-    =======================================
-    - Left column (title/subtitle), right column (paragraphs).
-    - Includes a diagonal background overlay in .who-we-are::before.
+    ===============================================
+    AZURE INFRASTRUCTURE ECOSYSTEM
+    Represent the categories (Compute, Networking, etc.) 
+    in cards or a grid layout.
+    ===============================================
   -->
-  <section class="who-we-are">
+  <section class="azure-infra-ecosystem">
     <div class="container">
-      <div class="left">
-        <h1>Who We Are and What We Do</h1>
-        <h2>Our Mission</h2>
-      </div>
-      <div class="right">
-        <p>
-          <strong>Empower Partners:</strong> Equip you with the capabilities to win deals, deliver impactful deployments,
-          and stand out in a dynamic market.
-        </p>
-        <p>
-          <strong>Accelerate Time-to-Market:</strong> Provide hands-on guidance and best practices to reduce risk, streamline 
-          complex projects, and expedite go-live milestones—especially critical for emerging AI scenarios.
-        </p>
-        <p>
-          <strong>Enable Ongoing Innovation:</strong> Emphasize knowledge transfer so you can continually innovate, 
-          modernize legacy systems, and drive productivity across cloud, hybrid, or remote environments.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 
-    =======================================
-    The Role of Partner Technical Consultants (PTCs)
-    =======================================
-    - A grid (scrolling-container) with 4 role cards that slide in from left/right on scroll.
-  -->
-  <section class="ptc-role">
-    <div class="container">
-      <h2>The Role of Partner Technical Consultants (PTCs)</h2>
-      <div class="scrolling-container">
-        <!-- Card 1 -->
-        <div class="role">
-          <h3>Technical Presales</h3>
-          <p>
-            Develop solution demos—highlighting AI, analytics, and cloud benefits—to resonate 
-            with customer needs and address common objections.
-          </p>
-        </div>
-        <!-- Card 2 -->
-        <div class="role">
-          <h3>Solution Architecture</h3>
-          <p>
-            Assess existing environments, propose target architectures, and guide you through 
-            proofs-of-concept for cloud migrations, AI enhancements, or app modernization.
-          </p>
-        </div>
-        <!-- Card 3 -->
-        <div class="role">
-          <h3>Deployment Assistance</h3>
-          <p>
-            Share best practices for initial setup, networking, security, and performance, 
-            ensuring your production rollout is stable, compliant, and scalable.
-          </p>
-        </div>
-        <!-- Card 4 -->
-        <div class="role">
-          <h3>Post-Deployment Optimization</h3>
-          <p>
-            Offer insights on performance tuning, security hardening, compliance, and 
-            next-generation innovations—such as advanced analytics, machine learning, 
-            or cognitive services.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 
-  =======================================
-  The Six Core Solution Areas
-  =======================================
-  - 2x3 grid, each card is an <a> so the entire block is clickable.
--->
-<section class="core-solution-cards">
-  <div class="container">
-    <h2>The Six Core Solution Areas</h2>
-    <p>
-      TPnD engagements span all major Microsoft solution domains, enabling you 
-      to tackle projects of any scale or scope:
-    </p>
-    <div class="card-grid">
-
-      <!-- Card 1: Azure Infrastructure -->
-      <a href="azure-infrastructure.html" class="card">
-        <h3>Azure Infrastructure</h3>
-        <p>
-          Modernize legacy servers, enable hybrid scenarios, and deploy container 
-          solutions (e.g., Azure Kubernetes Service).
-        </p>
-        <p>Implement Azure-native monitoring and governance (Azure Monitor, Azure Policy).</p>
-      </a>
-
-      <!-- Card 2: Data & AI (Azure) -->
-      <a href="data-ai.html" class="card">
-        <h3>Data & AI (Azure)</h3>
-        <p>Modernize data platforms with Azure SQL, Azure Synapse, or Data Lake.</p>
-        <p>Implement advanced analytics, machine learning, or cognitive services 
-           for intelligent applications.</p>
-      </a>
-
-      <!-- Card 3: Digital & App Innovation (Azure) -->
-      <a href="digital-app-innovation.html" class="card">
-        <h3>Digital & App Innovation (Azure)</h3>
-        <p>Develop cloud-native apps using microservices, serverless architectures, and DevOps.</p>
-        <p>Enrich solutions with AI capabilities and publish to the Microsoft commercial marketplace.</p>
-      </a>
-
-      <!-- Card 4: Security -->
-      <a href="security.html" class="card">
-        <h3>Security</h3>
-        <p>
-          Protect identities, endpoints, and data with Microsoft Entra (Azure AD), 
-          Microsoft Defender, and Zero Trust architecture.
-        </p>
-        <p>Utilize Microsoft Sentinel for AI-assisted threat detection and automated response.</p>
-      </a>
-
-      <!-- Card 5: Modern Work -->
-      <a href="modern-work.html" class="card">
-        <h3>Modern Work</h3>
-        <p>
-          Deploy Microsoft 365, Teams, SharePoint, and AI-driven tools like Microsoft 365 Copilot 
-          to enhance collaboration.
-        </p>
-        <p>Establish governance, compliance, and user adoption best practices.</p>
-      </a>
-
-      <!-- Card 6: Business Applications -->
-      <a href="business-applications.html" class="card">
-        <h3>Business Applications</h3>
-        <p>
-          Elevate customer engagement with Dynamics 365 (Sales, Customer Service, Marketing) 
-          and the Power Platform.
-        </p>
-        <p>Embed AI for predictive insights and personalized experiences 
-           (e.g., Microsoft Sales Copilot).</p>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- 
-    =======================================
-    Engagement Model: Plan – Build – Sell – Grow
-    =======================================
-    - Each phase is a card that slides/fades in on scroll with a staggered delay.
-  -->
-  <section class="engagement-model">
-    <div class="container">
-      <h2>Our Engagement Model: Plan – Build – Sell – Grow</h2>
+      <h2>The Azure Infrastructure Ecosystem: A Broad Spectrum of Possibilities</h2>
       <p>
-        We tailor each engagement according to your needs, following a four-phase approach:
+        Azure Infrastructure is immensely broad. Below is a simplified look at the key 
+        services and features under its umbrella—many of which you can tap into through 
+        your TPD engagements:
       </p>
-      <div class="card-grid">
-        <!-- Plan Card -->
-        <div class="card">
+
+      <!-- 
+        We can use a multi-row card grid to show each 
+        category as a separate card for clarity.
+      -->
+      <div class="ecosystem-card-grid">
+        
+        <!-- Card 1: Compute & Virtualization -->
+        <div class="ecosystem-card">
+          <h3>Compute & Virtualization</h3>
+          <p>
+            Azure Virtual Machine, Availability Set, N‐Series VMs, H‐Series VMs, RDS on Azure IaaS, 
+            Windows Server, Azure VMware Solution, Azure Stack Hub
+          </p>
+        </div>
+        <!-- Card 2: Networking -->
+        <div class="ecosystem-card">
+          <h3>Networking</h3>
+          <p>
+            Azure Virtual Network, Azure ExpressRoute, Azure VPN (Point to Site & Site to Site), 
+            Traffic Manager, Application Gateway & Web Application Firewall, Azure Load Balancer 
+            (Basic/Standard), Azure Front Door, Azure Firewall, Network Watcher, Azure Virtual WAN
+          </p>
+        </div>
+        <!-- Card 3: Hybrid & Edge -->
+        <div class="ecosystem-card">
+          <h3>Hybrid & Edge</h3>
+          <p>Azure Arc, Azure Stack Edge, Azure Stack HCI, Azure Stack Hub</p>
+        </div>
+        <!-- Card 4: Storage & Data Transfer -->
+        <div class="ecosystem-card">
+          <h3>Storage & Data Transfer</h3>
+          <p>
+            Azure Storage, NetApp Files, Azure NetApp Files, Azure Data Box, HPC Cache, Avere vFXT, 
+            Cray, Cray ClusterStor
+          </p>
+        </div>
+        <!-- Card 5: Migration & Modernization -->
+        <div class="ecosystem-card">
+          <h3>Migration & Modernization</h3>
+          <p>
+            Azure Migrate, Azure Site Recovery, Azure Backup, Microsoft Cloud Adoption Framework for Azure
+          </p>
+        </div>
+        <!-- Card 6: SAP on Azure -->
+        <div class="ecosystem-card">
+          <h3>SAP on Azure</h3>
+          <p>
+            Azure Center for SAP Solutions, SAP Azure Large Instances, SAP Business Suite, SAP S/4HANA, 
+            Azure VMs Certified for SAP
+          </p>
+        </div>
+        <!-- Card 7: Management & Governance -->
+        <div class="ecosystem-card">
+          <h3>Management & Governance</h3>
+          <p>
+            Azure Resource Manager, Azure Policy, RBAC, Azure Blueprint, Azure Monitor, Azure Advisor, 
+            Azure Automation, Azure Lighthouse, Azure Update Manager
+          </p>
+        </div>
+        <!-- Card 8: Specialized Services -->
+        <div class="ecosystem-card">
+          <h3>Specialized Services</h3>
+          <p>
+            Azure Batch (for large‐scale parallel jobs), Azure CycleCloud (HPC orchestration), 
+            Application Gateway WAF, Hybrid Networking, Azure Landing Zone, Copilot for Azure
+          </p>
+        </div>
+      </div>
+
+      <p class="final-note">
+        This comprehensive set of services means there’s always a solution 
+        that meets your customer’s unique needs—no matter how specialized 
+        or complex.
+      </p>
+    </div>
+  </section>
+
+  <!-- 
+    ===============================================
+    HOW TPD FITS IN: TURNING POSSIBILITIES INTO ACTION
+    "Plan, Build, Sell, Grow" textual approach
+    ===============================================
+  -->
+  <section class="how-tpd-fits">
+    <div class="container">
+      <h2>How TPD Fits In: Turning Possibilities into Action</h2>
+      <p>
+        The Technical Presales and Deployment team helps you navigate this vast Azure Infrastructure 
+        ecosystem with confidence. Here’s how:
+      </p>
+
+      <div class="tpd-steps">
+        <div class="tpd-step">
           <h3>Plan</h3>
-          <ul>
-            <li><strong>Discovery & Assessment:</strong> Evaluate your current environment—on-prem, cloud, or hybrid—to identify technical gaps and AI opportunities.</li>
-            <li><strong>High-Level Architecture:</strong> Determine the best approach (rehost, refactor, rearchitect, or greenfield) and align solution areas with your business goals.</li>
-            <li><strong>Roadmap:</strong> Create a clear project roadmap so all stakeholders understand the project scope, timeline, and desired outcomes.</li>
-          </ul>
-          <p><strong>Example:</strong> A mid-sized ISV wants to migrate a legacy .NET app to Azure while integrating AI. After assessing on-prem VMs and databases, we outline a plan to rehost certain components and refactor others for containers, detailing how Azure Cognitive Services can enhance the user experience.</p>
+          <p>
+            <strong>Technical Assessments:</strong> We’ll analyze your current architecture...
+            <br/>
+            <strong>Solution Roadmap:</strong> Align your migration or modernization...
+            <br/>
+            <strong>Licensing & Cost Guidance:</strong> We’ll walk you through cost optimization...
+          </p>
         </div>
-        <!-- Build Card -->
-        <div class="card">
+        <div class="tpd-step">
           <h3>Build</h3>
-          <ul>
-            <li><strong>Technical Architecture & Deployment:</strong> Our PTCs guide best practices around networking, security, identity, and data—ensuring a future-proof environment.</li>
-            <li><strong>Proof-of-Concept & Pilot:</strong> Validate key workloads, AI prototypes, or performance metrics in a controlled environment before scaling up.</li>
-            <li><strong>Knowledge Transfer:</strong> We coach your teams on resource management, DevOps processes, and monitoring so you’re self-sufficient after the engagement.</li>
-          </ul>
-          <p><strong>Example:</strong>You modernize a data analytics platform with Azure Synapse, Data Lake, and Power BI. A small proof-of-concept with historical sales data paves the way for full-scale AI-driven forecasting.</p>
+          <p>
+            <strong>Architecture Review & Design:</strong> Whether it’s multi‐region availability...
+            <br/>
+            <strong>Proof of Concept:</strong> Get hands‐on guidance...
+            <br/>
+            <strong>Security & Governance:</strong> We integrate security controls...
+          </p>
         </div>
-        <!-- Sell Card -->
-        <div class="card">
+        <div class="tpd-step">
           <h3>Sell</h3>
-          <ul>
-            <li><strong>Technical Presales Demos:</strong> Showcase real-world scenarios—like AI-based image recognition—that directly address your customers’ business challenges.</li>
-            <li><strong>Competitive Positioning & Objection Handling:</strong> Leverage our deep Microsoft expertise to counter concerns about solution complexity or cost.</li>
-            <li><strong>ROI/TCO Analysis:</strong> Develop robust, data-driven business cases to illustrate the benefits of cloud transformation, AI adoption, or workload consolidation.</li>
-          </ul>
-          <p><strong>Example:</strong> A partner competes to deploy Microsoft 365 for a global manufacturing client. We help create a Teams + Microsoft 365 Copilot demo that emphasizes streamlined workflow, AI-assisted productivity, and reduced IT overhead.</p>
+          <p>
+            <strong>Technical Demos & Presales:</strong> Impress customers with fully configured demos...
+            <br/>
+            <strong>Objection Handling:</strong> Address concerns around performance, cost, or complexity...
+            <br/>
+            <strong>Competitive Positioning:</strong> Demonstrate how Azure’s integrated services...
+          </p>
         </div>
-        <!-- Grow Card -->
-        <div class="card">
+        <div class="tpd-step">
           <h3>Grow</h3>
-          <ul>
-            <li><strong>Post-Deployment Optimization:</strong> Adopt continuous best practices for performance, scalability, governance, and compliance—crucial for expanding AI workloads.</li>
-            <li><strong>Advanced Feature Adoption:</strong> Explore additional services (machine learning, data analytics, IoT) to drive ongoing innovation and revenue growth.</li>
-            <li><strong>Co-Sell & Marketplace Alignment:</strong> If you’re a Microsoft partner, we can help align your solution for co-sell and commercial marketplace exposure.</li>
-          </ul>
-          <p><strong>Example:</strong> After migrating to Azure, a retailer wants to integrate IoT sensors for predictive maintenance. We help with Azure Stream Analytics and Azure Machine Learning for real-time anomaly detection, turning initial success into a broader advanced solution offering.</p>
+          <p>
+            <strong>Post‐Deployment Optimization:</strong> After workloads go live...
+            <br/>
+            <strong>Hybrid & Edge Scenarios:</strong> Extend your success to edge computing...
+            <br/>
+            <strong>Innovation Enablement:</strong> We’ll help you add new layers...
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-
   <!-- 
-    =======================================
-    Eligibility & Benefits Section
-    =======================================
-    - Displayed as a table for desktops, 
-      and a card-based layout for mobile screens.
+    ===============================================
+    SUCCESS STORIES
+    Each scenario in a card
+    ===============================================
   -->
-  <section class="eligibility-benefits">
+  <section class="success-stories">
     <div class="container">
-      <h2>Understanding Eligibility & Benefits</h2>
-      <p>
-        TPnD benefits are available to Microsoft partners in the Microsoft AI Cloud Partner Program, including Solutions Partner designation, Partner Success Core or Expanded benefits, Legacy Gold/Silver status, and Microsoft Action Pack (MAPS).
-      </p>
-      <p>
-        <strong>Note:</strong> Partners not holding one of the designations above are generally ineligible for TPnD services. In scenarios where a customer or non-eligible reseller joins the same call, the eligible partner must still be the primary beneficiary of the service.
-      </p>
-      
-      <h3>Available Advisory Hours</h3>
-      <p>
-        Depending on your membership or designation, you receive a certain number of Partner Advisory Hours—or, in some cases, have unlimited technical presales support. Check your benefits in Partner Center.
+      <h2>Success Stories</h2>
 
-      </p>
-
-      <!-- Desktop Table Layout -->
-      <div class="eligibility-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Offer Type</th>
-              <th>Advisory Hours</th>
-              <th>Technical Presales Usage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Partner Success Expanded</td>
-              <td>10</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Partner Success Core</td>
-              <td>5</td>
-              <td>Deducts from hours</td>
-            </tr>
-            <tr>
-              <td>Partner Launch</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <td>Solutions Partner designation</td>
-              <td>50</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Legacy Gold</td>
-              <td>50</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Legacy Silver</td>
-              <td>20</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Action Pack (MAPS)</td>
-              <td>5</td>
-              <td>Deducts from hours</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Mobile Card Layout -->
-      <div class="eligibility-cards">
-        <!-- Each card is an alternative to the table for smaller screens -->
-        <div class="eligibility-card">
-          <h4>Partner Success Expanded</h4>
-          <p><strong>Advisory Hours:</strong> 10</p>
-          <p><strong>Technical Presales Usage:</strong> <span class="highlight">Unlimited</span></p>
+      <div class="stories-grid">
+        <!-- 1. Migrating On‐Prem Hyper‐V Workloads -->
+        <div class="story-card">
+          <h3>1. Migrating On‐Prem Hyper‐V Workloads to Azure for a Retail Chain</h3>
+          <p><strong>Scenario:</strong> A mid‐sized retail chain wants to migrate 300 on‐prem VMs...</p>
+          <p><strong>TPD Involvement:</strong> Conducted readiness assessment with Azure Migrate...</p>
+          <p><strong>Outcome:</strong> Retail chain reduces on‐prem operational costs by 30%...</p>
         </div>
-        <div class="eligibility-card">
-          <h4>Partner Success Core</h4>
-          <p><strong>Advisory Hours:</strong> 5</p>
-          <p><strong>Technical Presales Usage:</strong> Deducts from hours</p>
+        <!-- 2. SAP on Azure for a Manufacturing Giant -->
+        <div class="story-card">
+          <h3>2. SAP on Azure for a Manufacturing Giant</h3>
+          <p><strong>Scenario:</strong> A global manufacturing company needs high availability...</p>
+          <p><strong>TPD Involvement:</strong> Detailed architecture review for Azure VMs Certified for SAP...</p>
+          <p><strong>Outcome:</strong> Downtime minimized to near zero. Faster analytics and reporting...</p>
         </div>
-        <!-- ...and so forth for each row from the table -->
+        <!-- 3. Modernizing Legacy Apps with Azure Stack Hub -->
+        <div class="story-card">
+          <h3>3. Modernizing Legacy Applications with Azure Stack Hub</h3>
+          <p><strong>Scenario:</strong> A software company wants to offer a consistent hybrid solution to customers who can’t move fully to the public cloud due to regulatory constraints.</p>
+          <p><strong>TPD Involvement:</strong> Advised on installing and configuring Azure Stack Hub for local data processing. Provided best practices around Azure Policy and RBAC to ensure compliance. Demonstrated how to utilize Azure DevOps pipelines for continuous integration across hybrid environments.</p>
+          <p><strong>Outcome:</strong> Launched a new service offering that supports on‐premises customers seamlessly, unlocking a previously inaccessible market segment.</p>
+        </div>
       </div>
     </div>
   </section>
 
-
   <!-- 
-    =======================================
-    How to Submit a TPnD Services Request
-    =======================================
-    - Step-card layout with an "important" note at the bottom.
+    ===============================================
+    PARTNERING FOR SUCCESS / AI CLOUD PARTNER PROGRAM
+    + HOW TO GET STARTED
+    ===============================================
   -->
-  <section class="submit-tpnd">
+  <section class="align-and-get-started">
     <div class="container">
-      <h2>How to Submit a TPnD Services Request</h2>
+      <h2>Partnering for Success with TPD</h2>
+      <ul class="partnering-bullets">
+        <li><strong>1. Leverage Expert Insights</strong><br/>Azure Infrastructure can be vast and complex. TPD consultants translate complexity into clarity—ensuring you implement the right services, in the right way.</li>
+        <li><strong>2. Secure More Deals</strong><br/>From generating polished presales demos to crafting proposals that highlight Azure’s unique strengths, TPD can help you shorten sales cycles and close deals effectively.</li>
+        <li><strong>3. Continuous Improvement</strong><br/>Azure is constantly evolving with new features (like Copilot for Azure) and updates in existing services (e.g., Azure Virtual Network Manager, Azure Stack enhancements). TPD keeps you ahead of the curve.</li>
+      </ul>
+
+      <h2>Aligning with the Microsoft AI Cloud Partner Program</h2>
       <p>
-        Sign in to Partner Center and ensure your organization is enrolled in the Microsoft AI Cloud Partner Program (Solutions Partner, Legacy Gold/Silver, Action Pack, etc.). Select “Benefits,” then choose Technical Presales & Deployment (TPnD). Pick your Advisory Hours benefit (if you have multiple, select the right bucket), then create a case by providing a title, description, relevant product area (Azure, Microsoft 365, Dynamics 365, etc.), and your full international dial code with preferred working hours. Once you submit, you’ll receive a confirmation page and email with your case number.
+        By being part of the Microsoft AI Cloud Partner Program, you gain access to TPD as a built‐in benefit.Depending on your partner status
+      </p>
+      <ul class="partner-status">
+        <li><strong>Solutions Partner:</strong> Typically qualifies for unlimited presales support and 50+ hours of advisory engagement.</li>
+        <li><strong>Action Pack (MAPS):</strong> Access to TPD, but these consultations may deduct from your advisory hours.</li>
+        <li><strong>Legacy Gold/Silver:</strong>Enjoy the same robust support while transitioning to the new partner designations.</li>
+      </ul>
+      <p>
+       Remember : If you’re new or unsure of your benefits, head to the Partner Center to verify your membership status and see what TPD services are available to you.
       </p>
 
+      <h2>How to Get Started</h2>
+      <p>
+        Ready to tap into TPD’s deep expertise and elevate your Azure Infrastructure solutions?
+        Here’s a simplified flow for how you can engage:
+      </p>
       <div class="steps-container">
         <div class="step-card">1. Sign in</div>
         <div class="arrow">→</div>
-        <div class="step-card">2. Benefits</div>
+        <div class="step-card">2. Submit Request</div>
         <div class="arrow">→</div>
-        <div class="step-card">3. Pick Hours</div>
+        <div class="step-card">3. Collaborate</div>
         <div class="arrow">→</div>
-        <div class="step-card">4. Create Case</div>
-        <div class="arrow">→</div>
-        <div class="step-card">5. Confirm</div>
+        <div class="step-card">4. Realize Value</div>
       </div>
-
-      <div class="important">
-        <strong>Important</strong>
-        <p>
-          If your account is only associated with a reseller/CSP program and not with the Microsoft AI Cloud Partner Program, you may see an error indicating insufficient permissions.
-If you have no active membership offers, the page will read “Looks like you don’t have any benefits yet.” Confirm you’ve signed in with the correct account.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 
-    =======================================
-    Conclusion Section
-    =======================================
-    - Summarizes the value of TPnD, includes "Next Steps" list, 
-      and a "closing" paragraph. Fades/slides in if triggered by JS.
-  -->
-  <section class="conclusion-section">
-    <div class="container">
-      <h2>Conclusion: Partner with TPnD for an AI-Enabled Future</h2>
       <p>
-        Technical Presales and Deployment (TPnD) brings together technical mastery and strategic insight...
-      </p>
-
-      <h3>Next Steps</h3>
-      <ul class="next-steps">
-        <li><strong>Check Your Partner Benefits:</strong> Sign in to Partner Center to confirm your membership and advisory hours.</li>
-        <li><strong>Submit a TPnD Services Request:</strong> Sign in to Partner Center to confirm your membership and advisory hours.</li>
-        <li><strong>Schedule a Consultation:</strong> Discuss your roadmap—cloud migrations, AI, or app modernization—with a PTC.</li>
-        <li><strong>Engage & Execute:</strong> Launch your Plan-Build-Sell-Grow journey, leveraging high-impact guidance.</li>
-        <li><strong>Grow Your Practice:</strong> Explore advanced workloads—AI, secure collaboration, IoT, or business applications—and deliver higher-value solutions to your customers.</li>
-      </ul>
-
-      <p class="closing">
-        Start your TPnD journey today and shape an AI-enabled future where you stay competitive, provide 
-        transformative customer experiences, and scale your business for success in the modern era.
+        Sign in to Partner Center using your Microsoft AI Cloud Partner Program–associated account, then navigate to Benefits → Technical presales & deployment, and open a new request (or select Partner Advisory Hours if applicable). Provide details about your infrastructure environment, target Azure services, desired outcomes, and preferred contact info. Within two business days, a TPD consultant will reach out to craft a game plan—covering architecture, security, cost optimization, and more. Finally, once you complete the TPD engagement, you’ll have a resilient, scalable Azure solution that meets your customers’ needs, with ongoing expansion and advanced scenarios just a consultation away.
+        <br/><br/>
+        <strong>We look forward to partnering with you on this exciting transformation!</strong>
       </p>
     </div>
   </section>
 
-
   <!-- 
-    =======================================
-    Frequently Asked Questions (FAQ)
-    =======================================
-    - Expand as needed with Q&A, usually in an accordion or simple layout.
+    ===============================================
+    FREQUENTLY ASKED QUESTIONS (FAQ)
+    ===============================================
   -->
-  <section class="faq">
+  <section class="azure-infra-faq">
     <div class="container">
       <h2>Frequently Asked Questions (FAQ)</h2>
-      <p><strong>Q:</strong> Am I eligible for TPnD services?</p>
-      <p><strong>A:</strong> Check your partner designation to confirm eligibility...</p>
-      <!-- Add more Q/A pairs as needed -->
+
+      <div class="faq-item">
+        <p><strong>Q1:</strong> Do TPD services cover advanced networking or specialized HPC setups?</p>
+        <p><strong>A:</strong> Absolutely. Our Azure Infrastructure scope includes advanced concepts like Azure Virtual WAN, ExpressRoute, HPC with N‐Series or H‐Series VMs, and more.</p>
+      </div>
+      <div class="faq-item">
+        <p><strong>Q2:</strong> I need 24/7 support once in production. Can TPD provide that?</p>
+        <p><strong>A:</strong> TPD focuses on technical advisory and presales, not 24/7 break‐fix. For continuous or break‐fix support, look into Premier Support or Advanced Support for Partners (ASfP).</p>
+      </div>
+      <div class="faq-item">
+        <p><strong>Q3:</strong> How do I learn more about the Cloud Adoption Framework or Well‐Architected Framework?</p>
+        <p><strong>A:</strong> TPD can guide you through these frameworks during our planning phase. You can also find official Microsoft documentation for a deeper dive.</p>
+      </div>
+      <div class="faq-item">
+        <p><strong>Q4:</strong> How long does a typical TPD engagement last?</p>
+        <p><strong>A:</strong> It varies. Some partners need a quick POC consultation, while others engage us through the entire Plan‐Build‐Sell‐Grow lifecycle. Typically, engagements last from a few hours to a few weeks depending on complexity..</p>
+      </div>
+      <div class="faq-item">
+        <p><strong>Q5:</strong> Can TPD assist with moving specialized workloads, like SAP or HPC?</p>
+        <p><strong>A:</strong> Yes. We have experts specializing in SAP on Azure, HPC scenarios, and more. We’ll map out your requirements and offer tailored guidance.</p>
+      </div>
+
+      <h3>Let’s Transform Your Azure Infrastructure Together</h3>
+      <p>
+        With Azure Infrastructure spanning compute, networking, storage, and advanced hybrid scenarios, 
+        there’s no shortage of possibilities. But navigating these options effectively—and turning them 
+        into profitable solutions—requires the right expertise.
+      </p>
+      <p>
+        That’s exactly what TPD provides:
+      </p>
+      <ul class="partnering-bullets">
+        <li>Deep Technical Knowledge of Azure best practices.</li>
+        <li>Tailored Presales & Deployment Guidance based on your partner goals.</li>
+        <li>Ongoing Optimization to keep your solutions ahead of the curve.</li>
+      </ul>
+      <p>
+        <strong>Ready to Take the Next Step?</strong><br/>
+        Schedule a TPD Consultation –  Let’s discuss your current environment and map out your ideal Azure Infrastructure path.<br/>
+        Submit a TPD Services Request – Already know what you need? Open a case to get started right away.<br/>
+        Explore Other Solution Areas – From Data & AI to Modern Work, discover how TPD can help you serve diverse customer needs.<br/><br/>
+        Accelerate your cloud journey, differentiate your solutions, and unlock new revenue streams 
+        with Azure Infrastructure—backed by the unmatched expertise of our Technical Presales and Deployment team.
+      </p>
     </div>
   </section>
 
-  <!-- 
-    =======================================
-    JavaScript for Animations & Interactivity
-    =======================================
-    - Each file handles a different section’s reveal, heartbeat, or cursor effect.
-  -->
-  <script src="scripts/animations/why-tpnd-matters.js"></script>
-  <script src="scripts/animations/who-we-are.js"></script>
-  <script src="scripts/animations/ptc-role.js"></script>
-  <script src="scripts/animations/solution-areas.js" defer></script>
-  <script src="scripts/animations/eligibility-benefits.js"></script>
-  <script src="scripts/animations/submit-tpnd.js"></script>
-  <script src="scripts/animations/faq.js"></script>
-  <script src="scripts/animations/tpnd-intro.js"></script>
-  <script src="scripts/animations/engagement-model.js" defer></script>
-  <script src="scripts/animations/conclusion-section.js"></script>
+  <!-- Optionally link a JS file for scroll-based reveals if desired -->
+  <script src="scripts/animations/azure-infrastructure.js"></script>
 
-  <!-- Cursor trail logic if you want sparkly particles behind the mouse pointer -->
-  <script src="scripts/animations/cursor-trail.js"></script>
 </body>
 </html>
