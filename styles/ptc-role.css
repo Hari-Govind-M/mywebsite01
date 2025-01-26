@@ -1,72 +1,109 @@
-/* PTC Role Section */
+/*
+  ========================================
+  PTC Role Section
+  ========================================
+  - Defines the "Partner Technical Consultant (PTC) Role" area 
+    with a gradient background, grid layout for role cards,
+    and optional hover/scroll animations.
+*/
+
+/* 
+  Section Container
+  - Sets the background gradient (purple to violet),
+    text color, and basic padding.
+*/
 .ptc-role {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #240046, #8a2be2);
-    color: #ffffff;
-    text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #240046, #8a2be2);
+  color: #ffffff;
+  text-align: center;
 }
 
 .ptc-role h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 
-/* Card Container */
+/* 
+  Card Container (scrolling-container)
+  - Uses a grid to position role cards (two per row on desktop).
+*/
 .scrolling-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
-    gap: 30px; /* Space between cards */
-    justify-content: center; /* Center content */
-    align-items: stretch;
-    max-width: 1200px; /* Constrain container width */
-    margin: 0 auto; /* Center container horizontally */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns (desktop) */
+  gap: 30px;      /* spacing between cards */
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px; /* keeps them from stretching too wide */
+  margin: 0 auto;    /* centers the container horizontally */
 }
 
-/* Individual Cards */
+/* 
+  Individual Cards (.role)
+  - Each card shows a specific PTC role (e.g., Technical Presales).
+  - Initially hidden for potential fade/slide animations.
+*/
 .role {
-    background-color: #240046;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
+  background-color: #240046;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
-    /* Initial Animation State */
-    opacity: 0; /* Hidden initially */
-    transform: translateX(0); /* Default position */
-    transition: transform 1s ease, opacity 1s ease; /* Smooth animation */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+
+  /* Animation start state: invisible, no horizontal offset */
+  opacity: 0; /* Hidden initially */
+  transform: translateX(0);
+  transition: transform 1s ease, opacity 1s ease; /* smooth reveal */
 }
 
-/* Hover Effect */
+/* 
+  Hover Effect
+  - Slight zoom, change background color, 
+    and add bigger box-shadow for emphasis.
+*/
 .role:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    background-color: #6a0dad;
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  background-color: #6a0dad; 
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Card Title */
+/*
+  Card Title (h3)
+  - Each card typically has a role name (Technical Presales, etc.).
+*/
 .role h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px; /* Minimal space between title and content */
-    color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
-/* Card Content */
+/*
+  Card Paragraph
+  - Short description of the role's responsibilities or focus.
+*/
 .role p {
-    font-size: 1rem;
-    color: #ddd;
-    line-height: 1.6;
-    margin: 0; /* Remove extra margins */
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin: 0; /* remove extra spacing for a tighter layout */
 }
 
-/* Responsive Design */
+/*
+  ========================================
+  Responsive Design
+  ========================================
+  - On screens below 768px wide, show 1 card per row, 
+    reduce gap for a more vertical layout.
+*/
 @media (max-width: 768px) {
-    .scrolling-container {
-        grid-template-columns: 1fr; /* One card per row for smaller screens */
-        gap: 20px; /* Reduce gap for smaller screens */
-    }
+  .scrolling-container {
+    grid-template-columns: 1fr; /* single column on mobile */
+    gap: 20px;                  /* narrower spacing */
+  }
 }
