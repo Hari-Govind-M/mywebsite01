@@ -4,14 +4,10 @@
   ========================================
   - Defines the "Partner Technical Consultant (PTC) Role" area 
     with a gradient background, grid layout for role cards,
-    and optional hover/scroll animations.
+    plus hover tilt and scroll-based reveal.
 */
 
-/* 
-  Section Container
-  - Sets the background gradient (purple to violet),
-    text color, and basic padding.
-*/
+/* Background gradient + basic layout for the entire section */
 .ptc-role {
   padding: 60px 20px;
   background: linear-gradient(135deg, #240046, #8a2be2);
@@ -19,6 +15,7 @@
   text-align: center;
 }
 
+/* Section Title */
 .ptc-role h2 {
   font-size: 2rem;
   margin-bottom: 30px;
@@ -26,56 +23,96 @@
 
 /* 
   Card Container (scrolling-container)
-  - Uses a grid to position role cards (two per row on desktop).
+  - Grid layout: 2 columns on desktop, 1 column on mobile.
 */
 .scrolling-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns (desktop) */
-  gap: 30px;      /* spacing between cards */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   justify-content: center;
   align-items: stretch;
-  max-width: 1200px; /* keeps them from stretching too wide */
-  margin: 0 auto;    /* centers the container horizontally */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 
-  Individual Cards (.role)
-  - Each card shows a specific PTC role (e.g., Technical Presales).
-  - Initially hidden for potential fade/slide animations.
+/*
+  Individual Card (.role)
+  - Initially hidden at opacity: 0 and translated off-screen 
+    (JS sets transform to +/- 100%).
+  - Gains .visible to animate in (opacity: 1, translateX(0)).
+  - On hover, tilt + neon-like glow, just like solution areas.
 */
 .role {
+  position: relative; /* For optional neon border on hover */
   background-color: #240046;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
+  /* Layout/Content alignment */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
 
-  /* Animation start state: invisible, no horizontal offset */
-  opacity: 0; /* Hidden initially */
+  /* Start invisible/off-screen */
+  opacity: 0;
   transform: translateX(0);
-  transition: transform 1s ease, opacity 1s ease; /* smooth reveal */
+  transform-style: preserve-3d;
+
+  /* Smooth transitions for fade-in & hover tilt */
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    background 0.8s ease,
+    box-shadow 0.3s ease;
 }
 
 /* 
-  Hover Effect
-  - Slight zoom, change background color, 
-    and add bigger box-shadow for emphasis.
+  Once .visible is added by JS, fade/slide into place.
+  (JS sets transform to 0 on visible.)
+*/
+.role.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover Tilt & Glow 
+   - Slight 3D tilt, neon glow, background gradient shift
 */
 .role:hover {
-  transform: scale(1.05);
-  background-color: #6a0dad; 
+  transform: scale(1.02) rotateX(4deg) rotateY(-4deg);
+  box-shadow: 0 0 12px rgba(106, 13, 173, 0.4);
+  background: linear-gradient(-45deg, #6a0dad, #ff00c1);
   color: #ffffff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/*
+  Optional Neon Border on Hover
+  - Transparent by default, set to #6a0dad on hover.
+*/
+.role::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  pointer-events: none;
+  transition: border-color 0.3s;
+  z-index: 1; /* Sits above background, behind text */
+}
+
+.role:hover::before {
+  border-color: #6a0dad;
 }
 
 /*
   Card Title (h3)
-  - Each card typically has a role name (Technical Presales, etc.).
+  - Typically the role name (e.g., "Technical Presales").
 */
 .role h3 {
   font-size: 1.5rem;
@@ -84,26 +121,26 @@
 }
 
 /*
-  Card Paragraph
-  - Short description of the role's responsibilities or focus.
+  Card Paragraph(s)
+  - Describes the responsibilities or focus of each role.
 */
 .role p {
   font-size: 1rem;
   color: #ddd;
   line-height: 1.6;
-  margin: 0; /* remove extra spacing for a tighter layout */
+  margin: 0;
 }
 
 /*
   ========================================
   Responsive Design
   ========================================
-  - On screens below 768px wide, show 1 card per row, 
-    reduce gap for a more vertical layout.
+  - Below 768px, a single column layout 
+    and reduced gap for vertical stacking.
 */
 @media (max-width: 768px) {
   .scrolling-container {
-    grid-template-columns: 1fr; /* single column on mobile */
-    gap: 20px;                  /* narrower spacing */
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
