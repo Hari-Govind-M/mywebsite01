@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Digital & App Innovation on Azure – TPnD Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Single-File Consolidated CSS in <style> -->
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0; 
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1a0033; /* fallback background color */
+      color: #fff;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    /* Hero Section: reduced vertical spacing & neon gradient */
+    .dai-hero {
+      position: relative;
+      min-height: 50vh; /* reduced height for less whitespace */
+      padding: 30px 0;  /* top/bottom spacing */
+      background: linear-gradient(135deg, #3b0d60, #1a0033);
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
+      background-size: 400% 400%;
+      animation: neonShift 12s ease infinite;
+      z-index: 1;
+    }
+    @keyframes neonShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .home-btn {
+      position: absolute;
+      top: 15px; 
+      right: 15px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 2;
+      font-weight: 500;
+    }
+    .home-btn:hover {
+      background-color: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2; /* above hero-bg */
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .glitch {
+      font-size: 2.5rem;
+      margin: 10px 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 8px rgba(106,13,173,0.8),
+        0 0 16px rgba(106,13,173,0.6);
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 10px;
+    }
+
+    /* Universal fade class: We'll apply .visible to show. */
+    section {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+    }
+
+    /* We'll treat certain sections as "cards" or "blocks" with subtle backgrounds. */
+
+    /* Why Embrace (includes bullet items or small cards) */
+    .why-embrace-section {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+      padding: 40px 0;
+    }
+    .why-embrace-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .why-embrace-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .why-embrace-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* Azure Services table or "cardish" approach */
+    .azure-services-section {
+      background: linear-gradient(135deg, #2f1854, #6a0dad);
+      padding: 40px 0;
+    }
+    .azure-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .service-block {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .service-block:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* Key Challenges */
+    .challenges-section {
+      background: linear-gradient(135deg, #330052, #a01acb);
+      padding: 40px 0;
+    }
+
+    /* How TPD Helps */
+    .tpd-helps-section {
+      background: linear-gradient(135deg, #240046, #3b0d60);
+      padding: 40px 0;
+    }
+    .tpd-helps-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .tpd-helps-step {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .tpd-helps-step:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    /* Success Stories */
+    .success-stories-section {
+      background: linear-gradient(135deg, #6a0dad, #ff00c1);
+      padding: 40px 0;
+    }
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .success-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .success-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* How to Engage w TPD */
+    .engage-section {
+      background: linear-gradient(135deg, #330052, #6a0dad);
+      padding: 40px 0;
+    }
+
+    /* AI Cloud Partner Program alignment */
+    .partner-program-section {
+      background: linear-gradient(135deg, #3b0d60, #1a0033);
+      padding: 40px 0;
+    }
+
+    /* FAQ */
+    .dai-faq-section {
+      background: #330052;
+      padding: 40px 0;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+    }
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      text-align: left;
+    }
+    .faq-item.expanded .faq-answer {
+      max-height: 800px;
+    }
+
+    /* Ready to Innovate section */
+    .innovate-section {
+      background: linear-gradient(135deg, #240046, #ff00c1);
+      padding: 40px 0;
+    }
+
+    /* Next Step Section */
+    .next-step-section {
+      background: linear-gradient(135deg, #6a0dad, #8a00ff);
+      padding: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="dai-hero">
+    <div class="hero-bg"></div>
+    <a href="index.html" class="home-btn">Home</a>
+    <div class="container hero-content">
+      <h1 class="glitch" data-text="Supercharge Your Digital & App Innovation with Azure">
+        Supercharge Your Digital & App Innovation with Azure
+      </h1>
+      <p class="hero-subtitle">Build, Modernize, and Publish Cloud Applications Faster with TPD</p>
+    </div>
+  </section>
+
+  <!-- WHY EMBRACE SECTION -->
+  <section class="why-embrace-section">
+    <div class="container">
+      <p>
+        In an era where innovation is the lifeblood of competitiveness, harnessing the Azure platform for 
+        application development can be a game-changer. Whether you’re building from scratch, modernizing 
+        existing apps, or integrating AI and IoT capabilities, Microsoft’s Digital & App Innovation solutions 
+        on Azure offer the tools you need to deliver secure, scalable, and high-performing applications.
+      </p>
+      <p>
+        Yet, navigating this robust ecosystem—and delivering on time and within budget—can be challenging. 
+        That’s where the Technical Presales and Deployment (TPD) team steps in, providing tailored guidance 
+        and best practices to ensure you envision, build, and publish applications that delight users and 
+        drive business results.
+      </p>
+      <h2>Why Embrace Digital & App Innovation on Azure?</h2>
+      <div class="why-embrace-cards">
+        <!-- Each bullet as a card -->
+        <div class="why-embrace-card">
+          <h3>Rapid Development & Deployment</h3>
+          <p>Tools like Azure App Services, Azure Functions, and AKS enable faster builds, CI, and streamlined deployment.</p>
+        </div>
+        <div class="why-embrace-card">
+          <h3>Enterprise-Grade Security & Identity</h3>
+          <p>Integrate with Azure AD, Azure API Management, Microsoft Graph features to secure data and control access.</p>
+        </div>
+        <div class="why-embrace-card">
+          <h3>Global Scale & Performance</h3>
+          <p>Use global data centers, Azure CDN, Azure Front Door for reliable performance and minimal latency worldwide.</p>
+        </div>
+        <div class="why-embrace-card">
+          <h3>Built-In Observability & Reliability</h3>
+          <p>Stay informed with Application Insights, Azure Monitor, logging/telemetry to optimize performance proactively.</p>
+        </div>
+        <div class="why-embrace-card">
+          <h3>Seamless AI & IoT Integration</h3>
+          <p>Infuse intelligence into apps with Azure Cognitive Services, IoT, or Bot Framework—scaling advanced scenarios easily.</p>
+        </div>
+        <div class="why-embrace-card">
+          <h3>Publish & Monetize</h3>
+          <p>Build once, then list on Microsoft’s marketplace to reach thousands of potential customers globally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AZURE SERVICES FOR DIGITAL & APP INNOVATION -->
+  <section class="azure-services-section">
+    <div class="container">
+      <h2>Azure Services for Digital & App Innovation</h2>
+      <p>
+        Azure’s Digital & App Innovation portfolio is vast. Here’s a sampling of tools and services 
+        that can support your entire application lifecycle:
+      </p>
+      <div class="azure-services-grid">
+        <div class="service-block">
+          <h3>Development & DevOps</h3>
+          <p>Azure DevOps, GitHub, Azure DevTest Labs</p>
+        </div>
+        <div class="service-block">
+          <h3>Application Hosting & Management</h3>
+          <p>Azure App Services, Azure Container Apps, Container Instances, AKS, Red Hat OpenShift</p>
+        </div>
+        <div class="service-block">
+          <h3>Integration & Messaging</h3>
+          <p>Azure API Management, Azure Service Bus, Event Grid, Event Hubs, Logic Apps</p>
+        </div>
+        <div class="service-block">
+          <h3>Intelligence & Extended Reality</h3>
+          <p>Azure Cognitive Search, Azure Bot Service, Azure IoT, Azure Digital Twins, Spatial Anchors</p>
+        </div>
+        <div class="service-block">
+          <h3>Observability & Optimization</h3>
+          <p>Application Insights, Azure Monitor, Well-Architected Framework</p>
+        </div>
+        <div class="service-block">
+          <h3>Publishing & Monetization</h3>
+          <p>Microsoft Graph API, Commercial Marketplace</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY CHALLENGES -->
+  <section class="challenges-section">
+    <div class="container">
+      <h2>Key Challenges in Cloud Application Development</h2>
+      <ul>
+        <li><strong>Complex Architectures:</strong> Microservices, containers, serverless, integrated APIs—lots of moving parts.</li>
+        <li><strong>Security & Compliance:</strong> Safeguarding data across global regions, meeting industry compliance is daunting.</li>
+        <li><strong>Continuous Integration & Delivery:</strong> Setting up robust CI/CD pipelines can be time-consuming.</li>
+        <li><strong>Performance & Scaling:</strong> Predicting usage peaks and auto-scaling effectively requires deep Azure knowledge.</li>
+        <li><strong>Marketplace Publishing:</strong> Passing certification, standing out in a crowded marketplace, generating revenue.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW TPD HELPS -->
+  <section class="tpd-helps-section">
+    <div class="container">
+      <h2>How TPD Helps You Succeed</h2>
+      <p>The Technical Presales and Deployment team provides targeted support at each stage of your cloud application journey:</p>
+      <div class="tpd-helps-steps">
+        <div class="tpd-helps-step">
+          <h3>1. Plan & Envision</h3>
+          <p><strong>Architecture Design & Requirements:</strong> We help define project scope...</p>
+          <p><strong>Skill & Capability Assessment:</strong> Evaluate readiness for containers, DevOps, AI, etc.</p>
+          <p><strong>Licensing & Budget Optimization:</strong> Guidance on consumption models, cost mgmt, partner benefits.</p>
+        </div>
+        <div class="tpd-helps-step">
+          <h3>2. Build & Integrate</h3>
+          <p><strong>POC & Prototyping:</strong> Rapid test ideas using container apps, functions, or DevOps pipelines.</p>
+          <p><strong>Security & DevOps Best Practices:</strong> Secure apps with Azure AD, protect APIs with API Mgmt, etc.</p>
+          <p><strong>AI & IoT Infusion:</strong> Add chatbots, analytics, or IoT capabilities with TPD guidance.</p>
+        </div>
+        <div class="tpd-helps-step">
+          <h3>3. Sell & Publish</h3>
+          <p><strong>Technical Demos & Objection Handling:</strong> Address performance, cost, compliance concerns.</p>
+          <p><strong>Co-sell & Marketplace:</strong> Help listing your app, passing certification, pricing, promotion.</p>
+          <p><strong>RFP & Licensing Q&A:</strong> Clarify Azure licensing details, outmaneuver competitors.</p>
+        </div>
+        <div class="tpd-helps-step">
+          <h3>4. Grow & Optimize</h3>
+          <p><strong>Advanced Monitoring:</strong> Implementation of App Insights, Azure Monitor for proactive insights.</p>
+          <p><strong>Refactoring & Modernization:</strong> Move monolith to microservices, adopt container registry, etc.</p>
+          <p><strong>Innovation with AI & Analytics:</strong> Use Cognitive Services or Digital Twins to expand solution scope.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS STORIES -->
+  <section class="success-stories-section">
+    <div class="container">
+      <h2>Success Stories</h2>
+      <div class="success-grid">
+        <div class="success-card">
+          <h3>1. SaaS Startup & Chatbot-Driven Support</h3>
+          <p><strong>Scenario:</strong> A startup wants a user-friendly chatbot with advanced NLU to automate helpdesk queries.</p>
+          <p><strong>TPD Support:</strong> Designed with Azure Bot Service, real-time conversation analysis in App Insights.</p>
+          <p><strong>Outcome:</strong> Bot usage soared, handling 70% of queries; solution published in marketplace for new revenue.</p>
+        </div>
+        <div class="success-card">
+          <h3>2. Healthcare ISV Modernizing Legacy App</h3>
+          <p><strong>Scenario:</strong> A vendor needs to modernize a monolithic patient records app for better scalability.</p>
+          <p><strong>TPD Support:</strong> Proposed container-based approach on AKS, secure APIs with API Management.</p>
+          <p><strong>Outcome:</strong> Improved data access by 40%, cost overhead down 30%, HIPAA requirements met.</p>
+        </div>
+        <div class="success-card">
+          <h3>3. Retail Enterprise Deploying IoT for Real-Time Inventory</h3>
+          <p><strong>Scenario:</strong> Large retailer aims to enhance inventory mgmt via RFID sensors & real-time analytics.</p>
+          <p><strong>TPD Support:</strong> Set up Azure IoT Hub, Event Hubs, Stream Analytics, integrated telemetry with App Services.</p>
+          <p><strong>Outcome:</strong> Inventory accuracy soared, -25% stockouts/overstocks, new revenue from marketplace listing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGE WITH TPD -->
+  <section class="engage-section">
+    <div class="container">
+      <h2>How to Engage with TPD</h2>
+      <p><strong>Check Your Partner Benefits:</strong> Log in to Partner Center, ensure your account is in the Microsoft AI Cloud Partner Program.</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Submit a TPD Request</strong> → 
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Collaborate</strong> → 
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Grow & Innovate</strong>
+        </div>
+      </div>
+      <p>
+        Under Technical presales & deployment, select Partner Advisory Hours if needed and provide your project scope—like “Refactoring a .NET app to serverless,” “Implementing CI/CD,” or “AI-driven chatbot integration.” TPD will follow up to discuss architecture, best practices, and pitfalls.
+      </p>
+    </div>
+  </section>
+
+  <!-- PARTNER PROGRAM -->
+  <section class="partner-program-section">
+    <div class="container">
+      <h2>Aligning with the Microsoft AI Cloud Partner Program</h2>
+      <p>By being part of the Microsoft AI Cloud Partner Program:</p>
+      <ul>
+        <li><strong>Unlock TPD Services:</strong> advisory hours, presales, deployment support.</li>
+        <li><strong>Access Exclusive Resources:</strong> partner incentives, co-sell benefits, specialized training.</li>
+        <li><strong>Elevate Competencies:</strong> deliver on Digital & App Innovation, aim for higher designations.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="dai-faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">Q1: Does TPD help with AI or machine learning projects specifically?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Absolutely. TPD can advise on Azure Cognitive Services, Bot Service, or any AI/ML scenario.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q2: I need end-to-end DevOps setup. Can TPD assist?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Yes. TPD covers best practices for CI/CD with Azure DevOps or GitHub, ensuring smooth releases.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q3: Is there a limit to TPD requests I can make?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Depends on your partner level. Solutions Partners & Legacy Gold/Silver often have unlimited presales. Action Pack or Partner Success Core might use advisory hours.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q4: Can TPD help me publish my solution on the commercial marketplace?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Absolutely. TPD offers guidance on certification, co-sell opportunities, and marketplace best practices.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q5: I need production support at 2 a.m. Is TPD right for that?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> TPD focuses on presales and deployment guidance. For break-fix or 24/7, consider Premier or Advanced Support for Partners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY TO INNOVATE SECTION -->
+  <section class="innovate-section">
+    <div class="container">
+      <h2>Ready to Innovate with Confidence?</h2>
+      <p>
+        Whether you’re creating a brand-new SaaS solution or modernizing an existing on-prem app, 
+        the Digital & App Innovation portfolio on Azure provides unparalleled flexibility and global scale. 
+        And with TPD as your partner, you’ll overcome complexity, leverage best practices, and 
+        bring breakthrough ideas to market faster.
+      </p>
+    </div>
+  </section>
+
+  <!-- NEXT STEP SECTION -->
+  <section class="next-step-section">
+    <div class="container">
+      <h2>Take the Next Step</h2>
+      <p>
+        <strong>Schedule a TPD Consultation</strong> – Let’s explore your vision, challenges, 
+        and how we can accelerate your roadmap.
+      </p>
+      <p>
+        <strong>Submit a TPD Services Request</strong> – Already know what you need? Send us 
+        your project details today.
+      </p>
+      <p>
+        <strong>Discover Other Solution Areas</strong> – Explore Azure Infrastructure, 
+        Business Applications, Modern Work, Data & AI.
+      </p>
+      <p>
+        Join the growing community of partners who trust TPD to help architect, build, 
+        and deliver impactful cloud solutions. We look forward to empowering your 
+        innovation journey—from the first line of code to global marketplace success!
+      </p>
+    </div>
+  </section>
+
+  <!-- Single-file JS -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Show all sections & cards immediately
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.add('visible'));
+
+    // Identify all "cards" to fade them in with a small stagger
+    const allCards = document.querySelectorAll(
+      '.why-embrace-card, .service-block, .tpd-helps-step, .success-card'
+    );
+    allCards.forEach((card, index) => {
+      card.style.transitionDelay = (index * 0.1) + 's';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+
+    // Simple collapsible FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('expanded');
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
