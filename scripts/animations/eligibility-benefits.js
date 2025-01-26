@@ -1,12 +1,20 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    const table = document.querySelector('.eligibility-benefits table');
+    // Select the desktop table container
+    const tableEl = document.querySelector('.eligibility-benefits .eligibility-table');
 
-    // Add fade-in animation to the table
-    const animateTable = () => {
-        table.classList.add('visible');
+    // Select the mobile cards container
+    const cardsEl = document.querySelector('.eligibility-benefits .eligibility-cards');
+
+    // Simple function to fade elements in by adding a "visible" class
+    const fadeIn = () => {
+        if (tableEl) {
+            tableEl.classList.add('visible');  // triggers CSS transition for desktop table
+        }
+        if (cardsEl) {
+            cardsEl.classList.add('visible');  // triggers CSS transition for mobile cards
+        }
     };
 
-    // Trigger animation after a small delay
-    setTimeout(animateTable, 200);
+    // Apply fade-in after a short delay
+    setTimeout(fadeIn, 200);
 });
