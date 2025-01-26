@@ -2,45 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Data &amp; AI – TPnD Services</title>
+  <title>Azure Infrastructure – TPnD Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 
-    All CSS is inlined for convenience. 
-    If you prefer separate files, copy the <style> content 
-    into "data-ai.css" and link it instead.
-  -->
+  <!-- Consolidated CSS: All in one <style> block -->
   <style>
-    /* ============================
-       RESET (optional minimal reset)
-    ============================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background-color: #240046; /* fallback color if gradient not loaded */
-      overflow-x: hidden; /* prevent horizontal scroll */
-      line-height: 1.5;
-    }
-    a {
-      color: #fff;
-    }
-
-    /* ============================
-       HERO SECTION (Neon Gradient + Glitch)
-    ============================= */
-    .data-ai-hero {
+    /* ============================================
+       HERO SECTION (Reduced Vertical Spacing)
+    ============================================ */
+    .azure-infra-hero {
       position: relative;
-      min-height: 70vh;
-      padding: 60px 20px;
+      min-height: 50vh; /* decreased from 70vh to reduce vertical space */
+      padding: 30px 20px; /* decreased from 60px to 30px top/bottom */
+      color: #fff;
       text-align: center;
+      background: linear-gradient(135deg, #3b0d60, #1a0033);
       overflow: hidden;
     }
-    .data-ai-hero .hero-bg {
+    .azure-infra-hero .hero-bg {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -50,15 +29,15 @@
       z-index: 1;
     }
     @keyframes neonShift {
-      0%   { background-position: 0% 50%;   }
+      0%   { background-position: 0% 50%; }
       50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%;   }
+      100% { background-position: 0% 50%; }
     }
     .home-btn {
       position: absolute;
-      top: 20px; right: 20px;
-      padding: 10px 20px;
-      border-radius: 8px;
+      top: 15px; right: 20px;
+      padding: 8px 16px;
+      border-radius: 6px;
       background-color: rgba(255,255,255,0.15);
       color: #fff;
       text-decoration: none;
@@ -72,12 +51,11 @@
       transform: scale(1.05);
       border-color: rgba(255,255,255,0.6);
     }
-    .data-ai-hero .container.hero-content {
+    .azure-infra-hero .container.hero-content {
       position: relative;
-      z-index: 3; /* Above background */
+      z-index: 3;
       max-width: 1000px;
       margin: 0 auto;
-      color: #fff;
     }
     .glitch {
       position: relative;
@@ -88,37 +66,31 @@
       text-shadow:
         0 0 8px rgba(106,13,173,0.8),
         0 0 16px rgba(106,13,173,0.6);
+      margin-bottom: 10px;
     }
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #ddd;
-      margin-top: 15px;
+      margin-top: 5px;
+      margin-bottom: 0;
     }
 
-    /* ============================
-       Section fade-in on scroll
-    ============================= */
+    /* SECTION SCROLL FADE */
     section {
-      opacity: 0;
+      opacity: 0; /* hidden until JS reveals */
       transition: opacity 0.8s ease;
     }
     section.visible {
-      opacity: 1;
+      opacity: 1; /* fade in once .visible is added by JS */
     }
 
-    /* Helper container */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* ============================
-       WHY DATA & AI
-    ============================= */
-    .why-data-ai {
+    /* ============================================
+       WHY FOCUS (5 cards)
+    ============================================ */
+    .why-azure-infra {
       background: linear-gradient(135deg, #240046, #6a0dad);
       color: #fff;
+      padding: 40px 20px;
     }
     .why-focus-cards {
       display: grid;
@@ -130,9 +102,8 @@
       background: rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 20px;
-      position: relative;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0; /* for stagger fade */
+      opacity: 0;
       transform: translateY(20px);
     }
     .why-focus-card:hover {
@@ -140,64 +111,40 @@
       box-shadow: 0 0 10px rgba(106,13,173,0.4);
     }
 
-    /* ============================
-       DATA & AI SERVICES (CARD GRID)
-    ============================= */
-    .data-ai-services {
+    /* ============================================
+       AZURE INFRA ECOSYSTEM (8 cards)
+    ============================================ */
+    .azure-infra-ecosystem {
       background: linear-gradient(135deg, #2f1854, #6a0dad);
+      padding: 40px 20px;
       color: #fff;
     }
-    .services-grid {
+    .ecosystem-card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
       gap: 20px;
       margin-top: 30px;
     }
-    .service-card {
+    .ecosystem-card {
       background: rgba(255,255,255,0.1);
       padding: 20px;
       border-radius: 8px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0; /* fade/stagger */
+      opacity: 0;
       transform: translateY(20px);
     }
-    .service-card:hover {
+    .ecosystem-card:hover {
       transform: scale(1.04) rotateX(3deg) rotateY(-3deg);
       box-shadow: 0 0 10px rgba(106,13,173,0.4);
     }
 
-    /* ============================
-       REAL-WORLD CHALLENGES
-    ============================= */
-    .challenges-tpd {
+    /* ============================================
+       HOW TPD FITS (4 Cards)
+    ============================================ */
+    .how-tpd-fits {
       background: linear-gradient(135deg, #330052, #a01acb);
-      color: #fff;
-    }
-    .challenges-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .challenge-card {
-      background-color: rgba(0,0,0,0.2);
-      padding: 20px;
-      border-radius: 10px;
-      opacity: 0; /* fade/stagger */
-      transform: translateY(20px);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-    }
-    .challenge-card:hover {
-      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
-      box-shadow: 0 0 10px rgba(255,255,255,0.3);
-    }
-
-    /* ============================
-       TPD ENGAGEMENT MODEL
-    ============================= */
-    .tpd-engagement-model {
-      background: linear-gradient(135deg, #240046, #3b0d60);
-      color: #fff;
+      padding: 40px 20px;
+      color: #ffffff;
     }
     .tpd-steps {
       display: grid;
@@ -206,10 +153,10 @@
       margin-top: 30px;
     }
     .tpd-step {
-      background-color: rgba(255,255,255,0.1);
+      background-color: rgba(0,0,0,0.2);
       padding: 20px;
       border-radius: 10px;
-      opacity: 0; /* fade/stagger */
+      opacity: 0;
       transform: translateY(20px);
       transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
     }
@@ -218,12 +165,13 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
 
-    /* ============================
-       SUCCESS STORIES
-    ============================= */
+    /* ============================================
+       SUCCESS STORIES (3 Cards)
+    ============================================ */
     .success-stories {
-      background: linear-gradient(135deg, #240046, #6a0dad);
-      color: #fff;
+      background: linear-gradient(135deg, #240046, #3b0d60);
+      color: #ffffff;
+      padding: 40px 20px;
     }
     .stories-grid {
       display: grid;
@@ -235,7 +183,7 @@
       background-color: rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 20px;
-      opacity: 0; /* fade/stagger */
+      opacity: 0;
       transform: translateY(20px);
       transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
     }
@@ -244,11 +192,41 @@
       box-shadow: 0 0 10px rgba(106,13,173,0.4);
     }
 
-    /* ============================
-       HOW TO ENGAGE (3-step flow)
-    ============================= */
-    .how-to-engage {
+    /* ============================================
+       PARTNERING + TABLE
+    ============================================ */
+    .align-and-get-started {
       background: linear-gradient(135deg, #6a0dad, #ff00c1);
+      color: #ffffff;
+      padding: 40px 20px;
+    }
+    .partnering-bullets {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .responsive-table table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      color: #fff;
+    }
+    .responsive-table th,
+    .responsive-table td {
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.3);
+      text-align: left;
+    }
+    .responsive-table th {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ============================================
+       GETTING STARTED (Heartbeat Cards)
+    ============================================ */
+    .getting-started-steps {
+      background: linear-gradient(135deg, #330052, #6a0dad);
+      padding: 40px 20px;
       color: #fff;
     }
     .steps-container {
@@ -279,17 +257,13 @@
     .heartbeat {
       animation: heartbeat 1.5s ease-in-out infinite;
     }
-    .arrow {
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem;
-    }
 
-    /* ============================
-       FAQ ACCORDION
-    ============================= */
-    .data-ai-faq {
+    /* ============================================
+       FAQ (Collapsible)
+    ============================================ */
+    .azure-infra-faq {
       background: #330052;
+      padding: 40px 20px;
       color: #fff;
     }
     .faq-item {
@@ -303,507 +277,444 @@
       margin-bottom: 5px;
     }
     .faq-answer {
-      max-height: 0; /* hidden by default */
+      max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease;
     }
     .faq-item.expanded .faq-answer {
-      max-height: 600px; 
+      max-height: 800px;
     }
 
-    /* ============================
-       CTA / Next Step Sections
-    ============================= */
-    .data-ai-cta {
-      background: linear-gradient(135deg, #3b0d60, #a01acb);
+    /* ============================================
+       TRANSFORM SECTION
+    ============================================ */
+    .azure-transform {
+      background: linear-gradient(135deg, #240046, #ff00c1);
+      color: #fff;
+      padding: 40px 20px;
     }
-    .data-ai-next-step {
-      background: linear-gradient(135deg, #240046, #5f0f99);
+    .azure-transform .container {
+      max-width: 900px;
+      margin: 0 auto;
     }
-
-    /* Bullets for text lists */
-    .partnering-bullets {
+    .conclusion-bullets {
       list-style: none;
       margin: 0;
       padding: 0;
+      margin-bottom: 20px;
     }
-    .partnering-bullets li {
+    .conclusion-bullets li {
       margin-bottom: 10px;
     }
 
-    /* Optional transition-delay classes for staggering */
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
+    /* ============================================
+       NEXT STEP SECTION
+    ============================================ */
+    .azure-next-step {
+      background: linear-gradient(135deg, #6a0dad, #8a00ff);
+      color: #fff;
+      padding: 40px 20px;
+    }
+    .azure-next-step .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- ===============================================
+  <!-- =========================
        HERO SECTION
-  ================================================== -->
-  <section class="data-ai-hero">
+  ========================== -->
+  <section class="azure-infra-hero">
     <div class="hero-bg"></div>
     <a href="index.html" class="home-btn">Home</a>
     <div class="container hero-content">
-      <h1 class="glitch" data-text="Accelerate Your Data &amp; AI Initiatives with Technical Presales and Deployment">
-        Accelerate Your Data &amp; AI Initiatives with Technical Presales and Deployment
+      <h1 class="glitch" data-text="Elevate Your Cloud Practice with Azure Infrastructure">
+        Elevate Your Cloud Practice with Azure Infrastructure
       </h1>
-      <p class="subtitle">
-        Overcome Technical Blockers &amp; Close More Deals in Data Platform Modernization, Advanced Analytics, and AI
-      </p>
+      <p class="subtitle">Your Path to Scalable, Secure, and Intelligent Solutions</p>
     </div>
   </section>
 
-  <!-- ===============================================
-       WHY DATA & AI
-  ================================================== -->
-  <section class="why-data-ai">
+  <!-- =========================
+       INTRO & WHY FOCUS
+  ========================== -->
+  <section class="why-azure-infra">
     <div class="container">
       <p>
-        Today, data is currency—fueling innovation, efficiency, and competitive advantage. Whether your customers
-        need to modernize legacy data platforms, implement advanced analytics, or embed cutting‐edge AI capabilities,
-        Microsoft Azure provides a robust ecosystem of Data &amp; AI services. Yet the complexity of these solutions
-        often poses challenges in closing deals, addressing technical blockers, and delivering successful
-        implementations.
+        Azure Infrastructure stands at the core of digital transformation, enabling organizations
+        to migrate existing applications, accelerate new development, and innovate with advanced 
+        technologies like AI. From compute and storage to networking and governance, Azure Infrastructure 
+        services offer the flexibility, security, and performance you need to run your workloads in 
+        the cloud or hybrid environments.
       </p>
       <p>
-        That’s why the Technical Presales and Deployment (TPD) team is here: to help you envision, sell, plan, and
-        deploy Data &amp; AI solutions that deliver meaningful insights and transformative outcomes. Below, we’ll explore
-        the powerful Azure Data &amp; AI offerings, common scenarios, and how TPD can guide you at every stage.
+        When combined with the Technical Presales and Deployment (TPD) team’s guidance, you gain 
+        a strategic edge: expert insights, tailored best practices, and hands‐on support to plan, 
+        build, sell, and grow your Azure Infrastructure solutions. Whether you’re moving SAP to the 
+        cloud, setting up high‐performance computing (HPC), or simply looking to modernize your datacenter 
+        operations, TPD can help you unlock the full potential of Azure Infrastructure.
       </p>
 
-      <h2>Why Focus on Data &amp; AI?</h2>
+      <h2>Why Focus on Azure Infrastructure?</h2>
       <div class="why-focus-cards">
         <div class="why-focus-card">
-          <h3>Data‐Driven Insights</h3>
-          <p>
-            Making data‐driven decisions is no longer a luxury—it’s a strategic imperative. Solutions like Azure Synapse,
-            Power BI, and Azure Machine Learning provide the foundation to turn raw data into actionable insights.
-          </p>
+          <h3>1. End‐to‐End Cloud & Hybrid Flexibility</h3>
+          <p>Azure’s extensive suite of Infrastructure‐as‐a‐Service (IaaS), Platform‐as‐a‐Service (PaaS), 
+             and hybrid tools (like Azure Arc and Azure Stack) ensures you can run virtually any workload—
+             on‐premises, in the cloud, or at the edge.</p>
         </div>
         <div class="why-focus-card">
-          <h3>Scale &amp; Performance</h3>
-          <p>
-            Azure’s global infrastructure and services like Azure SQL Managed Instance, Azure Cosmos DB, and Azure
-            Databricks enable real‐time analytics, high throughput, and robust elasticity.
-          </p>
+          <h3>2. Unparalleled Security & Compliance</h3>
+          <p>From Network Security Groups to Azure Firewall, Azure Policy, and built‐in encryption features, 
+             Azure Infrastructure is designed with security at its core—essential for meeting regulatory 
+             requirements and safeguarding data.</p>
         </div>
         <div class="why-focus-card">
-          <h3>Integrations for Every Need</h3>
-          <p>
-            From relational databases (Azure SQL Database) to big data analytics (HDInsight, Data Lake), Azure can
-            handle virtually any data scenario or volume.
-          </p>
+          <h3>3. Performance at Scale</h3>
+          <p>Azure’s global footprint and specialized VM families (N‐Series, H‐Series) enable 
+             high‐performance computing scenarios that were once cost‐prohibitive or too complex 
+             to manage on‐premises.</p>
         </div>
         <div class="why-focus-card">
-          <h3>Advanced AI &amp; Cognitive Capabilities</h3>
-          <p>
-            Whether you’re experimenting with Azure OpenAI, building ML models, or tapping into Azure Cognitive
-            Services, you can infuse intelligence into apps and processes seamlessly.
-          </p>
+          <h3>4. Cost Optimization & Governance</h3>
+          <p>Tools like Azure Cost Management, Azure Advisor, and Azure Resource Manager help you 
+             right‐size resources and maintain financial visibility—all crucial for a successful 
+             cloud practice.</p>
         </div>
         <div class="why-focus-card">
-          <h3>Business Enablement</h3>
-          <p>
-            Successfully implementing Data &amp; AI can lead to cost optimizations, revenue growth, and improved
-            customer experiences—key levers for modern businesses.
-          </p>
+          <h3>5. Rapid Innovation with AI & Analytics</h3>
+          <p>By leveraging the connectivity and integrated services within Azure, you can easily attach
+             advanced AI or data analytics solutions to your infrastructure, delivering insights and
+             unlocking new business models.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===============================================
-       DATA & AI SERVICES
-  ================================================== -->
-  <section class="data-ai-services">
+  <!-- =========================
+       AZURE INFRA ECOSYSTEM
+  ========================== -->
+  <section class="azure-infra-ecosystem">
     <div class="container">
-      <h2>Microsoft Data &amp; AI Services: A Comprehensive Suite</h2>
-      <p>
-        Azure Data &amp; AI covers a broad range of services and solutions. Below is a snapshot of what you can tap into
-        during your TPD engagements:
-      </p>
+      <h2>The Azure Infrastructure Ecosystem: A Broad Spectrum of Possibilities</h2>
+      <p>Azure Infrastructure is immensely broad. Below is a simplified look at the key services and features 
+         under its umbrella—many of which you can tap into through your TPD engagements:</p>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Data Platform Modernization</h3>
-          <p>
-            Azure SQL Database, Azure SQL Managed Instance, SQL Server (on‐prem &amp; hybrid), 
-            Azure Database for MySQL/PostgreSQL/MariaDB, Azure Database Migration Service, 
-            Azure Cosmos DB, Microsoft Fabric, Copilot for Fabric
-          </p>
+      <div class="ecosystem-card-grid">
+        <div class="ecosystem-card">
+          <h3>Compute & Virtualization</h3>
+          <p>Azure Virtual Machine, Availability Set, N‐Series VMs...</p>
         </div>
-        <div class="service-card">
-          <h3>Advanced Analytics</h3>
-          <p>Azure Synapse, Azure Data Factory, Data Lake Storage, HDInsight, Databricks</p>
+        <div class="ecosystem-card">
+          <h3>Networking</h3>
+          <p>Azure Virtual Network, Azure ExpressRoute, Azure VPN (Point to Site & Site to Site)...</p>
         </div>
-        <div class="service-card">
-          <h3>Artificial Intelligence</h3>
-          <p>Azure AI Services, Azure AI Studio, Azure Machine Learning, Azure OpenAI, Azure Cognitive Search</p>
+        <div class="ecosystem-card">
+          <h3>Hybrid & Edge</h3>
+          <p>Azure Arc, Azure Stack Edge, Azure Stack HCI, Azure Stack Hub</p>
         </div>
-        <div class="service-card">
-          <h3>Visualization &amp; Insights</h3>
-          <p>Power BI, Copilot for Power BI</p>
+        <div class="ecosystem-card">
+          <h3>Storage & Data Transfer</h3>
+          <p>Azure Storage, NetApp Files, Azure NetApp Files, Azure Data Box, HPC Cache...</p>
         </div>
-        <div class="service-card">
-          <h3>Data &amp; AI Tools (Misc.)</h3>
-          <p>ML.NET, SQL Server ML Services</p>
+        <div class="ecosystem-card">
+          <h3>Migration & Modernization</h3>
+          <p>Azure Migrate, Azure Site Recovery, Azure Backup, Microsoft Cloud Adoption Framework...</p>
         </div>
-        <div class="service-card">
-          <h3>Others</h3>
-          <p>
-            (You can mention additional services if needed—like Azure Cognitive Services for speech,
-            language, vision, etc.)
-          </p>
+        <div class="ecosystem-card">
+          <h3>SAP on Azure</h3>
+          <p>Azure Center for SAP Solutions, SAP Azure Large Instances, SAP Business Suite...</p>
         </div>
-        <div class="service-card">
-          <h3>Ingest &amp; Manage</h3>
-          <p>Azure Data Explorer, Azure Databricks, Azure Event Hubs</p>
+        <div class="ecosystem-card">
+          <h3>Management & Governance</h3>
+          <p>Azure Resource Manager, Azure Policy, RBAC, Azure Blueprint, Azure Monitor...</p>
         </div>
-        <div class="service-card">
-          <h3>Hybrid &amp; Mixed</h3>
-          <p>SQL Server Big Data Clusters, Azure Arc for Data Services</p>
-        </div>
-        <div class="service-card">
-          <h3>Identity &amp; Governance</h3>
-          <p>Azure AD, RBAC, Azure Policy, Purview</p>
-        </div>
-        <div class="service-card">
-          <h3>Operations &amp; Monitoring</h3>
-          <p>Azure Monitor, Azure Advisor, Well‐Architected Framework</p>
+        <div class="ecosystem-card">
+          <h3>Specialized Services</h3>
+          <p>Azure Batch (for large‐scale parallel jobs), Azure CycleCloud (HPC orchestration)...</p>
         </div>
       </div>
+      <p class="final-note">This comprehensive set of services means there’s always a solution that meets your 
+         customer’s unique needs—no matter how specialized or complex.</p>
     </div>
   </section>
 
-  <!-- ===============================================
-       REAL-WORLD CHALLENGES & HOW TPD HELPS
-  ================================================== -->
-  <section class="challenges-tpd">
+  <!-- =========================
+       HOW TPD FITS (4 Cards)
+  ========================== -->
+  <section class="how-tpd-fits">
     <div class="container">
-      <h2>Real‐World Challenges &amp; How TPD Helps</h2>
-      <div class="challenges-grid">
-        <div class="challenge-card">
-          <h3>1. Closing Deals &amp; Overcoming Objections</h3>
-          <p>
-            <strong>Scenario:</strong> A potential customer is skeptical about the complexity of migrating on‐prem 
-            SQL data to Azure Synapse or setting up real‐time analytics.
-          </p>
-          <p>
-            <strong>TPD Support:</strong> Provide presales demos with near real‐time analytics, cost discussions
-            (ROI/TCO), address data governance needs with Azure Policy and Azure Monitor.
-          </p>
-        </div>
-        <div class="challenge-card">
-          <h3>2. Designing Scalable Data Architectures</h3>
-          <p>
-            <strong>Scenario:</strong> Handling petabyte‐scale data ingestion/analytics for an IoT use case.
-          </p>
-          <p>
-            <strong>TPD Support:</strong> Recommend right data storage, ingestion pipelines, and analytics layers,
-            ensuring alignment with best practices.
-          </p>
-        </div>
-        <div class="challenge-card">
-          <h3>3. Ensuring Successful AI Deployments</h3>
-          <p>
-            <strong>Scenario:</strong> A customer wants AI‐driven chatbots or predictive analytics but lacks ML
-            framework expertise.
-          </p>
-          <p>
-            <strong>TPD Support:</strong> Walk through Azure ML lifecycle, suggest Azure OpenAI, Cognitive Services,
-            or custom ML solutions with best practices.
-          </p>
-        </div>
-        <div class="challenge-card">
-          <h3>4. Publishing &amp; Monetizing Data &amp; AI Solutions</h3>
-          <p>
-            <strong>Scenario:</strong> You’ve built an industry‐specific analytics solution and want to list it on
-            the commercial marketplace.
-          </p>
-          <p>
-            <strong>TPD Support:</strong> Help with marketplace certification, packaging, co‐sell, and recommended
-            pricing/promotion strategies.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===============================================
-       TPD ENGAGEMENT MODEL FOR DATA & AI
-  ================================================== -->
-  <section class="tpd-engagement-model">
-    <div class="container">
-      <h2>TPD Engagement Model for Data &amp; AI</h2>
-      <p>Below is a simplified view of how TPD can guide you throughout the lifecycle:</p>
+      <h2>How TPD Fits In: Turning Possibilities into Action</h2>
+      <p>The Technical Presales and Deployment team helps you navigate this vast Azure Infrastructure 
+         ecosystem with confidence. Here’s how:</p>
 
       <div class="tpd-steps">
         <div class="tpd-step">
-          <h3>Plan &amp; Envision</h3>
-          <p><strong>Assess Current Environment:</strong> Review existing databases, ETL processes, or AI solutions. Identify business objectives.</p>
-          <p><strong>Strategize Architecture &amp; Roadmap:</strong> Define your data architecture using Azure Synapse or Databricks, plan migrations.</p>
-          <p><strong>Sales Enablement &amp; Licensing:</strong> Technical demos, cost breakdowns, and licensing best practices to shorten the sales cycle.</p>
+          <h3>Plan</h3>
+          <p><strong>Technical Assessments:</strong> We’ll analyze your current architecture...</p>
+          <p><strong>Solution Roadmap:</strong> Align your migration or modernization goals...</p>
+          <p><strong>Licensing & Cost Guidance:</strong> We’ll walk you through cost optimization tools...</p>
         </div>
         <div class="tpd-step">
-          <h3>Build &amp; Integrate</h3>
-          <p><strong>Proof of Concept (POC):</strong> Validate architecture with a pilot: e.g., Azure Data Factory + ML models.</p>
-          <p><strong>Security &amp; Governance:</strong> Data encryption, RBAC, auditing, Azure Policy, Azure Monitor.</p>
-          <p><strong>Performance Optimization:</strong> Use Azure Analysis Services, partitioning/indexing in Cosmos DB/SQL, etc.</p>
+          <h3>Build</h3>
+          <p><strong>Architecture Review & Design:</strong> Whether it’s multi‐region availability or HPC solutions...</p>
+          <p><strong>Proof of Concept:</strong> Get hands‐on guidance to spin up pilot environments...</p>
+          <p><strong>Security & Governance:</strong> We integrate security controls from Azure Firewall to Network Security Groups (NSG)...</p>
         </div>
         <div class="tpd-step">
-          <h3>Sell &amp; Publish</h3>
-          <p><strong>Technical Presales:</strong> Demos with Power BI dashboards, advanced ML workflows, cost/complexity objections.</p>
-          <p><strong>Co‐Sell &amp; Marketplace Listing:</strong> Publish your data solution, meet certification requirements, set pricing.</p>
+          <h3>Sell</h3>
+          <p><strong>Technical Demos & Presales:</strong> Impress customers with fully configured demos...</p>
+          <p><strong>Objection Handling:</strong> Address concerns around performance, cost, or complexity...</p>
+          <p><strong>Competitive Positioning:</strong> Demonstrate how Azure’s integrated services beat piecemeal solutions...</p>
         </div>
         <div class="tpd-step">
-          <h3>Grow &amp; Optimize</h3>
-          <p><strong>Monitoring &amp; Continuous Improvement:</strong> Stream Analytics, anomaly detection, track model accuracy in ML solutions.</p>
-          <p><strong>Expansion of AI Capabilities:</strong> Add Copilot for Fabric or advanced language models from Azure OpenAI.</p>
-          <p><strong>Periodic Well‐Architected Reviews:</strong> Ensure cost optimization, reliability, operational excellence, performance, and security.</p>
+          <h3>Grow</h3>
+          <p><strong>Post‐Deployment Optimization:</strong> After workloads go live, we’ll assist with performance tuning...</p>
+          <p><strong>Hybrid & Edge Scenarios:</strong> Extend your success to edge computing with Azure Stack Edge...</p>
+          <p><strong>Innovation Enablement:</strong> We’ll help you add new layers—like AI, analytics, or IoT...</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===============================================
+  <!-- =========================
        SUCCESS STORIES
-  ================================================== -->
+  ========================== -->
   <section class="success-stories">
     <div class="container">
       <h2>Success Stories</h2>
       <div class="stories-grid">
         <div class="story-card">
-          <h3>1. Financial Services Firm Modernizing Data Warehouse</h3>
-          <p>
-            <strong>Scenario:</strong> A bank with a legacy on‐prem data warehouse needs real‐time risk analytics.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Proposed Azure Synapse + Azure Machine Learning for advanced risk
-            scoring models. Advised on migrating SSIS packages to Azure Data Factory. Provided a presales demo of
-            real‐time dashboards in Power BI.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Reduced daily batch processing time by 60%. Gained predictive analytics for
-            proactive risk management.
-          </p>
+          <h3>1. Migrating On‐Prem Hyper‐V Workloads to Azure for a Retail Chain</h3>
+          <p><strong>Scenario:</strong> A mid‐sized retail chain wants to migrate 300 on‐prem VMs...</p>
+          <p><strong>TPD Involvement:</strong> Conducted readiness assessment with Azure Migrate...</p>
+          <p><strong>Outcome:</strong> Retail chain reduces on‐prem operational costs by 30%...</p>
         </div>
         <div class="story-card">
-          <h3>2. Retail ISV Monetizing AI Chatbots</h3>
-          <p>
-            <strong>Scenario:</strong> A retail solution vendor wants to integrate ML‐based chatbot solutions via
-            Azure Bot Service + Azure OpenAI.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Provided architecture for data ingestion of user queries, used Azure
-            Cosmos DB for session storage. Created a proof‐of‐concept chatbot demo. Guided them through marketplace
-            listing.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Rapid sales expansion with new revenue from small/medium retailers adopting
-            AI chatbots.
-          </p>
+          <h3>2. SAP on Azure for a Manufacturing Giant</h3>
+          <p><strong>Scenario:</strong> A global manufacturing company needs high availability...</p>
+          <p><strong>TPD Involvement:</strong> Detailed architecture review for Azure VMs Certified for SAP...</p>
+          <p><strong>Outcome:</strong> Downtime minimized to near zero. Faster analytics and reporting capabilities...</p>
         </div>
         <div class="story-card">
-          <h3>3. Healthcare Provider Implementing Real‐Time Patient Analytics</h3>
-          <p>
-            <strong>Scenario:</strong> A hospital network wants to analyze patient vitals in real time to detect
-            emergencies faster.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Recommended Azure IoT Hub + Azure Stream Analytics for real‐time data.
-            Advised on secure data storage in Data Lake with ML predictive models.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Near real‐time alerts improved response times and lowered readmission rates.
-          </p>
+          <h3>3. Modernizing Legacy Applications with Azure Stack Hub</h3>
+          <p><strong>Scenario:</strong> A software company wants to offer a consistent hybrid solution to customers...</p>
+          <p><strong>TPD Involvement:</strong> Advised on installing and configuring Azure Stack Hub...</p>
+          <p><strong>Outcome:</strong> Launched a new service offering that supports on‐premises customers seamlessly...</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===============================================
-       HOW TO ENGAGE (3 STEPS)
-  ================================================== -->
-  <section class="how-to-engage">
+  <!-- =========================
+       PARTNERING + TABLE
+  ========================== -->
+  <section class="align-and-get-started">
     <div class="container">
-      <h2>How to Engage TPD for Data &amp; AI</h2>
-      <p>
-        <strong>Check Your Partner Benefits</strong><br/>
-        Sign in to Partner Center, ensure your account is tied to the Microsoft AI Cloud Partner Program.
-      </p>
-
-      <div class="steps-container">
-        <div class="step-card heartbeat">1. Submit a TPD Request</div>
-        <div class="arrow">→</div>
-        <div class="step-card heartbeat">2. Collaborate with Experts</div>
-        <div class="arrow">→</div>
-        <div class="step-card heartbeat">3. Launch &amp; Optimize</div>
-      </div>
-      <p>
-        Provide project details: data warehouse modernization, advanced analytics, AI, or marketplace listing. 
-        A TPD consultant follows up within two business days to discuss architecture, POCs, demos, or presales assistance. 
-        Post‐deployment, re‐engage TPD for optimization, expansions, or new AI features.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===============================================
-       FAQ (Accordion)
-  ================================================== -->
-  <section class="data-ai-faq">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <!-- Q1 -->
-      <div class="faq-item">
-        <div class="faq-question">Q1: Can TPD help me transition from SQL Server on‐prem to Azure SQL or Synapse?</div>
-        <div class="faq-answer">
-          <p>
-            <strong>A:</strong> Yes. TPD offers guidance on using Azure Database Migration Service, performance tuning,
-            and right‐sizing your cloud databases.
-          </p>
-        </div>
-      </div>
-      <!-- Q2 -->
-      <div class="faq-item">
-        <div class="faq-question">Q2: What if my solution needs to integrate advanced language models or computer vision?</div>
-        <div class="faq-answer">
-          <p>
-            <strong>A:</strong> TPD consultants can suggest best practices for Azure Cognitive Services, Azure OpenAI,
-            or custom AI model deployment with Azure Machine Learning.
-          </p>
-        </div>
-      </div>
-      <!-- Q3 -->
-      <div class="faq-item">
-        <div class="faq-question">Q3: Do TPD services cover production support or troubleshooting?</div>
-        <div class="faq-answer">
-          <p>
-            <strong>A:</strong> TPD is not a break‐fix or 24/7 support channel. For production outages, consider
-            Premier Support or Advanced Support for Partners (ASfP).
-          </p>
-        </div>
-      </div>
-      <!-- Q4 -->
-      <div class="faq-item">
-        <div class="faq-question">Q4: We’re new to AI—can TPD provide training?</div>
-        <div class="faq-answer">
-          <p>
-            <strong>A:</strong> While TPD isn’t a formal training program, consultants do offer knowledge transfer.
-            For in‐depth learning, explore Microsoft Learn or formal certification paths.
-          </p>
-        </div>
-      </div>
-      <!-- Q5 -->
-      <div class="faq-item">
-        <div class="faq-question">Q5: Are marketplace listing services included in TPD?</div>
-        <div class="faq-answer">
-          <p>
-            <strong>A:</strong> Yes. We help navigate Microsoft’s commercial marketplace certification, co‐sell readiness,
-            and best practices—but listing fees or co‐sell arrangements depend on partner benefits.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===============================================
-       CTA SECTION: Ready to Transform ...
-  ================================================== -->
-  <section class="data-ai-cta">
-    <div class="container">
-      <h2>Ready to Transform Your Data &amp; AI Vision into Reality?</h2>
-      <p>
-        From data platform modernization to advanced analytics and AI innovations, Microsoft’s Azure ecosystem has you covered. 
-        By collaborating with Technical Presales and Deployment, you’ll gain:
-      </p>
+      <h2>Partnering for Success with TPD</h2>
       <ul class="partnering-bullets">
-        <li>Presales Expertise to close deals faster.</li>
-        <li>Architectural Guidance for robust, scalable solutions.</li>
-        <li>Technical Best Practices to overcome deployment blockers.</li>
-        <li>Ongoing Optimization for continuous Data &amp; AI success.</li>
+        <li><strong>1. Leverage Expert Insights</strong><br/>
+          Azure Infrastructure can be vast and complex...
+        </li>
+        <li><strong>2. Secure More Deals</strong><br/>
+          From generating polished presales demos to crafting proposals...
+        </li>
+        <li><strong>3. Continuous Improvement</strong><br/>
+          Azure is constantly evolving with new features (like Copilot for Azure)...
+        </li>
+      </ul>
+
+      <h2>Aligning with the Microsoft AI Cloud Partner Program</h2>
+      <p>By being part of the Microsoft AI Cloud Partner Program, you gain access to TPD as a built‐in benefit...</p>
+      <div class="responsive-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Designation</th>
+              <th>Description / Hours Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Solutions Partner</td>
+              <td>Typically qualifies for unlimited presales support and 50+ hours...</td>
+            </tr>
+            <tr>
+              <td>Action Pack (MAPS)</td>
+              <td>Access to TPD, but these consultations may deduct from your advisory hours.</td>
+            </tr>
+            <tr>
+              <td>Legacy Gold/Silver</td>
+              <td>Enjoy the same robust support while transitioning to the new partner designations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Remember: If you’re new or unsure of your benefits, head to the Partner Center...</p>
+    </div>
+  </section>
+
+  <!-- =========================
+       HOW TO GET STARTED (HEARTBEAT STEPS)
+  ========================== -->
+  <section class="getting-started-steps">
+    <div class="container">
+      <h2>How to Get Started</h2>
+      <p>Ready to tap into TPD’s deep expertise and elevate your Azure Infrastructure solutions?</p>
+      <p>Here’s a simplified flow for how you can engage:</p>
+      <div class="steps-container">
+        <div class="step-card heartbeat">1. Sign in</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">2. Submit Request</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">3. Collaborate</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">4. Realize Value</div>
+      </div>
+      <p>Sign in to Partner Center using your Microsoft AI Cloud Partner Program–associated account...</p>
+    </div>
+  </section>
+
+  <!-- =========================
+       FAQ (Collapsible)
+  ========================== -->
+  <section class="azure-infra-faq">
+    <div class="container">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Q1: Do TPD services cover advanced networking or specialized HPC setups?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Absolutely. Our Azure Infrastructure scope includes advanced concepts like Azure Virtual WAN...</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q2: I need 24/7 support once in production. Can TPD provide that?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> TPD focuses on technical advisory and presales, not 24/7 break‐fix...</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q3: How do I learn more about the Cloud Adoption Framework or Well‐Architected Framework?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> TPD can guide you through these frameworks during our planning phase...</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q4: How long does a typical TPD engagement last?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> It varies. Some partners need a quick POC consultation, while others engage us through the entire Plan‐Build‐Sell‐Grow lifecycle...</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q5: Can TPD assist with moving specialized workloads, like SAP or HPC?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Yes. We have experts specializing in SAP on Azure, high‐performance computing scenarios, and more...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       LET'S TRANSFORM SECTION
+  ========================== -->
+  <section class="azure-transform">
+    <div class="container">
+      <h2>Let’s Transform Your Azure Infrastructure Together</h2>
+      <p>
+        With Azure Infrastructure spanning compute, networking, storage, and advanced hybrid scenarios,
+        there’s no shortage of possibilities. But navigating these options effectively—and turning them
+        into profitable solutions—requires the right expertise.
+      </p>
+      <p>That’s exactly what TPD provides:</p>
+      <ul class="conclusion-bullets">
+        <li>Deep Technical Knowledge of Azure best practices.</li>
+        <li>Tailored Presales & Deployment Guidance based on your partner goals.</li>
+        <li>Ongoing Optimization to keep your solutions ahead of the curve.</li>
       </ul>
     </div>
   </section>
 
-  <!-- ===============================================
-       TAKE THE NEXT STEP
-  ================================================== -->
-  <section class="data-ai-next-step">
+  <!-- =========================
+       READY TO TAKE THE NEXT STEP
+  ========================== -->
+  <section class="azure-next-step">
     <div class="container">
-      <h2>Take the Next Step</h2>
+      <h2>Ready to Take the Next Step?</h2>
       <p>
-        <strong>Schedule a TPD Consultation</strong> – Discuss your data and AI roadmap, challenges, and goals.
+        Schedule a TPD Consultation – Let’s discuss your current environment...
         <br/>
-        <strong>Submit a TPD Services Request</strong> – Already have a clear scope? Let’s get started.
+        Submit a TPD Services Request – Already know what you need? Open a case...
         <br/>
-        <strong>Explore Other Solution Areas</strong> – Learn how TPD can also support Azure Infrastructure, Digital &amp; App Innovation, Modern Work, and more.
+        Explore Other Solution Areas – From Data & AI to Modern Work...
       </p>
       <p>
-        Empower your customers with advanced analytics, real‐time insights, and AI‐driven solutions that stand out 
-        in a data‐saturated world. We look forward to partnering with you on every step of your Data &amp; AI journey!
+        Accelerate your cloud journey, differentiate your solutions, and unlock new revenue streams
+        with Azure Infrastructure—backed by the unmatched expertise of our Technical Presales 
+        and Deployment team.
       </p>
+      <p>We look forward to partnering with you on this exciting transformation!</p>
     </div>
   </section>
 
   <!-- 
-    Inline JS for scroll-based reveal, 
-    card staggering, and FAQ accordion 
+    Single-file JS: 
+    - Scroll-based reveal 
+    - Card staggering 
+    - Heartbeat is handled by CSS 
+    - Collapsible FAQ
   -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section');
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
 
-      // For card staggering inside each section
-      function staggerCards(cards) {
-        cards.forEach((card, index) => {
-          card.style.transitionDelay = (index * 0.1) + 's';
-        });
-      }
+    // Helper to add small delay for each card => stagger
+    function staggerCards(cards) {
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = (index * 0.1) + 's';
+      });
+    }
 
-      function isInViewport(elem) {
-        const rect = elem.getBoundingClientRect();
-        return (rect.top < window.innerHeight && rect.bottom >= 0);
-      }
+    function isInViewport(elem) {
+      const rect = elem.getBoundingClientRect();
+      return (rect.top < window.innerHeight && rect.bottom >= 0);
+    }
 
-      function revealSections() {
-        sections.forEach(sec => {
-          if (isInViewport(sec) && !sec.classList.contains('visible')) {
-            sec.classList.add('visible');
+    function revealSections() {
+      sections.forEach(sec => {
+        if (isInViewport(sec) && !sec.classList.contains('visible')) {
+          sec.classList.add('visible');
 
-            // Gather card sets for staggering
-            const focusCards     = sec.querySelectorAll('.why-focus-card');
-            const serviceCards   = sec.querySelectorAll('.service-card');
-            const challengeCards = sec.querySelectorAll('.challenge-card');
-            const tpdSteps       = sec.querySelectorAll('.tpd-step');
-            const storyCards     = sec.querySelectorAll('.story-card');
+          // Identify relevant card classes in this section
+          const focusCards = sec.querySelectorAll('.why-focus-card');
+          const ecosystemCards = sec.querySelectorAll('.ecosystem-card');
+          const tpdSteps = sec.querySelectorAll('.tpd-step');
+          const storyCards = sec.querySelectorAll('.story-card');
 
-            // Stagger each group if present
-            if (focusCards.length)     staggerCards(focusCards);
-            if (serviceCards.length)   staggerCards(serviceCards);
-            if (challengeCards.length) staggerCards(challengeCards);
-            if (tpdSteps.length)       staggerCards(tpdSteps);
-            if (storyCards.length)     staggerCards(storyCards);
-          }
-        });
-      }
+          // Combine them into an array for easy iteration
+          [...focusCards, ...ecosystemCards, ...tpdSteps, ...storyCards]
+            .forEach((card, idx) => {
+              card.style.transitionDelay = (idx * 0.1) + 's';
+            });
+        }
+      });
+    }
 
-      window.addEventListener('scroll', revealSections);
-      revealSections();
+    // On scroll, fade in sections
+    window.addEventListener('scroll', revealSections);
+    revealSections();
 
-      // Collapsible FAQ
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-          item.classList.toggle('expanded');
-        });
+    // Collapsible FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('expanded');
       });
     });
+  });
   </script>
 </body>
 </html>
