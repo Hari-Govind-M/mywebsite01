@@ -1,105 +1,141 @@
-/* Engagement Model Section */
+/*
+  ============================================
+  Engagement Model Section
+  ============================================
+  - Defines the overall container and styling for the
+    "Plan – Build – Sell – Grow" section.
+  - Applies a gradient background and center-aligned text.
+*/
 .engagement-model {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #330052, #6a0dad);
-    color: #ffffff;
-    text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #330052, #6a0dad);
+  color: #ffffff;
+  text-align: center;
 }
 
 .engagement-model h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .engagement-model p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #dddddd;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.8;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #dddddd;
+  max-width: 800px; /* Constrain paragraph width for readability */
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
 }
 
-/* Card Grid Layout */
+/*
+  ============================================
+  Card Grid Layout
+  ============================================
+  - Displays each engagement phase (Plan, Build, Sell, Grow) in 
+    a grid with 2 columns on larger screens, and 1 column on smaller screens.
+*/
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
-    gap: 30px; /* Space between cards */
-    justify-content: center;
-    align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row (desktop) */
+  gap: 30px; /* Spacing between cards */
+  justify-content: center;
+  align-items: stretch;
 }
 
-/* Individual Cards */
+/*
+  ============================================
+  Individual Card Styles
+  ============================================
+  - Each card represents a phase in the engagement model,
+    with initial fade/slide-in animation, hover effects, etc.
+*/
 .card {
-    background-color: #240046;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    min-height: 300px; /* Consistent card height */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #240046;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 300px; /* Consistent card height across the row */
 
-    /* Initial Animation State */
-    opacity: 0; /* Hidden initially */
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth animation */
+  /* Start off hidden and slightly below for scroll reveal or triggered animation */
+  opacity: 0;                  /* Hidden initially */
+  transform: translateY(20px); /* Slightly below original position */
+  transition: 
+    opacity 0.6s ease, 
+    transform 0.6s ease;       /* Smooth fade + slide animation */
 }
 
+/* Once .visible is applied (via JS), card fully fades & slides in */
 .card.visible {
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Move to original position */
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* 
+  Hover effect:
+    - Slight scale up, background color shift, 
+      text color to white, stronger box-shadow
+*/
 .card:hover {
-    transform: scale(1.05);
-    background-color: #6a0dad;
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  background-color: #6a0dad;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Title inside each card */
 .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
+/* Lists (often used for bullet points in the phases) */
 .card ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
+  list-style: none; /* no default bullets */
+  padding: 0;
+  margin-bottom: 15px;
 }
 
 .card ul li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #dddddd;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #dddddd;
 }
 
+/* Custom bullet (•) with color and spacing */
 .card ul li::before {
-    content: "•";
-    color: #6a0dad;
-    font-weight: bold;
-    display: inline-block;
-    width: 1rem;
-    margin-right: 5px;
+  content: "•";
+  color: #6a0dad;
+  font-weight: bold;
+  display: inline-block;
+  width: 1rem;
+  margin-right: 5px;
 }
 
+/* Paragraphs within the card */
 .card p {
-    font-size: 1rem;
-    color: #dddddd;
-    line-height: 1.6;
+  font-size: 1rem;
+  color: #dddddd;
+  line-height: 1.6;
 }
 
-/* Responsive Design */
+/*
+  ============================================
+  Responsive Design
+  ============================================
+  - On screens narrower than 768px, we switch
+    to a single-column layout, stacking the cards.
+*/
 @media (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: 1fr; /* Single column for smaller screens */
-        gap: 20px;
-    }
+  .card-grid {
+    grid-template-columns: 1fr; /* Only 1 card per row on smaller screens */
+    gap: 20px;                  /* Reduce spacing for mobile */
+  }
 }
