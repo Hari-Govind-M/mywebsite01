@@ -1,0 +1,99 @@
+/* Conclusion Section */
+.conclusion-section {
+  position: relative;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #240046, #4a0d78); 
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden; /* For any absolute-positioned shapes or decorations */
+}
+
+/* Container Sizing */
+.conclusion-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main Heading */
+.conclusion-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  opacity: 0;             /* Start hidden for scroll reveal */
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Paragraphs */
+.conclusion-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  color: #ddd;
+  opacity: 0;             /* Start hidden for scroll reveal */
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Subheading for "Next Steps" */
+.conclusion-section h3 {
+  font-size: 1.4rem;
+  margin: 30px 0 15px;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Next Steps List */
+.next-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 30px auto;
+  max-width: 800px;
+  text-align: left; /* Left-align for better reading of bullet points */
+}
+
+.next-steps li {
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #6a0dad; /* Purple accent line */
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  color: #ddd;
+}
+
+.next-steps li strong {
+  color: #ffffff; /* White for the bold part */
+}
+
+/* Hover glow on list items */
+.next-steps li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left-color: #ff00c1; /* Magenta glow */
+}
+
+/* Final Paragraph for "closing" class */
+.conclusion-section p.closing {
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 30px;
+  font-size: 1.1rem;
+}
+
+/* -------------
+   Scroll Reveal
+   ------------- */
+.conclusion-section.visible h2,
+.conclusion-section.visible p,
+.conclusion-section.visible h3,
+.conclusion-section.visible .next-steps li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* We can stagger the list items in JS to get a cascade effect */
