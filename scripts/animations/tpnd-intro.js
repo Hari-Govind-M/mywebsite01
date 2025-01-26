@@ -1,35 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
+  // Select the particle container from the hero section
+  const particleContainer = document.querySelector('.particle-container');
 
-    // Function to update active slide
-    const updateSlider = () => {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active');
-            if (index === currentIndex) {
-                slide.classList.add('active');
-            }
-        });
-    };
+  // Adjust these for more/fewer particles or different behavior
+  const PARTICLE_COUNT = 30;     // How many particles to create
+  const MAX_SIZE = 10;          // Max particle diameter (pixels)
+  const MIN_SIZE = 3;           // Min particle diameter (pixels)
+  const MAX_SPEED = 1;          // Max vertical drift speed
+  const MIN_SPEED = 0.2;        // Min vertical drift speed
 
-    // Show the next slide
-    const showNextSlide = () => {
-        currentIndex = (currentIndex + 1) % slides.length; // Loop back to the first slide
-        updateSlider();
-    };
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    // Create a new particle div
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particleContainer.appendChild(particle);
 
-    // Show the previous slide
-    const showPrevSlide = () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Loop back to the last slide
-        updateSlider();
-    };
+    // Random size within the specified range
+    const size = Math.floor(Math.random() * (MAX_SIZE - MIN_SIZE + 1)) + MIN_SIZE;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
 
-    // Attach event listeners to buttons
-    nextBtn.addEventListener('click', showNextSlide);
-    prevBtn.addEventListener('click', showPrevSlide);
+    // Random initial position (percent of container width/height)
+    let currentX = Math.random() * 100;
+    let currentY = Math.random() * 100;
+    particle.style.left = `${currentX}%`;
+    particle.style.top = `${currentY}%`;
 
-    // Auto-play the slider every 5 seconds
-    setInterval(showNextSlide, 5000);
+    // Random drifting speed
+    const speed = (Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED;
+
+    // Define an animation loop to move particles upward
+    function drift() {
+      // Move upward by speed factor
+      currentY -= speed * 0.1;
+      // If particle goes off the top, wrap it to the bottom
+      if (currentY < -5) {
+        currentY = 105;
+        // Randomize X when it re-enters
+        currentX = Math.random() * 100;
+        particle.style.left = `${currentX}%`;
+      }
+      // Update position
+      particle.style.top = `${currentY}%`;
+      requestAnimationFrame(drift);
+    }
+
+    // Start drifting loop
+    drift();
+  }
 });
