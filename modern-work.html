@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Microsoft Security – TPnD Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SINGLE-FILE CONSOLIDATED CSS -->
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0; 
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1a0033; /* fallback color */
+      color: #fff;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    /* HERO SECTION (Reduced spacing, neon gradient) */
+    .sec-hero {
+      position: relative;
+      min-height: 50vh; /* reduced vertical space */
+      padding: 30px 0;
+      background: linear-gradient(135deg, #3b0d60, #1a0033);
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
+      background-size: 400% 400%;
+      animation: neonShift 12s ease infinite;
+      z-index: 1;
+    }
+    @keyframes neonShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .home-btn {
+      position: absolute;
+      top: 15px; 
+      right: 15px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 2;
+      font-weight: 500;
+    }
+    .home-btn:hover {
+      background-color: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2; /* above the hero-bg */
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* GLITCH HEADING with color shift animation */
+    .glitch {
+      font-size: 2.5rem;
+      margin: 10px 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(106,13,173,0.8), 0 0 16px rgba(106,13,173,0.6);
+      animation: glitchColorShift 3s infinite;
+    }
+    @keyframes glitchColorShift {
+      0%, 100% {
+        color: #fff;
+        text-shadow: 0 0 8px rgba(106,13,173,0.8), 0 0 16px rgba(106,13,173,0.6);
+      }
+      50% {
+        color: #ff00c1;
+        text-shadow: 0 0 8px #ff00c1, 0 0 16px #ff00c1;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 10px;
+    }
+
+    /* 
+      SECTION ANIMATIONS
+      We'll define left or right slide for entire sections.
+    */
+    .animated-left {
+      animation: slideFromLeft 1s ease forwards;
+    }
+    .animated-right {
+      animation: slideFromRight 1s ease forwards;
+    }
+    @keyframes slideFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* SECURITY CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .security-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;             /* We'll fade these in with JS. */
+      transform: translateY(20px);
+    }
+    .security-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* FAQ collapsible */
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+    }
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      text-align: left;
+    }
+    .faq-item.expanded .faq-answer {
+      max-height: 800px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="sec-hero">
+    <div class="hero-bg"></div>
+    <a href="index.html" class="home-btn">Home</a>
+    <div class="container hero-content">
+      <h1 class="glitch" data-text="Strengthen Your Defenses with Microsoft Security Solutions">
+        Strengthen Your Defenses with Microsoft Security Solutions
+      </h1>
+      <p class="hero-subtitle">
+        Protect Data, Devices, and Identities Using the Power of AI and Cloud-Driven Threat Intelligence
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY MICROSOFT SECURITY -->
+  <section class="why-security animated-left">
+    <div class="container">
+      <p>
+        In an era of escalating cyber threats, organizations are striving to safeguard data, devices, and cloud environments.
+        Microsoft Security solutions provide a comprehensive approach, spanning identity management, endpoint protection,
+        threat intelligence, and compliance. Whether you’re safeguarding a small business or a global enterprise,
+        Microsoft’s end-to-end security ecosystem helps you address modern security challenges while enabling secure productivity.
+      </p>
+      <p>
+        But implementing a holistic security strategy can be complex. That’s where the Technical Presales and Deployment (TPD)
+        team comes in. We provide tailored, one-on-one guidance to help you plan, build, sell, and grow secure solutions—leveraging
+        Azure Security, Microsoft 365 Defender, Microsoft Entra, Microsoft Purview, Microsoft Security Copilot, and beyond.
+      </p>
+      <h2>Why Microsoft Security?</h2>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>Comprehensive Threat Protection</h3>
+          <p>From Microsoft Defender for Endpoint to Microsoft Defender for Cloud and Microsoft Sentinel, Microsoft covers the entire attack chain—helping you detect, protect, and respond faster.</p>
+        </div>
+        <div class="security-card">
+          <h3>Identity-Centric Security</h3>
+          <p>Microsoft Entra (formerly Azure AD) delivers robust access management, multi-factor authentication, and identity governance across cloud and on-prem services.</p>
+        </div>
+        <div class="security-card">
+          <h3>Data Governance & Compliance</h3>
+          <p>Microsoft Purview helps classify, protect, and monitor data wherever it resides, simplifying compliance and reducing risk.</p>
+        </div>
+        <div class="security-card">
+          <h3>AI-Powered Insights</h3>
+          <p>Microsoft Security Copilot harnesses advanced AI and generative models to rapidly surface threats, simplify investigation, and accelerate incident response.</p>
+        </div>
+        <div class="security-card">
+          <h3>Unified Management</h3>
+          <p>Tools like Microsoft 365 Lighthouse and Microsoft Entra Permissions Management centralize oversight and simplify policy enforcement across multiple tenants or environments.</p>
+        </div>
+        <div class="security-card">
+          <h3>Hybrid & Multi-Platform Coverage</h3>
+          <p>Microsoft extends protection across on-premises, cloud, and edge—covering Windows, Linux, macOS, Android, and iOS devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICROSOFT SECURITY & DEVICES SOLUTIONS -->
+  <section class="solutions-section animated-right">
+    <div class="container">
+      <h2>Microsoft Security & Devices Solutions: A Full Spectrum of Services</h2>
+      <p>Below is a sampling of Microsoft’s vast security and device offerings that can benefit from TPD’s expertise:</p>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>Identity & Access Management</h3>
+          <p>Microsoft Entra ID, Microsoft Entra ID Protection, Verified ID, External ID (B2B/B2C), Permissions Management...</p>
+        </div>
+        <div class="security-card">
+          <h3>Endpoint & Device Security</h3>
+          <p>Microsoft Defender for Endpoint, Configuration Manager, Intune, Surface Devices, Windows 10/11, Windows 365</p>
+        </div>
+        <div class="security-card">
+          <h3>Cloud Security</h3>
+          <p>Azure Firewall, DDoS Protection, Microsoft Defender for Cloud, Defender for Containers, Defender for SQL...</p>
+        </div>
+        <div class="security-card">
+          <h3>Threat Intelligence & Detection</h3>
+          <p>Microsoft Sentinel, Microsoft Defender Threat Intelligence, Defender XDR, Defender for Cloud Apps</p>
+        </div>
+        <div class="security-card">
+          <h3>Data Protection & Compliance</h3>
+          <p>Microsoft Purview (Data Governance/Security/Compliance), Microsoft Priva, Azure Key Vault, Log Analytics</p>
+        </div>
+        <div class="security-card">
+          <h3>Productivity & Collaboration Security</h3>
+          <p>Microsoft 365 Defender, Defender for Office 365, Microsoft 365 Apps, Microsoft 365 Lighthouse</p>
+        </div>
+        <div class="security-card">
+          <h3>AI & Next-Gen Security</h3>
+          <p>Microsoft Security Copilot, Microsoft Defender for DevOps, Microsoft Defender for IoT</p>
+        </div>
+        <div class="security-card">
+          <h3>Misc. Solutions</h3>
+          <p>MS Antimalware for Azure, Windows Security Baselines, etc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL-WORLD SCENARIOS -->
+  <section class="scenarios-section animated-left">
+    <div class="container">
+      <h2>Real-World Security Scenarios & How TPD Helps</h2>
+      <ol style="margin-top: 15px;">
+        <li>
+          <strong>Closing Deals on Comprehensive Security Solutions:</strong> A mid-sized business suffers frequent phishing attacks...
+          TPD helps with Defender demos, licensing advice, identity protection with Microsoft Entra.
+        </li>
+        <li>
+          <strong>Ensuring Hybrid Cloud Security:</strong> Multi-cloud (Azure, AWS) real-time unified security. TPD uses Defender for Cloud, Sentinel, Firewall + DDoS.
+        </li>
+        <li>
+          <strong>Protecting Identities & Building Zero Trust:</strong> Entra ID, Conditional Access, MFA, Verified ID. TPD helps apply Zero Trust without harming productivity.
+        </li>
+        <li>
+          <strong>Securing Application Development & DevOps:</strong> Need vulnerability detection in CI/CD, container security.
+          TPD recommends Defender for DevOps, Defender for Containers, logs into Sentinel.
+        </li>
+        <li>
+          <strong>Data Governance & Compliance at Scale:</strong> A financial institution uses Purview for classification, Key Vault encryption, auditing with Defender for SQL.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TPD ENGAGEMENT MODEL -->
+  <section class="engagement-model-section animated-right">
+    <div class="container">
+      <h2>TPD Engagement Model for Microsoft Security</h2>
+      <ol style="margin-top: 15px;">
+        <li>
+          <strong>Plan & Envision:</strong> Threat landscape analysis, pick relevant security services, licensing & ROI talks.
+        </li>
+        <li>
+          <strong>Build & Configure:</strong> Configure Defender, Entra, do POCs, set governance & baselines.
+        </li>
+        <li>
+          <strong>Sell & Adopt:</strong> Technical demos, objection handling, user/admin readiness for incident response.
+        </li>
+        <li>
+          <strong>Grow & Optimize:</strong> Post-deployment reviews, advanced expansions (Security Copilot, IoT).
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SUCCESS STORIES -->
+  <section class="success-stories-section animated-left">
+    <div class="container">
+      <h2>Success Stories</h2>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>1. Manufacturing Firm Deploys XDR</h3>
+          <p><strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.</p>
+          <p><strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel, knowledge transfer.</p>
+          <p><strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.</p>
+        </div>
+        <div class="security-card">
+          <h3>2. Global Retailer Embraces Zero Trust</h3>
+          <p><strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.</p>
+          <p><strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID, integrated Defender for Endpoint on store devices, introduced Security Copilot.</p>
+          <p><strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.</p>
+        </div>
+        <div class="security-card">
+          <h3>3. Healthcare Provider Adopts Purview & Priva</h3>
+          <p><strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.</p>
+          <p><strong>TPD Involvement:</strong> Set up Microsoft Purview classification, Microsoft Priva for controlling personal data usage, used Key Vault for encryption.</p>
+          <p><strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse, improved data transparency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ENGAGE TPD -->
+  <section class="engage-tpd-section animated-right">
+    <div class="container">
+      <h2>How to Engage TPD for Security</h2>
+      <p>
+        Check Your Partner Benefits: Sign in to Partner Center and ensure your account is linked 
+        to the Microsoft AI Cloud Partner Program under Benefits → Technical presales & deployment. 
+        Confirm your eligibility (Solutions Partner, Action Pack, Legacy Gold/Silver).
+      </p>
+
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Submit a TPD Request</strong> →
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Collaborate & Execute</strong> →
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
+          <strong>Optimize & Evolve</strong>
+        </div>
+      </div>
+      <p>
+        Outline your scenario—adopting Defender for Cloud, migrating to Microsoft Sentinel, implementing Zero Trust 
+        with Microsoft Entra. Expect a TPD response within two business days to discuss presales or deployment best practices. 
+        Re-engage TPD for advanced integrations like Security Copilot or expansions into IoT/DevOps.
+      </p>
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="faq-section animated-left">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Q1: Does TPD provide 24/7 monitoring or incident response services?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> TPD focuses on technical presales and deployment. For continuous monitoring or emergency support, consider Premier Support, Advanced Support for Partners, or an MSSP.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q2: My solution uses multiple Azure security products—can TPD help integrate them?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Absolutely. TPD can assist in designing unified solutions across Azure Firewall, DDoS Protection, Defender for Cloud, Sentinel, and more.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q3: How does TPD handle compliance regs like GDPR, HIPAA, or PCI?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> TPD recommends Microsoft tools (Purview, Priva, encryption) that address regulations, but your legal team must validate final compliance readiness.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q4: Is Microsoft Security Copilot generally available?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Availability may vary. TPD can share the latest info on evaluating or enrolling in Security Copilot.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Q5: Can TPD help with device‐specific solutions like Surface or OEM device security?</div>
+        <div class="faq-answer">
+          <p><strong>A:</strong> Yes. TPD can guide Windows security features, Surface device management, Endpoint Management, and more to keep endpoints secure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSION: DEFEND YOUR BUSINESS -->
+  <section class="conclusion-section animated-right">
+    <div class="container">
+      <h2>Defend Your Business with Confidence</h2>
+      <p>
+        From Azure and Microsoft 365 to Microsoft Entra and Microsoft Purview, Microsoft delivers a vast ecosystem of 
+        security solutions designed to protect your customers at every layer. By partnering with Technical Presales 
+        and Deployment, you’ll gain:
+      </p>
+      <ul style="list-style: none; padding: 0; margin: 15px 0;">
+        <li><strong>Expert Presales Guidance</strong> – to showcase the unique value of Microsoft’s integrated security offerings.</li>
+        <li><strong>Deployment Best Practices</strong> – reduce complexity and speed up time-to-protection.</li>
+        <li><strong>Knowledge Transfer & Ongoing Optimization</strong> – stay ahead of emerging threats and compliance demands.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEXT STEP -->
+  <section class="next-step-section animated-left">
+    <div class="container">
+      <h2>Take the Next Step</h2>
+      <p>
+        <strong>Schedule a TPD Consultation</strong> – Let’s discuss your security goals, challenges, and how we can help.
+      </p>
+      <p>
+        <strong>Submit a TPD Services Request</strong> – Already know what you need? Open a case and get started right away.
+      </p>
+      <p>
+        <strong>Explore Other Solution Areas</strong> – See how TPD can also support Data & AI, Modern Work, and more.
+      </p>
+      <p>
+        Partner with TPD to build end-to-end security solutions that instill confidence, drive trust, 
+        and protect what matters most—so your customers can thrive in an increasingly connected world.
+      </p>
+    </div>
+  </section>
+
+  <!-- SINGLE-FILE JS -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Immediately reveal sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.add('visible'));
+
+    // Fade/stagger for security-card elements
+    const allCards = document.querySelectorAll('.security-card');
+    allCards.forEach((card, index) => {
+      card.style.transitionDelay = (index * 0.1) + 's';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+
+    // Collapsible FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('expanded');
+      });
+    });
+  });
+  </script>
+</body>
+</html>
