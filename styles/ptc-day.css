@@ -1,1 +1,100 @@
+/************************************************
+  Basic Page & Gradient Background
+************************************************/
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1a0033, #3b0d60); /* Gradient like other pages */
+  color: #ffffff; /* White text */
+}
+
+/* Optional: Back button to homepage */
+.back-btn {
+  display: inline-block;
+  margin: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/************************************************
+  Main Container
+************************************************/
+.ptc-day-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title */
+.ptc-day-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/************************************************
+  Card Layout
+************************************************/
+.ptc-day-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* spacing between cards */
+  max-width: 1000px;
+  margin: 0 auto; /* center the cards */
+}
+
+/* Each card */
+.ptc-card {
+  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent white for a slight highlight */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Card hover effect */
+.ptc-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Heading & text inside each card */
+.ptc-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+.ptc-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #f0f0f0;
+  font-size: 1rem;
+}
+
+/************************************************
+  Responsive
+************************************************/
+@media (max-width: 768px) {
+  .ptc-day-container h1 {
+    font-size: 1.6rem;
+  }
+  .ptc-card h2 {
+    font-size: 1.2rem;
+  }
+  .ptc-card p {
+    font-size: 0.95rem;
+  }
+}
 
