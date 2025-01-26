@@ -1,109 +1,49 @@
 /* Core Solution Areas Section */
 .core-solution-cards {
-  padding: 40px 20px;
+  padding: 20px; /* Reduced overall padding */
   background: linear-gradient(135deg, #6a0dad, #2f1854);
   color: #ffffff;
   text-align: center;
-  perspective: 1000px; /* Needed for 3D tilt effect on child elements */
+  perspective: 1000px; /* Needed if you’re using 3D tilt on cards */
 }
 
 .core-solution-cards h2 {
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Reduced spacing below title */
 }
 
-/* Intro Paragraph Below H2 */
 .core-solution-cards p {
-  max-width: 800px;
-  margin: 0 auto 30px auto;
+  max-width: 700px; /* Slightly narrower text */
+  margin: 0 auto 20px auto; /* Less bottom margin */
   font-size: 1.1rem;
   color: #ddd;
-  line-height: 1.6;
+  line-height: 1.5; /* Slightly tighter line spacing */
 }
 
-/* Card Grid Layout */
+/* Card Grid Layout (2 rows x 3 columns on large screens) */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+  gap: 20px; /* Reduced gap to save space */
   justify-content: center;
   align-items: stretch;
 }
 
-/* Individual Card */
+/* Individual Card (reduced padding to save space) */
 .card {
-  /* Existing styling */
   background-color: #240046;
-  padding: 25px;
+  padding: 20px; /* Down from 25px */
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: left;
   color: #ddd;
-  /* Start invisible & slightly shifted for fade/slide on scroll */
-  opacity: 0;
-  transform: translateY(20px);
-  /* Transition for fade/slide + hover effects */
+  opacity: 0;                 /* for any fade-in script */
+  transform: translateY(20px);/* for any fade-in script */
   transition:
     opacity 0.6s ease,
     transform 0.6s ease,
     background 1s ease,
     box-shadow 0.3s ease;
-  /* For 3D tilt, child elements remain in the same 3D space */
-  transform-style: preserve-3d;
+  position: relative; /* If you’re using a neon border pseudo-element */
+  transform-style: preserve-3d; /* If you’re using 3D tilt on hover */
 }
-
-/* Visible state after scroll reveal */
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Card Title Styling */
-.card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #ffffff;
-}
-
-/* Card Text */
-.card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-/* ----------- Hover Effects ----------- */
-.card:hover {
-  /* Slight scale + 3D tilt */
-  transform: scale(1.03) rotateX(6deg) rotateY(-6deg);
-  /* Neon glow around card */
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
-  /* Animated gradient shift */
-  background: linear-gradient(-45deg, #6a0dad, #ff00c1);
-}
-
-/* Optional: Add a neon border pseudo-element if you want an outline */
-.card::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  pointer-events: none;
-  transition: border-color 0.3s;
-  /* Because we're using position: absolute, ensure .card is position: relative */
-}
-
-.card {
-  position: relative; /* So pseudo-element aligns correctly */
-}
-
-.card:hover::before {
-  border-color: #6a0dad; /* Purple neon border on hover */
-}
-
-/* If you want to refine the final look,
-   adjust the scale factor, tilt angles, hover box-shadow, etc. */
