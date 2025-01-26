@@ -1,23 +1,145 @@
-/* Hero Section */
+/* ---------------
+   Hero Section
+   --------------- */
 .hero-section {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #240046, #6a0dad);
-    color: #ffffff;
-    text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #240046, #6a0dad);
+  color: #ffffff;
+  text-align: center;
+
+  /* Start invisible for a fade-in effect */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
 
-.hero-section h1 {
-    font-size: 3rem; /* Title size */
-    margin-bottom: 20px; /* Spacing below the title */
-    font-weight: bold; /* Bold for emphasis */
+/* When JS adds this class, fade to full opacity */
+.hero-section.visible {
+  opacity: 1;
 }
 
+/* Container styling for narrower text columns */
+.hero-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---------------
+   Paragraph Text
+   --------------- */
 .hero-section p {
-    font-size: 1.2rem; /* Slightly larger font for better readability */
-    line-height: 1.8; /* Improve line spacing */
-    margin-bottom: 20px; /* Consistent spacing between paragraphs */
-    color: #dddddd; /* Subtle text color for contrast */
-    max-width: 800px; /* Constrain width for readability */
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 1.2rem; 
+  line-height: 1.8; 
+  margin-bottom: 20px; 
+  color: #dddddd; 
+}
+
+/* ---------------
+   Glitch Heading
+   --------------- */
+.glitch {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+
+  /* Neon-like text shadow for a futuristic vibe */
+  text-shadow:
+    0 0 8px rgba(106, 13, 173, 0.8),
+    0 0 16px rgba(106, 13, 173, 0.6);
+}
+
+/* Pseudo-elements for layered glitch */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* This will change in keyframes */
+}
+
+/* Magenta offset glitch */
+.glitch::before {
+  text-shadow: -2px 0 #ff00c1;
+  top: 0;
+  color: #fff;
+  z-index: 1;
+  animation: glitch-top 2.5s infinite linear alternate-reverse;
+}
+
+/* Cyan offset glitch */
+.glitch::after {
+  text-shadow: -2px 0 #00fff9;
+  top: 0;
+  color: #fff;
+  z-index: 2;
+  animation: glitch-bottom 2.5s infinite linear alternate-reverse;
+}
+
+/* ---------------
+   Keyframes
+   --------------- */
+@keyframes glitch-top {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+  10% {
+    clip: rect(10px, 9999px, 40px, 0);
+    transform: translate(-5px, -5px);
+  }
+  20% {
+    clip: rect(10px, 9999px, 80px, 0);
+    transform: translate(5px, -1px);
+  }
+  30% {
+    clip: rect(40px, 9999px, 90px, 0);
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    clip: rect(20px, 9999px, 30px, 0);
+    transform: translate(2px, -2px);
+  }
+  50% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitch-bottom {
+  0% {
+    clip: rect(80px, 9999px, 90px, 0);
+    transform: translate(0, 0);
+  }
+  10% {
+    clip: rect(0, 9999px, 30px, 0);
+    transform: translate(3px, 3px);
+  }
+  20% {
+    clip: rect(60px, 9999px, 80px, 0);
+    transform: translate(-3px, 3px);
+  }
+  30% {
+    clip: rect(40px, 9999px, 60px, 0);
+    transform: translate(2px, -3px);
+  }
+  40% {
+    clip: rect(20px, 9999px, 60px, 0);
+    transform: translate(-1px, 2px);
+  }
+  50% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0, 0);
+  }
+  100% {
+    clip: rect(60px, 9999px, 80px, 0);
+    transform: translate(0, 0);
+  }
 }
