@@ -51,19 +51,24 @@
   ============================================
   Individual Card
   ============================================
-  - Each card starts invisible for a potential
-    scroll reveal fade/slide-in animation.
-  - On hover, there's a tilt & glow effect.
+  - Now we're assuming .card is an <a> anchor, so 
+    make the entire block clickable and keep existing 
+    hover, fade, tilt, etc. logic.
 */
 .card {
+  display: block;              /* Full block area is clickable */
+  text-decoration: none;       /* No underline, typical for link cards */
+  color: inherit;              /* Inherit text color from the card style */
+
   background-color: #240046;
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  text-align: center; /* Center text within the card */
-  color: #ddd;
+  text-align: center;          /* Center text within the card */
+  position: relative;
+  transform-style: preserve-3d; /* For 3D tilt on hover */
 
-  /* Initial animation state */
+  /* Fade-in / slide-in logic (initial state) */
   opacity: 0;
   transform: translateY(12px);
   transition:
@@ -71,13 +76,10 @@
     transform 0.5s ease,
     background 0.8s ease,
     box-shadow 0.3s ease;
-  position: relative;
-  transform-style: preserve-3d; /* For 3D tilt on hover */
 }
 
 /* 
-  When .visible is added (e.g., via scroll reveal JS),
-  the card fully fades in and slides up.
+  Reveal the card (fade/slide in) once .visible is added by JS.
 */
 .card.visible {
   opacity: 1;
@@ -98,6 +100,7 @@
   font-size: 0.9rem;
   line-height: 1.3;
   margin-bottom: 4px; /* Tighter spacing between paragraphs */
+  color: #ddd;
 }
 
 /*
@@ -111,6 +114,8 @@
   transform: scale(1.02) rotateX(4deg) rotateY(-4deg);
   box-shadow: 0 0 12px rgba(106, 13, 173, 0.4);
   background: linear-gradient(-45deg, #6a0dad, #ff00c1);
+  color: #ffffff;         /* Ensure text is still visible on the new bg gradient */
+  text-decoration: none;  /* Remove any underlines on hover, too */
 }
 
 /* 
