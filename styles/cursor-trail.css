@@ -1,26 +1,23 @@
-/* Hide the system cursor so we see only the spark trails
-   (You can also put this in your main CSS, or inline <style> in <head>) */
+/* If you DO NOT want to hide the system cursor, simply remove "cursor: none;" */
 body {
-  cursor: none;
+  /* cursor: none; */ /* <-- Comment this out so the pointer remains visible */
 }
 
 /* Spark styling */
 .cursor-spark {
-  position: fixed;              /* so each spark sits at exact x, y coordinates */
-  pointer-events: none;         /* allow clicks to pass through sparks */
-  width: 8px;                   /* spark diameter */
-  height: 8px;                  /* spark diameter */
-  border-radius: 50%;           /* circle shape */
-  background-color: #ff00c1;    /* neon pink color, tweak to your taste */
-  box-shadow: 0 0 8px #ff00c1;  /* neon glow around each spark */
+  position: fixed;       /* each spark at exact x, y coords */
+  pointer-events: none;  /* let clicks pass through sparks */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff00c1;  /* neon pink color */
+  box-shadow: 0 0 8px #ff00c1;/* glowing effect */
   opacity: 1;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Optional fade-out class if you plan to add it in your JS 
-   (e.g., spark.classList.add('fade-out') before removal) */
+/* Optional fade-out if you add it in JS */
 .fade-out {
   opacity: 0;
   transform: scale(0);
 }
-
