@@ -1,27 +1,58 @@
-/* General Styles */
+/*
+  ============================================
+  Base / General Styles
+  ============================================
+  - Defines the default font, background gradient,
+    and overall text sizing/color for the site.
+*/
+
 body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: #ffffff;
-    background: linear-gradient(180deg, #1a0033, #3b0d60);
-    line-height: 1.6;
+  margin: 0;                          /* Remove default browser margin */
+  font-family: 'Inter', sans-serif;   /* Main font family across the site */
+  color: #ffffff;                     /* Default text color */
+  background: linear-gradient(180deg, #1a0033, #3b0d60); 
+  /* 
+    Vertical gradient from dark purple (#1a0033) at top 
+    to a more vibrant purple (#3b0d60) at bottom.
+  */
+  line-height: 1.6; /* Baseline line spacing for body text */
 }
 
+/*
+  ============================================
+  Container Class
+  ============================================
+  - A reusable utility for max-width layouts 
+    and horizontal centering.
+*/
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px; /* Constrain content to 1200px on wide screens */
+  margin: 0 auto;    /* Center the container horizontally */
+  padding: 20px;     /* Basic padding inside the container */
 }
 
+/*
+  ============================================
+  Headings (h2)
+  ============================================
+  - Common styling for h2 headings site-wide.
+  - Usually aligned center with extra spacing.
+*/
 h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
 }
 
+/*
+  ============================================
+  Paragraphs (p)
+  ============================================
+  - Default paragraph text color, line height, and sizing.
+*/
 p {
-    color: #ddd;
-    line-height: 1.6;
-    font-size: 1rem;
+  color: #ddd;         /* Slightly lighter text color than white */
+  line-height: 1.6;
+  font-size: 1rem;     /* Standard text size for paragraphs */
 }
