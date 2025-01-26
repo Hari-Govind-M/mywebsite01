@@ -1,41 +1,51 @@
-/* ---------------
-   Hero Section
-   --------------- */
+/*
+  ============================================
+  Hero Section (Why TPnD Matters)
+  ============================================
+  - Showcases a gradient background with fade-in and a glitch heading.
+*/
 .hero-section {
   padding: 60px 20px;
   background: linear-gradient(135deg, #240046, #6a0dad);
   color: #ffffff;
   text-align: center;
 
-  /* Start invisible for a fade-in effect */
+  /* Begin at opacity:0 for a fade-in effect triggered by JS or scroll events */
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
 
-/* When JS adds this class, fade to full opacity */
+/* Class added by JS to fade the section into view */
 .hero-section.visible {
   opacity: 1;
 }
 
-/* Container styling for narrower text columns */
+/* Container for narrower text columns, centered content */
 .hero-section .container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* ---------------
-   Paragraph Text
-   --------------- */
+/*
+  ============================================
+  Paragraph Text
+  ============================================
+  - Slightly larger font, easy to read. 
+*/
 .hero-section p {
-  font-size: 1.2rem; 
-  line-height: 1.8; 
-  margin-bottom: 20px; 
-  color: #dddddd; 
+  font-size: 1.2rem;  /* A bit bigger for hero text */
+  line-height: 1.8;   /* Roomy line spacing */
+  margin-bottom: 20px;
+  color: #dddddd;     /* Subtle contrast against the background */
 }
 
-/* ---------------
-   Glitch Heading
-   --------------- */
+/*
+  ============================================
+  Glitch Heading
+  ============================================
+  - Large glitch effect using pseudo-elements that animate
+    offset and clip rect transformations for a "flicker."
+*/
 .glitch {
   position: relative;
   display: inline-block;
@@ -44,24 +54,28 @@
   text-transform: uppercase;
   text-align: center;
 
-  /* Neon-like text shadow for a futuristic vibe */
+  /* A neon-like shadow behind the text for that futuristic vibe */
   text-shadow:
     0 0 8px rgba(106, 13, 173, 0.8),
     0 0 16px rgba(106, 13, 173, 0.6);
 }
 
-/* Pseudo-elements for layered glitch */
+/* 
+  Pseudo-elements for glitch layers:
+  - "Magenta" offset on ::before
+  - "Cyan" offset on ::after
+*/
 .glitch::before,
 .glitch::after {
-  content: attr(data-text);
+  content: attr(data-text);     /* Use the data-text attribute from HTML */
   position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0); /* This will change in keyframes */
+  clip: rect(0, 0, 0, 0);       /* Initially clipped out */
 }
 
-/* Magenta offset glitch */
+/* Magenta glitch top layer */
 .glitch::before {
   text-shadow: -2px 0 #ff00c1;
   top: 0;
@@ -70,7 +84,7 @@
   animation: glitch-top 2.5s infinite linear alternate-reverse;
 }
 
-/* Cyan offset glitch */
+/* Cyan glitch bottom layer */
 .glitch::after {
   text-shadow: -2px 0 #00fff9;
   top: 0;
@@ -79,9 +93,13 @@
   animation: glitch-bottom 2.5s infinite linear alternate-reverse;
 }
 
-/* ---------------
-   Keyframes
-   --------------- */
+/*
+  ============================================
+  Glitch Keyframes
+  ============================================
+  - Animations for top/bottom layers, shifting 
+    clip rect & transform to simulate random flickers.
+*/
 @keyframes glitch-top {
   0% {
     clip: rect(0, 9999px, 0, 0);
