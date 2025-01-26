@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.core-solution-cards .card');
-  const container = document.querySelector('.core-solution-cards');
 
-  // Check if element is in the viewport
+  // Function to check if element is in viewport
   function isInViewport(elem) {
     const rect = elem.getBoundingClientRect();
     return (
@@ -11,11 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // Reveal cards with a staggered effect
+  // Reveal cards with a stagger effect
   function revealCards() {
     cards.forEach((card, index) => {
       if (isInViewport(card) && !card.classList.contains('visible')) {
-        // Stagger by index * 150ms
         setTimeout(() => {
           card.classList.add('visible');
         }, index * 150);
@@ -23,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Listen for scroll & on load
+  // Listen for scroll + run on load
   window.addEventListener('scroll', revealCards);
-  revealCards(); // Trigger the reveal in case some cards are already visible
+  revealCards();
 });
