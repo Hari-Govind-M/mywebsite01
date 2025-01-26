@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business Applications – TPnD Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Inline CSS for convenience -->
+  <style>
+    /* =======================================
+       BASIC RESET & BODY SETUP
+    ======================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      background-color: #240046; /* fallback color */
+      color: #fff;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #ffdfff;
+    }
+
+    /* Headings and text spacing */
+    h1, h2, h3 {
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 2.6rem;
+      margin-top: 0.4em;
+    }
+    h2 {
+      font-size: 1.9rem;
+      margin-top: 1em;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1em;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+
+    /* Container helper */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    /* =======================================
+       HERO SECTION
+    ======================================= */
+    .biz-hero {
+      position: relative;
+      min-height: 70vh;
+      padding: 80px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .biz-hero .hero-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
+      background-size: 400% 400%;
+      animation: neonShift 12s ease infinite;
+      z-index: 1;
+    }
+    @keyframes neonShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .home-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(4px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 2;
+    }
+    .home-btn:hover {
+      background-color: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .biz-hero .container.hero-content {
+      position: relative;
+      z-index: 3; /* above background */
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .glitch {
+      display: inline-block;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 8px rgba(106,13,173,0.8),
+        0 0 16px rgba(106,13,173,0.6);
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #ddd;
+      margin-top: 1em;
+      margin-bottom: 0.2em;
+    }
+
+    /* =======================================
+       SCROLL FADE-IN (Sections + Cards)
+    ======================================= */
+    section {
+      opacity: 0; /* hidden by default */
+      transition: opacity 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+    }
+    /*
+      Once the parent section is visible, 
+      we ensure child cards transition from 
+      opacity:0, transform: translateY(20px)
+      to opacity:1, transform: none.
+    */
+    section.visible .why-focus-card,
+    section.visible .portfolio-card,
+    section.visible .challenge-card,
+    section.visible .tpd-step,
+    section.visible .story-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =======================================
+       WHY BUSINESS APPLICATIONS
+    ======================================= */
+    .why-biz-apps {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+    }
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .why-focus-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0; 
+      transform: translateY(20px);
+    }
+    .why-focus-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* =======================================
+       BUSINESS APPLICATIONS PORTFOLIO
+    ======================================= */
+    .biz-portfolio {
+      background: linear-gradient(135deg, #2f1854, #6a0dad);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .portfolio-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .portfolio-card:hover {
+      transform: scale(1.04) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* =======================================
+       COMMON CHALLENGES & HOW TPD HELPS
+    ======================================= */
+    .biz-challenges {
+      background: linear-gradient(135deg, #330052, #a01acb);
+    }
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .challenge-card {
+      background-color: rgba(0,0,0,0.2);
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .challenge-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* =======================================
+       TPD ENGAGEMENT MODEL
+    ======================================= */
+    .tpd-engagement-model {
+      background: linear-gradient(135deg, #240046, #3b0d60);
+    }
+    .tpd-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .tpd-step {
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .tpd-step:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* =======================================
+       SUCCESS STORIES
+    ======================================= */
+    .success-stories {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .story-card {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .story-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* =======================================
+       HOW TO GET STARTED
+    ======================================= */
+    .how-to-get-started {
+      background: linear-gradient(135deg, #6a0dad, #ff00c1);
+    }
+    .steps-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 1.5em 0;
+    }
+    .step-card {
+      background-color: rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .step-card:hover {
+      transform: scale(1.05);
+    }
+    @keyframes heartbeat {
+      0%   { transform: scale(1);   }
+      30%  { transform: scale(1.05);}
+      40%  { transform: scale(1);   }
+      70%  { transform: scale(1.05);}
+      100% { transform: scale(1);   }
+    }
+    .heartbeat {
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    .arrow {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+    }
+
+    /* =======================================
+       FAQ SECTION
+    ======================================= */
+    .business-faq {
+      background: #330052;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+    }
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.expanded .faq-answer {
+      max-height: 600px;
+    }
+
+    /* =======================================
+       CTA SECTIONS
+    ======================================= */
+    .biz-cta {
+      background: linear-gradient(135deg, #3b0d60, #a01acb);
+    }
+    .biz-next-step {
+      background: linear-gradient(135deg, #240046, #5f0f99);
+    }
+    .partnering-bullets {
+      list-style: none;
+      margin: 1em 0;
+      padding: 0;
+    }
+    .partnering-bullets li {
+      margin-bottom: 0.5em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===============================================
+       HERO
+  ================================================== -->
+  <section class="biz-hero">
+    <div class="hero-bg"></div>
+    <a href="index.html" class="home-btn">Home</a>
+    <div class="container hero-content">
+      <h1 class="glitch">
+        Unlock Intelligent Customer Engagement with Business Applications
+      </h1>
+      <p class="subtitle">
+        Empower Better, Faster Decisions Through Dynamics 365, Power Platform, and AI-Driven Solutions
+      </p>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       INTRO + WHY FOCUS ON BUSINESS APPS
+  ================================================== -->
+  <section class="why-biz-apps">
+    <div class="container">
+      <p>
+        Keeping pace with customers’ evolving needs and expectations is crucial in today’s fast-moving marketplace. 
+        Microsoft Business Applications—spanning Dynamics 365, Power Platform, Microsoft Sales Copilot, and specialized 
+        industry accelerators—helps you not just keep up but stand out. By offering data-driven insights, streamlined 
+        processes, and AI-powered experiences, these solutions enable your customers to boost engagement, deliver 
+        outstanding service, and drive meaningful business outcomes.
+      </p>
+      <p>
+        However, navigating this ecosystem—selling solutions effectively, tackling technical complexities, and ensuring 
+        seamless deployment—can be challenging. That’s where the Technical Presales and Deployment (TPD) team comes in. 
+        We provide expert guidance and hands-on support to help you plan, build, sell, and grow your Business Applications 
+        practice with confidence.
+      </p>
+
+      <h2>Why Focus on Business Applications?</h2>
+      <div class="why-cards">
+        <div class="why-focus-card">
+          <h3>Personalized Customer Engagement</h3>
+          <p>
+            Dynamics 365 Customer Insights and AI Builder empower businesses to understand and segment their audience 
+            more effectively, creating tailor‐made interactions.
+          </p>
+        </div>
+        <div class="why-focus-card">
+          <h3>End-to-End Operational Efficiency</h3>
+          <p>
+            Solutions like Dynamics 365 Field Service, Power Automate, and Power Apps help streamline workflows, reduce 
+            errors, and free up staff for higher-value tasks.
+          </p>
+        </div>
+        <div class="why-focus-card">
+          <h3>Actionable Insights &amp; Analytics</h3>
+          <p>
+            With Power BI and Dataverse, organizations can unify data from various sources, turning raw information 
+            into real-time, actionable analytics.
+          </p>
+        </div>
+        <div class="why-focus-card">
+          <h3>AI-Driven Capabilities</h3>
+          <p>
+            Microsoft Copilot for Sales, Microsoft Copilot for Service, and Microsoft Copilot Studio infuse AI into 
+            day-to-day tasks, reducing manual effort and uncovering insights at scale.
+          </p>
+        </div>
+        <div class="why-focus-card">
+          <h3>Industry-Focused Accelerators</h3>
+          <p>
+            Specialized accelerators for Automotive, Nonprofit, Education, Telecommunications, and more help partners 
+            quickly build vertical solutions aligned with industry best practices.
+          </p>
+        </div>
+        <div class="why-focus-card">
+          <h3>Integration with LinkedIn</h3>
+          <p>
+            Tools like LinkedIn Sales Navigator for Dynamics 365 and LinkedIn Lead Gen Forms allow for seamless lead 
+            management and relationship‐building right in the CRM environment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       MICROSOFT BUSINESS APPLICATIONS PORTFOLIO
+  ================================================== -->
+  <section class="biz-portfolio">
+    <div class="container">
+      <h2>Microsoft Business Applications: A Comprehensive Portfolio</h2>
+      <p>
+        Below is a snapshot of services, accelerators, and platforms that fall under Business Applications and can 
+        benefit from TPD’s expertise:
+      </p>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <h3>Dynamics 365</h3>
+          <p>(Sales, Field Service, Customer Service, Customer Insights, Remote Assist, etc.)</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Microsoft Copilot</h3>
+          <p>(for Sales, Service, and Studio)</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Power Platform</h3>
+          <p>(Power Apps, Power Automate, Power BI, Power Pages, AI Builder)</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Industry Accelerators</h3>
+          <p>(Automotive, Nonprofit, Education, Telecommunications, etc.)</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Microsoft Relationship Sales</h3>
+          <p>(CRM + LinkedIn Sales Navigator)</p>
+        </div>
+        <div class="portfolio-card">
+          <h3>Microsoft Customer Experience Platform</h3>
+        </div>
+        <div class="portfolio-card">
+          <h3>Microsoft Sales Copilot</h3>
+        </div>
+        <div class="portfolio-card">
+          <h3>Microsoft Digital Contact Center Platform</h3>
+        </div>
+      </div>
+      <p style="margin-top:1em;">
+        With these tools, partners can deliver end-to-end solutions—from building robust CRMs and automating entire 
+        business processes to delivering AI-driven insights for proactive customer engagement.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       COMMON CHALLENGES & HOW TPD HELPS
+  ================================================== -->
+  <section class="biz-challenges">
+    <div class="container">
+      <h2>Common Challenges &amp; How TPD Helps</h2>
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <h3>1. Closing Complex Deals &amp; Differentiating Your Offer</h3>
+          <p><strong>Scenario:</strong> A client is unsure about migrating from a legacy CRM to Dynamics 365 Sales, or adopting Microsoft Sales Copilot.</p>
+          <p><strong>TPD Support:</strong> Presales demos featuring user-friendly integrations, cost-of-ownership discussions, and specialized accelerators to highlight quick wins.</p>
+        </div>
+        <div class="challenge-card">
+          <h3>2. Architecting Unified Customer Insights</h3>
+          <p><strong>Scenario:</strong> Client data is scattered across systems, needing a 360-degree view.</p>
+          <p><strong>TPD Support:</strong> Dynamics 365 Customer Insights for data unification, Power BI dashboards, and AI Builder for predictive analytics.</p>
+        </div>
+        <div class="challenge-card">
+          <h3>3. Building Low-Code, High-Impact Apps</h3>
+          <p><strong>Scenario:</strong> Client lacks budget or skillset for custom dev, but wants to automate processes.</p>
+          <p><strong>TPD Support:</strong> Best practices for Power Apps, Power Automate, and AI Builder to enhance apps with minimal code.</p>
+        </div>
+        <div class="challenge-card">
+          <h3>4. Enabling AI-Driven Sales &amp; Service</h3>
+          <p><strong>Scenario:</strong> A retailer wants conversational AI, predictive insights, or recommendation engines.</p>
+          <p><strong>TPD Support:</strong> Microsoft Copilot for Service, cross-selling strategies via Microsoft Copilot for Sales, ensuring responsible AI usage.</p>
+        </div>
+        <div class="challenge-card">
+          <h3>5. Rapid Deployment &amp; Industry Accelerators</h3>
+          <p><strong>Scenario:</strong> Telco firm needs a vertical CRM quickly but is new to the Telco Accelerator.</p>
+          <p><strong>TPD Support:</strong> Step-by-step guidance on accelerator capabilities, best practices for custom configuration, knowledge transfer for post-deployment independence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       TPD ENGAGEMENT MODEL FOR BUSINESS APPLICATIONS
+  ================================================== -->
+  <section class="tpd-engagement-model">
+    <div class="container">
+      <h2>TPD Engagement Model for Business Applications</h2>
+      <div class="tpd-steps">
+        <div class="tpd-step">
+          <h3>1. Plan &amp; Envision</h3>
+          <p><strong>Solution Scope &amp; Roadmapping:</strong> Identify objectives—improving sales, enhancing customer support, or modernizing field service operations.</p>
+          <p><strong>Industry &amp; Accelerator Alignment:</strong> Decide if specialized accelerators can reduce time/cost.</p>
+          <p><strong>Technical &amp; Sales Readiness:</strong> Provide demos, ROI calculators, success stories to handle objections effectively.</p>
+        </div>
+        <div class="tpd-step">
+          <h3>2. Build &amp; Configure</h3>
+          <p><strong>Proof of Concept (POC):</strong> Validate solutions using Dataverse, AI Builder, or industry accelerators.</p>
+          <p><strong>Best Practices &amp; Customizations:</strong> Tailor entities in Dynamics 365, design advanced analytics with Power BI.</p>
+          <p><strong>Security &amp; Governance:</strong> Role-based access, data encryption, compliance checks with Microsoft Customer Experience Platform.</p>
+        </div>
+        <div class="tpd-step">
+          <h3>3. Sell &amp; Publish</h3>
+          <p><strong>Technical Presales &amp; Demos:</strong> Show LinkedIn integration, Copilot AI, real-time analytics to wow prospects.</p>
+          <p><strong>Objection Handling &amp; Competitive Positioning:</strong> Solve concerns about user adoption, data migration, or cross-platform integration.</p>
+          <p><strong>Marketplace Listing:</strong> TPD helps navigate Microsoft’s commercial marketplace listing and co-sell opportunities.</p>
+        </div>
+        <div class="tpd-step">
+          <h3>4. Grow &amp; Optimize</h3>
+          <p><strong>Post-Deployment Enhancement:</strong> Add advanced scenarios (like Microsoft Copilot Studio) or scale to new industries.</p>
+          <p><strong>Insights &amp; Analytics:</strong> Use Power Query for data transformations, advanced BI, and continuous process refinements.</p>
+          <p><strong>Innovation Roadmaps:</strong> Periodic solution maturity reviews, incorporate new AI-driven services to stay future-ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       SUCCESS STORIES
+  ================================================== -->
+  <section class="success-stories">
+    <div class="container">
+      <h2>Success Stories</h2>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3>1. Automotive Dealer Network Adopting Dynamics 365</h3>
+          <p>
+            <strong>Scenario:</strong> A large automotive dealer wants a unified CRM to track leads, schedule test drives, 
+            manage post-sale service, and leverage industry-specific features.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Showcased Dynamics 365 Automotive Accelerator for relevant entities, set up a 
+            POC with Power Apps for on-lot check-ins, recommended cost-saving measures via consolidated licensing.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Faster deployment across 50 dealerships, improved sales follow-up, and increased cross-sell 
+            for aftermarket services.
+          </p>
+        </div>
+        <div class="story-card">
+          <h3>2. Nonprofit Optimizing Donor Management</h3>
+          <p>
+            <strong>Scenario:</strong> A global nonprofit struggles with donor data, fundraising campaigns, volunteer tracking.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Implemented Dynamics 365 Nonprofit Accelerator for streamlined donor tracking, 
+            connected donation platforms via Power Automate, used Power BI for campaign insights.
+          </p>
+          <p>
+            <strong>Outcome:</strong> 40% reduction in admin overhead, improved donor retention, real-time campaign analytics 
+            for leadership.
+          </p>
+        </div>
+        <div class="story-card">
+          <h3>3. SaaS Provider Adding AI to Sales Platform</h3>
+          <p>
+            <strong>Scenario:</strong> A SaaS company wants to integrate Microsoft Sales Copilot to predict renewals and upsell opportunities.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Helped configure Copilot for Sales, integrated data from third‐party tools into 
+            Dynamics 365 Sales, set up a pilot for advanced analytics with Power BI.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Cross-sell conversions up 25% in six months, shorter sales cycle overall.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       HOW TO GET STARTED
+  ================================================== -->
+  <section class="how-to-get-started">
+    <div class="container">
+      <h2>How to Get Started with TPD</h2>
+      <p>
+        <strong>Verify Your Partner Benefits</strong><br/>
+        Log in to Partner Center and ensure your account links to the Microsoft AI Cloud Partner Program. 
+        Under Benefits → Technical presales &amp; deployment, confirm designations like Solutions Partner, 
+        Action Pack, or Legacy Gold/Silver.
+      </p>
+
+      <div class="steps-container">
+        <div class="step-card heartbeat">Submit TPD Request</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">Collaborate &amp; Execute</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">Optimize &amp; Scale</div>
+      </div>
+      <p>
+        Provide project details: which Dynamics 365 apps, Power Platform components, or industry accelerators you’ll deploy. 
+        Expect a response within two business days. TPD consultants can address presales challenges, architecture reviews, 
+        best‐practice deployment steps, or marketplace listing. Re‐engage TPD later to add Copilot, expand modules (like Field Service), 
+        or integrate LinkedIn features.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       FAQ
+  ================================================== -->
+  <section class="business-faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <!-- Q1 -->
+      <div class="faq-item">
+        <div class="faq-question">Q1: What if I need ongoing break‐fix or customization support?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> TPD focuses on short‐term engagements for presales and deployment guidance, not ongoing
+            break‐fix. Consider Premier Support, Advanced Support for Partners, or other offerings for continuous support.
+          </p>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div class="faq-item">
+        <div class="faq-question">Q2: Can TPD help with AI-driven chatbots for customer service scenarios?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> Absolutely. TPD can offer best practices integrating Microsoft Copilot for Service, AI Builder,
+            or the Microsoft Digital Contact Center Platform to enhance your customer service capabilities.
+          </p>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div class="faq-item">
+        <div class="faq-question">Q3: Are there limitations to the number of TPD engagements I can request?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> It depends on your partner status. Solutions Partners and Legacy Gold/Silver often have unlimited
+            presales support, while Action Pack or Partner Success Core may use advisory hours.
+          </p>
+        </div>
+      </div>
+      <!-- Q4 -->
+      <div class="faq-item">
+        <div class="faq-question">Q4: Do we have to use all Microsoft technologies, or can we integrate with third‐party platforms?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> You can integrate third‐party solutions. TPD consultants will advise on best practices for bridging
+            Microsoft and non‐Microsoft services seamlessly.
+          </p>
+        </div>
+      </div>
+      <!-- Q5 -->
+      <div class="faq-item">
+        <div class="faq-question">Q5: How do we get started with publishing our vertical solution on the Microsoft commercial marketplace?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> TPD can guide you through certification, go‐to‐market strategy, co‐sell alignment, and listing best
+            practices, ensuring global visibility for your solution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       CTA: DRIVE LASTING CUSTOMER ENGAGEMENT
+  ================================================== -->
+  <section class="biz-cta">
+    <div class="container">
+      <h2>Drive Lasting Customer Engagement, Powered by Intelligent Business Applications</h2>
+      <p>
+        From Dynamics 365 and Power Platform to specialized industry accelerators and Microsoft Copilot AI capabilities,
+        Microsoft Business Applications offers a robust, integrated ecosystem. By partnering with TPD, you’ll have the technical
+        expertise, sales enablement, and deployment guidance needed to deliver:
+      </p>
+      <ul class="partnering-bullets">
+        <li>Personalized customer journeys and experiences,</li>
+        <li>Streamlined processes through automation,</li>
+        <li>Data-driven insights for better decision-making,</li>
+        <li>AI-first features that set you apart in the market.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       NEXT STEP
+  ================================================== -->
+  <section class="biz-next-step">
+    <div class="container">
+      <h2>Ready to Elevate Your Business Applications Practice?</h2>
+      <p>
+        <strong>Schedule a TPD Consultation</strong> – Let’s outline your vision and map out a winning strategy.
+        <br/>
+        <strong>Submit a TPD Services Request</strong> – Already have your project in mind? Get the conversation started.
+        <br/>
+        <strong>Explore Other Solution Areas</strong> – See how TPD can support your Azure Infrastructure, Data &amp; AI,
+        Digital &amp; App Innovation, and more.
+      </p>
+      <p>
+        Empower your customers to make better-informed, customer-driven decisions—and unlock new revenue streams with Business 
+        Applications. We look forward to helping you achieve your goals from presales to deployment and beyond!
+      </p>
+    </div>
+  </section>
+
+  <!-- Inline JS for scroll-based reveal + FAQ accordion -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+
+      // Stagger logic for cards
+      function staggerCards(cards) {
+        cards.forEach((card, index) => {
+          card.style.transitionDelay = (index * 0.1) + 's';
+        });
+      }
+
+      // Check if element is in viewport
+      function isInViewport(elem) {
+        const rect = elem.getBoundingClientRect();
+        return (rect.top < window.innerHeight && rect.bottom >= 0);
+      }
+
+      function revealSections() {
+        sections.forEach(sec => {
+          if (isInViewport(sec) && !sec.classList.contains('visible')) {
+            sec.classList.add('visible');
+
+            // Gather relevant card sets
+            const focusCards     = sec.querySelectorAll('.why-focus-card');
+            const portfolioCards = sec.querySelectorAll('.portfolio-card');
+            const challengeCards = sec.querySelectorAll('.challenge-card');
+            const tpdSteps       = sec.querySelectorAll('.tpd-step');
+            const storyCards     = sec.querySelectorAll('.story-card');
+
+            if (focusCards.length)     staggerCards(focusCards);
+            if (portfolioCards.length) staggerCards(portfolioCards);
+            if (challengeCards.length) staggerCards(challengeCards);
+            if (tpdSteps.length)       staggerCards(tpdSteps);
+            if (storyCards.length)     staggerCards(storyCards);
+          }
+        });
+      }
+
+      window.addEventListener('scroll', revealSections);
+      revealSections(); // run once to handle hero if it's already in view
+
+      // FAQ accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          item.classList.toggle('expanded');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
