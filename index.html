@@ -1,70 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TPnD Services</title>
 
   <!-- 
-    If you ever want to HIDE the system cursor, uncomment below.
-    Otherwise, the normal pointer will remain visible alongside any 
-    custom cursor or spark trail effect (see cursor-trail.js).
-    
-    body {
-      cursor: none; 
-    }
+    If you ever want to hide the default cursor:
+      body {
+        cursor: none; 
+      }
+    Just place that in a <style> block or 
+    in cursor-trail.css. By default, 
+    the system cursor is visible plus a spark trail.
   -->
 
-  <!-- =============== CSS Links =============== -->
-  <!-- Site-wide base styles, layout, & color definitions -->
+  <!-- ================================
+       CSS Links for Each Section
+  ================================ -->
+  <!-- This file handles general body styles, container, text, etc. -->
   <link rel="stylesheet" href="styles/index.css">
-  <!-- Additional section-specific or animation styles -->
+
+  <!-- "Why TPnD Matters" hero section with glitch heading and fade-in transitions -->
   <link rel="stylesheet" href="styles/why-tpnd-matters.css">
+
+  <!-- "Who We Are" diagonal overlay, left/right columns, etc. -->
   <link rel="stylesheet" href="styles/who-we-are.css">
+
+  <!-- "PTC Role" with scrolling container and role cards that slide in on scroll -->
   <link rel="stylesheet" href="styles/ptc-role.css">
+
+  <!-- "Solution Areas" (2x3 or 3x2 layout with tilt/hover effects) -->
   <link rel="stylesheet" href="styles/solution-areas.css">
+
+  <!-- "Eligibility & Benefits" table/card layout for desktop/mobile -->
   <link rel="stylesheet" href="styles/eligibility-benefits.css">
+
+  <!-- "Submit TPnD" step-card layout, plus heartbeat & fade animations -->
   <link rel="stylesheet" href="styles/submit-tpnd.css">
+
+  <!-- Basic FAQ styling if used in the final section or separate blocks -->
   <link rel="stylesheet" href="styles/faq.css">
+
+  <!-- "TPnD Intro" mega hero with neon background & glitch text, top-right button, etc. -->
   <link rel="stylesheet" href="styles/tpnd-intro.css">
+
+  <!-- "Engagement Model" (Plan-Build-Sell-Grow) with fade/slide-in card logic -->
   <link rel="stylesheet" href="styles/engagement-model.css">
+
+  <!-- Conclusion Section (diagonal gradient, next steps list, fade/slide logic) -->
   <link rel="stylesheet" href="styles/conclusion-section.css">
+
+  <!-- Spark cursor trail (optional, adjustable in cursor-trail.js & .css) -->
   <link rel="stylesheet" href="styles/cursor-trail.css">
 </head>
 
 <body>
   <!-- 
-    ==============================
-    Technical Presales and Deployment (Hero Section)
-    ==============================
-    This is our "mega-hero" area with a neon gradient background, 
-    floating particles, and top-right link to "my-ptc-day.html."
+    =======================================
+    TPnD Intro (Mega Hero) Section
+    =======================================
+    - A large hero area with neon gradient background,
+      floating particles, glitch heading, plus a CTA & top-right button.
   -->
   <section class="tpnd-intro mega-hero">
-    <!-- Animated background gradient (see tpnd-intro.css) -->
+    <!-- Animated gradient overlay (see tpnd-intro.css) -->
     <div class="animated-bg"></div>
 
-    <!-- Particle container for background or cursor effects (see tpnd-intro.js or cursor-trail.js) -->
+    <!-- Particle container for floating dots (populated by JS) -->
     <div class="particle-container"></div>
 
-    <!-- Link in top-right corner, taking user to the "Day in the Life of a PTC" page -->
+    <!-- Top-right button linking to "Day in the Life of a PTC" page -->
     <a href="my-ptc-day.html" class="ptc-day-btn">How My Day as a PTC Looks</a>
 
+    <!-- Main hero text container -->
     <div class="container hero-content">
-      <!-- Glitch effect heading (see glitch classes in tpnd-intro.css) -->
+      <!-- Glitch heading (data-text for layering) -->
       <h1 class="glitch" data-text="Technical Presales and Deployment">
         Technical Presales and Deployment
       </h1>
       <p>Your One-Stop Partner for Success in an AI-driven, cloud-first world.</p>
 
-      <!-- 
-        "Learn More" button linking externally to Microsoft presales site.
-        Opens in new tab (target="_blank"). 
-      -->
+      <!-- "Learn More" CTA linking to Microsoft’s technical presales page -->
       <a 
         class="learn-more-btn mega-cta-btn" 
         href="https://partner.microsoft.com/en-gb/training/technical-presales-deployment-services" 
-        target="_blank"
+        target="_blank" 
         rel="noopener noreferrer"
       >
         Learn More
@@ -72,16 +93,17 @@
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    Why TPnD Matters Section
-    ==============================
-    Contains glitch title, plus paragraphs describing the significance 
-    of Technical Presales and Deployment.
+    =======================================
+    Why TPnD Matters (Hero-Style Section)
+    =======================================
+    - Another hero area or sub-hero with glitch heading 
+      and fade-in effect triggered by JS on page load.
   -->
   <section class="hero-section">
     <div class="container">
-      <!-- Glitch title with data-text attribute for the effect -->
+      <!-- Glitch heading with data-text mirror -->
       <h1 class="glitch" data-text="Why TPnD Matters">Why TPnD Matters</h1>
       <p>
         In today’s AI-driven, cloud-first world, simply having access to Microsoft products
@@ -100,11 +122,13 @@
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    Who We Are & Mission Section
-    ==============================
-    Left/Right layout describing the mission and focus of the org.
+    =======================================
+    Who We Are and What We Do
+    =======================================
+    - Left column (title/subtitle), right column (paragraphs).
+    - Includes a diagonal background overlay in .who-we-are::before.
   -->
   <section class="who-we-are">
     <div class="container">
@@ -113,18 +137,28 @@
         <h2>Our Mission</h2>
       </div>
       <div class="right">
-        <p><strong>Empower Partners:</strong> Equip you with the capabilities to win deals, deliver impactful deployments, and stand out in a dynamic market.</p>
-        <p><strong>Accelerate Time-to-Market:</strong> Provide hands-on guidance and best practices to reduce risk, streamline complex projects, and expedite go-live milestones—especially critical for emerging AI scenarios.</p>
-        <p><strong>Enable Ongoing Innovation:</strong> Emphasize knowledge transfer so you can continually innovate, modernize legacy systems, and drive productivity across cloud, hybrid, or remote environments.</p>
+        <p>
+          <strong>Empower Partners:</strong> Equip you with the capabilities to win deals, deliver impactful deployments,
+          and stand out in a dynamic market.
+        </p>
+        <p>
+          <strong>Accelerate Time-to-Market:</strong> Provide hands-on guidance and best practices to reduce risk, streamline 
+          complex projects, and expedite go-live milestones—especially critical for emerging AI scenarios.
+        </p>
+        <p>
+          <strong>Enable Ongoing Innovation:</strong> Emphasize knowledge transfer so you can continually innovate, 
+          modernize legacy systems, and drive productivity across cloud, hybrid, or remote environments.
+        </p>
       </div>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    The Role of PTCs Section
-    ==============================
-    Highlights 4 core roles of Partner Technical Consultants.
+    =======================================
+    The Role of Partner Technical Consultants (PTCs)
+    =======================================
+    - A grid (scrolling-container) with 4 role cards that slide in from left/right on scroll.
   -->
   <section class="ptc-role">
     <div class="container">
@@ -133,47 +167,69 @@
         <!-- Card 1 -->
         <div class="role">
           <h3>Technical Presales</h3>
-          <p>Develop solution demos—highlighting AI, analytics, and cloud benefits—to resonate with customer needs and address common objections.</p>
+          <p>
+            Develop solution demos—highlighting AI, analytics, and cloud benefits—to resonate 
+            with customer needs and address common objections.
+          </p>
         </div>
         <!-- Card 2 -->
         <div class="role">
           <h3>Solution Architecture</h3>
-          <p>Assess existing environments, propose target architectures, and guide you through proofs-of-concept for cloud migrations, AI enhancements, or app modernization.</p>
+          <p>
+            Assess existing environments, propose target architectures, and guide you through 
+            proofs-of-concept for cloud migrations, AI enhancements, or app modernization.
+          </p>
         </div>
         <!-- Card 3 -->
         <div class="role">
           <h3>Deployment Assistance</h3>
-          <p>Share best practices for initial setup, networking, security, and performance, ensuring your production rollout is stable, compliant, and scalable.</p>
+          <p>
+            Share best practices for initial setup, networking, security, and performance, 
+            ensuring your production rollout is stable, compliant, and scalable.
+          </p>
         </div>
         <!-- Card 4 -->
         <div class="role">
           <h3>Post-Deployment Optimization</h3>
-          <p>Offer insights on performance tuning, security hardening, compliance, and next-generation innovations—such as advanced analytics, machine learning, or cognitive services.</p>
+          <p>
+            Offer insights on performance tuning, security hardening, compliance, and 
+            next-generation innovations—such as advanced analytics, machine learning, 
+            or cognitive services.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    Six Core Solution Areas Section
-    ==============================
-    Cards describing key focus areas for TPnD (Azure, Security, Modern Work, etc.).
+    =======================================
+    The Six Core Solution Areas
+    =======================================
+    - A 2x3 or 3x2 grid of 6 cards, each describing a solution domain.
+    - Animates in on scroll (fades in).
   -->
   <section class="core-solution-cards">
     <div class="container">
       <h2>The Six Core Solution Areas</h2>
-      <p>TPnD engagements span all major Microsoft solution domains, enabling you to tackle projects of any scale or scope:</p>
+      <p>
+        TPnD engagements span all major Microsoft solution domains, enabling you 
+        to tackle projects of any scale or scope:
+      </p>
       <div class="card-grid">
         <div class="card">
           <h3>Azure Infrastructure</h3>
-          <p>Modernize legacy servers, enable hybrid scenarios, and deploy container solutions (e.g., Azure Kubernetes Service).</p>
+          <p>
+            Modernize legacy servers, enable hybrid scenarios, and deploy container 
+            solutions (e.g., Azure Kubernetes Service).
+          </p>
           <p>Implement Azure-native monitoring and governance (Azure Monitor, Azure Policy).</p>
         </div>
         <div class="card">
           <h3>Data & AI (Azure)</h3>
           <p>Modernize data platforms with Azure SQL, Azure Synapse, or Data Lake.</p>
-          <p>Implement advanced analytics, machine learning, or cognitive services for intelligent applications.</p>
+          <p>Implement advanced analytics, machine learning, or cognitive services 
+             for intelligent applications.</p>
         </div>
         <div class="card">
           <h3>Digital & App Innovation (Azure)</h3>
@@ -182,33 +238,39 @@
         </div>
         <div class="card">
           <h3>Security</h3>
-          <p>Protect identities, endpoints, and data with Microsoft Entra (Azure AD), Microsoft Defender, and Zero Trust architecture.</p>
+          <p>Protect identities, endpoints, and data with Microsoft Entra (Azure AD), Microsoft Defender, 
+             and Zero Trust architecture.</p>
           <p>Utilize Microsoft Sentinel for AI-assisted threat detection and automated response.</p>
         </div>
         <div class="card">
           <h3>Modern Work</h3>
-          <p>Deploy Microsoft 365, Teams, SharePoint, and AI-driven tools like Microsoft 365 Copilot to enhance collaboration.</p>
+          <p>Deploy Microsoft 365, Teams, SharePoint, and AI-driven tools like Microsoft 365 Copilot 
+             to enhance collaboration.</p>
           <p>Establish governance, compliance, and user adoption best practices.</p>
         </div>
         <div class="card">
           <h3>Business Applications</h3>
-          <p>Elevate customer engagement with Dynamics 365 (Sales, Customer Service, Marketing) and the Power Platform.</p>
+          <p>Elevate customer engagement with Dynamics 365 (Sales, Customer Service, Marketing) 
+             and the Power Platform.</p>
           <p>Embed AI for predictive insights and personalized experiences (e.g., Microsoft Sales Copilot).</p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    Engagement Model Section
-    ==============================
-    Plan – Build – Sell – Grow approach, each in a card with examples.
+    =======================================
+    Engagement Model: Plan – Build – Sell – Grow
+    =======================================
+    - Each phase is a card that slides/fades in on scroll with a staggered delay.
   -->
   <section class="engagement-model">
     <div class="container">
       <h2>Our Engagement Model: Plan – Build – Sell – Grow</h2>
-      <p>We tailor each engagement according to your needs, following a four-phase approach:</p>
+      <p>
+        We tailor each engagement according to your needs, following a four-phase approach:
+      </p>
       <div class="card-grid">
         <!-- Plan Card -->
         <div class="card">
@@ -236,7 +298,7 @@
           <ul>
             <li><strong>Technical Presales Demos:</strong> Showcase real-world scenarios—like AI-based image recognition—that directly address your customers’ business challenges.</li>
             <li><strong>Competitive Positioning & Objection Handling:</strong> Leverage our deep Microsoft expertise to counter concerns about solution complexity or cost.</li>
-            <li><strong>ROI/TCO Analysis:</strong> Develop robust, data-driven business cases to illustrate the benefits of cloud transformation, AI adoption, or workload consolidation.</li>
+            <li><strong>ROI/TCO Analysis:</strong> Develop robust, data-driven business cases to illustrate the benefits...</li>
           </ul>
           <p><strong>Example:</strong> A partner competes to deploy Microsoft 365 for a global manufacturing client...</p>
         </div>
@@ -244,9 +306,9 @@
         <div class="card">
           <h3>Grow</h3>
           <ul>
-            <li><strong>Post-Deployment Optimization:</strong> Adopt continuous best practices for performance, scalability, governance, and compliance—crucial for expanding AI workloads.</li>
+            <li><strong>Post-Deployment Optimization:</strong> Adopt continuous best practices for performance, scalability, governance, and compliance...</li>
             <li><strong>Advanced Feature Adoption:</strong> Explore additional services (machine learning, data analytics, IoT) to drive ongoing innovation and revenue growth.</li>
-            <li><strong>Co-Sell & Marketplace Alignment:</strong> If you’re a Microsoft partner, we can help align your solution for co-sell and commercial marketplace exposure.</li>
+            <li><strong>Co-Sell & Marketplace Alignment:</strong> If you’re a Microsoft partner, we can help align your solution...</li>
           </ul>
           <p><strong>Example:</strong> After migrating to Azure, a retailer wants to integrate IoT sensors for predictive maintenance...</p>
         </div>
@@ -254,12 +316,13 @@
     </div>
   </section>
 
+
   <!-- 
-    ==============================
+    =======================================
     Eligibility & Benefits Section
-    ==============================
-    Explains which partners are eligible and hours usage 
-    via table (desktop) or cards (mobile).
+    =======================================
+    - Displayed as a table for desktops, 
+      and a card-based layout for mobile screens.
   -->
   <section class="eligibility-benefits">
     <div class="container">
@@ -268,15 +331,15 @@
         TPnD benefits are available to Microsoft partners in the Microsoft AI Cloud Partner Program...
       </p>
       <p>
-        <strong>Note:</strong> Partners not holding one of the designations above are generally ineligible...
+        <strong>Note:</strong> Partners not holding one of the designations above are generally ineligible for TPnD services...
       </p>
-
+      
       <h3>Available Advisory Hours</h3>
       <p>
         Depending on your membership or designation, you receive a certain number of Partner Advisory Hours...
       </p>
 
-      <!-- Desktop Table -->
+      <!-- Desktop Table Layout -->
       <div class="eligibility-table">
         <table>
           <thead>
@@ -287,7 +350,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Table data for different partner designations -->
             <tr>
               <td>Partner Success Expanded</td>
               <td>10</td>
@@ -329,7 +391,7 @@
 
       <!-- Mobile Card Layout -->
       <div class="eligibility-cards">
-        <!-- Similar data but in card format for small screens -->
+        <!-- Each card is an alternative to the table for smaller screens -->
         <div class="eligibility-card">
           <h4>Partner Success Expanded</h4>
           <p><strong>Advisory Hours:</strong> 10</p>
@@ -340,22 +402,23 @@
           <p><strong>Advisory Hours:</strong> 5</p>
           <p><strong>Technical Presales Usage:</strong> Deducts from hours</p>
         </div>
-        <!-- etc. for other partner designations... -->
+        <!-- ...and so forth for each row from the table -->
       </div>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
-    Submit TPnD Services Request
-    ==============================
-    Explains how a partner can create a case in Partner Center.
+    =======================================
+    How to Submit a TPnD Services Request
+    =======================================
+    - Step-card layout with an "important" note at the bottom.
   -->
   <section class="submit-tpnd">
     <div class="container">
       <h2>How to Submit a TPnD Services Request</h2>
       <p>
-        Sign in to Partner Center and ensure your organization is enrolled...
+        Sign in to Partner Center and ensure your organization is enrolled in the Microsoft AI Cloud Partner Program...
       </p>
 
       <div class="steps-container">
@@ -373,58 +436,66 @@
       <div class="important">
         <strong>Important</strong>
         <p>
-          If your account is only associated with a reseller/CSP program and not with the Microsoft AI Cloud Partner...
+          If your account is only associated with a reseller/CSP program and not 
+          with the Microsoft AI Cloud Partner Program, you may see an error...
         </p>
       </div>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
+    =======================================
     Conclusion Section
-    ==============================
-    Summarizes the value of TPnD and outlines Next Steps.
+    =======================================
+    - Summarizes the value of TPnD, includes "Next Steps" list, 
+      and a "closing" paragraph. Fades/slides in if triggered by JS.
   -->
   <section class="conclusion-section">
     <div class="container">
       <h2>Conclusion: Partner with TPnD for an AI-Enabled Future</h2>
       <p>
-        Technical Presales and Deployment (TPnD) brings together technical mastery...
+        Technical Presales and Deployment (TPnD) brings together technical mastery and strategic insight...
       </p>
 
       <h3>Next Steps</h3>
       <ul class="next-steps">
-        <li><strong>Check Your Partner Benefits:</strong> Sign in to Partner Center...</li>
-        <li><strong>Submit a TPnD Services Request:</strong> Provide detailed project goals...</li>
-        <li><strong>Schedule a Consultation:</strong> Discuss your roadmap—cloud migrations, AI...</li>
-        <li><strong>Engage & Execute:</strong> Launch your Plan-Build-Sell-Grow journey...</li>
-        <li><strong>Grow Your Practice:</strong> Explore advanced workloads—AI, secure collaboration...</li>
+        <li><strong>Check Your Partner Benefits:</strong> Sign in to Partner Center to confirm your membership...</li>
+        <li><strong>Submit a TPnD Services Request:</strong> Provide detailed project goals and requirements...</li>
+        <li><strong>Schedule a Consultation:</strong> Discuss your roadmap—cloud migrations, AI, or app modernization...</li>
+        <li><strong>Engage & Execute:</strong> Launch your Plan-Build-Sell-Grow journey, leveraging high-impact guidance...</li>
+        <li><strong>Grow Your Practice:</strong> Explore advanced workloads—AI, secure collaboration, IoT, or business applications...</li>
       </ul>
 
       <p class="closing">
-        Start your TPnD journey today and shape an AI-enabled future...
+        Start your TPnD journey today and shape an AI-enabled future where you stay competitive, provide 
+        transformative customer experiences, and scale your business for success in the modern era.
       </p>
     </div>
   </section>
 
+
   <!-- 
-    ==============================
+    =======================================
     Frequently Asked Questions (FAQ)
-    ==============================
-    Simple FAQ layout; add more Q&A as needed.
+    =======================================
+    - Expand as needed with Q&A, usually in an accordion or simple layout.
   -->
   <section class="faq">
     <div class="container">
       <h2>Frequently Asked Questions (FAQ)</h2>
       <p><strong>Q:</strong> Am I eligible for TPnD services?</p>
       <p><strong>A:</strong> Check your partner designation to confirm eligibility...</p>
+      <!-- Add more Q/A pairs as needed -->
     </div>
   </section>
 
-  <!-- ==============================
-       JavaScript References
-  =============================== -->
-  <!-- Animations for each major section (if used) -->
+  <!-- 
+    =======================================
+    JavaScript for Animations & Interactivity
+    =======================================
+    - Each file handles a different section’s reveal, heartbeat, or cursor effect.
+  -->
   <script src="scripts/animations/why-tpnd-matters.js"></script>
   <script src="scripts/animations/who-we-are.js"></script>
   <script src="scripts/animations/ptc-role.js"></script>
@@ -435,8 +506,8 @@
   <script src="scripts/animations/tpnd-intro.js"></script>
   <script src="scripts/animations/engagement-model.js" defer></script>
   <script src="scripts/animations/conclusion-section.js"></script>
-  
-  <!-- Cursor Trail logic for a custom spark effect on mouse move -->
+
+  <!-- Cursor trail logic if you want sparkly particles behind the mouse pointer -->
   <script src="scripts/animations/cursor-trail.js"></script>
 </body>
 </html>
