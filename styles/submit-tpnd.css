@@ -1,94 +1,144 @@
-/* Submit TPnD Section */
+/*
+  ============================================
+  Submit TPnD Section
+  ============================================
+  - Styles the "How to Submit a TPnD Services Request" area 
+    with a subtle gradient background, center-aligned text, 
+    and animated "step cards."
+*/
 .submit-tpnd {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #2f1854, #4a227a); /* Subtle gradient */
-    color: #ffffff;
-    text-align: center;
+  padding: 40px 20px;
+  /* Gradient from #2f1854 (deep purple) to #4a227a (lighter purple) */
+  background: linear-gradient(135deg, #2f1854, #4a227a);
+  color: #ffffff;
+  text-align: center;
 }
 
 .submit-tpnd h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
 
-/* Step Cards */
+/*
+  ============================================
+  Step Cards Container
+  ============================================
+  - Displays the steps in a flexible row with wrapping 
+    and spacing for each "step-card."
+*/
 .steps-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Space between steps */
-    margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* space between steps */
+  margin-top: 20px;
 }
 
+/*
+  Step Cards
+  - Each card indicates a step in the TPnD submission process,
+    with a hover zoom effect and color change.
+*/
 .step-card {
-    background-color: #3b0d60; /* Matches section gradient */
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: #3b0d60;  /* Similar to section gradient for consistency */
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+/* 
+  Hover Effect on Step Cards
+  - Slight scale up and background color shift to #6a0dad (purple).
+*/
 .step-card:hover {
-    transform: scale(1.1); /* Slight zoom */
-    background-color: #6a0dad; /* Purple highlight */
+  transform: scale(1.1);
+  background-color: #6a0dad; 
 }
 
-/* Arrow Between Steps */
+/*
+  Arrows Between Steps
+  - Simple arrow characters or icons for visual flow 
+    between step cards.
+*/
 .arrow {
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin: auto 10px;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: auto 10px; /* vertical center alignment + horizontal gap */
 }
 
-/* Important Section */
+/*
+  ============================================
+  "Important" Note Box
+  ============================================
+  - A highlighted box inside the .submit-tpnd section,
+    with a subtle fade-in and a left border.
+*/
 .submit-tpnd .important {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: rgba(106, 13, 173, 0.2); /* Subtle purple highlight */
-    border-left: 5px solid #6a0dad; /* Purple border */
-    font-size: 1rem;
-    text-align: left;
-    color: #ffffff;
-    animation: fadeIn 1s ease; /* Subtle fade-in */
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(106, 13, 173, 0.2); /* Subtle purple overlay */
+  border-left: 5px solid #6a0dad;            /* Purple border line */
+  font-size: 1rem;
+  text-align: left;
+  color: #ffffff;
+  animation: fadeIn 1s ease; /* Animates in once loaded */
 }
 
-/* Fade-In Keyframes */
+/*
+  Fade-In Keyframes
+  - Used by the .important box for a simple 
+    opacity-based entry animation.
+*/
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Heartbeat Animation */
+/*
+  ============================================
+  Heartbeat Animation
+  ============================================
+  - If you want any element (like a step-card)
+    to pulse, add .heartbeat to it.
+*/
 @keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
-    30% {
-        transform: scale(1.05);
-    }
-    40% {
-        transform: scale(1);
-    }
-    70% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  40% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
+/* 
+  Apply .heartbeat class to any element you want 
+  to have a repeating pulse effect.
+*/
 .heartbeat {
-    animation: heartbeat 1.5s ease-in-out infinite;
+  animation: heartbeat 1.5s ease-in-out infinite;
 }
