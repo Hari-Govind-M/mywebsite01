@@ -1,12 +1,10 @@
 /* 
-  ============================
-  HERO SECTION
-============================
+  HERO SECTION (Reduced Vertical Spacing)
 */
 .azure-infra-hero {
   position: relative;
-  min-height: 70vh;
-  padding: 60px 20px;
+  min-height: 50vh; /* decreased from 70vh to reduce vertical space */
+  padding: 30px 20px; /* decreased from 60px to 30px for top/bottom padding */
   color: #fff;
   text-align: center;
   background: linear-gradient(135deg, #3b0d60, #1a0033);
@@ -14,7 +12,7 @@
 }
 .azure-infra-hero .hero-bg {
   position: absolute;
-  top: 0; left: 0;
+  top: 0; left: 0; 
   width: 100%; height: 100%;
   background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
   background-size: 400% 400%;
@@ -22,15 +20,15 @@
   z-index: 1;
 }
 @keyframes neonShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 .home-btn {
   position: absolute;
-  top: 20px; right: 20px;
-  padding: 10px 20px;
-  border-radius: 8px;
+  top: 15px; right: 20px;
+  padding: 8px 16px;
+  border-radius: 6px;
   background-color: rgba(255,255,255,0.15);
   color: #fff;
   text-decoration: none;
@@ -59,18 +57,16 @@
   text-shadow:
     0 0 8px rgba(106,13,173,0.8),
     0 0 16px rgba(106,13,173,0.6);
+  margin-bottom: 10px; /* Slight gap below the glitch heading */
 }
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;  /* Slightly smaller */
   color: #ddd;
-  margin-top: 15px;
+  margin-top: 5px;    /* Very small gap above the subtitle */
+  margin-bottom: 0;   /* No extra spacing at bottom */
 }
 
-/*
-  ============================
-  FADE REVEAL FOR EACH SECTION
-============================
-*/
+/* SECTION SCROLL FADE */
 section {
   opacity: 0;
   transition: opacity 0.8s ease;
@@ -79,19 +75,11 @@ section.visible {
   opacity: 1;
 }
 
-/*
-  ============================
-  WHY FOCUS SECTION (5 Cards)
-============================
-*/
+/* =============== WHY FOCUS CARDS =============== */
 .why-azure-infra {
   background: linear-gradient(135deg, #240046, #6a0dad);
   color: #fff;
   padding: 40px 20px;
-}
-.why-azure-infra .container {
-  max-width: 900px;
-  margin: 0 auto;
 }
 .why-focus-cards {
   display: grid;
@@ -103,9 +91,8 @@ section.visible {
   background: rgba(255,255,255,0.1);
   border-radius: 8px;
   padding: 20px;
-  position: relative;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  opacity: 0;               /* for stagger fade */
+  opacity: 0;
   transform: translateY(20px);
 }
 .why-focus-card:hover {
@@ -113,11 +100,7 @@ section.visible {
   box-shadow: 0 0 10px rgba(106,13,173,0.4);
 }
 
-/*
-  ============================
-  ECOSYSTEM CARDS (8 items)
-============================
-*/
+/* =============== ECOSYSTEM CARDS =============== */
 .azure-infra-ecosystem {
   background: linear-gradient(135deg, #2f1854, #6a0dad);
   padding: 40px 20px;
@@ -142,11 +125,7 @@ section.visible {
   box-shadow: 0 0 10px rgba(106,13,173,0.4);
 }
 
-/*
-  ============================
-  TPD FITS (4 Cards)
-============================
-*/
+/* =============== HOW TPD FITS (4 CARDS) =============== */
 .how-tpd-fits {
   background: linear-gradient(135deg, #330052, #a01acb);
   padding: 40px 20px;
@@ -171,11 +150,7 @@ section.visible {
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-/*
-  ============================
-  SUCCESS STORIES (3 Cards)
-============================
-*/
+/* =============== SUCCESS STORIES =============== */
 .success-stories {
   background: linear-gradient(135deg, #240046, #3b0d60);
   color: #ffffff;
@@ -200,26 +175,16 @@ section.visible {
   box-shadow: 0 0 10px rgba(106,13,173,0.4);
 }
 
-/*
-  ============================
-  PARTNERING & TABLE
-============================
-*/
+/* =============== PARTNER + TABLE SECTION =============== */
 .align-and-get-started {
   background: linear-gradient(135deg, #6a0dad, #ff00c1);
   color: #ffffff;
   padding: 40px 20px;
 }
-.align-and-get-started .container {
-  max-width: 900px;
-  margin: 0 auto;
-}
 .partnering-bullets {
   list-style: none;
-  margin: 0; padding: 0;
-}
-.partnering-bullets li {
-  margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
 }
 .responsive-table table {
   width: 100%;
@@ -227,7 +192,8 @@ section.visible {
   margin: 20px 0;
   color: #fff;
 }
-.responsive-table th, .responsive-table td {
+.responsive-table th,
+.responsive-table td {
   padding: 12px;
   border: 1px solid rgba(255,255,255,0.3);
   text-align: left;
@@ -236,11 +202,12 @@ section.visible {
   background: rgba(255,255,255,0.1);
 }
 
-/*
-  ============================
-  HOW TO GET STARTED -> HEARTBEAT
-============================
-*/
+/* =============== GETTING STARTED STEPS (HEARTBEAT) =============== */
+.getting-started-steps {
+  background: linear-gradient(135deg, #330052, #6a0dad);
+  padding: 40px 20px;
+  color: #fff;
+}
 .steps-container {
   display: flex;
   flex-wrap: wrap;
@@ -259,6 +226,7 @@ section.visible {
 .step-card:hover {
   transform: scale(1.05);
 }
+
 /* Heartbeat animation */
 @keyframes heartbeat {
   0%   { transform: scale(1);   }
@@ -271,11 +239,7 @@ section.visible {
   animation: heartbeat 1.5s ease-in-out infinite;
 }
 
-/*
-  ============================
-  FAQ SECTION (ACCORDION)
-============================
-*/
+/* =============== FAQ COLLAPSIBLE =============== */
 .azure-infra-faq {
   background: #330052;
   padding: 40px 20px;
@@ -297,33 +261,49 @@ section.visible {
   transition: max-height 0.4s ease;
 }
 .faq-item.expanded .faq-answer {
-  max-height: 600px;
+  max-height: 800px;
 }
 
 /*
-  ============================
-  FINAL CONCLUSION SECTION
-============================
+  =============== 
+  LET'S TRANSFORM SECTION 
+  ===============
 */
-.azure-infra-conclusion {
-  background: linear-gradient(135deg, #4a0d78, #ff00c1);
+.azure-transform {
+  background: linear-gradient(135deg, #240046, #ff00c1);
   color: #fff;
   padding: 40px 20px;
 }
-.azure-infra-conclusion .container {
+.azure-transform .container {
   max-width: 900px;
   margin: 0 auto;
 }
-.azure-infra-conclusion h3 {
-  font-size: 1.6rem;
+.conclusion-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   margin-bottom: 20px;
+}
+.conclusion-bullets li {
+  margin-bottom: 10px;
 }
 
 /*
-  Example of small transition delays if you want 
-  to stagger each card inside a section:
-  .why-focus-card:nth-child(1) { transition-delay: 0.1s; }
-  .why-focus-card:nth-child(2) { transition-delay: 0.2s; }
-  etc.
+  =============== 
+  READY TO TAKE THE NEXT STEP 
+  ===============
 */
+.azure-next-step {
+  background: linear-gradient(135deg, #6a0dad, #8a00ff);
+  color: #fff;
+  padding: 40px 20px;
+}
+.azure-next-step .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
+/* 
+  Example to handle 
+  card staggering in JS:
+*/
