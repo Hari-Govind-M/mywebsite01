@@ -1,15 +1,16 @@
 /************************************************
-  Basic Page & Gradient Background
+  Basic Page Setup & Gradient Background
 ************************************************/
 html, body {
-  margin: 0;
+  margin: 0; 
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #1a0033, #3b0d60); /* Gradient like other pages */
-  color: #ffffff; /* White text */
+  /* Gradient background similar to other pages */
+  background: linear-gradient(135deg, #1a0033, #3b0d60);
+  color: #ffffff;
 }
 
-/* Optional: Back button to homepage */
+/* Back button style (optional) */
 .back-btn {
   display: inline-block;
   margin: 20px;
@@ -19,11 +20,10 @@ html, body {
   border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 8px 16px;
   border-radius: 6px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 .back-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /************************************************
@@ -35,7 +35,6 @@ html, body {
   padding: 20px;
 }
 
-/* Title */
 .ptc-day-container h1 {
   text-align: center;
   margin-bottom: 30px;
@@ -45,42 +44,94 @@ html, body {
 }
 
 /************************************************
-  Card Layout
+  Cards Layout
 ************************************************/
 .ptc-day-cards {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* spacing between cards */
-  max-width: 1000px;
+  gap: 30px; /* space between cards */
+  max-width: 1000px; 
   margin: 0 auto; /* center the cards */
 }
 
-/* Each card */
+/************************************************
+  Neon Border + 3D Tilt on Each Card
+************************************************/
 .ptc-card {
-  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent white for a slight highlight */
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative; /* so pseudo-element aligns correctly */
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 20px;
-  transition: background-color 0.3s ease;
+  /* 3D tilt needs transform (no perspective needed on parent 
+     if you want a simple tilt; we can do perspective in hover state) */
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
 }
 
-/* Card hover effect */
+/* NEON BORDER via pseudo-element */
+.ptc-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 12px;
+  border: 2px solid #ff00c1; /* default color */
+  box-shadow: 0 0 10px #ff00c1;
+  pointer-events: none;
+  /* Animate the neon color shift */
+  animation: neonGlow 3s ease-in-out infinite alternate;
+  z-index: 1; /* on top of the card background */
+}
+
+/* Card text content is above the background but below the neon overlay 
+   so let’s give the card content a higher z-index if needed. */
+.ptc-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* On hover, slightly tilt in 3D and scale up a bit */
 .ptc-card:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  transform: perspective(800px) rotateX(5deg) rotateY(-5deg) scale(1.02);
 }
 
-/* Heading & text inside each card */
+/************************************************
+  Neon Glow Keyframes
+************************************************/
+@keyframes neonGlow {
+  0% {
+    border-color: #ff00c1;
+    box-shadow: 0 0 10px #ff00c1;
+  }
+  50% {
+    border-color: #00fff9;
+    box-shadow: 0 0 10px #00fff9;
+  }
+  100% {
+    border-color: #ff00c1;
+    box-shadow: 0 0 10px #ff00c1;
+  }
+}
+
+/************************************************
+  Content in the Card
+************************************************/
 .ptc-card h2 {
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.4rem;
   color: #ffffff;
+  z-index: 2;
 }
+
 .ptc-card p {
   margin: 0;
   line-height: 1.6;
   color: #f0f0f0;
   font-size: 1rem;
+  z-index: 2;
 }
 
 /************************************************
@@ -97,4 +148,3 @@ html, body {
     font-size: 0.95rem;
   }
 }
-
