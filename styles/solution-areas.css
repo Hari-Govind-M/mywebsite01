@@ -1,18 +1,28 @@
-/* Core Solution Areas Section */
+/*
+  ============================================
+  Core Solution Areas Section
+  ============================================
+  - Showcases 6 core solutions (arranged in a 2x3 grid)
+    with a neon/3D tilt effect on hover.
+*/
 .core-solution-cards {
   padding: 10px;
+  /* Gradient from #6a0dad (purple) to #2f1854 (darker purple) */
   background: linear-gradient(135deg, #6a0dad, #2f1854);
   color: #ffffff;
-  text-align: center; /* Ensures h2 and the initial p are also centered */
-  perspective: 1000px; /* For 3D tilt on hover */
+  text-align: center; /* Centers the heading & intro paragraph */
+  perspective: 1000px; /* Enables 3D tilt effect on card hover */
 }
 
 .core-solution-cards h2 {
   font-size: 1.8rem;
-  margin-bottom: 12px; /* Slightly smaller margin */
+  margin-bottom: 12px; /* Slightly smaller margin than default */
 }
 
-/* Intro Paragraph Below the H2 */
+/*
+  Intro Paragraph Beneath Heading
+  - Constrained width and centered for better readability
+*/
 .core-solution-cards p {
   max-width: 650px; 
   margin: 0 auto 12px auto;
@@ -21,28 +31,39 @@
   line-height: 1.4;
 }
 
-/* Exactly 2 rows x 3 columns */
+/*
+  ============================================
+  Card Grid (2 rows x 3 columns)
+  ============================================
+  - Exactly 6 cards (3 columns x 2 rows).
+  - If you want more or fewer cards, adjust rows/columns accordingly.
+*/
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns across */
   grid-template-rows: repeat(2, auto);   /* 2 rows */
-  gap: 12px; /* Reduced gap between cards */
+  gap: 12px; /* Reduced spacing for a tighter layout */
   justify-content: center;
   align-items: start;
 }
 
-/* Individual Card */
+/*
+  ============================================
+  Individual Card
+  ============================================
+  - Each card starts invisible for a potential
+    scroll reveal fade/slide-in animation.
+  - On hover, there's a tilt & glow effect.
+*/
 .card {
   background-color: #240046;
-  padding: 12px; /* Less padding inside the card */
+  padding: 12px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-
-  /* Center text inside the card */
-  text-align: center;
+  text-align: center; /* Center text within the card */
   color: #ddd;
 
-  /* For fade/slide-in animations */
+  /* Initial animation state */
   opacity: 0;
   transform: translateY(12px);
   transition:
@@ -51,36 +72,52 @@
     background 0.8s ease,
     box-shadow 0.3s ease;
   position: relative;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d; /* For 3D tilt on hover */
 }
 
-/* Visible state after scroll reveal */
+/* 
+  When .visible is added (e.g., via scroll reveal JS),
+  the card fully fades in and slides up.
+*/
 .card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Card Title & Text */
+/*
+  Card Title & Content
+  - Slightly smaller font sizes to reduce overall height
+*/
 .card h3 {
-  font-size: 1.1rem; /* Smaller heading to reduce card height */
+  font-size: 1.1rem;
   margin-bottom: 6px;
   color: #ffffff;
 }
 
 .card p {
-  font-size: 0.9rem; 
-  line-height: 1.3;   /* Tighter spacing */
-  margin-bottom: 4px; /* Less margin between paragraphs */
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin-bottom: 4px; /* Tighter spacing between paragraphs */
 }
 
-/* Hover Effects (Tilt + Neon Glow + Gradient Shift) */
+/*
+  ============================================
+  Hover Effects
+  ============================================
+  - Slight 3D tilt + scale, neon glow, 
+    and a gradient shift on the background.
+*/
 .card:hover {
   transform: scale(1.02) rotateX(4deg) rotateY(-4deg);
   box-shadow: 0 0 12px rgba(106, 13, 173, 0.4);
   background: linear-gradient(-45deg, #6a0dad, #ff00c1);
 }
 
-/* Optional Neon Border on Hover */
+/* 
+  Optional neon border on hover
+  - By default, it's transparent. 
+  - On hover, it turns #6a0dad 
+*/
 .card::before {
   content: "";
   position: absolute;
