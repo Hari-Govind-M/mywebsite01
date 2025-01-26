@@ -3,59 +3,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollingContainer = document.querySelector('.scrolling-container');
   // Individual role cards
   const roles = document.querySelectorAll('.role');
-  // Parent section used to check if we’re in the viewport
+  // Parent section used to check if it’s in the viewport
   const ptcRoleSection = document.querySelector('.ptc-role');
 
   /**
-   * Checks if the entire ptcRoleSection is fully in the viewport
-   * (top >= 0 and bottom <= window height).
-   * 
-   * Adjust if you want partial visibility triggers.
-   * @param {HTMLElement} element - The element to check.
+   * Checks if the element is at least partially in the viewport.
+   * (If you prefer fully in view, revert to your existing logic.)
+   * @param {HTMLElement} elem - The element to check.
    * @returns {boolean}
    */
-  function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
+  function isInViewport(elem) {
+    const rect = elem.getBoundingClientRect();
     return (
-      rect.top >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      rect.top < window.innerHeight &&
+      rect.bottom >= 0
     );
   }
 
   /**
    * animateCards():
-   * - If the .ptc-role section is fully visible,
-   *   slide each .role card from left or right into view.
-   * - Remove the scroll listener once done (one-time animation).
+   * - Once the .ptc-role section is partially in the viewport,
+   *   fade+slide each .role card in a staggered sequence.
+   * - Remove the scroll listener after the animation so it’s one-time.
    */
   function animateCards() {
-    if (isInViewport(ptcRoleSection)) {
+    if (ptcRoleSection && isInViewport(ptcRoleSection)) {
       roles.forEach((role, index) => {
-        // Add transition for a smooth slide & fade
-        role.style.transition = 'transform 1s ease, opacity 1s ease';
-        role.style.opacity = '1'; 
-        // If it's one of the first two cards, slide from the left; else from the right
-        if (index < 2) {
-          role.style.transform = 'translateX(0)';
-        } else {
-          role.style.transform = 'translateX(0)';
-        }
+        setTimeout(() => {
+          // If not already visible
+          if (!role.classList.contains('ptc-revealed')) {
+            // Add transition for a smooth slide & fade
+            role.style.transition = 'transform 1s ease, opacity 1s ease';
+            // Make visible
+            role.style.opacity = '1';
+            // Slide to original position
+            role.style.transform = 'translateX(0)';
+            // Mark as revealed to avoid re-triggering
+            role.classList.add('ptc-revealed');
+          }
+        }, index * 150); // stagger each card by 150ms
       });
 
-      // Remove the scroll listener so it doesn’t keep firing
+      // Remove scroll listener so animation doesn’t repeat
       window.removeEventListener('scroll', animateCards);
     }
   }
 
   /**
-   * Initial State:
-   * - Cards hidden at 0 opacity
-   * - First two cards off-screen to the left,
-   *   next ones off-screen to the right
+   * Initial Off-Screen Placement:
+   * - Hide cards at opacity 0
+   * - First half from the left, second half from the right
    */
   roles.forEach((role, index) => {
-    role.style.opacity = '0'; // hide initially
-    if (index < 2) {
+    role.style.opacity = '0'; // Hidden initially
+    if (index < roles.length / 2) {
       // Slide in from left
       role.style.transform = 'translateX(-100%)';
     } else {
@@ -64,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Listen for scroll to trigger the animation
+  // Listen for scroll to trigger the reveal
   window.addEventListener('scroll', animateCards);
+
+  // Immediate check in case user is already near that section
+  animateCards();
 });
