@@ -1,15 +1,24 @@
-/************************************************
+/*
+  ===============================================
   Basic Page & Gradient Background
-************************************************/
+  ===============================================
+  - Sets up a purple gradient backdrop, default text color,
+    and general styling for the "Day in the Life of a PTC" page.
+*/
 html, body {
   margin: 0; 
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #1a0033, #3b0d60); /* Matching other pages */
-  color: #ffffff;
+  background: linear-gradient(135deg, #1a0033, #3b0d60); /* Matches other site pages */
+  color: #ffffff; /* Default text color */
 }
 
-/* Optional: Back button to homepage */
+/*
+  ===============================================
+  Optional Back Button
+  ===============================================
+  - Styled link that navigates back to the homepage (index.html).
+*/
 .back-btn {
   display: inline-block;
   margin: 20px;
@@ -21,14 +30,18 @@ html, body {
   border-radius: 6px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 .back-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/************************************************
+/*
+  ===============================================
   Main Container
-************************************************/
+  ===============================================
+  - Constrains and centers content for the "ptc-day" layout.
+*/
 .ptc-day-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -43,30 +56,38 @@ html, body {
   letter-spacing: 1px;
 }
 
-/************************************************
+/*
+  ===============================================
   Cards Layout
-************************************************/
+  ===============================================
+  - Holds multiple .ptc-card elements in a vertical stack,
+    each describing a portion of the PTC's day.
+*/
 .ptc-day-cards {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* space between cards */
+  gap: 30px; /* Space between cards */
   max-width: 1000px; 
-  margin: 0 auto; /* center the cards */
+  margin: 0 auto; /* Center the cards within the container */
 }
 
-/************************************************
+/*
+  ===============================================
   Neon Border + 3D Tilt on Each Card
-************************************************/
+  ===============================================
+  - Each .ptc-card has a subtle background, a neon border
+    that glows, and a 3D hover tilt effect.
+*/
 .ptc-card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 20px;
-  transform-style: preserve-3d; /* for 3D tilt */
-  transition: transform 0.4s ease;
+  transform-style: preserve-3d; /* Enables the 3D tilt on hover */
+  transition: transform 0.4s ease; /* Smooth tilt transition */
 }
 
-/* Neon border pseudo-element */
+/* Neon border pseudo-element around each card */
 .ptc-card::before {
   content: "";
   position: absolute;
@@ -75,27 +96,36 @@ html, body {
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   border-radius: 12px;
-  border: 2px solid #ff00c1; /* default neon color */
+  border: 2px solid #ff00c1;  /* Default neon color (pink) */
   box-shadow: 0 0 10px #ff00c1;
-  pointer-events: none;
+  pointer-events: none;       /* Non-interactive */
   animation: neonGlow 3s ease-in-out infinite alternate;
-  z-index: 1;
+  z-index: 1;                 /* Places the border above background but below card content */
 }
 
-/* Text inside the card should appear above the background */
+/* 
+  Positions card content above the background 
+  and neon border pseudo-element.
+*/
 .ptc-card > * {
   position: relative;
   z-index: 2;
 }
 
-/* 3D tilt on hover */
+/* 
+  3D tilt and slight scale on hover 
+  for a futuristic "pop" effect.
+*/
 .ptc-card:hover {
   transform: perspective(800px) rotateX(5deg) rotateY(-5deg) scale(1.02);
 }
 
-/************************************************
+/*
+  ===============================================
   Neon Glow Keyframes
-************************************************/
+  ===============================================
+  - Pulses the neon border color between pink (#ff00c1) and cyan (#00fff9).
+*/
 @keyframes neonGlow {
   0% {
     border-color: #ff00c1;
@@ -111,9 +141,12 @@ html, body {
   }
 }
 
-/************************************************
+/*
+  ===============================================
   Card Content
-************************************************/
+  ===============================================
+  - Titles, text, and any paragraphs inside each card.
+*/
 .ptc-card h2 {
   margin-top: 0;
   margin-bottom: 10px;
@@ -128,9 +161,12 @@ html, body {
   font-size: 1rem;
 }
 
-/************************************************
+/*
+  ===============================================
   Responsive
-************************************************/
+  ===============================================
+  - Adjusts font sizes for smaller screens.
+*/
 @media (max-width: 768px) {
   .ptc-day-container h1 {
     font-size: 1.6rem;
