@@ -1,38 +1,38 @@
 /************************************************
-  PTC Day Page - Timeline with Z-Index Fix
+  Basic Page Reset & Background
 ************************************************/
-body, html {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
   background: #1a0033;
   color: #ffffff;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Simple back button */
+/* Back button to homepage */
 .back-btn {
   display: inline-block;
   margin: 20px;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 8px 16px;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
 .back-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Main Container */
+/************************************************
+  Main Container 
+************************************************/
 .ptc-day-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  position: relative;
-  overflow-x: hidden;
 }
 
 /* Page Title */
@@ -42,126 +42,61 @@ body, html {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 2rem;
-  position: relative;
-}
-
-/*******************************************
-  Vertical Timeline 
-********************************************/
-.ptc-timeline {
-  position: relative;
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-/* The vertical line in the center */
-.ptc-timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #6a0dad, #ff00c1);
-  opacity: 0.4;
-  z-index: 0; /* Lower than .ptc-content */
-}
-
-/* Each step container - float left/right */
-.ptc-step {
-  position: relative;
-  width: 50%;
-  margin-bottom: 60px;
-  z-index: 1; /* so the .ptc-content is definitely above the line */
-}
-
-/* Alternate steps on left/right of line */
-.ptc-step:nth-child(even) {
-  float: right;
-  text-align: left;
-}
-.ptc-step:nth-child(odd) {
-  float: left;
-  text-align: right;
-}
-
-/* Step content styling */
-.ptc-content {
-  background: rgba(106, 13, 173, 0.2);
-  padding: 20px;
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  opacity: 0;               /* for reveal animation */
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
-  z-index: 2; /* Ensures content sits on top of the line & step dot */
-}
-
-/* Glow effect on hover */
-.ptc-content:hover {
-  background: rgba(106, 13, 173, 0.3);
-}
-
-/* Dot for each step */
-.ptc-step::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  width: 20px;
-  height: 20px;
-  background: #ff00c1;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  z-index: 1; /* behind .ptc-content but above line */
-}
-/* For odd steps, place dot on the right side of the line */
-.ptc-step:nth-child(odd)::before {
-  right: -43px;
-}
-/* Even steps, dot on the left side of the line */
-.ptc-step:nth-child(even)::before {
-  left: -43px;
-}
-
-/* When .visible is added, fade/slide in the content */
-.ptc-step.visible .ptc-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Clear floats at the end of .ptc-timeline */
-.ptc-timeline::after {
-  content: "";
-  display: block;
-  clear: both;
 }
 
 /************************************************
-  RESPONSIVE
+  Card Layout
+************************************************/
+.ptc-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* space between cards */
+  padding-bottom: 60px; /* extra bottom spacing */
+}
+
+/* Each card container */
+.ptc-card {
+  background: rgba(106, 13, 173, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  /* Start invisible for reveal */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* The child that holds the actual text paragraphs */
+.ptc-card-content p {
+  margin: 0; /* Remove default paragraph margins */
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #dddddd;
+}
+
+/* Hover highlight for fun (optional) */
+.ptc-card:hover {
+  background: rgba(106, 13, 173, 0.3);
+}
+
+/************************************************
+  Reveal Class
+************************************************/
+.ptc-card.revealed {
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+/************************************************
+  Responsive Tweaks
 ************************************************/
 @media (max-width: 768px) {
-  /* Single-column on small screens */
-  .ptc-step,
-  .ptc-step:nth-child(even),
-  .ptc-step:nth-child(odd) {
-    float: none;
-    width: 100%;
-    text-align: left;
+  .ptc-day-page h1 {
+    font-size: 1.6rem;
   }
-
-  .ptc-timeline::before {
-    left: 20px;
-    transform: none;
-  }
-  .ptc-step:nth-child(odd)::before,
-  .ptc-step:nth-child(even)::before {
-    left: -43px;
-    right: auto;
-  }
-  .ptc-step:nth-child(odd) .ptc-content,
-  .ptc-step:nth-child(even) .ptc-content {
-    margin-left: 40px;
+  .ptc-card-content p {
+    font-size: 0.95rem;
   }
 }
