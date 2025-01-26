@@ -1,51 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section');
-  
-  // For card staggering inside each section
-  // We'll look for certain card classes: .why-focus-card, .ecosystem-card, .tpd-step, .story-card
-  // Then add small transition-delays in order.
-  function staggerCards(cards) {
-    cards.forEach((card, index) => {
-      // add a small delay based on index
-      card.style.transitionDelay = (index * 0.1) + 's';
-    });
-  }
 
-  // 1) Scroll-based reveal of each section
+  // function checks if element is in viewport
   function isInViewport(elem) {
     const rect = elem.getBoundingClientRect();
     return (rect.top < window.innerHeight && rect.bottom >= 0);
   }
 
+  // function to add .visible to sections + stagger their cards
   function revealSections() {
     sections.forEach(sec => {
       if (isInViewport(sec) && !sec.classList.contains('visible')) {
         sec.classList.add('visible');
 
-        // Look for any special cards in this section, add small delay increments
-        const focusCards = sec.querySelectorAll('.why-focus-card');
-        const ecosystemCards = sec.querySelectorAll('.ecosystem-card');
-        const tpdSteps = sec.querySelectorAll('.tpd-step');
-        const storyCards = sec.querySelectorAll('.story-card');
+        // find any relevant cards to stagger
+        const wfc = sec.querySelectorAll('.why-focus-card');
+        const eco = sec.querySelectorAll('.ecosystem-card');
+        const tpd = sec.querySelectorAll('.tpd-step');
+        const story = sec.querySelectorAll('.story-card');
 
-        if (focusCards.length) staggerCards(focusCards);
-        if (ecosystemCards.length) staggerCards(ecosystemCards);
-        if (tpdSteps.length) staggerCards(tpdSteps);
-        if (storyCards.length) staggerCards(storyCards);
+        function staggerCards(cards) {
+          cards.forEach((card, index) => {
+            card.style.transitionDelay = (index * 0.1) + 's';
+            // also set them to full opacity once section is .visible
+            card.style.opacity = 1;
+            card.style.transform = 'translateY(0)';
+          });
+        }
+        if (wfc.length)  staggerCards(wfc);
+        if (eco.length)  staggerCards(eco);
+        if (tpd.length)  staggerCards(tpd);
+        if (story.length) staggerCards(story);
       }
     });
   }
 
-  window.addEventListener('scroll', revealSections);
-  revealSections();
-
-  // 2) Collapsible FAQ
+  // Collapsible FAQ
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
     question.addEventListener('click', () => {
-      item.classList.toggle('expanded'); 
+      item.classList.toggle('expanded');
     });
   });
+
+  window.addEventListener('scroll', revealSections);
+  revealSections();
 });
