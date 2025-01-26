@@ -1,31 +1,43 @@
-/* ==============================
-   TPnD Intro (Mega Hero)
-============================== */
+/* 
+  ========================================
+  TPnD Intro (Mega Hero)
+  ========================================
+  - Defines the large hero section with a neon gradient background,
+    floating particles, a glitch heading, and "Learn More" + top-right buttons.
+*/
+
 .tpnd-intro.mega-hero {
   position: relative;
   overflow: hidden;
-  min-height: 80vh; /* Enough vertical space for the hero */
+  min-height: 80vh; /* Enough vertical space for a hero look */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #ffffff; /* Default text color */
-  padding: 0;    /* We'll use the container's padding internally */
+  color: #ffffff; /* Default text color inside hero */
+  padding: 0;     /* We'll rely on internal .container padding */
 }
 
-/* Neon Gradient Background */
+/*
+  Neon Gradient Background
+  - Shifts between #1a0033, #6a0dad, #3b0d60, and #240046 
+    over a 12-second cycle for a dynamic effect.
+*/
 .animated-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+
   background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
   background-size: 400% 400%;
   animation: neonShift 12s ease infinite;
+
   z-index: 1; /* behind text but above body background */
 }
 
+/* Keyframes for the shifting neon gradient */
 @keyframes neonShift {
   0% {
     background-position: 0% 50%;
@@ -38,41 +50,55 @@
   }
 }
 
-/* Particle Container (for floating dots) */
+/*
+  Particle Container
+  - A layer for small floating dots (or other shapes).
+  - Typically populated by JS (tpnd-intro.js).
+*/
 .particle-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;  /* above the gradient, behind hero text */
+  z-index: 2;    /* Above gradient, behind main text */
   pointer-events: none;
-  overflow: hidden;
+  overflow: hidden; /* Prevent particles from scrolling out */
 }
 
-/* Hero content wrapper */
+/*
+  Hero Content Wrapper
+  - The main container that holds heading, subtext, and CTA button.
+*/
 .tpnd-intro .container.hero-content {
   position: relative;
-  z-index: 3; /* above background + particles */
+  z-index: 3;      /* Above background + particles */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px; /* The original spacing you had */
+  padding: 80px 20px; /* Original spacing for hero content */
 }
 
-/* Hero Text */
+/* 
+  Hero Text 
+  - Typically a paragraph describing the hero's purpose
+*/
 .hero-content p {
   font-size: 1.2rem;
   margin-bottom: 25px;
   color: #dddddd;
-  max-width: 800px;
+  max-width: 800px; 
   margin-left: auto;
   margin-right: auto;
   line-height: 1.8;
 }
 
-/* ==============
-   Glitch Heading
-   ============== */
+/*
+  ========================================
+  Glitch Heading
+  ========================================
+  - Large text with a glitch effect 
+    (two extra layers shifting + clipping).
+*/
 .glitch {
   position: relative;
   display: inline-block;
@@ -86,7 +112,11 @@
     0 0 16px rgba(106, 13, 173, 0.6);
 }
 
-/* Pseudo-elements for color-splitting glitch */
+/* 
+  Pseudo-elements for color-splitting glitch: 
+  "data-text" for layering the same text 
+  with slight offsets + clipping.
+*/
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -94,7 +124,7 @@
   left: 0;
   width: 100%;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0, 0, 0, 0); /* initially hidden */
 }
 
 .glitch::before {
@@ -177,9 +207,13 @@
   }
 }
 
-/* ===============================
-   "Learn More" CTA Button
-=============================== */
+/*
+  ========================================
+  "Learn More" CTA Button
+  ========================================
+  - A neon/pink button with a subtle ripple effect 
+    and glow on hover.
+*/
 .learn-more-btn.mega-cta-btn {
   background-color: #6a0dad;
   color: #ffffff;
@@ -192,7 +226,7 @@
   text-transform: uppercase;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden; /* for ripple effect if you want */
+  overflow: hidden; /* For optional ripple effect */
 }
 
 .learn-more-btn.mega-cta-btn:hover {
@@ -200,6 +234,11 @@
   box-shadow: 0 0 10px rgba(255, 0, 193, 0.6);
 }
 
+/* 
+  Ripple effect 
+  - Expands a pseudo-element from the center 
+    when hovered/focused.
+*/
 .learn-more-btn.mega-cta-btn::after {
   content: "";
   position: absolute;
@@ -220,25 +259,32 @@
   height: 250%;
 }
 
-/* ===============================
-   Particle Style
-=============================== */
+/*
+  ========================================
+  Particle Style (for floating dots)
+  ========================================
+  - The .particle class is created in JS 
+    for small sparkly effects behind hero text.
+*/
 .particle {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   filter: blur(1px);
-  z-index: 2; /* behind hero text but above background */
+  z-index: 2; 
 }
 
-/* ===============================
-   Top-Right Button
-=============================== */
+/*
+  ========================================
+  Top-Right Button (.ptc-day-btn)
+  ========================================
+  - A floating button in the hero, linking to "my-ptc-day.html"
+*/
 .ptc-day-btn {
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 4; /* Above background, particles, hero text */
+  z-index: 4; /* Above gradient, particles, hero text */
   background-color: rgba(255, 255, 255, 0.15);
   color: #ffffff;
   padding: 10px 20px;
@@ -246,7 +292,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px); /* Glassy effect */
   transition: background-color 0.3s ease, transform 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
@@ -258,9 +304,13 @@
   border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* ===============================
-   Responsiveness
-=============================== */
+/*
+  ========================================
+  Responsiveness
+  ========================================
+  - Adjust glitch heading, hero text, button sizes 
+    on smaller screens.
+*/
 @media (max-width: 768px) {
   .glitch {
     font-size: 2.2rem;
@@ -272,7 +322,6 @@
     font-size: 0.9rem;
     padding: 12px 20px;
   }
-
   /* Move top-right button if screen is smaller */
   .ptc-day-btn {
     top: 15px;
