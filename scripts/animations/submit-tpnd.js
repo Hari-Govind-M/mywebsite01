@@ -1,21 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const steps = document.querySelectorAll('.step-card');
+  // Select all step cards
+  const steps = document.querySelectorAll('.step-card');
 
-    // 1. Add the heartbeat class to each step card
-    steps.forEach(step => {
-        step.classList.add('heartbeat');
+  /**
+   * 1. Apply the "heartbeat" class to each step card,
+   *    which references an @keyframes heartbeat animation
+   *    in your CSS, causing a slow pulse effect.
+   */
+  steps.forEach(step => {
+    step.classList.add('heartbeat');
+  });
+
+  /**
+   * 2. Animate each step card into view with a delay,
+   *    creating a staggered "fade + slide" sequence.
+   */
+  const animateSteps = () => {
+    steps.forEach((step, index) => {
+      setTimeout(() => {
+        // Fade in (set opacity to 1)
+        step.style.opacity = 1;
+        // Slide to original position (translateY(0))
+        step.style.transform = 'translateY(0)';
+      }, index * 200); // each step delayed by 200ms * index
     });
+  };
 
-    // 2. Animate step cards with a delay
-    const animateSteps = () => {
-        steps.forEach((step, index) => {
-            setTimeout(() => {
-                step.style.opacity = 1;  // Fade in
-                step.style.transform = 'translateY(0)';  // Slide into place
-            }, index * 200);  // Delay each step by 200ms
-        });
-    };
-
-    // Trigger animation when DOM is fully loaded
-    animateSteps();
+  // Trigger the staggered animation as soon as the DOM is ready
+  animateSteps();
 });
