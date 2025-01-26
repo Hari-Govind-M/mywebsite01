@@ -1,22 +1,61 @@
-/* If you DO NOT want to hide the system cursor, simply remove "cursor: none;" */
+/* 
+  =========================================
+  Cursor Trail CSS
+  =========================================
+  This file controls two main things:
+    1) Whether or not to hide the default system cursor.
+    2) The styling for the spark "particles" that follow the cursor (cursor-spark).
+*/
+
+/* 
+  =========================================
+  Body Cursor Setting
+  =========================================
+  - Uncomment cursor: none; if you want to hide the system pointer 
+    and rely solely on the spark effect. 
+  - If commented out, user sees the normal pointer plus sparks.
+*/
 body {
-  /* cursor: none; */ /* <-- Comment this out so the pointer remains visible */
+  /* cursor: none; */ /* <--- Toggle this line for a hidden (none) or visible pointer */
 }
 
-/* Spark styling */
+/* 
+  =========================================
+  Spark (cursor-spark) 
+  =========================================
+  - Each spark is a small circle that appears near the cursor 
+    (defined in cursor-trail.js).
+  - Neon glow and short lifespan by default.
+*/
 .cursor-spark {
-  position: fixed;       /* each spark at exact x, y coords */
-  pointer-events: none;  /* let clicks pass through sparks */
+  position: fixed;       /* 
+                           Places each spark at (x,y) relative to the viewport, 
+                           ignoring page scroll 
+                         */
+  pointer-events: none;  /* 
+                           Sparks do not block any clicks or hovers, 
+                           so they don't interfere with normal interactions 
+                         */
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background-color: #ff00c1;  /* neon pink color */
-  box-shadow: 0 0 8px #ff00c1;/* glowing effect */
-  opacity: 1;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  border-radius: 50%;    /* Circle shape */
+  background-color: #ff00c1;  /* Neon pink color */
+  box-shadow: 0 0 8px #ff00c1; /* Glowing effect around each spark */
+  opacity: 1;            /* Visible by default */
+  transition: opacity 0.4s ease, transform 0.4s ease; 
+  /* 
+    Allows fade/scale transitions if we apply a "fade-out" class 
+    or manipulate style in JS 
+  */
 }
 
-/* Optional fade-out if you add it in JS */
+/* 
+  =========================================
+  Optional Fade-Out 
+  =========================================
+  - If your JS sets spark.classList.add("fade-out") 
+    just before spark removal, it fades/scales out gracefully.
+*/
 .fade-out {
   opacity: 0;
   transform: scale(0);
