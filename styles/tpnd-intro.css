@@ -4,16 +4,16 @@
 .tpnd-intro.mega-hero {
   position: relative;
   overflow: hidden;
-  min-height: 80vh; /* Enough vertical space for a hero feel */
+  min-height: 80vh; /* Enough vertical space for the hero */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #ffffff; /* Default text color */
-  padding: 0;    /* We'll handle interior spacing with container */
+  padding: 0;    /* We'll use the container's padding internally */
 }
 
-/* 1) Neon Gradient Background */
+/* Neon Gradient Background */
 .animated-bg {
   position: absolute;
   top: 0;
@@ -23,7 +23,7 @@
   background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
   background-size: 400% 400%;
   animation: neonShift 12s ease infinite;
-  z-index: 1; /* behind text but above the body background */
+  z-index: 1; /* behind text but above body background */
 }
 
 @keyframes neonShift {
@@ -38,27 +38,28 @@
   }
 }
 
-/* 2) Particle Container */
+/* Particle Container (for floating dots) */
 .particle-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* above gradient, behind hero text */
-  pointer-events: none; /* pass clicks through */
+  z-index: 2;  /* above the gradient, behind hero text */
+  pointer-events: none;
   overflow: hidden;
 }
 
-/* 3) Hero Content Container */
+/* Hero content wrapper */
 .tpnd-intro .container.hero-content {
   position: relative;
-  z-index: 3; /* above background/particles */
+  z-index: 3; /* above background + particles */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px; /* your original spacing or adjust as needed */
+  padding: 80px 20px; /* The original spacing you had */
 }
 
+/* Hero Text */
 .hero-content p {
   font-size: 1.2rem;
   margin-bottom: 25px;
@@ -69,7 +70,9 @@
   line-height: 1.8;
 }
 
-/* 4) Glitch Heading */
+/* ==============
+   Glitch Heading
+   ============== */
 .glitch {
   position: relative;
   display: inline-block;
@@ -83,6 +86,7 @@
     0 0 16px rgba(106, 13, 173, 0.6);
 }
 
+/* Pseudo-elements for color-splitting glitch */
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -109,7 +113,7 @@
   animation: glitch-bottom 2.5s infinite linear alternate-reverse;
 }
 
-/* Glitch Keyframes */
+/* Keyframes for top glitch layer */
 @keyframes glitch-top {
   0% {
     clip: rect(0, 9999px, 0, 0);
@@ -141,6 +145,7 @@
   }
 }
 
+/* Keyframes for bottom glitch layer */
 @keyframes glitch-bottom {
   0% {
     clip: rect(60px, 9999px, 90px, 0);
@@ -172,7 +177,9 @@
   }
 }
 
-/* 5) "Learn More" Button => "mega-cta-btn" styling combined */
+/* ===============================
+   "Learn More" CTA Button
+=============================== */
 .learn-more-btn.mega-cta-btn {
   background-color: #6a0dad;
   color: #ffffff;
@@ -185,7 +192,7 @@
   text-transform: uppercase;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden; /* for ripple effect if desired */
+  overflow: hidden; /* for ripple effect if you want */
 }
 
 .learn-more-btn.mega-cta-btn:hover {
@@ -213,16 +220,47 @@
   height: 250%;
 }
 
-/* Particle Dot Style */
+/* ===============================
+   Particle Style
+=============================== */
 .particle {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   filter: blur(1px);
-  z-index: 2;
+  z-index: 2; /* behind hero text but above background */
 }
 
-/* Adjust for smaller screens */
+/* ===============================
+   Top-Right Button
+=============================== */
+.ptc-day-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 4; /* Above background, particles, hero text */
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.ptc-day-btn:hover,
+.ptc-day-btn:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===============================
+   Responsiveness
+=============================== */
 @media (max-width: 768px) {
   .glitch {
     font-size: 2.2rem;
@@ -233,5 +271,13 @@
   .learn-more-btn.mega-cta-btn {
     font-size: 0.9rem;
     padding: 12px 20px;
+  }
+
+  /* Move top-right button if screen is smaller */
+  .ptc-day-btn {
+    top: 15px;
+    right: 15px;
+    font-size: 0.85rem;
+    padding: 8px 16px;
   }
 }
