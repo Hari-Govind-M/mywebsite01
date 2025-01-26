@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.querySelector('.hero-section');
 
-    // Add fade-in effect
-    heroSection.style.opacity = 0;
-    heroSection.style.transition = 'opacity 1.5s ease-in-out';
+    // Ensure the hero section starts transparent (already in CSS as opacity: 0)
 
-    // Trigger the fade-in after DOM is fully loaded
+    // After a short delay, add .visible to trigger the CSS fade-in
     setTimeout(() => {
-        heroSection.style.opacity = 1;
+        heroSection.classList.add('visible');
     }, 200);
 });
