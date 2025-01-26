@@ -1,14 +1,15 @@
 /************************************************
-  PTC Day Page - Heavy Animated Timeline Style
+  PTC Day Page - Timeline with Z-Index Fix
 ************************************************/
 body, html {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
   background: #1a0033;
   color: #ffffff;
 }
 
-/* Simple Back Button (Optional) */
+/* Simple back button */
 .back-btn {
   display: inline-block;
   margin: 20px;
@@ -20,6 +21,7 @@ body, html {
   border-radius: 6px;
   transition: background-color 0.3s ease;
 }
+
 .back-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -52,7 +54,7 @@ body, html {
   margin-right: 40px;
 }
 
-/* The vertical line in the center-left or center */
+/* The vertical line in the center */
 .ptc-timeline::before {
   content: "";
   position: absolute;
@@ -63,16 +65,18 @@ body, html {
   height: 100%;
   background: linear-gradient(180deg, #6a0dad, #ff00c1);
   opacity: 0.4;
+  z-index: 0; /* Lower than .ptc-content */
 }
 
-/* Each step container */
+/* Each step container - float left/right */
 .ptc-step {
   position: relative;
   width: 50%;
-  margin-bottom: 60px; /* space between steps */
+  margin-bottom: 60px;
+  z-index: 1; /* so the .ptc-content is definitely above the line */
 }
 
-/* Alternate steps on left/right side of the vertical line */
+/* Alternate steps on left/right of line */
 .ptc-step:nth-child(even) {
   float: right;
   text-align: left;
@@ -89,18 +93,18 @@ body, html {
   border-radius: 12px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  /* Start invisible for JS-based reveal */
-  opacity: 0;
+  opacity: 0;               /* for reveal animation */
   transform: translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
+  z-index: 2; /* Ensures content sits on top of the line & step dot */
 }
 
-/* Add a subtle glow on hover */
+/* Glow effect on hover */
 .ptc-content:hover {
   background: rgba(106, 13, 173, 0.3);
 }
 
-/* Dot for each step on the timeline */
+/* Dot for each step */
 .ptc-step::before {
   content: "";
   position: absolute;
@@ -110,24 +114,24 @@ body, html {
   background: #ff00c1;
   border: 3px solid #fff;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 1; /* behind .ptc-content but above line */
 }
-/* For odd steps (left side), place the dot on the right side of the line */
+/* For odd steps, place dot on the right side of the line */
 .ptc-step:nth-child(odd)::before {
   right: -43px;
 }
-/* For even steps (right side), place the dot on the left side of the line */
+/* Even steps, dot on the left side of the line */
 .ptc-step:nth-child(even)::before {
   left: -43px;
 }
 
-/* When visible class is added by JS, fade/slide in */
+/* When .visible is added, fade/slide in the content */
 .ptc-step.visible .ptc-content {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Clear floats after the timeline if desired */
+/* Clear floats at the end of .ptc-timeline */
 .ptc-timeline::after {
   content: "";
   display: block;
@@ -138,7 +142,7 @@ body, html {
   RESPONSIVE
 ************************************************/
 @media (max-width: 768px) {
-  /* Make everything single-column on small screens */
+  /* Single-column on small screens */
   .ptc-step,
   .ptc-step:nth-child(even),
   .ptc-step:nth-child(odd) {
@@ -146,6 +150,7 @@ body, html {
     width: 100%;
     text-align: left;
   }
+
   .ptc-timeline::before {
     left: 20px;
     transform: none;
@@ -153,9 +158,10 @@ body, html {
   .ptc-step:nth-child(odd)::before,
   .ptc-step:nth-child(even)::before {
     left: -43px;
+    right: auto;
   }
   .ptc-step:nth-child(odd) .ptc-content,
   .ptc-step:nth-child(even) .ptc-content {
-    margin-left: 40px; /* offset so it doesn't cover the line */
+    margin-left: 40px;
   }
 }
