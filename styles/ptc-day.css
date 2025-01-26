@@ -51,7 +51,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 40px; /* space between cards */
-  padding-bottom: 60px; /* extra bottom spacing */
+  padding-bottom: 60px; /* extra bottom space if needed */
 }
 
 /* Each card container */
@@ -68,25 +68,25 @@ html, body {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-/* The child that holds the actual text paragraphs */
+/* The child that holds the text */
 .ptc-card-content p {
-  margin: 0; /* Remove default paragraph margins */
+  margin: 0; /* remove default paragraph margins */
   line-height: 1.6;
   font-size: 1rem;
   color: #dddddd;
 }
 
-/* Hover highlight for fun (optional) */
+/* Hover highlight (optional) */
 .ptc-card:hover {
   background: rgba(106, 13, 173, 0.3);
 }
 
 /************************************************
-  Reveal Class
+  Reveal Class => triggered by JS
 ************************************************/
 .ptc-card.revealed {
   opacity: 1;
-  transform: scale(1.0);
+  transform: scale(1);
 }
 
 /************************************************
