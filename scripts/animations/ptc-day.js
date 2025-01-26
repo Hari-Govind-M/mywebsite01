@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const steps = document.querySelectorAll('.ptc-step');
+  const cards = document.querySelectorAll('.ptc-card');
 
-  // Check if element is in the viewport
+  // Check if an element is visible in viewport
   function isInViewport(elem) {
     const rect = elem.getBoundingClientRect();
     return (
@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  // Reveal steps on scroll
-  function revealSteps() {
-    steps.forEach(step => {
-      if (!step.classList.contains('visible') && isInViewport(step)) {
-        step.classList.add('visible');
+  // Reveal cards on scroll
+  function revealCards() {
+    cards.forEach(card => {
+      if (!card.classList.contains('revealed') && isInViewport(card)) {
+        card.classList.add('revealed');
       }
     });
   }
 
-  // Listen for scroll + run once on load
-  window.addEventListener('scroll', revealSteps);
-  revealSteps();
+  // Run on scroll and on load
+  window.addEventListener('scroll', revealCards);
+  revealCards();
 });
