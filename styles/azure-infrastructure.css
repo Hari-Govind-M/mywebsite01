@@ -1,11 +1,9 @@
-
-/* 
+/*
   ============================
-  Azure Infrastructure Hero
+  HERO SECTION (Neon Gradient + Glitch)
   ============================
-  - Big glitch heading, gradient background, 
-    "Home" button in top-right.
 */
+
 .azure-infra-hero {
   position: relative;
   min-height: 70vh;
@@ -22,17 +20,18 @@
   width: 100%; height: 100%;
   background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
   background-size: 400% 400%;
-  /* optional slow shifting neon */
   animation: neonShift 12s ease infinite;
   z-index: 1;
 }
 
+/* Keyframe for shifting neon background */
 @keyframes neonShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+/* Home button in top-right corner */
 .home-btn {
   position: absolute;
   top: 20px; right: 20px;
@@ -53,13 +52,13 @@
 }
 
 .azure-infra-hero .container.hero-content {
-  position: relative; 
+  position: relative;
   z-index: 3; /* above background */
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Glitch heading style (reuse from your main site) */
+/* Glitch heading styling */
 .glitch {
   position: relative;
   display: inline-block;
@@ -70,51 +69,71 @@
     0 0 8px rgba(106,13,173,0.8),
     0 0 16px rgba(106,13,173,0.6);
 }
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0; width: 100%;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  text-shadow: -2px 0 #ff00c1;
-  top: 0; color: #fff;
-  animation: glitch-top 2.5s infinite linear alternate-reverse;
-}
-/* Adjust or add your glitch-bottom etc. if needed */
-
-/* Sub-hero subtitle text */
+/* Additional glitch animations can be added here if you want top/bottom layers */
 .subtitle {
   font-size: 1.2rem;
   color: #ddd;
   margin-top: 15px;
 }
 
-/* 
+/*
   ============================
-  Other Sections
+  SCROLL-BASED REVEAL (SECTION FADE)
+  - Each section will fade in 
+    once .visible is added by JS.
+============================
+*/
+section {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+section.visible {
+  opacity: 1;
+}
+
+/*
   ============================
-  - Each with a unique background color or gradient
-    plus container for spacing
+  WHY AZURE INFRA (INTRO + 5 CARDS)
+============================
 */
 .why-azure-infra {
   background: linear-gradient(135deg, #240046, #6a0dad);
   color: #fff;
   padding: 40px 20px;
 }
-.why-azure-infra .container { max-width: 900px; margin: 0 auto; }
+.why-azure-infra .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-/* For styling the bullet list inside .why-azure-infra */
-.styled-list {
+.why-focus-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 20px;
   margin-top: 20px;
-  list-style: none;
-  padding: 0;
-}
-.styled-list li {
-  margin-bottom: 15px;
-  line-height: 1.6;
 }
 
-/* Ecosystem */
+.why-focus-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;               /* for stagger fade */
+  transform: translateY(20px);
+}
+
+/* On hover, tilt/glow effect */
+.why-focus-card:hover {
+  transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 0 10px rgba(106,13,173,0.4);
+}
+
+/*
+  ============================
+  AZURE INFRASTRUCTURE ECOSYSTEM
+============================
+*/
 .azure-infra-ecosystem {
   background: linear-gradient(135deg, #2f1854, #6a0dad);
   padding: 40px 20px;
@@ -122,7 +141,7 @@
 }
 .ecosystem-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 20px;
   margin-top: 30px;
 }
@@ -130,17 +149,20 @@
   background: rgba(255,255,255,0.1);
   padding: 20px;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0; /* for fade/stagger */
+  transform: translateY(20px);
 }
 .ecosystem-card:hover {
-  transform: scale(1.02);
-}
-.ecosystem-card h3 {
-  margin-bottom: 10px; 
-  color: #fff;
+  transform: scale(1.04) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 0 10px rgba(106,13,173,0.4);
 }
 
-/* How TPD Fits */
+/*
+  ============================
+  HOW TPD FITS (4 CARDS)
+============================
+*/
 .how-tpd-fits {
   background: linear-gradient(135deg, #330052, #a01acb);
   padding: 40px 20px;
@@ -148,7 +170,7 @@
 }
 .tpd-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 20px;
   margin-top: 30px;
 }
@@ -156,9 +178,20 @@
   background-color: rgba(0,0,0,0.2);
   padding: 20px;
   border-radius: 10px;
+  opacity: 0; /* fade/stagger */
+  transform: translateY(20px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+}
+.tpd-step:hover {
+  transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-/* Success Stories */
+/*
+  ============================
+  SUCCESS STORIES (CARDS)
+============================
+*/
 .success-stories {
   background: linear-gradient(135deg, #240046, #3b0d60);
   color: #ffffff;
@@ -166,7 +199,7 @@
 }
 .stories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 20px;
   margin-top: 25px;
 }
@@ -174,33 +207,58 @@
   background-color: rgba(255,255,255,0.1);
   border-radius: 8px;
   padding: 20px;
+  opacity: 0; /* fade/stagger */
+  transform: translateY(20px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
-.story-card h3 {
-  margin-bottom: 10px;
-  color: #fff;
+.story-card:hover {
+  transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 0 10px rgba(106,13,173,0.4);
 }
 
-/* Align & Get Started */
+/*
+  ============================
+  PARTNERING / AI CLOUD TABLE
+============================
+*/
 .align-and-get-started {
   background: linear-gradient(135deg, #6a0dad, #ff00c1);
   color: #ffffff;
   padding: 40px 20px;
 }
 .align-and-get-started .container {
-  max-width: 900px; margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
-
-/* Partner status bullet styling */
-.partner-status {
+.partnering-bullets {
   list-style: none;
-  padding: 0;
-  margin-left: 0;
+  margin: 0; padding: 0;
 }
-.partner-status li {
+.partnering-bullets li {
   margin-bottom: 10px;
 }
 
-/* Steps container style (like your main site) */
+/* Responsive table for partner statuses */
+.responsive-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  color: #fff;
+}
+.responsive-table th, .responsive-table td {
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-align: left;
+}
+.responsive-table th {
+  background: rgba(255,255,255,0.1);
+}
+
+/*
+  ============================
+  HOW TO GET STARTED -> HEARTBEAT
+============================
+*/
 .steps-container {
   display: flex;
   flex-wrap: wrap;
@@ -212,9 +270,31 @@
   padding: 12px 16px;
   border-radius: 6px;
   font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.step-card:hover {
+  transform: scale(1.05);
 }
 
-/* FAQ */
+/* Heartbeat animation for .heartbeat class */
+@keyframes heartbeat {
+  0%   { transform: scale(1);   }
+  30%  { transform: scale(1.05);}
+  40%  { transform: scale(1);   }
+  70%  { transform: scale(1.05);}
+  100% { transform: scale(1);   }
+}
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/*
+  ============================
+  COLLAPSIBLE FAQ
+============================
+*/
 .azure-infra-faq {
   background: #330052;
   padding: 40px 20px;
@@ -222,21 +302,37 @@
 }
 .faq-item {
   margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
 }
-.faq-item p {
-  margin: 5px 0;
+.faq-question {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
-
-/* Scroll-based reveal (if you want partial fade) */
-section {
-  opacity: 0;
-  transition: opacity 0.8s ease;
+.faq-answer {
+  max-height: 0; /* hidden by default */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
-section.visible {
-  opacity: 1;
+.faq-item.expanded .faq-answer {
+  /* once expanded, let it grow to content height */
+  max-height: 600px; /* or a big enough number to accommodate text */
 }
 
 /* 
-  Feel free to adapt these or add tilt on hover, 
-  partial fades, etc. for each section.
+  Cards fade/stagger (2-layer approach):
+  We'll rely on sections getting .visible,
+  plus JS adding .staggerN classes. 
+  For example:
+  .why-focus-card, .ecosystem-card, .tpd-step, .story-card 
+  can each get a small .delay-1, .delay-2, etc.
+*/
+
+/* 
+  Additional classes for small delays (if using JS):
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  etc.
 */
