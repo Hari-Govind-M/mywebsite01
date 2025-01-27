@@ -15,7 +15,7 @@
     }
     html, body {
       font-family: 'Inter', sans-serif;
-      background-color: #1a0033; /* fallback if any gradient fails */
+      background-color: #1a0033; /* fallback color */
       color: #fff;
       line-height: 1.6;
       min-height: 100%;
@@ -24,23 +24,18 @@
       text-decoration: none;
       color: inherit;
     }
-    img {
-      max-width: 100%;
-      display: block;
-    }
 
-    /* CONTAINER for centered content */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* GENERIC SECTION SPACING + FADE ANIMATION */
+    /* SECTION: FADE + UPWARD SHIFT */
     section {
-      padding: 60px 0; /* ample spacing top & bottom */
-      opacity: 0;      /* hidden by default; we fade in via JS */
-      transform: translateY(30px); /* slightly shifted down */
+      padding: 60px 0; 
+      opacity: 0; 
+      transform: translateY(30px);
       transition: opacity 1s ease, transform 1s ease;
     }
     section.visible {
@@ -51,16 +46,26 @@
       text-align: center;
       margin-bottom: 20px;
     }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    ul, ol {
+      margin-top: 15px;
+      margin-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 10px;
+    }
 
-    /* HERO SECTION with a strong neon gradient + glitch heading */
+    /* HERO */
     .sec-hero {
       position: relative;
-      padding: 80px 0; /* bigger hero spacing */
+      padding: 80px 0;
       background: linear-gradient(135deg, #3b0d60, #1a0033);
       overflow: hidden;
       text-align: center;
     }
-    /* Animated background behind hero text */
     .hero-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -76,7 +81,8 @@
     }
     .home-btn {
       position: absolute;
-      top: 20px; right: 20px;
+      top: 20px;
+      right: 20px;
       padding: 10px 16px;
       border-radius: 6px;
       background-color: rgba(255,255,255,0.15);
@@ -85,6 +91,7 @@
       transition: background-color 0.3s ease, transform 0.3s ease;
       z-index: 2;
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .home-btn:hover {
       background-color: rgba(255,255,255,0.3);
@@ -93,13 +100,13 @@
     }
     .hero-content {
       position: relative;
-      z-index: 2; /* above the hero-bg */
+      z-index: 2; 
       max-width: 1000px;
       margin: 0 auto;
       text-align: center;
     }
 
-    /* GLITCH HEADING with color shift */
+    /* GLITCH HEADING */
     .glitch {
       font-size: 3rem;
       text-transform: uppercase;
@@ -152,7 +159,7 @@
       background: linear-gradient(135deg, #6a0dad, #8a00ff);
     }
 
-    /* CARD GRID for security items */
+    /* CARD GRID FOR SECURITY ITEMS */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -164,21 +171,12 @@
       border-radius: 8px;
       padding: 20px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;             /* We'll fade these in with JS */
+      opacity: 0;             
       transform: translateY(20px);
     }
     .security-card:hover {
       transform: scale(1.04) translateY(0);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    /* LIST Spacing */
-    ul, ol {
-      margin-top: 15px;
-      margin-left: 1.5rem;
-    }
-    li {
-      margin-bottom: 10px;
     }
 
     /* FAQ COLLAPSIBLE */
@@ -207,16 +205,16 @@
       max-height: 600px;
     }
 
-    /* EXTRA SPACING FOR HEADINGS AND PARAGRAPHS */
-    h2 {
-      margin-bottom: 25px;
+    /* HEARTBEAT ANIMATION (for TPD engagement cards) */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      20% { transform: scale(1.05); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
-    p {
-      margin-bottom: 15px;
-      line-height: 1.7;
-    }
-    .home-btn {
-      font-size: 0.95rem;
+    .heartbeat {
+      animation: heartbeat 2s ease-in-out infinite;
     }
   </style>
 </head>
@@ -373,28 +371,28 @@
       <ol>
         <li>
           <strong>Closing Deals on Comprehensive Security Solutions</strong><br/>
-          Scenario: A mid-sized business suffers frequent phishing attacks, evaluating multiple vendors...
+          Scenario: A mid-sized business suffers frequent phishing attacks...
           TPD Support: Demos of Defender for Office 365 + Endpoint, licensing advice (M365 E3/E5).
         </li>
         <li>
           <strong>Ensuring Hybrid Cloud Security</strong><br/>
-          Scenario: Multi-cloud (Azure + AWS) needing real-time unified security...
-          TPD Support: Defender for Cloud for multi-cloud visibility, Microsoft Sentinel...
+          Scenario: Multi-cloud (Azure + AWS) real-time unified security...
+          TPD Support: Defender for Cloud, Microsoft Sentinel, Azure Firewall + DDoS.
         </li>
         <li>
           <strong>Protecting Identities & Building Zero Trust</strong><br/>
-          Scenario: Org wants Zero Trust around user/device identity without harming productivity...
+          Scenario: Org wants Zero Trust around user/device identity...
           TPD Support: Microsoft Entra ID, Conditional Access, MFA, Verified ID, risk-based policies.
         </li>
         <li>
           <strong>Securing Application Development & DevOps</strong><br/>
-          Scenario: Dev team needs vulnerability detection in CI/CD, container workload security...
+          Scenario: Dev team needs vulnerability detection in CI/CD...
           TPD Support: Defender for DevOps, Defender for Containers, logs into Sentinel.
         </li>
         <li>
           <strong>Data Governance & Compliance at Scale</strong><br/>
           Scenario: A financial institution needs compliance across multiple geos...
-          TPD Support: Purview classification, encryption with Azure Key Vault, auditing via Defender for SQL.
+          TPD Support: Purview classification, encryption with Azure Key Vault, auditing with Defender for SQL.
         </li>
       </ol>
     </div>
@@ -406,16 +404,16 @@
       <h2>TPD Engagement Model for Microsoft Security</h2>
       <ol>
         <li>
-          <strong>Plan & Envision:</strong> Threat Landscape Analysis, choose relevant Microsoft Security services...
+          <strong>Plan & Envision:</strong> Threat landscape analysis, pick relevant MS Security services, licensing & ROI.
         </li>
         <li>
-          <strong>Build & Configure:</strong> Architecture & setup (Defender, Entra solutions), POC, integration, governance.
+          <strong>Build & Configure:</strong> Architecture & setup (Defender, Entra), POC, integration, governance.
         </li>
         <li>
           <strong>Sell & Adopt:</strong> Technical demos, objection handling, user/admin readiness.
         </li>
         <li>
-          <strong>Grow & Optimize:</strong> Post‐deployment review, advanced expansions (Security Copilot, IoT or DevOps).
+          <strong>Grow & Optimize:</strong> Post‐deployment review, advanced expansions (Security Copilot, IoT, DevOps).
         </li>
       </ol>
     </div>
@@ -428,64 +426,56 @@
       <div class="card-grid">
         <div class="security-card">
           <h3>1. Manufacturing Firm Deploys XDR</h3>
-          <p>
-            <strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel,
-            knowledge transfer.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.
-          </p>
+          <p><strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.</p>
+          <p><strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel, knowledge transfer.</p>
+          <p><strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.</p>
         </div>
         <div class="security-card">
           <h3>2. Global Retailer Embraces Zero Trust</h3>
-          <p>
-            <strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID for B2B, integrated Defender for Endpoint on store devices, introduced Security Copilot.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.
-          </p>
+          <p><strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.</p>
+          <p><strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID, integrated Defender for Endpoint on store devices, introduced Security Copilot.</p>
+          <p><strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.</p>
         </div>
         <div class="security-card">
           <h3>3. Healthcare Provider Adopts Purview & Priva</h3>
-          <p>
-            <strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.
-          </p>
-          <p>
-            <strong>TPD Involvement:</strong> Set up Microsoft Purview data classification, recommended Microsoft Priva
-            for controlling personal data usage, used Key Vault encryption for sensitive files.
-          </p>
-          <p>
-            <strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse,
-            improved data transparency.
-          </p>
+          <p><strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.</p>
+          <p><strong>TPD Involvement:</strong> Set up Microsoft Purview data classification, recommended Microsoft Priva for controlling personal data usage, used Key Vault for encryption.</p>
+          <p><strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse, improved data transparency.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW TO ENGAGE TPD FOR SECURITY -->
+  <!-- HOW TO ENGAGE TPD (WITH HEARTBEAT ANIMATION) -->
   <section class="engage-tpd-section">
     <div class="container">
       <h2>How to Engage TPD for Security</h2>
       <p>
         Check Your Partner Benefits: Sign in to Partner Center and ensure your account is linked
         to the Microsoft AI Cloud Partner Program. Under Benefits → Technical presales & deployment,
-        confirm eligibility (e.g., Solutions Partner, Action Pack, Legacy Gold/Silver).
+        confirm eligibility (Solutions Partner, Action Pack, Legacy Gold/Silver).
       </p>
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 30px 0;">
-        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+      <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin: 30px 0;">
+        <!-- Each "card" has heartbeat -->
+        <div class="heartbeat" style="
+          background: rgba(255,255,255,0.1);
+          padding: 15px 25px;
+          border-radius: 8px;
+          font-weight: bold;">
           Submit a TPD Request →
         </div>
-        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+        <div class="heartbeat" style="
+          background: rgba(255,255,255,0.1);
+          padding: 15px 25px;
+          border-radius: 8px;
+          font-weight: bold;">
           Collaborate & Execute →
         </div>
-        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+        <div class="heartbeat" style="
+          background: rgba(255,255,255,0.1);
+          padding: 15px 25px;
+          border-radius: 8px;
+          font-weight: bold;">
           Optimize & Evolve
         </div>
       </div>
@@ -586,19 +576,18 @@
     </div>
   </section>
 
-  <!-- SINGLE-FILE JS: ONCE DOM LOADED, FADE IN & FAQ COLLAPSE -->
+  <!-- SINGLE-FILE JS: onLoad fadeIn + FAQ Collapses + Heartbeat is already in CSS -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Reveal sections with fade + upward shift
+    // Reveal each section with fade-up
     const sections = document.querySelectorAll('section');
     sections.forEach((sec, idx) => {
-      // Slight stagger if you want (like 0.2s * index)
       setTimeout(() => {
         sec.classList.add('visible');
       }, idx * 150);
     });
 
-    // Staggered fade for each .security-card
+    // Fade/stagger for each .security-card
     const allCards = document.querySelectorAll('.security-card');
     allCards.forEach((card, index) => {
       card.style.transitionDelay = (0.3 + index * 0.1) + 's';
