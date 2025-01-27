@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Microsoft Security – TPnD Services</title>
+  <title>Data & AI – TPnD Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SINGLE-FILE CONSOLIDATED CSS -->
@@ -24,23 +24,10 @@
       text-decoration: none;
       color: inherit;
     }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
-    }
-
-    /* SECTION: FADE + UPWARD SHIFT */
-    section {
-      padding: 60px 0; 
-      opacity: 0; 
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
     h1, h2, h3 {
       text-align: center;
@@ -58,7 +45,19 @@
       margin-bottom: 10px;
     }
 
-    /* HERO */
+    /* SECTION: FADE + UPWARD SHIFT */
+    section {
+      padding: 60px 0; 
+      opacity: 0; 
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HERO SECTION */
     .sec-hero {
       position: relative;
       padding: 80px 0;
@@ -130,14 +129,14 @@
       margin-top: 10px;
     }
 
-    /* DISTINCT SECTION BACKGROUNDS */
-    .why-security {
+    /* DISTINCT SECTION BACKGROUNDS (we'll reuse the style but rename for data AI) */
+    .why-dataai {
       background: linear-gradient(135deg, #240046, #6a0dad);
     }
-    .solutions-section {
+    .services-section {
       background: linear-gradient(135deg, #2f1854, #6a0dad);
     }
-    .scenarios-section {
+    .real-world-section {
       background: linear-gradient(135deg, #330052, #a01acb);
     }
     .engagement-model-section {
@@ -159,14 +158,14 @@
       background: linear-gradient(135deg, #6a0dad, #8a00ff);
     }
 
-    /* CARD GRID FOR SECURITY ITEMS */
+    /* CARD GRID FOR AI SERVICES */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
-    .security-card {
+    .service-card {
       background: rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 20px;
@@ -174,7 +173,7 @@
       opacity: 0;             
       transform: translateY(20px);
     }
-    .security-card:hover {
+    .service-card:hover {
       transform: scale(1.04) translateY(0);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
@@ -225,195 +224,161 @@
     <div class="hero-bg"></div>
     <a href="index.html" class="home-btn">Home</a>
     <div class="container hero-content">
-      <h1 class="glitch" data-text="Strengthen Your Defenses with Microsoft Security Solutions">
-        Strengthen Your Defenses with Microsoft Security Solutions
+      <h1 class="glitch" data-text="Accelerate Data & AI Initiatives with TPnD">
+        Accelerate Data & AI Initiatives with TPnD
       </h1>
       <p class="hero-subtitle">
-        Protect Data, Devices, and Identities Using the Power of AI and Cloud-Driven Threat Intelligence
+        Overcome Technical Blockers & Close More Deals in Data Platform Modernization, Advanced Analytics, and AI
       </p>
     </div>
   </section>
 
-  <!-- WHY MICROSOFT SECURITY -->
-  <section class="why-security">
+  <!-- WHY FOCUS ON DATA & AI -->
+  <section class="why-dataai">
     <div class="container">
       <p>
-        In an era of escalating cyber threats, organizations are striving to safeguard data, devices,
-        and cloud environments. Microsoft Security solutions provide a comprehensive approach,
-        spanning identity management, endpoint protection, threat intelligence, and compliance.
-        Whether you’re safeguarding a small business or a global enterprise, Microsoft’s end-to-end
-        security ecosystem helps you address modern security challenges while enabling secure productivity.
+        Today, data is currency—fueling innovation, efficiency, and competitive advantage. Whether your customers need to modernize legacy data platforms, implement advanced analytics, or embed cutting-edge AI capabilities, Microsoft Azure provides a robust ecosystem of Data & AI services. Yet the complexity of these solutions often poses challenges in closing deals, addressing technical blockers, and delivering successful implementations.
       </p>
       <p>
-        But implementing a holistic security strategy can be complex. That’s where the Technical Presales
-        and Deployment (TPD) team comes in. We provide tailored, one-on-one guidance to help you plan,
-        build, sell, and grow secure solutions—leveraging Azure Security, Microsoft 365 Defender,
-        Microsoft Entra, Microsoft Purview, Microsoft Security Copilot, and beyond.
+        That’s why the Technical Presales and Deployment (TPD) team is here: to help you envision, sell, plan, and deploy Data & AI solutions that deliver meaningful insights and transformative outcomes. Below, we’ll explore the powerful Azure Data & AI offerings, common scenarios, and how TPD can guide you at every stage.
       </p>
 
-      <h2>Why Microsoft Security?</h2>
+      <h2>Why Focus on Data & AI?</h2>
+      <ul>
+        <li><strong>Data-Driven Insights:</strong> Solutions like Azure Synapse, Power BI, and Azure Machine Learning turn raw data into actionable insights.</li>
+        <li><strong>Scale & Performance:</strong> Azure SQL Managed Instance, Cosmos DB, Databricks handle real-time analytics and robust elasticity.</li>
+        <li><strong>Integrations for Every Need:</strong> Handle any data scenario/volume (SQL, HDInsight, Data Lake, etc.).</li>
+        <li><strong>Advanced AI & Cognitive Capabilities:</strong> Azure OpenAI, Machine Learning, or Cognitive Services bring intelligence to apps/processes.</li>
+        <li><strong>Business Enablement:</strong> Data & AI drives cost optimizations, new revenue, and improved CX for modern businesses.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MICROSOFT DATA & AI SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <h2>Microsoft Data & AI Services: A Comprehensive Suite</h2>
+      <p>Azure Data & AI covers a broad range of services and solutions. Below is a snapshot of what you can tap into during your TPD engagements:</p>
       <div class="card-grid">
-        <div class="security-card">
-          <h3>Comprehensive Threat Protection</h3>
+        <div class="service-card">
+          <h3>Data Platform Modernization</h3>
           <p>
-            From Microsoft Defender for Endpoint to Microsoft Defender for Cloud and Microsoft Sentinel,
-            Microsoft covers the entire attack chain—helping you detect, protect, and respond faster.
+            Azure SQL Database, Azure SQL Managed Instance, SQL Server (on-prem & hybrid), Azure Database for MySQL/PostgreSQL/MariaDB,
+            Azure Database Migration Service, Azure Cosmos DB, Microsoft Fabric, Copilot for Fabric
           </p>
         </div>
-        <div class="security-card">
-          <h3>Identity-Centric Security</h3>
+        <div class="service-card">
+          <h3>Advanced Analytics</h3>
           <p>
-            Microsoft Entra (formerly Azure AD) delivers robust access management, multi-factor authentication,
-            and identity governance across cloud and on-prem services.
+            Azure Synapse, Azure Data Factory, Data Lake Storage, HDInsight, Databricks
           </p>
         </div>
-        <div class="security-card">
-          <h3>Data Governance & Compliance</h3>
+        <div class="service-card">
+          <h3>Artificial Intelligence</h3>
           <p>
-            Microsoft Purview helps classify, protect, and monitor data wherever it resides,
-            simplifying compliance and reducing risk.
+            Azure AI Services, Azure AI Studio, Azure Machine Learning, Azure OpenAI, Azure Cognitive Search
           </p>
         </div>
-        <div class="security-card">
-          <h3>AI-Powered Insights</h3>
+        <div class="service-card">
+          <h3>Visualization & Insights</h3>
           <p>
-            Microsoft Security Copilot harnesses advanced AI and generative models to rapidly surface threats,
-            simplify investigation, and accelerate incident response.
+            Power BI, Copilot for Power BI
           </p>
         </div>
-        <div class="security-card">
-          <h3>Unified Management</h3>
+        <div class="service-card">
+          <h3>Data & AI Tools (Misc.)</h3>
           <p>
-            Tools like Microsoft 365 Lighthouse and Microsoft Entra Permissions Management centralize oversight
-            and simplify policy enforcement across multiple tenants or environments.
+            ML.NET, SQL Server ML Services
           </p>
         </div>
-        <div class="security-card">
-          <h3>Hybrid & Multi-Platform Coverage</h3>
+        <div class="service-card">
+          <h3>Ingest & Manage</h3>
           <p>
-            Microsoft extends protection across on-premises, cloud, and edge—covering Windows, Linux, macOS,
-            Android, and iOS devices.
+            Azure Data Explorer, Azure Databricks, Azure Event Hubs
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Hybrid & Mixed</h3>
+          <p>
+            SQL Server Big Data Clusters, Azure Arc for Data Services
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Identity & Governance</h3>
+          <p>
+            Azure AD, RBAC, Azure Policy, Purview
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Operations & Monitoring</h3>
+          <p>
+            Azure Monitor, Azure Advisor, Well-Architected Framework
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MICROSOFT SECURITY & DEVICES SOLUTIONS -->
-  <section class="solutions-section">
+  <!-- REAL-WORLD CHALLENGES & HOW TPD HELPS -->
+  <section class="real-world-section">
     <div class="container">
-      <h2>Microsoft Security & Devices Solutions: A Full Spectrum of Services</h2>
-      <p>Below is a sampling of Microsoft’s vast security and device offerings that can benefit from TPD’s expertise:</p>
-      <div class="card-grid">
-        <div class="security-card">
-          <h3>Identity & Access Management</h3>
-          <p>
-            Microsoft Entra ID, Microsoft Entra ID Protection, Verified ID, External ID (B2B/B2C),
-            Permissions Management, Internet Access, Private Access
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Endpoint & Device Security</h3>
-          <p>
-            Microsoft Defender for Endpoint, Configuration Manager, Intune, Surface Devices,
-            Windows 10/11, Windows 365
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Cloud Security</h3>
-          <p>
-            Azure Firewall, DDoS Protection, Microsoft Defender for Cloud, Defender for Containers,
-            Defender for SQL, Defender Vulnerability Management
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Threat Intelligence & Detection</h3>
-          <p>
-            Microsoft Sentinel, Microsoft Defender Threat Intelligence,
-            Microsoft Defender XDR, Microsoft Defender for Cloud Apps
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Data Protection & Compliance</h3>
-          <p>
-            Microsoft Purview (Data Governance/Security/Compliance), Microsoft Priva,
-            Azure Key Vault, Log Analytics
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Productivity & Collaboration Security</h3>
-          <p>
-            Microsoft 365 Defender, Microsoft Defender for Office 365,
-            Microsoft 365 Apps, Microsoft 365 Lighthouse
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>AI & Next-Gen Security</h3>
-          <p>
-            Microsoft Security Copilot, Microsoft Defender for DevOps,
-            Microsoft Defender for IoT
-          </p>
-        </div>
-        <div class="security-card">
-          <h3>Misc. Solutions</h3>
-          <p>
-            MS Antimalware for Azure, Windows Security Baselines, etc.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REAL-WORLD SCENARIOS -->
-  <section class="scenarios-section">
-    <div class="container">
-      <h2>Real-World Security Scenarios & How TPD Helps</h2>
+      <h2>Real-World Challenges & How TPD Helps</h2>
       <ol>
         <li>
-          <strong>Closing Deals on Comprehensive Security Solutions</strong><br/>
-          Scenario: A mid-sized business suffers frequent phishing attacks...
-          TPD Support: Demos of Defender for Office 365 + Endpoint, licensing advice (M365 E3/E5).
+          <strong>Closing Deals & Overcoming Objections</strong><br/>
+          Scenario: A potential customer is skeptical about migrating on-prem SQL data to Azure Synapse, or setting up real-time analytics.
+          TPD Support: Provide presales demos, address cost, data governance with Azure Policy/Monitor.
         </li>
         <li>
-          <strong>Ensuring Hybrid Cloud Security</strong><br/>
-          Scenario: Multi-cloud (Azure + AWS) real-time unified security...
-          TPD Support: Defender for Cloud, Microsoft Sentinel, Azure Firewall + DDoS.
+          <strong>Designing Scalable Data Architectures</strong><br/>
+          Scenario: Handling petabyte-scale ingestion/analytics for IoT.
+          TPD Support: Choose correct storage, ingestion pipelines, analytics layers with best practices.
         </li>
         <li>
-          <strong>Protecting Identities & Building Zero Trust</strong><br/>
-          Scenario: Org wants Zero Trust around user/device identity...
-          TPD Support: Microsoft Entra ID, Conditional Access, MFA, Verified ID, risk-based policies.
+          <strong>Ensuring Successful AI Deployments</strong><br/>
+          Scenario: Customer wants AI chatbots or predictive analytics but lacks ML framework expertise.
+          TPD Support: Steps for Azure ML lifecycle, or Azure OpenAI, Cognitive Services, best practices.
         </li>
         <li>
-          <strong>Securing Application Development & DevOps</strong><br/>
-          Scenario: Dev team needs vulnerability detection in CI/CD...
-          TPD Support: Defender for DevOps, Defender for Containers, logs into Sentinel.
-        </li>
-        <li>
-          <strong>Data Governance & Compliance at Scale</strong><br/>
-          Scenario: A financial institution needs compliance across multiple geos...
-          TPD Support: Purview classification, encryption with Azure Key Vault, auditing with Defender for SQL.
+          <strong>Publishing & Monetizing Data & AI Solutions</strong><br/>
+          Scenario: You’ve built an industry-specific analytics solution to list in the commercial marketplace.
+          TPD Support: Marketplace certification, co-sell readiness, recommended pricing strategies.
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- TPD ENGAGEMENT MODEL -->
+  <!-- TPD ENGAGEMENT MODEL for Data & AI -->
   <section class="engagement-model-section">
     <div class="container">
-      <h2>TPD Engagement Model for Microsoft Security</h2>
+      <h2>TPD Engagement Model for Data & AI</h2>
       <ol>
-        <li>
-          <strong>Plan & Envision:</strong> Threat landscape analysis, pick relevant MS Security services, licensing & ROI.
+        <li><strong>Plan & Envision</strong>
+          <ul>
+            <li>Assess Current Environment: Review existing DBs/ETL/AI solutions, define business objectives.</li>
+            <li>Strategize Architecture & Roadmap: Outline data architecture using Synapse/Databricks, plan migrations.</li>
+            <li>Sales Enablement & Licensing: Demos, ROI/TCO, licensing best practices.</li>
+          </ul>
         </li>
-        <li>
-          <strong>Build & Configure:</strong> Architecture & setup (Defender, Entra), POC, integration, governance.
+        <li><strong>Build & Integrate</strong>
+          <ul>
+            <li>Proof of Concept (POC): Validate architecture (Data Factory + ML models, etc.).</li>
+            <li>Security & Governance: Data encryption, RBAC, auditing, policy, monitoring.</li>
+            <li>Performance Optimization: Use Azure Analysis Services, partitioning in Cosmos DB/SQL, etc.</li>
+          </ul>
         </li>
-        <li>
-          <strong>Sell & Adopt:</strong> Technical demos, objection handling, user/admin readiness.
+        <li><strong>Sell & Publish</strong>
+          <ul>
+            <li>Technical Presales: Demos with Power BI, advanced ML, cost/complexity objections.</li>
+            <li>Co-Sell & Marketplace Listing: Certification, packaging, pricing, promotion.</li>
+          </ul>
         </li>
-        <li>
-          <strong>Grow & Optimize:</strong> Post‐deployment review, advanced expansions (Security Copilot, IoT, DevOps).
+        <li><strong>Grow & Optimize</strong>
+          <ul>
+            <li>Monitoring & Continuous Improvement: Stream Analytics, anomaly detection, track ML accuracy.</li>
+            <li>Expansion of AI Capabilities: Add Copilot for Fabric, advanced language models, etc.</li>
+            <li>Periodic Well-Architected Reviews: Focus on cost, reliability, performance, security.</li>
+          </ul>
         </li>
       </ol>
     </div>
@@ -424,66 +389,51 @@
     <div class="container">
       <h2>Success Stories</h2>
       <div class="card-grid">
-        <div class="security-card">
-          <h3>1. Manufacturing Firm Deploys XDR</h3>
-          <p><strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.</p>
-          <p><strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel, knowledge transfer.</p>
-          <p><strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.</p>
+        <div class="service-card">
+          <h3>1. Financial Services Firm Modernizing Data Warehouse</h3>
+          <p><strong>Scenario:</strong> A bank with legacy on-prem data warehouse needs real-time risk analytics.</p>
+          <p><strong>TPD Involvement:</strong> Proposed Azure Synapse + Azure ML for advanced risk scoring. Migrated SSIS to Data Factory.</p>
+          <p><strong>Outcome:</strong> 60% reduction in daily batch processing, predictive analytics for proactive risk management.</p>
         </div>
-        <div class="security-card">
-          <h3>2. Global Retailer Embraces Zero Trust</h3>
-          <p><strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.</p>
-          <p><strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID, integrated Defender for Endpoint on store devices, introduced Security Copilot.</p>
-          <p><strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.</p>
+        <div class="service-card">
+          <h3>2. Retail ISV Monetizing AI Chatbots</h3>
+          <p><strong>Scenario:</strong> A retail solution vendor integrating ML-based chatbot solutions with Azure Bot Service + OpenAI.</p>
+          <p><strong>TPD Involvement:</strong> Architected user query ingestion, used Cosmos DB for session storage, POC chatbot demo, marketplace listing assistance.</p>
+          <p><strong>Outcome:</strong> Rapid sales expansion with new AI revenue from small/medium retailers.</p>
         </div>
-        <div class="security-card">
-          <h3>3. Healthcare Provider Adopts Purview & Priva</h3>
-          <p><strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.</p>
-          <p><strong>TPD Involvement:</strong> Set up Microsoft Purview data classification, recommended Microsoft Priva for controlling personal data usage, used Key Vault for encryption.</p>
-          <p><strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse, improved data transparency.</p>
+        <div class="service-card">
+          <h3>3. Healthcare Provider Implementing Real-Time Patient Analytics</h3>
+          <p><strong>Scenario:</strong> Hospital network analyzing patient vitals in real time for faster emergency detection.</p>
+          <p><strong>TPD Involvement:</strong> Azure IoT Hub + Stream Analytics for real-time data, secure Data Lake, ML predictive models.</p>
+          <p><strong>Outcome:</strong> Near real-time alerts improved response times, lowered readmission rates.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW TO ENGAGE TPD (WITH HEARTBEAT ANIMATION) -->
+  <!-- HOW TO ENGAGE TPD (WITH HEARTBEAT) -->
   <section class="engage-tpd-section">
     <div class="container">
-      <h2>How to Engage TPD for Security</h2>
+      <h2>How to Engage TPD for Data & AI</h2>
       <p>
-        Check Your Partner Benefits: Sign in to Partner Center and ensure your account is linked
-        to the Microsoft AI Cloud Partner Program. Under Benefits → Technical presales & deployment,
-        confirm eligibility (Solutions Partner, Action Pack, Legacy Gold/Silver).
+        Check Your Partner Benefits: Sign in to Partner Center, ensure your account is tied to the
+        Microsoft AI Cloud Partner Program.
       </p>
       <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin: 30px 0;">
-        <!-- Each "card" has heartbeat -->
-        <div class="heartbeat" style="
-          background: rgba(255,255,255,0.1);
-          padding: 15px 25px;
-          border-radius: 8px;
-          font-weight: bold;">
+        <div class="heartbeat" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; font-weight: bold;">
           Submit a TPD Request →
         </div>
-        <div class="heartbeat" style="
-          background: rgba(255,255,255,0.1);
-          padding: 15px 25px;
-          border-radius: 8px;
-          font-weight: bold;">
-          Collaborate & Execute →
+        <div class="heartbeat" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; font-weight: bold;">
+          Collaborate with Experts →
         </div>
-        <div class="heartbeat" style="
-          background: rgba(255,255,255,0.1);
-          padding: 15px 25px;
-          border-radius: 8px;
-          font-weight: bold;">
-          Optimize & Evolve
+        <div class="heartbeat" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; font-weight: bold;">
+          Launch & Optimize
         </div>
       </div>
       <p>
-        Outline your scenario—adopting Defender for Cloud, migrating to Microsoft Sentinel,
-        implementing Zero Trust with Microsoft Entra. Expect a TPD response within two business days
-        to discuss presales or deployment best practices. Re-engage TPD for advanced integrations
-        (e.g., Security Copilot) or expansions into IoT or DevOps scenarios.
+        Provide project details: data warehouse modernization, advanced analytics, AI, or marketplace listing.
+        A TPD consultant follows up within two business days to discuss architecture, POCs, demos, or presales assistance.
+        After deployment, re-engage TPD for optimization, expansions, or new AI features.
       </p>
     </div>
   </section>
@@ -493,65 +443,65 @@
     <div class="container">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
-        <div class="faq-question">Q1: Does TPD provide 24/7 monitoring or incident response services?</div>
+        <div class="faq-question">Q1: Can TPD help me transition from SQL Server on-prem to Azure SQL or Synapse?</div>
         <div class="faq-answer">
           <p>
-            <strong>A:</strong> TPD focuses on technical presales and deployment guidance. For continuous monitoring
-            or emergency support, explore Premier Support, Advanced Support for Partners, or an MSSP.
+            <strong>A:</strong> Yes. TPD offers guidance on using Azure Database Migration Service,
+            performance tuning, and right-sizing your cloud databases.
           </p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Q2: My solution uses multiple Azure security products—can TPD help integrate them?</div>
+        <div class="faq-question">Q2: What if my solution needs to integrate advanced language models or computer vision?</div>
         <div class="faq-answer">
           <p>
-            <strong>A:</strong> Absolutely. TPD can assist in designing unified solutions across Azure Firewall,
-            DDoS Protection, Defender for Cloud, Microsoft Sentinel, and more.
+            <strong>A:</strong> TPD can suggest best practices for Azure Cognitive Services, Azure OpenAI,
+            or custom AI model deployment with Azure Machine Learning.
           </p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Q3: How does TPD handle compliance regulations like GDPR, HIPAA, or PCI?</div>
+        <div class="faq-question">Q3: Do TPD services cover production support or troubleshooting?</div>
         <div class="faq-answer">
           <p>
-            <strong>A:</strong> TPD advisors recommend Microsoft tools (Purview, Priva, encryption) that address regulations,
-            but final compliance readiness is typically validated by customers’ legal teams.
+            <strong>A:</strong> TPD is not a 24/7 break-fix channel. For production outages, consider Premier Support or Advanced Support for Partners.
           </p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Q4: Is Microsoft Security Copilot generally available?</div>
+        <div class="faq-question">Q4: We’re new to AI—can TPD provide training?</div>
         <div class="faq-answer">
           <p>
-            <strong>A:</strong> Availability may vary by region/licensing. TPD can share the latest info on enrolling in or evaluating Security Copilot.
+            <strong>A:</strong> TPD isn’t a formal training program, but offers knowledge transfer.
+            For in-depth learning, explore Microsoft Learn or certifications.
           </p>
         </div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Q5: Can TPD help with device‐specific solutions, like Surface or OEM device security?</div>
+        <div class="faq-question">Q5: Are marketplace listing services included in TPD?</div>
         <div class="faq-answer">
           <p>
-            <strong>A:</strong> Yes. TPD can guide you on Windows security features, Surface device management,
-            and Endpoint Management best practices to keep endpoints secure.
+            <strong>A:</strong> Yes. We help navigate Microsoft’s commercial marketplace certification,
+            co-sell readiness, and best practices—though listing fees or co-sell terms depend on partner benefits.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONCLUSION: DEFEND YOUR BUSINESS -->
+  <!-- CONCLUSION: READY TO TRANSFORM -->
   <section class="conclusion-section">
     <div class="container">
-      <h2>Defend Your Business with Confidence</h2>
+      <h2>Ready to Transform Your Data & AI Vision into Reality?</h2>
       <p>
-        From Azure and Microsoft 365 to Microsoft Entra and Microsoft Purview, Microsoft delivers
-        a vast ecosystem of security solutions designed to protect what matters most at every layer.
-        By partnering with Technical Presales and Deployment, you’ll gain:
+        From data platform modernization to advanced analytics and AI innovations, Microsoft’s Azure ecosystem has you covered.
+        By collaborating with Technical Presales and Deployment, you’ll gain:
       </p>
       <ul style="list-style: none; padding: 0; margin: 15px 0;">
-        <li><strong>Expert Presales Guidance</strong> – to showcase the value of integrated security offerings.</li>
-        <li><strong>Deployment Best Practices</strong> – reduce complexity and speed time-to-protection.</li>
-        <li><strong>Knowledge Transfer & Ongoing Optimization</strong> – stay ahead of evolving threats and compliance demands.</li>
+        <li><strong>Presales Expertise</strong> to close deals faster.</li>
+        <li><strong>Architectural Guidance</strong> for robust, scalable solutions.</li>
+        <li><strong>Technical Best Practices</strong> to overcome deployment blockers.</li>
+        <li><strong>Ongoing Optimization</strong> for continuous Data & AI success.</li>
       </ul>
     </div>
   </section>
@@ -561,22 +511,23 @@
     <div class="container">
       <h2>Take the Next Step</h2>
       <p>
-        <strong>Schedule a TPD Consultation</strong> – Let’s discuss your security goals, challenges, and how we can help.
+        <strong>Schedule a TPD Consultation</strong> – Discuss your data and AI roadmap, challenges, and goals.
       </p>
       <p>
-        <strong>Submit a TPD Services Request</strong> – Already know what you need? Open a case and get started right away.
+        <strong>Submit a TPD Services Request</strong> – Already have a clear scope? Let’s get started.
       </p>
       <p>
-        <strong>Explore Other Solution Areas</strong> – See how TPD can also support Data & AI, Modern Work, and more.
+        <strong>Explore Other Solution Areas</strong> – Learn how TPD can also support Azure Infrastructure,
+        Digital & App Innovation, Modern Work, and more.
       </p>
       <p>
-        Partner with TPD to build end-to-end security solutions that instill confidence, drive trust,
-        and protect your customers—so they can thrive in an increasingly connected world.
+        Empower your customers with advanced analytics, real-time insights, and AI-driven solutions that stand out
+        in a data-saturated world. We look forward to partnering with you on every step of your Data & AI journey!
       </p>
     </div>
   </section>
 
-  <!-- SINGLE-FILE JS: onLoad fadeIn + FAQ Collapses + Heartbeat is already in CSS -->
+  <!-- SINGLE-FILE JS: fadeIn + FAQ Collapses + Heartbeat CSS is already defined -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     // Reveal each section with fade-up
@@ -587,8 +538,8 @@
       }, idx * 150);
     });
 
-    // Fade/stagger for each .security-card
-    const allCards = document.querySelectorAll('.security-card');
+    // Staggered fade for each .service-card
+    const allCards = document.querySelectorAll('.service-card');
     allCards.forEach((card, index) => {
       card.style.transitionDelay = (0.3 + index * 0.1) + 's';
       setTimeout(() => {
