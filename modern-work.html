@@ -2,163 +2,317 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Microsoft Security – TPnD Services</title>
+  <title>Modern Work – TPnD Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SINGLE-FILE CONSOLIDATED CSS -->
+  <!-- 
+    Inline CSS for convenience.
+    You can move this into "modern-work.css" if desired.
+  -->
   <style>
-    /* RESET & BASE */
+    /* ============================
+       BASIC RESET + BODY
+    ============================= */
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1a0033; /* fallback color */
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      background-color: #240046; /* fallback color */
       color: #fff;
       line-height: 1.6;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
     }
     a {
+      color: #fff;
       text-decoration: none;
-      color: inherit;
+      transition: color 0.2s ease;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    h1, h2, h3 {
-      text-align: center;
-      margin-bottom: 15px;
+    a:hover {
+      color: #ffdfff;
     }
 
-    /* HERO SECTION (Reduced spacing, neon gradient) */
-    .sec-hero {
-      position: relative;
-      min-height: 50vh; /* reduced vertical space */
-      padding: 30px 0;
-      background: linear-gradient(135deg, #3b0d60, #1a0033);
-      overflow: hidden;
-      text-align: center;
+    /* Headings & Paragraphs */
+    h1, h2, h3 {
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      line-height: 1.2;
     }
-    .hero-bg {
+    h1 {
+      font-size: 2.6rem;
+      margin-top: 0.4em;
+    }
+    h2 {
+      font-size: 1.9rem;
+      margin-top: 1em;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1em;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px; /* add extra space for a roomy layout */
+    }
+
+    /* ============================
+       HERO SECTION
+    ============================= */
+    .modern-work-hero {
+      position: relative;
+      min-height: 70vh;
+      padding: 80px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .modern-work-hero .hero-bg {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
       background-size: 400% 400%;
       animation: neonShift 12s ease infinite;
       z-index: 1;
     }
     @keyframes neonShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
     .home-btn {
       position: absolute;
-      top: 15px; 
-      right: 15px;
-      padding: 8px 16px;
-      border-radius: 6px;
+      top: 20px; right: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
       background-color: rgba(255,255,255,0.15);
+      color: #fff;
       border: 2px solid rgba(255,255,255,0.3);
       backdrop-filter: blur(4px);
       transition: background-color 0.3s ease, transform 0.3s ease;
       z-index: 2;
-      font-weight: 500;
     }
     .home-btn:hover {
       background-color: rgba(255,255,255,0.3);
       transform: scale(1.05);
       border-color: rgba(255,255,255,0.6);
     }
-    .hero-content {
+    .modern-work-hero .container.hero-content {
       position: relative;
-      z-index: 2; /* above the hero-bg */
+      z-index: 3; /* above background */
       max-width: 1000px;
       margin: 0 auto;
-      text-align: center;
     }
-
-    /* GLITCH HEADING with color shift animation */
     .glitch {
-      font-size: 2.5rem;
-      margin: 10px 0;
-      font-weight: bold;
+      display: inline-block;
       text-transform: uppercase;
-      text-shadow: 0 0 8px rgba(106,13,173,0.8), 0 0 16px rgba(106,13,173,0.6);
-      animation: glitchColorShift 3s infinite;
+      text-shadow:
+        0 0 8px rgba(106,13,173,0.8),
+        0 0 16px rgba(106,13,173,0.6);
     }
-    @keyframes glitchColorShift {
-      0%, 100% {
-        color: #fff;
-        text-shadow: 0 0 8px rgba(106,13,173,0.8), 0 0 16px rgba(106,13,173,0.6);
-      }
-      50% {
-        color: #ff00c1;
-        text-shadow: 0 0 8px #ff00c1, 0 0 16px #ff00c1;
-      }
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
+    .subtitle {
+      font-size: 1.3rem;
       color: #ddd;
-      margin-bottom: 10px;
+      margin-top: 1em;
+      margin-bottom: 0.2em;
     }
 
-    /* 
-      SECTION ANIMATIONS
-      We'll define left or right slide for entire sections.
-    */
-    .animated-left {
-      animation: slideFromLeft 1s ease forwards;
+    /* ============================
+       SCROLL-BASED FADE
+    ============================= */
+    section {
+      opacity: 0; /* hidden by default */
+      transition: opacity 0.8s ease;
     }
-    .animated-right {
-      animation: slideFromRight 1s ease forwards;
+    section.visible {
+      opacity: 1; /* once in viewport, fade in */
     }
-    @keyframes slideFromLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes slideFromRight {
-      0% {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    section.visible .why-focus-card,
+    section.visible .mw-service-card,
+    section.visible .mw-challenge-card,
+    section.visible .tpd-step,
+    section.visible .story-card {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* SECURITY CARDS */
-    .card-grid {
+    /* ============================
+       WHY MODERN WORK
+    ============================= */
+    .why-modern-work {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+    }
+    .why-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
       gap: 20px;
-      margin-top: 20px;
+      margin-top: 1.5em;
     }
-    .security-card {
+    .why-focus-card {
       background: rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 20px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;             /* We'll fade these in with JS. */
+      opacity: 0; /* start hidden */
       transform: translateY(20px);
     }
-    .security-card:hover {
+    .why-focus-card:hover {
       transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
       box-shadow: 0 0 10px rgba(106,13,173,0.4);
     }
 
-    /* FAQ collapsible */
+    /* ============================
+       MODERN WORK SERVICES & SOLUTIONS
+    ============================= */
+    .mw-services {
+      background: linear-gradient(135deg, #2f1854, #6a0dad);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .mw-service-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .mw-service-card:hover {
+      transform: scale(1.04) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* ============================
+       COMMON CHALLENGES
+    ============================= */
+    .mw-challenges {
+      background: linear-gradient(135deg, #330052, #a01acb);
+    }
+    .mw-challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .mw-challenge-card {
+      background: rgba(0,0,0,0.2);
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .mw-challenge-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* ============================
+       TPD ENGAGEMENT MODEL
+    ============================= */
+    .tpd-engagement-model {
+      background: linear-gradient(135deg, #240046, #3b0d60);
+    }
+    .tpd-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .tpd-step {
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .tpd-step:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* ============================
+       SUCCESS STORIES
+    ============================= */
+    .success-stories {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    .story-card {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    }
+    .story-card:hover {
+      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
+      box-shadow: 0 0 10px rgba(106,13,173,0.4);
+    }
+
+    /* ============================
+       HOW TO ENGAGE TPD
+    ============================= */
+    .how-to-engage {
+      background: linear-gradient(135deg, #6a0dad, #ff00c1);
+    }
+    .steps-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 1.5em 0;
+    }
+    .step-card {
+      background-color: rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .step-card:hover {
+      transform: scale(1.05);
+    }
+    @keyframes heartbeat {
+      0%   { transform: scale(1);   }
+      30%  { transform: scale(1.05);}
+      40%  { transform: scale(1);   }
+      70%  { transform: scale(1.05);}
+      100% { transform: scale(1);   }
+    }
+    .heartbeat {
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    .arrow {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+    }
+
+    /* ============================
+       FAQ
+    ============================= */
+    .mw-faq {
+      background: #330052;
+    }
     .faq-item {
       margin-bottom: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -168,327 +322,516 @@
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 5px;
-      text-align: left;
     }
     .faq-answer {
-      max-height: 0;
+      max-height: 0; 
       overflow: hidden;
       transition: max-height 0.4s ease;
-      text-align: left;
     }
     .faq-item.expanded .faq-answer {
-      max-height: 800px;
+      max-height: 600px;
+    }
+
+    /* ============================
+       CTA SECTIONS
+    ============================= */
+    .mw-cta {
+      background: linear-gradient(135deg, #3b0d60, #a01acb);
+    }
+    .mw-next-step {
+      background: linear-gradient(135deg, #240046, #5f0f99);
+    }
+    .partnering-bullets {
+      list-style: none;
+      margin: 1em 0;
+      padding: 0;
+    }
+    .partnering-bullets li {
+      margin-bottom: 0.5em;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <section class="sec-hero">
+  <!-- ===============================================
+       HERO
+  ================================================== -->
+  <section class="modern-work-hero">
     <div class="hero-bg"></div>
     <a href="index.html" class="home-btn">Home</a>
     <div class="container hero-content">
-      <h1 class="glitch" data-text="Strengthen Your Defenses with Microsoft Security Solutions">
-        Strengthen Your Defenses with Microsoft Security Solutions
+      <h1 class="glitch">
+        Modern Work: Empower Teams, Accelerate Productivity, and Drive Innovation
       </h1>
-      <p class="hero-subtitle">
-        Protect Data, Devices, and Identities Using the Power of AI and Cloud-Driven Threat Intelligence
+      <p class="subtitle">
+        Harness Microsoft 365, Teams, and AI to Transform Collaboration
       </p>
     </div>
   </section>
 
-  <!-- WHY MICROSOFT SECURITY -->
-  <section class="why-security animated-left">
+  <!-- ===============================================
+       WHY MODERN WORK
+  ================================================== -->
+  <section class="why-modern-work">
     <div class="container">
       <p>
-        In an era of escalating cyber threats, organizations are striving to safeguard data, devices, and cloud environments.
-        Microsoft Security solutions provide a comprehensive approach, spanning identity management, endpoint protection,
-        threat intelligence, and compliance. Whether you’re safeguarding a small business or a global enterprise,
-        Microsoft’s end-to-end security ecosystem helps you address modern security challenges while enabling secure productivity.
+        As organizations continue adapting to hybrid and remote work, Modern Work solutions from Microsoft
+        have become vital. From Microsoft 365 productivity apps to AI‐driven experiences with Microsoft Copilot
+        and robust collaboration tools like Microsoft Teams, these solutions help teams connect, collaborate,
+        and innovate—anytime, anywhere.
       </p>
       <p>
-        But implementing a holistic security strategy can be complex. That’s where the Technical Presales and Deployment (TPD)
-        team comes in. We provide tailored, one-on-one guidance to help you plan, build, sell, and grow secure solutions—leveraging
-        Azure Security, Microsoft 365 Defender, Microsoft Entra, Microsoft Purview, Microsoft Security Copilot, and beyond.
+        Yet, implementing Modern Work solutions requires technical know‐how and strategic alignment to ensure
+        smooth adoption, data security, and high user satisfaction. That’s where the Technical Presales and Deployment (TPD)
+        team comes in. We provide hands‐on guidance and best practices to help you plan, build, sell, and grow
+        Modern Work implementations—so you can deliver seamless, integrated collaboration experiences to your
+        customers.
       </p>
-      <h2>Why Microsoft Security?</h2>
-      <div class="card-grid">
-        <div class="security-card">
-          <h3>Comprehensive Threat Protection</h3>
-          <p>From Microsoft Defender for Endpoint to Microsoft Defender for Cloud and Microsoft Sentinel, Microsoft covers the entire attack chain—helping you detect, protect, and respond faster.</p>
+
+      <h2>Why Modern Work?</h2>
+      <div class="why-cards">
+        <div class="why-focus-card">
+          <h3>Improved Productivity &amp; Collaboration</h3>
+          <p>
+            Tools like Microsoft Teams, SharePoint Online, and Microsoft 365 Copilot streamline communication,
+            file sharing, and knowledge management, enabling teams to work more effectively.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>Identity-Centric Security</h3>
-          <p>Microsoft Entra (formerly Azure AD) delivers robust access management, multi-factor authentication, and identity governance across cloud and on-prem services.</p>
+        <div class="why-focus-card">
+          <h3>Anywhere, Anytime Access</h3>
+          <p>
+            A cloud‐based environment ensures users can securely access email, files, and apps from
+            any location or device.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>Data Governance & Compliance</h3>
-          <p>Microsoft Purview helps classify, protect, and monitor data wherever it resides, simplifying compliance and reducing risk.</p>
+        <div class="why-focus-card">
+          <h3>AI‐Driven Insights &amp; Automation</h3>
+          <p>
+            Microsoft Copilot and Viva Insights use AI to reduce manual tasks, surface critical information,
+            and promote employee well‐being.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>AI-Powered Insights</h3>
-          <p>Microsoft Security Copilot harnesses advanced AI and generative models to rapidly surface threats, simplify investigation, and accelerate incident response.</p>
+        <div class="why-focus-card">
+          <h3>Secure, Compliant, and Governed</h3>
+          <p>
+            Microsoft 365 Archive, Microsoft 365 Backup, and features like Microsoft 365 Lighthouse provide
+            enterprise‐grade security and compliance across multiple tenants.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>Unified Management</h3>
-          <p>Tools like Microsoft 365 Lighthouse and Microsoft Entra Permissions Management centralize oversight and simplify policy enforcement across multiple tenants or environments.</p>
+        <div class="why-focus-card">
+          <h3>Enhanced Meeting &amp; Communication Experiences</h3>
+          <p>
+            Microsoft Teams Meetings with Teams Premium provide advanced meeting features, while Teams Phone
+            merges telephony capabilities into the Teams hub.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>Hybrid & Multi-Platform Coverage</h3>
-          <p>Microsoft extends protection across on-premises, cloud, and edge—covering Windows, Linux, macOS, Android, and iOS devices.</p>
+        <div class="why-focus-card">
+          <h3>Innovative Employee Experiences</h3>
+          <p>
+            Microsoft Viva modules (Connections, Goals, Learning, Insights, Engage, Topics, Pulse, Glint)
+            deliver a holistic approach to employee engagement, well‐being, and career growth.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MICROSOFT SECURITY & DEVICES SOLUTIONS -->
-  <section class="solutions-section animated-right">
+  <!-- ===============================================
+       MODERN WORK SERVICES & SOLUTIONS
+  ================================================== -->
+  <section class="mw-services">
     <div class="container">
-      <h2>Microsoft Security & Devices Solutions: A Full Spectrum of Services</h2>
-      <p>Below is a sampling of Microsoft’s vast security and device offerings that can benefit from TPD’s expertise:</p>
-      <div class="card-grid">
-        <div class="security-card">
-          <h3>Identity & Access Management</h3>
-          <p>Microsoft Entra ID, Microsoft Entra ID Protection, Verified ID, External ID (B2B/B2C), Permissions Management...</p>
+      <h2>Modern Work Services &amp; Solutions</h2>
+      <p>
+        Below is a snapshot of the Microsoft technologies that can transform your customers’ workplace:
+      </p>
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="mw-service-card">
+          <h3>Core Microsoft 365 Services</h3>
+          <p>Exchange Online, SharePoint Online, Project Online, Microsoft 365 Copilot, Microsoft 365 Lighthouse, Microsoft Syntex, Backup, Archive</p>
         </div>
-        <div class="security-card">
-          <h3>Endpoint & Device Security</h3>
-          <p>Microsoft Defender for Endpoint, Configuration Manager, Intune, Surface Devices, Windows 10/11, Windows 365</p>
+        <!-- Card 2 -->
+        <div class="mw-service-card">
+          <h3>Collaboration &amp; Communication</h3>
+          <p>Microsoft Teams (Meetings, Phone, Premium, Platform, Custom Apps), Viva Connections, Viva Engage</p>
         </div>
-        <div class="security-card">
-          <h3>Cloud Security</h3>
-          <p>Azure Firewall, DDoS Protection, Microsoft Defender for Cloud, Defender for Containers, Defender for SQL...</p>
+        <!-- Card 3 -->
+        <div class="mw-service-card">
+          <h3>Employee Experience &amp; AI</h3>
+          <p>Microsoft Viva (Glint, Goals, Learning, Topics, Pulse, Insights), Microsoft Copilot</p>
         </div>
-        <div class="security-card">
-          <h3>Threat Intelligence & Detection</h3>
-          <p>Microsoft Sentinel, Microsoft Defender Threat Intelligence, Defender XDR, Defender for Cloud Apps</p>
+        <!-- Card 4 -->
+        <div class="mw-service-card">
+          <h3>Security &amp; Multi‐Tenant Management</h3>
+          <p>Microsoft 365 Lighthouse, advanced tenant management, cross‐customer oversight</p>
         </div>
-        <div class="security-card">
-          <h3>Data Protection & Compliance</h3>
-          <p>Microsoft Purview (Data Governance/Security/Compliance), Microsoft Priva, Azure Key Vault, Log Analytics</p>
+        <!-- Card 5 -->
+        <div class="mw-service-card">
+          <h3>Teams Meetings &amp; Premium</h3>
+          <p>Enhanced meeting features, intelligent recaps, advanced scheduling</p>
         </div>
-        <div class="security-card">
-          <h3>Productivity & Collaboration Security</h3>
-          <p>Microsoft 365 Defender, Defender for Office 365, Microsoft 365 Apps, Microsoft 365 Lighthouse</p>
+        <!-- Card 6 -->
+        <div class="mw-service-card">
+          <h3>Teams Phone</h3>
+          <p>Cloud‐based telephony merged into the Teams hub</p>
         </div>
-        <div class="security-card">
-          <h3>AI & Next-Gen Security</h3>
-          <p>Microsoft Security Copilot, Microsoft Defender for DevOps, Microsoft Defender for IoT</p>
+        <!-- Card 7 -->
+        <div class="mw-service-card">
+          <h3>SharePoint Online</h3>
+          <p>Document collaboration, intranet, and file management for modern workplaces</p>
         </div>
-        <div class="security-card">
-          <h3>Misc. Solutions</h3>
-          <p>MS Antimalware for Azure, Windows Security Baselines, etc.</p>
+        <!-- Card 8 -->
+        <div class="mw-service-card">
+          <h3>Microsoft 365 Archive &amp; Backup</h3>
+          <p>Keep data secure, compliant, and easily retrievable across multiple tenants</p>
+        </div>
+      </div>
+      <p style="margin-top: 1em;">
+        Whether you’re rolling out a custom Teams app, enabling Teams Phone for global calling, or enhancing
+        productivity with Microsoft 365 Copilot, you can rely on the TPD team for presales and deployment guidance.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===============================================
+       COMMON MODERN WORK CHALLENGES & HOW TPD HELPS
+  ================================================== -->
+  <section class="mw-challenges">
+    <div class="container">
+      <h2>Common Modern Work Challenges &amp; How TPD Helps</h2>
+      <div class="mw-challenge-grid">
+        <!-- #1 -->
+        <div class="mw-challenge-card">
+          <h3>1. Closing Deals for Microsoft 365 or Teams Upgrades</h3>
+          <p>
+            <strong>Scenario:</strong> A customer uses an older Office on‐prem solution, worried about migrating to the cloud.
+          </p>
+          <p>
+            <strong>TPD Support:</strong> Technical demos of Teams collaboration, Copilot AI benefits, plus cost optimization
+            and best practices for adoption.
+          </p>
+        </div>
+        <!-- #2 -->
+        <div class="mw-challenge-card">
+          <h3>2. Enabling Hybrid Work with Advanced Meeting &amp; Calling</h3>
+          <p>
+            <strong>Scenario:</strong> A global enterprise wants to replace PBX with Teams Phone.
+          </p>
+          <p>
+            <strong>TPD Support:</strong> Advise on network optimization, advanced Teams Premium features, plus integration
+            with direct routing or third‐party calling plans.
+          </p>
+        </div>
+        <!-- #3 -->
+        <div class="mw-challenge-card">
+          <h3>3. Streamlining Multi‐Tenant Management</h3>
+          <p>
+            <strong>Scenario:</strong> An MSP handles multiple Microsoft 365 environments, needing consistent security across tenants.
+          </p>
+          <p>
+            <strong>TPD Support:</strong> Introduce Microsoft 365 Lighthouse for unified oversight, backup solutions for compliance,
+            policy enforcement strategies.
+          </p>
+        </div>
+        <!-- #4 -->
+        <div class="mw-challenge-card">
+          <h3>4. Driving Employee Engagement &amp; Well‐Being</h3>
+          <p>
+            <strong>Scenario:</strong> A professional services firm faces high turnover, low engagement.
+          </p>
+          <p>
+            <strong>TPD Support:</strong> Deploy Viva Insights, Viva Engage, and Viva Goals for sentiment tracking, aligned objectives,
+            and improved communication.
+          </p>
+        </div>
+        <!-- #5 -->
+        <div class="mw-challenge-card">
+          <h3>5. Innovating with AI &amp; Custom Teams Apps</h3>
+          <p>
+            <strong>Scenario:</strong> A healthcare provider needs a custom Teams app with Copilot integration.
+          </p>
+          <p>
+            <strong>TPD Support:</strong> Guide solution architecture, AI compliance, and proof‐of‐concept validation
+            for performance and UX.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REAL-WORLD SCENARIOS -->
-  <section class="scenarios-section animated-left">
+  <!-- ===============================================
+       TPD ENGAGEMENT MODEL FOR MODERN WORK
+  ================================================== -->
+  <section class="tpd-engagement-model">
     <div class="container">
-      <h2>Real-World Security Scenarios & How TPD Helps</h2>
-      <ol style="margin-top: 15px;">
-        <li>
-          <strong>Closing Deals on Comprehensive Security Solutions:</strong> A mid-sized business suffers frequent phishing attacks...
-          TPD helps with Defender demos, licensing advice, identity protection with Microsoft Entra.
-        </li>
-        <li>
-          <strong>Ensuring Hybrid Cloud Security:</strong> Multi-cloud (Azure, AWS) real-time unified security. TPD uses Defender for Cloud, Sentinel, Firewall + DDoS.
-        </li>
-        <li>
-          <strong>Protecting Identities & Building Zero Trust:</strong> Entra ID, Conditional Access, MFA, Verified ID. TPD helps apply Zero Trust without harming productivity.
-        </li>
-        <li>
-          <strong>Securing Application Development & DevOps:</strong> Need vulnerability detection in CI/CD, container security.
-          TPD recommends Defender for DevOps, Defender for Containers, logs into Sentinel.
-        </li>
-        <li>
-          <strong>Data Governance & Compliance at Scale:</strong> A financial institution uses Purview for classification, Key Vault encryption, auditing with Defender for SQL.
-        </li>
-      </ol>
+      <h2>TPD Engagement Model for Modern Work</h2>
+      <div class="tpd-steps">
+        <!-- Step 1 -->
+        <div class="tpd-step">
+          <h3>1. Plan &amp; Envision</h3>
+          <p><strong>Define Success Criteria:</strong> Identify key drivers—enhanced collaboration, secure comms, or AI‐driven insights.</p>
+          <p><strong>Technical Readiness &amp; Licensing:</strong> Decide licensing tiers (E3/E5, Teams Phone, Teams Premium), handle multi‐tenant needs.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="tpd-step">
+          <h3>2. Build &amp; Configure</h3>
+          <p><strong>Architecture &amp; Setup:</strong> Configure Exchange Online, SharePoint, Teams, etc.</p>
+          <p><strong>Security &amp; Compliance:</strong> Data governance, archiving with Microsoft 365 Archive, advanced threat protection.</p>
+          <p><strong>Integration &amp; Customization:</strong> Extend M365 with LOB apps in Teams, use Copilot/Syntex to automate tasks.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="tpd-step">
+          <h3>3. Sell &amp; Adopt</h3>
+          <p><strong>Technical Presales:</strong> TPD demos for Teams, Copilot, Viva experiences.</p>
+          <p><strong>Objection Handling &amp; ROI:</strong> Tackle cost/security concerns, show real‐world ROI.</p>
+          <p><strong>Change Management &amp; Adoption:</strong> Training, user onboarding, communication strategies.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="tpd-step">
+          <h3>4. Grow &amp; Optimize</h3>
+          <p><strong>Post‐Deployment Checkups:</strong> Monitor usage, refine strategies, gather feedback.</p>
+          <p><strong>Adding Viva &amp; AI Enhancements:</strong> Deploy more Viva modules, explore deeper AI with Copilot.</p>
+          <p><strong>Scaling Multi‐Tenant Management:</strong> For MSPs, leverage M365 Lighthouse to standardize security and simplify admin.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- TPD ENGAGEMENT MODEL -->
-  <section class="engagement-model-section animated-right">
-    <div class="container">
-      <h2>TPD Engagement Model for Microsoft Security</h2>
-      <ol style="margin-top: 15px;">
-        <li>
-          <strong>Plan & Envision:</strong> Threat landscape analysis, pick relevant security services, licensing & ROI talks.
-        </li>
-        <li>
-          <strong>Build & Configure:</strong> Configure Defender, Entra, do POCs, set governance & baselines.
-        </li>
-        <li>
-          <strong>Sell & Adopt:</strong> Technical demos, objection handling, user/admin readiness for incident response.
-        </li>
-        <li>
-          <strong>Grow & Optimize:</strong> Post-deployment reviews, advanced expansions (Security Copilot, IoT).
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- SUCCESS STORIES -->
-  <section class="success-stories-section animated-left">
+  <!-- ===============================================
+       SUCCESS STORIES
+  ================================================== -->
+  <section class="success-stories">
     <div class="container">
       <h2>Success Stories</h2>
-      <div class="card-grid">
-        <div class="security-card">
-          <h3>1. Manufacturing Firm Deploys XDR</h3>
-          <p><strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.</p>
-          <p><strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel, knowledge transfer.</p>
-          <p><strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.</p>
+      <div class="stories-grid">
+        <!-- Story 1 -->
+        <div class="story-card">
+          <h3>1. Engineering Firm Transitions to Hybrid Collaboration</h3>
+          <p>
+            <strong>Scenario:</strong> An engineering consultancy with distributed teams wants to reduce travel
+            and streamline file versioning.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Configured Teams Meetings with advanced features, introduced SharePoint
+            Online, guided AI with Microsoft 365 Copilot for summaries.
+          </p>
+          <p>
+            <strong>Outcome:</strong> 50% travel cost reduction, real‐time co‐authoring, automated note‐taking via Copilot.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>2. Global Retailer Embraces Zero Trust</h3>
-          <p><strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.</p>
-          <p><strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID, integrated Defender for Endpoint on store devices, introduced Security Copilot.</p>
-          <p><strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.</p>
+        <!-- Story 2 -->
+        <div class="story-card">
+          <h3>2. Financial Services Firm Deploys Microsoft Viva</h3>
+          <p>
+            <strong>Scenario:</strong> A fast‐growing financial institution sees low engagement and high turnover.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Recommended Viva Connections for intranet, Viva Insights for well‐being,
+            and Viva Glint for continuous feedback loops.
+          </p>
+          <p>
+            <strong>Outcome:</strong> 20% improvement in employee satisfaction and lower attrition rates.
+          </p>
         </div>
-        <div class="security-card">
-          <h3>3. Healthcare Provider Adopts Purview & Priva</h3>
-          <p><strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.</p>
-          <p><strong>TPD Involvement:</strong> Set up Microsoft Purview classification, Microsoft Priva for controlling personal data usage, used Key Vault for encryption.</p>
-          <p><strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse, improved data transparency.</p>
+        <!-- Story 3 -->
+        <div class="story-card">
+          <h3>3. Nonprofit Embraces Teams Phone</h3>
+          <p>
+            <strong>Scenario:</strong> Outdated PBX hardware limiting flexibility and incurring high costs.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Demonstrated Teams Phone cost savings, guided phone number migrations,
+            configured call queues, ensured high availability.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Telephony costs halved, staff gained a modern, cloud‐based voice solution.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW TO ENGAGE TPD -->
-  <section class="engage-tpd-section animated-right">
+  <!-- ===============================================
+       HOW TO ENGAGE TPD
+  ================================================== -->
+  <section class="how-to-engage">
     <div class="container">
-      <h2>How to Engage TPD for Security</h2>
+      <h2>How to Engage TPD for Modern Work</h2>
       <p>
-        Check Your Partner Benefits: Sign in to Partner Center and ensure your account is linked 
-        to the Microsoft AI Cloud Partner Program under Benefits → Technical presales & deployment. 
-        Confirm your eligibility (Solutions Partner, Action Pack, Legacy Gold/Silver).
+        <strong>Check Your Partner Benefits</strong><br/>
+        Log in to Partner Center to confirm your affiliation with the Microsoft AI Cloud Partner Program
+        and verify TPD entitlements under Benefits → Technical presales &amp; deployment.
       </p>
 
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
-        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
-          <strong>Submit a TPD Request</strong> →
-        </div>
-        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
-          <strong>Collaborate & Execute</strong> →
-        </div>
-        <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px;">
-          <strong>Optimize & Evolve</strong>
-        </div>
+      <div class="steps-container">
+        <div class="step-card heartbeat">Submit a TPD Services Request</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">Collaborate &amp; Execute</div>
+        <div class="arrow">→</div>
+        <div class="step-card heartbeat">Optimize &amp; Evolve</div>
       </div>
       <p>
-        Outline your scenario—adopting Defender for Cloud, migrating to Microsoft Sentinel, implementing Zero Trust 
-        with Microsoft Entra. Expect a TPD response within two business days to discuss presales or deployment best practices. 
-        Re-engage TPD for advanced integrations like Security Copilot or expansions into IoT/DevOps.
+        Open a request, detailing your Modern Work scenario (Teams Phone, Microsoft 365 Copilot demos, Viva suite adoption, etc.).
+        A TPD consultant responds within two business days to assist with presales demos, architecture reviews, or
+        best‐practice deployments. Revisit TPD for expansions into new Viva modules, deeper AI integrations,
+        or multi‐tenant oversight via Microsoft 365 Lighthouse.
       </p>
     </div>
   </section>
 
-  <!-- FREQUENTLY ASKED QUESTIONS -->
-  <section class="faq-section animated-left">
+  <!-- ===============================================
+       FAQ
+  ================================================== -->
+  <section class="mw-faq">
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <div class="faq-question">Q1: Does TPD provide 24/7 monitoring or incident response services?</div>
+        <div class="faq-question">Q1: Can TPD help me with both presales demos and actual deployment guidance?</div>
         <div class="faq-answer">
-          <p><strong>A:</strong> TPD focuses on technical presales and deployment. For continuous monitoring or emergency support, consider Premier Support, Advanced Support for Partners, or an MSSP.</p>
+          <p>
+            <strong>A:</strong> Yes. TPD provides end‐to‐end technical presales and deployment assistance—
+            from solution envisioning to best practices for production rollout.
+          </p>
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Q2: My solution uses multiple Azure security products—can TPD help integrate them?</div>
+        <div class="faq-question">Q2: Do I need an existing Microsoft 365 tenant to work with TPD?</div>
         <div class="faq-answer">
-          <p><strong>A:</strong> Absolutely. TPD can assist in designing unified solutions across Azure Firewall, DDoS Protection, Defender for Cloud, Sentinel, and more.</p>
+          <p>
+            <strong>A:</strong> If you’re in a presales scenario, TPD can direct you to demo environments or trial tenants.
+            For deployment, you’ll need at least one tenant linked to your partner org or customer.
+          </p>
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Q3: How does TPD handle compliance regs like GDPR, HIPAA, or PCI?</div>
+        <div class="faq-question">Q3: What about ongoing support or break‐fix after deployment?</div>
         <div class="faq-answer">
-          <p><strong>A:</strong> TPD recommends Microsoft tools (Purview, Priva, encryption) that address regulations, but your legal team must validate final compliance readiness.</p>
+          <p>
+            <strong>A:</strong> TPD is for advisory and deployment, not continuous support. Consider Premier Support or
+            Advanced Support for Partners for production break‐fix.
+          </p>
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Q4: Is Microsoft Security Copilot generally available?</div>
+        <div class="faq-question">Q4: How does TPD help accelerate user adoption?</div>
         <div class="faq-answer">
-          <p><strong>A:</strong> Availability may vary. TPD can share the latest info on evaluating or enrolling in Security Copilot.</p>
+          <p>
+            <strong>A:</strong> TPD consultants share adoption best practices, user onboarding tips, training resources,
+            and communication strategies—crucial for maximizing your Modern Work ROI.
+          </p>
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Q5: Can TPD help with device‐specific solutions like Surface or OEM device security?</div>
+        <div class="faq-question">Q5: Is Microsoft Copilot for Microsoft 365 generally available, or do I need special access?</div>
         <div class="faq-answer">
-          <p><strong>A:</strong> Yes. TPD can guide Windows security features, Surface device management, Endpoint Management, and more to keep endpoints secure.</p>
+          <p>
+            <strong>A:</strong> Availability/licensing for Microsoft 365 Copilot may vary by region and partner status.
+            TPD will provide the latest details and enrollment guidance.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONCLUSION: DEFEND YOUR BUSINESS -->
-  <section class="conclusion-section animated-right">
+  <!-- ===============================================
+       CTA: DRIVE FUTURE-READY COLLABORATION
+  ================================================== -->
+  <section class="mw-cta">
     <div class="container">
-      <h2>Defend Your Business with Confidence</h2>
+      <h2>Drive Future‐Ready Collaboration and Productivity</h2>
       <p>
-        From Azure and Microsoft 365 to Microsoft Entra and Microsoft Purview, Microsoft delivers a vast ecosystem of 
-        security solutions designed to protect your customers at every layer. By partnering with Technical Presales 
-        and Deployment, you’ll gain:
+        Modern Work isn’t just about moving email to the cloud or running a video call—it’s a transformative approach
+        to how work gets done. By embracing the full power of Microsoft 365, Teams, Viva, and AI:
       </p>
-      <ul style="list-style: none; padding: 0; margin: 15px 0;">
-        <li><strong>Expert Presales Guidance</strong> – to showcase the unique value of Microsoft’s integrated security offerings.</li>
-        <li><strong>Deployment Best Practices</strong> – reduce complexity and speed up time-to-protection.</li>
-        <li><strong>Knowledge Transfer & Ongoing Optimization</strong> – stay ahead of emerging threats and compliance demands.</li>
+      <ul class="partnering-bullets">
+        <li>Teams become more connected, sharing files and ideas in real time.</li>
+        <li>Organizations gain insights into productivity and engagement.</li>
+        <li>Workflows become simpler, smarter, and more secure.</li>
       </ul>
     </div>
   </section>
 
-  <!-- NEXT STEP -->
-  <section class="next-step-section animated-left">
+  <!-- ===============================================
+       NEXT STEP
+  ================================================== -->
+  <section class="mw-next-step">
     <div class="container">
-      <h2>Take the Next Step</h2>
+      <h2>Ready to Transform Your Workplace?</h2>
       <p>
-        <strong>Schedule a TPD Consultation</strong> – Let’s discuss your security goals, challenges, and how we can help.
+        <strong>Schedule a TPD Consultation</strong> – Let’s discuss your Modern Work challenges and craft a winning strategy.
+        <br/>
+        <strong>Submit a TPD Services Request</strong> – Already have a plan? Let us know, and we’ll help you execute.
+        <br/>
+        <strong>Explore Other Solution Areas</strong> – From Data &amp; AI to Business Applications, see how TPD
+        can assist across the Microsoft Cloud ecosystem.
       </p>
       <p>
-        <strong>Submit a TPD Services Request</strong> – Already know what you need? Open a case and get started right away.
-      </p>
-      <p>
-        <strong>Explore Other Solution Areas</strong> – See how TPD can also support Data & AI, Modern Work, and more.
-      </p>
-      <p>
-        Partner with TPD to build end-to-end security solutions that instill confidence, drive trust, 
-        and protect what matters most—so your customers can thrive in an increasingly connected world.
+        Partner with TPD to unlock seamless collaboration, powered by Microsoft’s cutting‐edge Modern Work solutions—
+        and help your customers stay productive, engaged, and future‐ready. We look forward to guiding you through
+        every stage of your Modern Work journey!
       </p>
     </div>
   </section>
 
-  <!-- SINGLE-FILE JS -->
+  <!-- 
+    Inline JS for scroll-based reveal + staggered cards + FAQ accordion
+  -->
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Immediately reveal sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => sec.classList.add('visible'));
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
 
-    // Fade/stagger for security-card elements
-    const allCards = document.querySelectorAll('.security-card');
-    allCards.forEach((card, index) => {
-      card.style.transitionDelay = (index * 0.1) + 's';
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
-    });
+      // For card staggering inside each section
+      function staggerCards(cards) {
+        cards.forEach((card, index) => {
+          card.style.transitionDelay = (index * 0.1) + 's';
+        });
+      }
 
-    // Collapsible FAQ
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        item.classList.toggle('expanded');
+      function isInViewport(elem) {
+        const rect = elem.getBoundingClientRect();
+        return (rect.top < window.innerHeight && rect.bottom >= 0);
+      }
+
+      function revealSections() {
+        sections.forEach(sec => {
+          if (isInViewport(sec) && !sec.classList.contains('visible')) {
+            sec.classList.add('visible');
+
+            // Identify cards for staggering
+            const whyCards     = sec.querySelectorAll('.why-focus-card');
+            const serviceCards = sec.querySelectorAll('.mw-service-card');
+            const challenges   = sec.querySelectorAll('.mw-challenge-card');
+            const tpdSteps     = sec.querySelectorAll('.tpd-step');
+            const storyCards   = sec.querySelectorAll('.story-card');
+
+            if (whyCards.length)     staggerCards(whyCards);
+            if (serviceCards.length) staggerCards(serviceCards);
+            if (challenges.length)   staggerCards(challenges);
+            if (tpdSteps.length)     staggerCards(tpdSteps);
+            if (storyCards.length)   staggerCards(storyCards);
+          }
+        });
+      }
+
+      window.addEventListener('scroll', revealSections);
+      revealSections(); // run once on load incase hero is already in view
+
+      // Collapsible FAQ
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          item.classList.toggle('expanded');
+        });
       });
     });
-  });
   </script>
 </body>
 </html>
