@@ -2,75 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Azure Infrastructure – TPnD Services</title>
+  <title>Microsoft Security – TPnD Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Consolidated Styles in <style> -->
+  <!-- SINGLE-FILE CONSOLIDATED CSS -->
   <style>
-    /* 
-      1) Basic Reset & Font
-      - Use a default background so that we don't see 
-        a white margin anywhere
-    */
+    /* RESET & BASE STYLES */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body {
+    html, body {
       font-family: 'Inter', sans-serif;
-      background-color: #1a0033; /* fallback if any gradient is missing */
+      background-color: #1a0033; /* fallback if any gradient fails */
       color: #fff;
       line-height: 1.6;
+      min-height: 100%;
     }
-    /* Make sure links don’t show a default underline color on hover */
     a {
       text-decoration: none;
       color: inherit;
     }
-    /* 
-      Standard container with max-width for centered content 
-      headings are centered, paragraphs left (optionally you can do center).
-    */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* CONTAINER for centered content */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    /* Headings are centered site-wide */
+
+    /* GENERIC SECTION SPACING + FADE ANIMATION */
+    section {
+      padding: 60px 0; /* ample spacing top & bottom */
+      opacity: 0;      /* hidden by default; we fade in via JS */
+      transform: translateY(30px); /* slightly shifted down */
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     h1, h2, h3 {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
-    /* HERO with reduced vertical spacing */
-    .azure-infra-hero {
+    /* HERO SECTION with a strong neon gradient + glitch heading */
+    .sec-hero {
       position: relative;
-      min-height: 50vh; /* decreased from 70vh to reduce vertical space */
-      padding: 30px 0;  /* decreased top/bottom padding */
+      padding: 80px 0; /* bigger hero spacing */
       background: linear-gradient(135deg, #3b0d60, #1a0033);
       overflow: hidden;
-      text-align: center; /* ensure the hero text is centered */
+      text-align: center;
     }
+    /* Animated background behind hero text */
     .hero-bg {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; 
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(-45deg, #1a0033, #6a0dad, #3b0d60, #240046);
       background-size: 400% 400%;
-      animation: neonShift 12s ease infinite;
+      animation: neonPan 12s ease infinite;
       z-index: 1;
     }
-    @keyframes neonShift {
+    @keyframes neonPan {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
     .home-btn {
       position: absolute;
-      top: 15px; right: 15px;
-      padding: 8px 16px;
+      top: 20px; right: 20px;
+      padding: 10px 16px;
       border-radius: 6px;
       background-color: rgba(255,255,255,0.15);
       border: 2px solid rgba(255,255,255,0.3);
@@ -86,200 +93,95 @@
     }
     .hero-content {
       position: relative;
-      z-index: 2; /* above hero-bg */
+      z-index: 2; /* above the hero-bg */
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px;
+      text-align: center;
     }
+
+    /* GLITCH HEADING with color shift */
     .glitch {
-      font-size: 2.5rem;
-      margin: 10px 0;
-      font-weight: bold;
+      font-size: 3rem;
       text-transform: uppercase;
-      text-shadow:
-        0 0 8px rgba(106,13,173,0.8),
-        0 0 16px rgba(106,13,173,0.6);
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px rgba(106,13,173,0.8), 0 0 16px rgba(106,13,173,0.6);
+      animation: glitchColor 3s infinite;
     }
-    .subtitle {
-      font-size: 1.1rem;
+    @keyframes glitchColor {
+      0%, 100% {
+        color: #ffffff;
+      }
+      50% {
+        color: #ff00c1;
+        text-shadow: 0 0 8px #ff00c1, 0 0 16px #ff00c1;
+      }
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
       color: #ddd;
+      margin-top: 10px;
+    }
+
+    /* DISTINCT SECTION BACKGROUNDS */
+    .why-security {
+      background: linear-gradient(135deg, #240046, #6a0dad);
+    }
+    .solutions-section {
+      background: linear-gradient(135deg, #2f1854, #6a0dad);
+    }
+    .scenarios-section {
+      background: linear-gradient(135deg, #330052, #a01acb);
+    }
+    .engagement-model-section {
+      background: linear-gradient(135deg, #240046, #3b0d60);
+    }
+    .success-stories-section {
+      background: linear-gradient(135deg, #6a0dad, #ff00c1);
+    }
+    .engage-tpd-section {
+      background: linear-gradient(135deg, #330052, #6a0dad);
+    }
+    .faq-section {
+      background: linear-gradient(135deg, #1a0033, #330052);
+    }
+    .conclusion-section {
+      background: linear-gradient(135deg, #240046, #ff00c1);
+    }
+    .next-step-section {
+      background: linear-gradient(135deg, #6a0dad, #8a00ff);
+    }
+
+    /* CARD GRID for security items */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .security-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;             /* We'll fade these in with JS */
+      transform: translateY(20px);
+    }
+    .security-card:hover {
+      transform: scale(1.04) translateY(0);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* LIST Spacing */
+    ul, ol {
+      margin-top: 15px;
+      margin-left: 1.5rem;
+    }
+    li {
       margin-bottom: 10px;
     }
 
-    /* 
-      Universal .visible class for immediate fade 
-      (we’ll just apply .visible at DOM load to show everything).
-    */
-    section {
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-    section.visible {
-      opacity: 1;
-    }
-
-    /* WHY FOCUS SECTION */
-    .why-azure-infra {
-      background: linear-gradient(135deg, #240046, #6a0dad);
-      padding: 40px 0;
-    }
-    .why-focus-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .why-focus-card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 20px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .why-focus-card:hover {
-      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
-      box-shadow: 0 0 10px rgba(106,13,173,0.4);
-    }
-
-    /* ECOSYSTEM SECTION */
-    .azure-infra-ecosystem {
-      background: linear-gradient(135deg, #2f1854, #6a0dad);
-      padding: 40px 0;
-    }
-    .ecosystem-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .ecosystem-card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 20px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .ecosystem-card:hover {
-      transform: scale(1.04) rotateX(3deg) rotateY(-3deg);
-      box-shadow: 0 0 10px rgba(106,13,173,0.4);
-    }
-
-    /* HOW TPD FITS SECTION */
-    .how-tpd-fits {
-      background: linear-gradient(135deg, #330052, #a01acb);
-      padding: 40px 0;
-    }
-    .tpd-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .tpd-step {
-      background-color: rgba(0,0,0,0.2);
-      padding: 20px;
-      border-radius: 10px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-    }
-    .tpd-step:hover {
-      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
-      box-shadow: 0 0 10px rgba(255,255,255,0.3);
-    }
-
-    /* SUCCESS STORIES */
-    .success-stories {
-      background: linear-gradient(135deg, #240046, #3b0d60);
-      padding: 40px 0;
-    }
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .story-card {
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-    }
-    .story-card:hover {
-      transform: scale(1.03) rotateX(3deg) rotateY(-3deg);
-      box-shadow: 0 0 10px rgba(106,13,173,0.4);
-    }
-
-    /* PARTNERING + TABLE */
-    .align-and-get-started {
-      background: linear-gradient(135deg, #6a0dad, #ff00c1);
-      padding: 40px 0;
-    }
-    .partnering-bullets {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .responsive-table table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      color: #fff;
-    }
-    .responsive-table th,
-    .responsive-table td {
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,0.3);
-      text-align: left;
-    }
-    .responsive-table th {
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* GETTING STARTED (Heartbeat Steps) */
-    .getting-started-steps {
-      background: linear-gradient(135deg, #330052, #6a0dad);
-      padding: 40px 0;
-    }
-    .steps-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
-      justify-content: center; /* center the step cards horizontally */
-    }
-    .step-card {
-      background-color: rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      border-radius: 6px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .step-card:hover {
-      transform: scale(1.05);
-    }
-    @keyframes heartbeat {
-      0%   { transform: scale(1);   }
-      30%  { transform: scale(1.05);}
-      40%  { transform: scale(1);   }
-      70%  { transform: scale(1.05);}
-      100% { transform: scale(1);   }
-    }
-    .heartbeat {
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-
-    /* FAQ (Collapsible) */
-    .azure-infra-faq {
-      background: #330052;
-      padding: 40px 0;
-    }
+    /* FAQ COLLAPSIBLE */
     .faq-item {
       margin-bottom: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -289,8 +191,11 @@
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 5px;
-      color: #fff;
       text-align: left;
+      transition: color 0.2s ease;
+    }
+    .faq-question:hover {
+      color: #ff00c1;
     }
     .faq-answer {
       max-height: 0;
@@ -299,343 +204,408 @@
       text-align: left;
     }
     .faq-item.expanded .faq-answer {
-      max-height: 800px;
+      max-height: 600px;
     }
 
-    /* LET'S TRANSFORM SECTION */
-    .azure-transform {
-      background: linear-gradient(135deg, #240046, #ff00c1);
-      padding: 40px 0;
+    /* EXTRA SPACING FOR HEADINGS AND PARAGRAPHS */
+    h2 {
+      margin-bottom: 25px;
     }
-    .conclusion-bullets {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      margin-bottom: 20px;
+    p {
+      margin-bottom: 15px;
+      line-height: 1.7;
     }
-    .conclusion-bullets li {
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    /* NEXT STEP SECTION */
-    .azure-next-step {
-      background: linear-gradient(135deg, #6a0dad, #8a00ff);
-      padding: 40px 0;
-    }
-    .azure-next-step .container p {
-      text-align: left;
-      margin-bottom: 10px;
+    .home-btn {
+      font-size: 0.95rem;
     }
   </style>
-
 </head>
-<body>
 
+<body>
   <!-- HERO -->
-  <section class="azure-infra-hero">
+  <section class="sec-hero">
     <div class="hero-bg"></div>
     <a href="index.html" class="home-btn">Home</a>
     <div class="container hero-content">
-      <h1 class="glitch" data-text="Elevate Your Cloud Practice with Azure Infrastructure">
-        Elevate Your Cloud Practice with Azure Infrastructure
+      <h1 class="glitch" data-text="Strengthen Your Defenses with Microsoft Security Solutions">
+        Strengthen Your Defenses with Microsoft Security Solutions
       </h1>
-      <p class="subtitle">Your Path to Scalable, Secure, and Intelligent Solutions</p>
+      <p class="hero-subtitle">
+        Protect Data, Devices, and Identities Using the Power of AI and Cloud-Driven Threat Intelligence
+      </p>
     </div>
   </section>
 
-  <!-- INTRO & WHY FOCUS -->
-  <section class="why-azure-infra">
+  <!-- WHY MICROSOFT SECURITY -->
+  <section class="why-security">
     <div class="container">
       <p>
-        Azure Infrastructure stands at the core of digital transformation...
+        In an era of escalating cyber threats, organizations are striving to safeguard data, devices,
+        and cloud environments. Microsoft Security solutions provide a comprehensive approach,
+        spanning identity management, endpoint protection, threat intelligence, and compliance.
+        Whether you’re safeguarding a small business or a global enterprise, Microsoft’s end-to-end
+        security ecosystem helps you address modern security challenges while enabling secure productivity.
       </p>
       <p>
-        When combined with the Technical Presales and Deployment (TPD) team’s guidance...
+        But implementing a holistic security strategy can be complex. That’s where the Technical Presales
+        and Deployment (TPD) team comes in. We provide tailored, one-on-one guidance to help you plan,
+        build, sell, and grow secure solutions—leveraging Azure Security, Microsoft 365 Defender,
+        Microsoft Entra, Microsoft Purview, Microsoft Security Copilot, and beyond.
       </p>
 
-      <h2>Why Focus on Azure Infrastructure?</h2>
-      <div class="why-focus-cards">
-        <div class="why-focus-card">
-          <h3>1. End‐to‐End Cloud & Hybrid Flexibility</h3>
-          <p>Azure’s extensive suite of Infrastructure‐as‐a‐Service (IaaS), ...</p>
+      <h2>Why Microsoft Security?</h2>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>Comprehensive Threat Protection</h3>
+          <p>
+            From Microsoft Defender for Endpoint to Microsoft Defender for Cloud and Microsoft Sentinel,
+            Microsoft covers the entire attack chain—helping you detect, protect, and respond faster.
+          </p>
         </div>
-        <div class="why-focus-card">
-          <h3>2. Unparalleled Security & Compliance</h3>
-          <p>From Network Security Groups to Azure Firewall...</p>
+        <div class="security-card">
+          <h3>Identity-Centric Security</h3>
+          <p>
+            Microsoft Entra (formerly Azure AD) delivers robust access management, multi-factor authentication,
+            and identity governance across cloud and on-prem services.
+          </p>
         </div>
-        <div class="why-focus-card">
-          <h3>3. Performance at Scale</h3>
-          <p>Azure’s global footprint and specialized VM families (N‐Series, H‐Series)...</p>
+        <div class="security-card">
+          <h3>Data Governance & Compliance</h3>
+          <p>
+            Microsoft Purview helps classify, protect, and monitor data wherever it resides,
+            simplifying compliance and reducing risk.
+          </p>
         </div>
-        <div class="why-focus-card">
-          <h3>4. Cost Optimization & Governance</h3>
-          <p>Tools like Azure Cost Management, Azure Advisor, and Azure Resource Manager...</p>
+        <div class="security-card">
+          <h3>AI-Powered Insights</h3>
+          <p>
+            Microsoft Security Copilot harnesses advanced AI and generative models to rapidly surface threats,
+            simplify investigation, and accelerate incident response.
+          </p>
         </div>
-        <div class="why-focus-card">
-          <h3>5. Rapid Innovation with AI & Analytics</h3>
-          <p>By leveraging the connectivity and integrated services within Azure...</p>
+        <div class="security-card">
+          <h3>Unified Management</h3>
+          <p>
+            Tools like Microsoft 365 Lighthouse and Microsoft Entra Permissions Management centralize oversight
+            and simplify policy enforcement across multiple tenants or environments.
+          </p>
+        </div>
+        <div class="security-card">
+          <h3>Hybrid & Multi-Platform Coverage</h3>
+          <p>
+            Microsoft extends protection across on-premises, cloud, and edge—covering Windows, Linux, macOS,
+            Android, and iOS devices.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ECOSYSTEM -->
-  <section class="azure-infra-ecosystem">
+  <!-- MICROSOFT SECURITY & DEVICES SOLUTIONS -->
+  <section class="solutions-section">
     <div class="container">
-      <h2>The Azure Infrastructure Ecosystem: A Broad Spectrum of Possibilities</h2>
-      <p>Azure Infrastructure is immensely broad. Below is a simplified look at the key services and features...</p>
-      <div class="ecosystem-card-grid">
-        <div class="ecosystem-card">
-          <h3>Compute & Virtualization</h3>
-          <p>Azure Virtual Machine, Availability Set, N‐Series VMs...</p>
+      <h2>Microsoft Security & Devices Solutions: A Full Spectrum of Services</h2>
+      <p>Below is a sampling of Microsoft’s vast security and device offerings that can benefit from TPD’s expertise:</p>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>Identity & Access Management</h3>
+          <p>
+            Microsoft Entra ID, Microsoft Entra ID Protection, Verified ID, External ID (B2B/B2C),
+            Permissions Management, Internet Access, Private Access
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Networking</h3>
-          <p>Azure Virtual Network, Azure ExpressRoute, Azure VPN...</p>
+        <div class="security-card">
+          <h3>Endpoint & Device Security</h3>
+          <p>
+            Microsoft Defender for Endpoint, Configuration Manager, Intune, Surface Devices,
+            Windows 10/11, Windows 365
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Hybrid & Edge</h3>
-          <p>Azure Arc, Azure Stack Edge, Azure Stack HCI...</p>
+        <div class="security-card">
+          <h3>Cloud Security</h3>
+          <p>
+            Azure Firewall, DDoS Protection, Microsoft Defender for Cloud, Defender for Containers,
+            Defender for SQL, Defender Vulnerability Management
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Storage & Data Transfer</h3>
-          <p>Azure Storage, NetApp Files, Azure Data Box...</p>
+        <div class="security-card">
+          <h3>Threat Intelligence & Detection</h3>
+          <p>
+            Microsoft Sentinel, Microsoft Defender Threat Intelligence,
+            Microsoft Defender XDR, Microsoft Defender for Cloud Apps
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Migration & Modernization</h3>
-          <p>Azure Migrate, Azure Site Recovery, Azure Backup...</p>
+        <div class="security-card">
+          <h3>Data Protection & Compliance</h3>
+          <p>
+            Microsoft Purview (Data Governance/Security/Compliance), Microsoft Priva,
+            Azure Key Vault, Log Analytics
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>SAP on Azure</h3>
-          <p>Azure Center for SAP Solutions, SAP Azure Large Instances...</p>
+        <div class="security-card">
+          <h3>Productivity & Collaboration Security</h3>
+          <p>
+            Microsoft 365 Defender, Microsoft Defender for Office 365,
+            Microsoft 365 Apps, Microsoft 365 Lighthouse
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Management & Governance</h3>
-          <p>Azure Resource Manager, Azure Policy, RBAC...</p>
+        <div class="security-card">
+          <h3>AI & Next-Gen Security</h3>
+          <p>
+            Microsoft Security Copilot, Microsoft Defender for DevOps,
+            Microsoft Defender for IoT
+          </p>
         </div>
-        <div class="ecosystem-card">
-          <h3>Specialized Services</h3>
-          <p>Azure Batch, Azure CycleCloud, Application Gateway WAF...</p>
+        <div class="security-card">
+          <h3>Misc. Solutions</h3>
+          <p>
+            MS Antimalware for Azure, Windows Security Baselines, etc.
+          </p>
         </div>
       </div>
-      <p class="final-note">
-        This comprehensive set of services means there’s always a solution...
-      </p>
     </div>
   </section>
 
-  <!-- HOW TPD FITS -->
-  <section class="how-tpd-fits">
+  <!-- REAL-WORLD SCENARIOS -->
+  <section class="scenarios-section">
     <div class="container">
-      <h2>How TPD Fits In: Turning Possibilities into Action</h2>
-      <p>The Technical Presales and Deployment team helps you navigate this vast Azure Infrastructure ecosystem...</p>
-      <div class="tpd-steps">
-        <div class="tpd-step">
-          <h3>Plan</h3>
-          <p><strong>Technical Assessments:</strong> Analyze your current architecture...</p>
-          <p><strong>Solution Roadmap:</strong> Align your migration or modernization goals...</p>
-          <p><strong>Licensing & Cost Guidance:</strong> Tools like Azure Cost Management...</p>
-        </div>
-        <div class="tpd-step">
-          <h3>Build</h3>
-          <p><strong>Architecture Review & Design:</strong> HPC solutions on N‐Series VMs...</p>
-          <p><strong>Proof of Concept:</strong> Hands‐on guidance for pilot environments...</p>
-          <p><strong>Security & Governance:</strong> Integrate Azure Firewall, NSGs, Azure Policy...</p>
-        </div>
-        <div class="tpd-step">
-          <h3>Sell</h3>
-          <p><strong>Technical Demos & Presales:</strong> Show off real-world scenarios...</p>
-          <p><strong>Objection Handling:</strong> Address concerns about performance, cost...</p>
-          <p><strong>Competitive Positioning:</strong> Azure’s integrated services vs. piecemeal solutions...</p>
-        </div>
-        <div class="tpd-step">
-          <h3>Grow</h3>
-          <p><strong>Post‐Deployment Optimization:</strong> performance tuning, cost optimization...</p>
-          <p><strong>Hybrid & Edge Scenarios:</strong> Extend success to edge computing via Azure Stack Edge...</p>
-          <p><strong>Innovation Enablement:</strong> Add AI, analytics, or IoT to your solutions...</p>
-        </div>
-      </div>
+      <h2>Real-World Security Scenarios & How TPD Helps</h2>
+      <ol>
+        <li>
+          <strong>Closing Deals on Comprehensive Security Solutions</strong><br/>
+          Scenario: A mid-sized business suffers frequent phishing attacks, evaluating multiple vendors...
+          TPD Support: Demos of Defender for Office 365 + Endpoint, licensing advice (M365 E3/E5).
+        </li>
+        <li>
+          <strong>Ensuring Hybrid Cloud Security</strong><br/>
+          Scenario: Multi-cloud (Azure + AWS) needing real-time unified security...
+          TPD Support: Defender for Cloud for multi-cloud visibility, Microsoft Sentinel...
+        </li>
+        <li>
+          <strong>Protecting Identities & Building Zero Trust</strong><br/>
+          Scenario: Org wants Zero Trust around user/device identity without harming productivity...
+          TPD Support: Microsoft Entra ID, Conditional Access, MFA, Verified ID, risk-based policies.
+        </li>
+        <li>
+          <strong>Securing Application Development & DevOps</strong><br/>
+          Scenario: Dev team needs vulnerability detection in CI/CD, container workload security...
+          TPD Support: Defender for DevOps, Defender for Containers, logs into Sentinel.
+        </li>
+        <li>
+          <strong>Data Governance & Compliance at Scale</strong><br/>
+          Scenario: A financial institution needs compliance across multiple geos...
+          TPD Support: Purview classification, encryption with Azure Key Vault, auditing via Defender for SQL.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TPD ENGAGEMENT MODEL -->
+  <section class="engagement-model-section">
+    <div class="container">
+      <h2>TPD Engagement Model for Microsoft Security</h2>
+      <ol>
+        <li>
+          <strong>Plan & Envision:</strong> Threat Landscape Analysis, choose relevant Microsoft Security services...
+        </li>
+        <li>
+          <strong>Build & Configure:</strong> Architecture & setup (Defender, Entra solutions), POC, integration, governance.
+        </li>
+        <li>
+          <strong>Sell & Adopt:</strong> Technical demos, objection handling, user/admin readiness.
+        </li>
+        <li>
+          <strong>Grow & Optimize:</strong> Post‐deployment review, advanced expansions (Security Copilot, IoT or DevOps).
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- SUCCESS STORIES -->
-  <section class="success-stories">
+  <section class="success-stories-section">
     <div class="container">
       <h2>Success Stories</h2>
-      <div class="stories-grid">
-        <div class="story-card">
-          <h3>1. Migrating On‐Prem Hyper‐V Workloads...</h3>
-          <p><strong>Scenario:</strong> A mid‐sized retail chain wants to migrate 300 VMs...</p>
-          <p><strong>TPD Involvement:</strong> readiness assessment with Azure Migrate...</p>
-          <p><strong>Outcome:</strong> Reduced operational costs by 30%...</p>
+      <div class="card-grid">
+        <div class="security-card">
+          <h3>1. Manufacturing Firm Deploys XDR</h3>
+          <p>
+            <strong>Scenario:</strong> A manufacturer faces rising ransomware attacks, needs endpoint + identity protection.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Showed Microsoft Defender XDR, proof of concept with Microsoft Sentinel,
+            knowledge transfer.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Reduced detection/response times, blocked two ransomware attempts in the first quarter.
+          </p>
         </div>
-        <div class="story-card">
-          <h3>2. SAP on Azure for a Manufacturing Giant</h3>
-          <p><strong>Scenario:</strong> High availability near real‐time performance for SAP S/4HANA...</p>
-          <p><strong>TPD Involvement:</strong> Architecture review for Azure VMs Certified for SAP...</p>
-          <p><strong>Outcome:</strong> Downtime minimized, improved production planning...</p>
+        <div class="security-card">
+          <h3>2. Global Retailer Embraces Zero Trust</h3>
+          <p>
+            <strong>Scenario:</strong> A retailer with hybrid cloud and partner integrations wants Zero Trust for workforce/vendors.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Implemented Microsoft Entra external ID for B2B, integrated Defender for Endpoint on store devices, introduced Security Copilot.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Consistent security policies across 20+ regions, significantly fewer vendor breaches.
+          </p>
         </div>
-        <div class="story-card">
-          <h3>3. Modernizing Legacy Apps with Azure Stack Hub</h3>
-          <p><strong>Scenario:</strong> A software company needs a hybrid solution for customers with constraints...</p>
-          <p><strong>TPD Involvement:</strong> Guidance on Azure Stack Hub, best practices with Azure Policy, RBAC...</p>
-          <p><strong>Outcome:</strong> Launched new service offering for on‐premises customers...</p>
+        <div class="security-card">
+          <h3>3. Healthcare Provider Adopts Purview & Priva</h3>
+          <p>
+            <strong>Scenario:</strong> A healthcare org needs HIPAA compliance, secure patient data, robust data governance.
+          </p>
+          <p>
+            <strong>TPD Involvement:</strong> Set up Microsoft Purview data classification, recommended Microsoft Priva
+            for controlling personal data usage, used Key Vault encryption for sensitive files.
+          </p>
+          <p>
+            <strong>Outcome:</strong> Streamlined compliance checks, real-time alerts for data misuse,
+            improved data transparency.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARTNERING + TABLE -->
-  <section class="align-and-get-started">
+  <!-- HOW TO ENGAGE TPD FOR SECURITY -->
+  <section class="engage-tpd-section">
     <div class="container">
-      <h2>Partnering for Success with TPD</h2>
-      <ul class="partnering-bullets">
-        <li><strong>1. Leverage Expert Insights</strong><br/>Azure Infrastructure can be vast and complex...</li>
-        <li><strong>2. Secure More Deals</strong><br/>From polished presales demos to proposals highlighting Azure’s strengths...</li>
-        <li><strong>3. Continuous Improvement</strong><br/>Azure is constantly evolving with new features (like Copilot for Azure)...</li>
+      <h2>How to Engage TPD for Security</h2>
+      <p>
+        Check Your Partner Benefits: Sign in to Partner Center and ensure your account is linked
+        to the Microsoft AI Cloud Partner Program. Under Benefits → Technical presales & deployment,
+        confirm eligibility (e.g., Solutions Partner, Action Pack, Legacy Gold/Silver).
+      </p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 30px 0;">
+        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+          Submit a TPD Request →
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+          Collaborate & Execute →
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 6px; font-weight: bold;">
+          Optimize & Evolve
+        </div>
+      </div>
+      <p>
+        Outline your scenario—adopting Defender for Cloud, migrating to Microsoft Sentinel,
+        implementing Zero Trust with Microsoft Entra. Expect a TPD response within two business days
+        to discuss presales or deployment best practices. Re-engage TPD for advanced integrations
+        (e.g., Security Copilot) or expansions into IoT or DevOps scenarios.
+      </p>
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">Q1: Does TPD provide 24/7 monitoring or incident response services?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> TPD focuses on technical presales and deployment guidance. For continuous monitoring
+            or emergency support, explore Premier Support, Advanced Support for Partners, or an MSSP.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q2: My solution uses multiple Azure security products—can TPD help integrate them?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> Absolutely. TPD can assist in designing unified solutions across Azure Firewall,
+            DDoS Protection, Defender for Cloud, Microsoft Sentinel, and more.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q3: How does TPD handle compliance regulations like GDPR, HIPAA, or PCI?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> TPD advisors recommend Microsoft tools (Purview, Priva, encryption) that address regulations,
+            but final compliance readiness is typically validated by customers’ legal teams.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q4: Is Microsoft Security Copilot generally available?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> Availability may vary by region/licensing. TPD can share the latest info on enrolling in or evaluating Security Copilot.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Q5: Can TPD help with device‐specific solutions, like Surface or OEM device security?</div>
+        <div class="faq-answer">
+          <p>
+            <strong>A:</strong> Yes. TPD can guide you on Windows security features, Surface device management,
+            and Endpoint Management best practices to keep endpoints secure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSION: DEFEND YOUR BUSINESS -->
+  <section class="conclusion-section">
+    <div class="container">
+      <h2>Defend Your Business with Confidence</h2>
+      <p>
+        From Azure and Microsoft 365 to Microsoft Entra and Microsoft Purview, Microsoft delivers
+        a vast ecosystem of security solutions designed to protect what matters most at every layer.
+        By partnering with Technical Presales and Deployment, you’ll gain:
+      </p>
+      <ul style="list-style: none; padding: 0; margin: 15px 0;">
+        <li><strong>Expert Presales Guidance</strong> – to showcase the value of integrated security offerings.</li>
+        <li><strong>Deployment Best Practices</strong> – reduce complexity and speed time-to-protection.</li>
+        <li><strong>Knowledge Transfer & Ongoing Optimization</strong> – stay ahead of evolving threats and compliance demands.</li>
       </ul>
-
-      <h2>Aligning with the Microsoft AI Cloud Partner Program</h2>
-      <p>By being part of the Microsoft AI Cloud Partner Program, you gain access to TPD as a built‐in benefit...</p>
-      <div class="responsive-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Designation</th>
-              <th>Description / Hours Benefit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Solutions Partner</td>
-              <td>Unlimited presales support, 50+ hours of advisory engagement, etc.</td>
-            </tr>
-            <tr>
-              <td>Action Pack (MAPS)</td>
-              <td>Access to TPD, but may deduct from your advisory hours.</td>
-            </tr>
-            <tr>
-              <td>Legacy Gold/Silver</td>
-              <td>Enjoy robust support while transitioning to new designations.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Remember: If you’re new or unsure of your benefits...</p>
     </div>
   </section>
 
-  <!-- HOW TO GET STARTED (Heartbeat Steps) -->
-  <section class="getting-started-steps">
+  <!-- NEXT STEP -->
+  <section class="next-step-section">
     <div class="container">
-      <h2>How to Get Started</h2>
-      <p>Ready to tap into TPD’s deep expertise and elevate your Azure Infrastructure solutions?</p>
-      <p>Here’s a simplified flow for how you can engage:</p>
-      <div class="steps-container">
-        <div class="step-card heartbeat">1. Sign in</div>
-        <div class="arrow">→</div>
-        <div class="step-card heartbeat">2. Submit Request</div>
-        <div class="arrow">→</div>
-        <div class="step-card heartbeat">3. Collaborate</div>
-        <div class="arrow">→</div>
-        <div class="step-card heartbeat">4. Realize Value</div>
-      </div>
-      <p>Sign in to Partner Center using your Microsoft AI Cloud Partner Program–associated account...</p>
-    </div>
-  </section>
-
-  <!-- FAQ (Collapsible) -->
-  <section class="azure-infra-faq">
-    <div class="container">
-      <h2>Frequently Asked Questions (FAQ)</h2>
-      <div class="faq-item">
-        <div class="faq-question">Q1: Do TPD services cover advanced networking or specialized HPC setups?</div>
-        <div class="faq-answer">
-          <p><strong>A:</strong> Absolutely. Our Azure Infrastructure scope includes advanced concepts like Azure Virtual WAN...</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Q2: I need 24/7 support once in production. Can TPD provide that?</div>
-        <div class="faq-answer">
-          <p><strong>A:</strong> TPD focuses on technical advisory and presales, not 24/7 break‐fix...</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Q3: How do I learn more about the Cloud Adoption Framework or Well‐Architected Framework?</div>
-        <div class="faq-answer">
-          <p><strong>A:</strong> TPD can guide you through these frameworks during our planning phase...</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Q4: How long does a typical TPD engagement last?</div>
-        <div class="faq-answer">
-          <p><strong>A:</strong> It varies. Some partners need a quick POC consultation, others an entire Plan‐Build‐Sell‐Grow cycle...</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Q5: Can TPD assist with moving specialized workloads, like SAP or HPC?</div>
-        <div class="faq-answer">
-          <p><strong>A:</strong> Yes. We have experts specializing in SAP on Azure, HPC scenarios, etc. We’ll map out your requirements and offer tailored guidance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LET’S TRANSFORM -->
-  <section class="azure-transform">
-    <div class="container">
-      <h2>Let’s Transform Your Azure Infrastructure Together</h2>
+      <h2>Take the Next Step</h2>
       <p>
-        With Azure Infrastructure spanning compute, networking, storage, and advanced hybrid scenarios, 
-        there’s no shortage of possibilities. But navigating these options effectively—and turning them 
-        into profitable solutions—requires the right expertise.
-      </p>
-      <p>That’s exactly what TPD provides:</p>
-      <ul class="conclusion-bullets">
-        <li>Deep Technical Knowledge of Azure best practices.</li>
-        <li>Tailored Presales & Deployment Guidance based on your partner goals.</li>
-        <li>Ongoing Optimization to keep your solutions ahead of the curve.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- READY TO TAKE THE NEXT STEP? -->
-  <section class="azure-next-step">
-    <div class="container">
-      <h2>Ready to Take the Next Step?</h2>
-      <p>
-        Schedule a TPD Consultation – Let’s discuss your current environment...
-        <br/>
-        Submit a TPD Services Request – Already know what you need? Open a case...
-        <br/>
-        Explore Other Solution Areas – From Data & AI to Modern Work...
+        <strong>Schedule a TPD Consultation</strong> – Let’s discuss your security goals, challenges, and how we can help.
       </p>
       <p>
-        Accelerate your cloud journey, differentiate your solutions, and unlock new revenue streams
-        with Azure Infrastructure—backed by the unmatched expertise of our Technical Presales and Deployment team.
+        <strong>Submit a TPD Services Request</strong> – Already know what you need? Open a case and get started right away.
       </p>
-      <p>We look forward to partnering with you on this exciting transformation!</p>
+      <p>
+        <strong>Explore Other Solution Areas</strong> – See how TPD can also support Data & AI, Modern Work, and more.
+      </p>
+      <p>
+        Partner with TPD to build end-to-end security solutions that instill confidence, drive trust,
+        and protect your customers—so they can thrive in an increasingly connected world.
+      </p>
     </div>
   </section>
 
-  <!-- Single-file JS -->
+  <!-- SINGLE-FILE JS: ONCE DOM LOADED, FADE IN & FAQ COLLAPSE -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Immediately reveal sections
+    // Reveal sections with fade + upward shift
     const sections = document.querySelectorAll('section');
-    sections.forEach(sec => sec.classList.add('visible'));
+    sections.forEach((sec, idx) => {
+      // Slight stagger if you want (like 0.2s * index)
+      setTimeout(() => {
+        sec.classList.add('visible');
+      }, idx * 150);
+    });
 
-    // Also handle card fade-in with small delays for each
-    // We'll look for relevant cards in the doc
-    const allCards = document.querySelectorAll(
-      '.why-focus-card, .ecosystem-card, .tpd-step, .story-card'
-    );
+    // Staggered fade for each .security-card
+    const allCards = document.querySelectorAll('.security-card');
     allCards.forEach((card, index) => {
-      card.style.transitionDelay = (index * 0.1) + 's';
-      // Make them visible
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
+      card.style.transitionDelay = (0.3 + index * 0.1) + 's';
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 300);
     });
 
     // Collapsible FAQ
